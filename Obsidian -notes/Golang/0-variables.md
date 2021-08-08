@@ -34,6 +34,7 @@ func main() {
 ```
  ## Notes
   in go every variable you initialize have by default the value of 0 == false
+  
  **Visibility**
  - Lower case first letter for the package scope.
  - Upper case flrst letter will export the variable globally.
