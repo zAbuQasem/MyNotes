@@ -139,11 +139,49 @@ func main() {
 	b := a[:]  //Slice all elements
 	c := a[3:] //Slice from 4th element to end
 	d := a[:6] //Slice from first to 6th element
-	e := a[3:6] //Slce from the 4th till the 6th element
+	e := a[3:6] //Slice from the 4th till the 6th element
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(c)
 	fmt.Println(d)
 	fmt.Println(e)
 }
+
+
 ```
+## Another way for creating slices (efficient and i can control the capacity)
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	a := make([]int,0, 100) //no of elements is 0 & capacity is 100
+	a = append(a,1,3) //added two elements
+	fmt.Println(a)
+	fmt.Printf("Length: %v\n",len(a))
+	fmt.Printf("Capacity: %v\n",cap(a))
+}
+```
+
+## Removing an element from the middle
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	a := []int{1,2,3,4,5}
+	b := append(a[:2], a[3:]...) // 3 dots for concatination
+	fmt.Println(b)
+	//fmt.Println(a) //This will change the array of "a".
+	
+}
+```
+
+### Summary
+![[arrayssum.png]]
