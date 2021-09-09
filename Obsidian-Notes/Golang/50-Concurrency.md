@@ -74,3 +74,7 @@ func main() {
 }
 
 ```
+## Identifying race conditions
+```bash
+go run -race main.go
+```
