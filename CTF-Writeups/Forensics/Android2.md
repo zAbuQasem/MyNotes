@@ -22,6 +22,8 @@ Then i took the column name `lock_screen_owner_info` and found this [Article](ht
 I copied the `)))(()))$$#)))` from the column, tried to submit it, and it worked!
 
 FLAG = JUST{`)))(()))$$#)))`}
+
 ---
+
 ## Refereneces
 [how-to-display-owner-information-on-the-lock-screen-on-your-android-phone](https://www.howtogeek.com/194878/how-to-display-owner-information-on-the-lock-screen-on-your-android-phone/)
