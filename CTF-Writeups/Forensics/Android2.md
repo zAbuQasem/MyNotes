@@ -6,12 +6,16 @@ After extracting the `image_sdb.img` from the compressed file, and trying to mou
 ![mohammedatary](https://i.imgur.com/vsVmRKP.png)
 
 In order to solve the challenge i have to reach the `password hint` which is not an available feature in most android phones, so we have to find a place where the password hint could be specified by the user.The possible places i thought of are:
-1. Lockscreen (Because of 'who is going to die to get my password' mindset)
-2. Picture in the gallery (Basic behaviour from it professionals)
+1. Lockscreen ( Because of _who is going to die to get my password_ mindset )
+2. Picture in the gallery ( Basic IT professionals behaviour )
 
 I started searching for the artifact that holds the lockscreen settings and found this file `locksettings.db` in the `system/` folder.After examining the file type it appeared to be an `sqlite3` db file.
+```bash
+file locksettings.db
+```
 ![moiwq](https://i.imgur.com/OVm2YT1.png)
 So i tried opening the file with `sqlitebrowser` ,it opened without any issues :)
+
 ![DEAD](https://i.imgur.com/cDmWvda.png)
 
 I found a suspicious entity
