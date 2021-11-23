@@ -48,4 +48,12 @@ By running the tool with the `gesture.key` we will crack the hash and obtain the
 ```bash
 python aplc.py ~/Desktop/JustCTF/Android_1/gesture.key
 ```
-![loll](https://i.imgur.com/4ohtlop.png)
+![Mohammadflailah](https://i.imgur.com/5XDftxs.png)
+![loll](https://i.imgur.com/73NLxBt.png)
+
+FLAG = JUST{157489623}
+---
+## References
+- [getting-started-android-forensics](https://resources.infosecinstitute.com/topic/getting-started-android-forensics/)
+- [password-and-pattern-lock-protection](https://www.forensicfocus.com/articles/android-forensics-study-of-password-and-pattern-lock-protection/)
+- [how-to-recover-rest-android-pattern-lock-with-gesture-key](https://www.hackeracademy.org/how-to-recover-rest-android-pattern-lock-with-gesture-key/)
