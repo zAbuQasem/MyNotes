@@ -33,5 +33,19 @@ Now let's try to mount the image again, but this time with the `offset`
 sudo mount -o offset=546308096 data.dd /mnt
 ```
 ![meow](https://i.imgur.com/mz9pQ2b.png)
-Nice, now we want to find the `gesture.key` file as it contain the passcode used to unlock the device.The file is usaully locate in `system/` folder
-![lol2](https://i.imgur.com/rUZQv4B.png)
+Nice, now after successfully mounting the image, we have to get the `gesture.key` file  from the `system/` folder as it contain the pattern used to unlock the device.
+```bash
+cp /system/gesture.key ~/Desktop/JustCTF/Android_1
+```
+Pattern lock data is kept in gesture.key and the lock sequence is encrypted with a SHA1 hashing algorithm.Since SHA1 is a one-way algorithm there is no reverse function to convert hash to original sequence. To restore the code the attacker will need to create a table of sequences with hash strings. The best way here could be to have a dictionary to recover the pattern.
+
+Fortunately there is a tool on github for that.
+```bash 
+git clone https://github.com/sch3m4/androidpatternlock
+cd androidpatternlock
+```
+By running the tool with the `gesture.key` we will crack the hash and obtain the pattern sequence!
+```bash
+python aplc.py ~/Desktop/JustCTF/Android_1/gesture.key
+```
+![loll](https://i.imgur.com/4ohtlop.png)
