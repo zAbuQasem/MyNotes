@@ -28,7 +28,7 @@ From the `fdisk` screenshot above we know that the sector size is `512 bytes` an
 ```txt
 512 * 1067008 = 546308096 (OFFSET)
 ```
-Now let's try to mount the image again, but this time with the `offset`
+Now let's try mounting the image again, but this time with the `offset`
 ```bash
 sudo mount -o offset=546308096 data.dd /mnt
 ```
