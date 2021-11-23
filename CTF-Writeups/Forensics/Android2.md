@@ -22,7 +22,7 @@ I found a suspicious entity
 
 ![kontrol](https://i.imgur.com/Iq8XbiZ.png)
 
-Then i took the column name `lock_screen_owner_info` and found this [Article](https://www.howtogeek.com/194878/how-to-display-owner-information-on-the-lock-screen-on-your-android-phone/) talking about displaying owner information on the lock screen, So this must be the place i'm looking for.
+Then i googled the column name `lock_screen_owner_info` and found this [Article](https://www.howtogeek.com/194878/how-to-display-owner-information-on-the-lock-screen-on-your-android-phone/) talking about displaying owner information on the lock screen, So this must be the place i'm looking for.
 I copied the `)))(()))$$#)))` from the column, tried to submit it, and it worked!
 
 FLAG = JUST{`)))(()))$$#)))`}
