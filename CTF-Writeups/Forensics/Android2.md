@@ -1,6 +1,6 @@
 # Challenge: Android (2)
 ## Description: Can you find the password hint?
-
+### Solution:
 After extracting the `image_sdb.img` from the compressed file, and trying to mount the disk image, i faced the same issues as the `Android1` challenge.You can refer to `android1` writeup [Android1](https://github.com/zAbuQasem/MyNotes/blob/main/CTF-Writeups/Forensics/Android1.md) in order to solve the mounting issue.
 
 ![mohammedatary](https://i.imgur.com/vsVmRKP.png)
