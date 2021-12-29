@@ -16,5 +16,6 @@ dnstool.py -u DOMAIN\\USERNAME -p PASSWORD -r FAKESYSTEM.FQDN -a add -d YOUR_IP 
 ```
 
 # Further reading
-- https://www.okta.com/identity-101/what-is-ldap/
-- https://book.hacktricks.xyz/pentesting/pentesting-ldap
+- [What's LDAP](https://www.okta.com/identity-101/what-is-ldap/)
+- [Manual LDAP queries](https://posts.specterops.io/an-introduction-to-manual-active-directory-querying-with-dsquery-and-ldapsearch-84943c13d7eb)
+- [Microsoft doc.](https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ldap/distinguished-names)
