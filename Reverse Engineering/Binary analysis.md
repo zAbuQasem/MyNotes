@@ -122,6 +122,7 @@ typedef struct
   Elf64_Xword   sh_entsize;	/* Entry size if section holds table */
 } Elf64_Shdr;
 ```
+> **Good explanation video**: https://www.youtube.com/watch?v=nC1U1LJQL8o
 - **To read the all sections of an ELF executable**
 ```bash 
 readelf -S --wide <Executable>
