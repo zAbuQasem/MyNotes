@@ -92,7 +92,7 @@ Get-ADDomainController -DomainName <DOMAIN> -Discover
 Get-NetUser 
 Get-NetUser -Username omar1 
 #ActiveDirectory Module
-Get-ADDuser -Filter * -Properties *  
+Get-ADuser -Filter * -Properties *  
 ```
 ### Get list of all properties for users in the current domain
 ```powershell
@@ -112,7 +112,7 @@ Get-UserProperty -Properties badpwdcount
 Get-UserProperty -Properties logoncount
 #Searching for passwords in user's description
 Find-UserField -SearchField Description -SearchTerm "built"
-Get-ADDUser - Filter 'Description -like "*built*"' -Properties Description | select name,Description
+Get-ADUser - Filter 'Description -like "*built*"' -Properties Description | select name,Description
 ```
 #### Note:
 - Searching for passwords in user's description is a thing because users may have to change their passwords frequently so they include it in the description so they don't have to memorize it.
