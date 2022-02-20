@@ -41,8 +41,6 @@ http://172.16.111.138:9222/devtools/inspector.html?ws=172.16.111.138:9222/devtoo
 > **Important information Notes**
 > 1. Chrome is frequently updated, and behaviors might change over time. 
 > 2. The remote debugging feature Chrome provides does not offer an encrypted connection, so use this remotely capability carefully.
-
-Now you can control the browser remotely. Now after knowing some basics let's spy on users..
 ### Using Chrome remote debugging to spy on users!
 - Kill the user chrome session then start a new one
 ```powershell
