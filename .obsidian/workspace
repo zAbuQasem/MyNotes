@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "027ac9815967b628",
+    "type": "split",
+    "children": [
+      {
+        "id": "f30c5d75814c573e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "CTF notes/JavaScript code review notes.md",
+            "mode": "preview",
+            "source": true
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cf818dd69b37e2d9",
+    "type": "split",
+    "children": [
+      {
+        "id": "96cef26e94a8a035",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a86cb3428c8c286b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "58bae17aa3d3ab3c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ddd35fab4b863cdf",
+    "type": "split",
+    "children": [
+      {
+        "id": "03eb81f39fd6f76b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5321b36920afc9d1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CTF notes/JavaScript code review notes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "f30c5d75814c573e",
+  "lastOpenFiles": [
+    "CTF notes/JavaScript code review notes.md"
+  ]
+}
