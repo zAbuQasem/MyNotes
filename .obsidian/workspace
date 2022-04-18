@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CTF notes/JavaScript code review notes.md",
-            "mode": "preview",
+            "file": "AWS Pentesting/Kubernetes.md",
+            "mode": "source",
             "source": true
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF notes/JavaScript code review notes.md",
+                "file": "AWS Pentesting/Kubernetes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,8 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "AWS Pentesting/Kubernetes.md",
+    "Golang/0-variables.md",
     "CTF notes/JavaScript code review notes.md"
   ]
 }
