@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CTF notes/PHP Bypasses.md",
+            "file": "WebPentesting/WebVulns/SSTI.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF notes/PHP Bypasses.md",
+                "file": "WebPentesting/WebVulns/SSTI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/SSTI.md",
     "CTF notes/PHP Bypasses.md",
     "CTF notes/JavaScript code review notes.md",
     "AWS Pentesting/Kubernetes.md",
