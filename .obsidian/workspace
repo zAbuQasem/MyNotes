@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SSTI.md",
-            "mode": "source",
+            "file": "Active Directory/Initial attack vectors/Kerberoas.md",
+            "mode": "preview",
             "source": true
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "time",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -49,7 +49,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SSTI.md",
+                "file": "Active Directory/Initial attack vectors/Kerberoas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +90,8 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "Active Directory/Initial attack vectors/Kerberoas.md",
+    "Active Directory/4-Domain persistence.md",
     "WebPentesting/WebVulns/SSTI.md",
     "CTF notes/PHP Bypasses.md",
     "CTF notes/JavaScript code review notes.md",
