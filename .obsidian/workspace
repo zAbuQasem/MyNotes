@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CTF notes/MISC.md",
-            "mode": "preview",
+            "file": "CTF notes/JavaScript code review notes.md",
+            "mode": "source",
             "source": true
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF notes/MISC.md",
+                "file": "CTF notes/JavaScript code review notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "CTF notes/JavaScript code review notes.md",
     "CTF notes/MISC.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/SSTI.md",
@@ -97,7 +98,6 @@
     "Active Directory/Attack vectors/AD CS.md",
     "Active Directory/Attack vectors/LDAP.md",
     "Active Directory/4-Domain persistence.md",
-    "Active Directory/Attack vectors/Kerberoas.md",
-    "CTF notes/PHP Bypasses.md"
+    "Active Directory/Attack vectors/Kerberoas.md"
   ]
 }

