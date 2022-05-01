@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Active Directory/8-Detection and Defence - Architectural changes.md",
-            "mode": "preview",
+            "file": "WebPentesting/WebVulns/SSTI.md",
+            "mode": "source",
             "source": true
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "laps",
+                "query": "flask",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -49,7 +49,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Active Directory/8-Detection and Defence - Architectural changes.md",
+                "file": "WebPentesting/WebVulns/SSTI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,13 +90,13 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/SSTI.md",
     "Active Directory/8-Detection and Defence - Architectural changes.md",
     "Active Directory/Attack vectors/LAPS.md",
     "Active Directory/Attack vectors/AD CS.md",
     "Active Directory/Attack vectors/LDAP.md",
     "Active Directory/4-Domain persistence.md",
     "Active Directory/Attack vectors/Kerberoas.md",
-    "WebPentesting/WebVulns/SSTI.md",
     "CTF notes/PHP Bypasses.md",
     "CTF notes/JavaScript code review notes.md",
     "AWS Pentesting/Kubernetes.md"
