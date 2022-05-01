@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "CTF notes/JavaScript code review notes.md",
-            "mode": "source",
+            "mode": "preview",
             "source": true
           }
         }
@@ -91,13 +91,13 @@
   "lastOpenFiles": [
     "CTF notes/JavaScript code review notes.md",
     "CTF notes/MISC.md",
+    "CTF notes/PHP Bypasses.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/SSTI.md",
     "Active Directory/8-Detection and Defence - Architectural changes.md",
     "Active Directory/Attack vectors/LAPS.md",
     "Active Directory/Attack vectors/AD CS.md",
     "Active Directory/Attack vectors/LDAP.md",
-    "Active Directory/4-Domain persistence.md",
-    "Active Directory/Attack vectors/Kerberoas.md"
+    "Active Directory/4-Domain persistence.md"
   ]
 }
