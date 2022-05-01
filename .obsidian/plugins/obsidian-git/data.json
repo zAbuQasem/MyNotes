@@ -6,7 +6,7 @@
   "autoPullInterval": 0,
   "autoPullOnBoot": true,
   "disablePush": false,
-  "pullBeforePush": false,
+  "pullBeforePush": true,
   "disablePopups": false,
   "listChangedFilesInMessageBody": true,
   "showStatusBar": true,

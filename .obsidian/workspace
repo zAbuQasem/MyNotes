@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SSTI.md",
-            "mode": "source",
+            "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
+            "mode": "preview",
             "source": true
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "flask",
+                "query": "sql",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -54,7 +54,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -70,7 +71,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SSTI.md",
+                "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,6 +91,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/SSTI.md",
     "Active Directory/8-Detection and Defence - Architectural changes.md",
     "Active Directory/Attack vectors/LAPS.md",
@@ -98,7 +100,6 @@
     "Active Directory/4-Domain persistence.md",
     "Active Directory/Attack vectors/Kerberoas.md",
     "CTF notes/PHP Bypasses.md",
-    "CTF notes/JavaScript code review notes.md",
-    "AWS Pentesting/Kubernetes.md"
+    "CTF notes/JavaScript code review notes.md"
   ]
 }
