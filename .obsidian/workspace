@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SSTI.md",
+            "file": "CTF notes/JavaScript.md",
             "mode": "preview",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SSTI.md",
+                "file": "CTF notes/JavaScript.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,9 +89,9 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
-    "WebPentesting/WebVulns/SSTI.md",
-    "CTF notes/JavaScript code review notes.md",
+    "CTF notes/JavaScript.md",
     "CTF notes/MISC.md",
+    "WebPentesting/WebVulns/SSTI.md",
     "CTF notes/PHP Bypasses.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "Active Directory/8-Detection and Defence - Architectural changes.md",
