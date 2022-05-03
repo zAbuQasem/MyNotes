@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-            "mode": "preview",
+            "mode": "source",
             "source": true
           }
         }
