@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-            "mode": "source",
+            "file": "WebPentesting/WebVulns/SSTI.md",
+            "mode": "preview",
             "source": true
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "order",
+                "query": "ssti",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
+                "file": "WebPentesting/WebVulns/SSTI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,14 +90,14 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/SSTI.md",
+    "Active Directory/Attack vectors/AD CS.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "CTF notes/JavaScript.md",
     "CTF notes/MISC.md",
-    "WebPentesting/WebVulns/SSTI.md",
     "CTF notes/PHP Bypasses.md",
     "Active Directory/8-Detection and Defence - Architectural changes.md",
     "Active Directory/Attack vectors/LAPS.md",
-    "Active Directory/Attack vectors/AD CS.md",
     "Active Directory/Attack vectors/LDAP.md",
     "Active Directory/4-Domain persistence.md"
   ]
