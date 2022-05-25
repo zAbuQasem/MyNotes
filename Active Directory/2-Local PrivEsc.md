@@ -19,6 +19,7 @@ The main goal is to be a local administrator.This can be achieved by regular win
 ---
 # Navigation
 - **[[#info about the OS]]**
+- **[Determinig PS version](#Determinig%20PS%20version)**
 - **[[#User enumeration]]**
 - **[[#Network enumeration]]**
 - **[[#AV enumeration]]**
@@ -48,6 +49,12 @@ hostname
 wmic qfe 
 #To list the logical drives:
 wmic logicaldisk
+```
+## Determinig PS version
+```powershell
+(Get-ItemProperty
+HKLM:\SOFTWARE\Microsoft\PowerShell\*\PowerShellEngin
+e -Name PowerShellVersion).PowerShellVersion
 ```
 ## User enumeration
 ```powershell
