@@ -10,7 +10,7 @@
 	- [[#Writing Multi-lines]]
 	- [[#Get variable type]]
 - **[[#Arrays]]**
-- [Hashtables dictionaries](#Hashtables%20dictionaries)
+- **[Hashtables dictionaries](#Hashtables%20dictionaries)**
 - **[[#Conditional statements]]**
 	- [[#If Statement]]
 	- [[#Switch Statement]]
@@ -105,14 +105,29 @@ $ArrayList.Add($Value) and $arraylist.Remove($Value)
 $ArrayList.ToArray()
 ```
 ## Hashtables (dictionaries)
-- PowerShell Version 3+ also has \[ordered\] hash tables
+- PowerShell Version 3+ also has **\[ordered\]** hash tables
+- Keys/Values can be any .NET object type
 ```powershell
+[ordered]@{ <name> = <value>; [<name> = <value> ] ...}
 @{ <name> = <value>; [<name> = <value> ] ...}
 $hash = @{one = "apple"; two=2; three="orange"}
 
 # Get a value
 $hash["one"]
+
+$hash.keys # return the keys of the hash table
+$hash.values # return the values of the hash table
+
+#Key/value addition:
+$hash.Add('Key', 'Value')
+$hash = $hash + @{Key="Value"}
+#Can be nested: 
+$Hash = $Hash + @{"Value2"= @{a=1; b=2; c=3}}
+
+#Only way to remove a key
+$hash.Remove("Key")
 ```
+> Read about hashtables splatting
 ---
 # Conditional statements
 ## If Statement
