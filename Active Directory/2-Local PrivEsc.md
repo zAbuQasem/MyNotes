@@ -56,6 +56,16 @@ wmic logicaldisk
 HKLM:\SOFTWARE\Microsoft\PowerShell\*\PowerShellEngin
 e -Name PowerShellVersion).PowerShellVersion
 ```
+## PSDrives & Providers
+- A PSDrive is a pointer to a data structure that is managed by
+something called a PSProvider.
+- PSDrives are attacker-controlable. 
+```powershell
+#Providers are enumerable with:
+Get-PSProvider
+#PSDrives are Enumerable with:
+Get-PSDrive
+```
 ## User enumeration
 ```powershell
 #To get privileges for the user

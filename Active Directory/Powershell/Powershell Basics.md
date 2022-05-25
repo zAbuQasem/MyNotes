@@ -10,6 +10,7 @@
 	- [[#Writing Multi-lines]]
 	- [[#Get variable type]]
 - **[[#Arrays]]**
+- [Hashtables dictionaries](#Hashtables%20dictionaries)
 - **[[#Conditional statements]]**
 	- [[#If Statement]]
 	- [[#Switch Statement]]
@@ -80,6 +81,10 @@ $<var>.GetType()
 ```
 ---
 ## Arrays
+- **Implicit creation**: $array = 4,6,1,60,23,53
+- **Explicit creation**: $array = @(4,6,”s”,60,”yes”,5.3)
+- **Ranged creation**: $array = 1..100
+- **Strongly typed**: [int32[]]$array = 1500,1600,1700,1800
 ```powershell
 $a = 1 + 6.5  
 [int]$a #Prints 8  
@@ -92,6 +97,21 @@ $a = 1,2,"ss",3
   
 #Print a specific element  
 $a[0]
+```
+- Arrays are immutable - there’s no easy way to remove an element from an array... in order to do that use:
+```powershell
+$ArrayList = New-Object System.Collections.ArrayList
+$ArrayList.Add($Value) and $arraylist.Remove($Value)
+$ArrayList.ToArray()
+```
+## Hashtables (dictionaries)
+- PowerShell Version 3+ also has \[ordered\] hash tables
+```powershell
+@{ <name> = <value>; [<name> = <value> ] ...}
+$hash = @{one = "apple"; two=2; three="orange"}
+
+# Get a value
+$hash["one"]
 ```
 ---
 # Conditional statements
