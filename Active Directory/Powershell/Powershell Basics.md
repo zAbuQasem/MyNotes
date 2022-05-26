@@ -28,6 +28,7 @@
 	- [[#Advanced Scripting]]
 - **[[#Remoting]]**
 	- [[#Running commands remotely]]
+	- [Checking permissions](#Checking%20permissions)
 	- [[#Making a Credential object]]
 - **[[#Jobs]]**
 - **[[#Modules]]**
@@ -240,12 +241,22 @@ function advanced {
 ```
 ---
 # Remoting
-You need to be in the administrative group in the remote machine and to be in the same domain or to be in a trusted workgroup  
+By default, PS Remoting is limited to systems that meet the
+following criteria:
+• Use Kerberos Authentication
+• Domain joined
+• This limitation is in place to guarantee mutual authentication
+• PowerShell wants to use HTTPS instead of HTTP to connect.
+- **Steps to trust a host**:
 1. Put the host name/ip in the `trustedhosts` file after enabling the ps-remoting.
 2.  `enable-psremoting`  
 3.  `set-item wsman:\localhost\client\trustedhosts -Value computername/ip`  (accept regex)
-> **Note:**
-> You need to do this for both machines.
+- **Note:** You need to do this for both machines.
+
+## Checking permissions
+```powershell
+Get-PSSessionConfiguration | Select-Object -Exclude Permission
+```
 ## Running commands remotely
 ```powershell
 #Commands with "computername" parameter can execute commnads remotley  
@@ -261,6 +272,10 @@ enter-pssession -computername <name> -credentials pcname\username
 #You can save a session as a variable and invoke commnads to  
 $sess = new-pssession <with its parameters>  
 invoke-command <Commands> -session $sess
+```
+## Testing connection
+```powershell
+Test-WSMan -ComputerName <ip>
 ```
 ## Making a Credential object
 ```powershell
