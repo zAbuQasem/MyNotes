@@ -1,5 +1,5 @@
 # Powerfull automation
-![[COM Objects]]
+![COM Objects](COM%20Objects.md)
 
 ## Automating and remote controlling Google Chrome
 How to leverage remote debugging to spy on users!

@@ -1,18 +1,18 @@
 # Windows 
 ---
 # Navigation
-1. **[[# Process memory]]**
-	- [[#1- Procdump exe]]
-	- [[#2- Mimikittenz Not working on windows 10]]
-	- [[#3- mimikatz]]
-2. **[[#Abusing logging tracing]]**
-	- [[#1- Tracing the WinINet provider]]
-	- [[#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome]]
-	- [[#3- Peeking at shell command-line history files]]
-	- [[#4- Command line arguments]]
-3. **[[#Windows Credential Manager]]**
-4. **[[#Phishing and credential dialog spoofing]]**
-5. **[[#Password spray attacks]]**
+1. **[Process memory](#Process%20memory)**
+	- [1- Procdump exe](#1-%20Procdump%20exe)
+	- [2- Mimikittenz Not working on windows 10](#2-%20Mimikittenz%20Not%20working%20on%20windows%2010)
+	- [3- mimikatz](#3-%20mimikatz)
+2. **[Abusing logging tracing](#Abusing%20logging%20tracing)**
+	- [1- Tracing the WinINet provider](#1-%20Tracing%20the%20WinINet%20provider)
+	- [2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](#2-%20Decrypting%20TLS%20traffic%20using%20TLS%20key%20logging%20Not%20working%20on%20latest%20firefox%20and%20chrome)
+	- [3- Peeking at shell command-line history files](#3-%20Peeking%20at%20shell%20command-line%20history%20files)
+	- [4- Command line arguments](#4-%20Command%20line%20arguments)
+3. **[Windows Credential Manager](#Windows%20Credential%20Manager)**
+4. **[Phishing and credential dialog spoofing](#Phishing%20and%20credential%20dialog%20spoofing)**
+5. **[Password spray attacks](#Password%20spray%20attacks)**
 ---
  # Process memory:
  ## 1- Procdump.exe

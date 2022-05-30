@@ -1,11 +1,11 @@
 # Linux
 ---
 # Navigation
-1. **[[#Procdump]]**
-2. **[[#Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome]]**
-3. **[[#Peeking at shell command-line history files]]**
-4. **[[#Command line arguments]]**
-5. **[[#Spoofing a credential prompt via zenity on Linux]]**
+1. **[Procdump](#Procdump)**
+2. **[Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](#Decrypting%20TLS%20traffic%20using%20TLS%20key%20logging%20Not%20working%20on%20latest%20firefox%20and%20chrome)**
+3. **[Peeking at shell command-line history files](#Peeking%20at%20shell%20command-line%20history%20files)**
+4. **[Command line arguments](#Command%20line%20arguments)**
+5. **[Spoofing a credential prompt via zenity on Linux](#Spoofing%20a%20credential%20prompt%20via%20zenity%20on%20Linux)**
 ---
 #  Procdump
 ```bash
