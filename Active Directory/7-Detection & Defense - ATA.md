@@ -1,11 +1,11 @@
 # Microsoft ATA (Advanced Threat Analytics).
 ---
 # Navigation
-- **[[#What's ATA]]**
-- **[[#Useful for detecting]]**
-- **[[#Bypass user hunting detection]]**
-- **[[#Bypass Overpass-the-hash detection]]**
-- **[[#Bypass Golden ticket detection]]**
+- **[What's ATA](#What's%20ATA)**
+- **[Useful for detecting](#Useful%20for%20detecting)**
+- **[Bypass user hunting detection](#Bypass%20user%20hunting%20detection)**
+- **[Bypass Overpass-the-hash detection](#Bypass%20Overpass-the-hash%20detection)**
+- **[Bypass Golden ticket detection](#Bypass%20Golden%20ticket%20detection)**
 
 ---
 # What's ATA?

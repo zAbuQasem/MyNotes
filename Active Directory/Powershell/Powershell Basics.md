@@ -2,41 +2,41 @@
 ---
 # Navigation
 - **[[#Commands and Operators]]**
-	- [[#Listing examples for a command]]
-	- [[#List commands by type and function]]
-	- [[#Output Formats]]
-	- [[#Useful Operators for Parsing]]
-	- [[#Difference between Double and single quotes]]
-	- [[#Writing Multi-lines]]
-	- [[#Get variable type]]
-- **[[#Arrays]]**
+	- [Listing examples for a command](#Listing%20examples%20for%20a%20command)
+	- [List commands by type and function](#List%20commands%20by%20type%20and%20function)
+	- [Output Formats](#Output%20Formats)
+	- [Useful Operators for Parsing](#Useful%20Operators%20for%20Parsing)
+	- [Difference between Double and single quotes](#Difference%20between%20Double%20and%20single%20quotes)
+	- [Writing Multi-lines](#Writing%20Multi-lines)
+	- [Get variable type](#Get%20variable%20type)
+- **[Arrays](#Arrays)**
 - **[Hashtables dictionaries](#Hashtables%20dictionaries)**
-- **[[#Conditional statements]]**
-	- [[#If Statement]]
-	- [[#Switch Statement]]
-- **[[#Loop statements]]**
-	- [[#For loop]]
-	- [[#While loop]]
-	- [[#Where-object]]
-- **[[#Functions]]**
-	- [[#Using parameters]]
-	- [[#Passing parameters]]
-	- [[#Positioning parameters]]
-	- [[#Identifying alot of parameters than defined in the function]]
-	- [[#Using switch parameter]]
-	- [[#Advanced Functions]]
-	- [[#Advanced Scripting]]
-- **[[#Remoting]]**
-	- [[#Running commands remotely]]
+- **[Conditional statements](#Conditional%20statements)**
+	- [If Statement](#If%20Statement)
+	- [Switch Statement](#Switch%20Statement)
+- **[Loop statements](#Loop%20statements)**
+	- [For loop](#For%20loop)
+	- [While loop](#While%20loop)
+	- [Where-object](#Where-object)
+- **[Functions](#Functions)**
+	- [Using parameters](#Using%20parameters)
+	- [Passing parameters](#Passing%20parameters)
+	- [Positioning parameters](#Positioning%20parameters)
+	- [Identifying alot of parameters than defined in the function](#Identifying%20alot%20of%20parameters%20than%20defined%20in%20the%20function)
+	- [Using switch parameter](#Using%20switch%20parameter)
+	- [Advanced Functions](#Advanced%20Functions)
+	- [Advanced Scripting](#Advanced%20Scripting)
+- **[Remoting](#Remoting)**
+	- [Running commands remotely](#Running%20commands%20remotely)
 	- [Checking permissions](#Checking%20permissions)
-	- [[#Making a Credential object]]
-- **[[#Jobs]]**
-- **[[#Modules]]**
-	- [[#Listing modules]]
-	- [[#Importing modules]]
-	- [[#List module commands]]
-	- [[#Remove module]]
-	- [[#Module manifest]]
+	- [Making a Credential object](#Making%20a%20Credential%20object)
+- **[Jobs](#Jobs)**
+- **[Modules](#Modules)**
+	- [Listing modules](#Listing%20modules)
+	- [Importing modules](#Importing%20modules)
+	- [List module commands](#List%20module%20commands)
+	- [Remove module](#Remove%20module)
+	- [Module manifest](#Module%20manifest)
 ---
 # Commands and Operators
 ## Listing examples for a command
@@ -105,7 +105,7 @@ $ArrayList = New-Object System.Collections.ArrayList
 $ArrayList.Add($Value) and $arraylist.Remove($Value)
 $ArrayList.ToArray()
 ```
-## Hashtables (dictionaries)
+## Hashtables dictionaries
 - PowerShell Version 3+ also has **\[ordered\]** hash tables
 - Keys/Values can be any .NET object type
 ```powershell

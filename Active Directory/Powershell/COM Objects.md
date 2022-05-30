@@ -1,12 +1,12 @@
 # COM objects
 ---
 # Navigation
-- **[[#List all COM objects]]**
-- **[[#invoke COM objects]]**
-- **[[#Using VBScript to create COM objects]]**
-- **[[#Automating sending emails via Outlook]]**
-- **[[#Automating Microsoft Excel using COM]]**
-- **[[#Searching through Office documents using COM automation]]**
+- **[List all COM objects](#List%20all%20COM%20objects)**
+- **[invoke COM objects](#invoke%20COM%20objects)**
+- **[Using VBScript to create COM objects](#Using%20VBScript%20to%20create%20COM%20objects)**
+- **[Automating sending emails via Outlook](#Automating%20sending%20emails%20via%20Outlook)**
+- **[Automating Microsoft Excel using COM](#Automating%20Microsoft%20Excel%20using%20COM)**
+- **[Searching through Office documents using COM automation](#Searching%20through%20Office%20documents%20using%20COM%20automation)**
 ---
 ## List all COM objects
 ```powershell

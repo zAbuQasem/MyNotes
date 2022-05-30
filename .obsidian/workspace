@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Active Directory/Powershell/Powershell Basics.md",
+            "file": "Metasploit/Metasploit Cheatsheet.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Active Directory/Powershell/Powershell Basics.md",
+                "file": "Metasploit/Metasploit Cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
-    "Active Directory/Powershell/Powershell Basics.md",
-    "Active Directory/2-Local PrivEsc.md",
-    "Active Directory/1-Domain Enumeration.md",
-    "CTF notes/PHP Bypasses.md",
-    "CTF notes/MISC.md",
-    "WebPentesting/WebVulns/SQLI/10-MySQL.md",
-    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-    "WebPentesting/0- Information gathering.md",
-    "CTF notes/JavaScript.md",
-    "WebPentesting/WebVulns/SSTI.md"
+    "Metasploit/Metasploit Cheatsheet.md",
+    "External-Pentest course/4-Report Writing.md",
+    "External-Pentest course/External Pentest Notes.md",
+    "External-Pentest course/2-Attacking login portals.md",
+    "External-Pentest course/1-Hunting breached creds.md",
+    "External-Pentest course/0-Auto Scanning.md",
+    "AWS Pentesting/Lambda.md",
+    "AWS Pentesting/Kubernetes.md",
+    "AWS Pentesting/DNS.md",
+    "AWS Pentesting/AWS Services Explained & Pentested.md"
   ]
 }

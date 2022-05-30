@@ -18,28 +18,28 @@ The main goal is to be a local administrator.This can be achieved by regular win
 - **Privesc **-> Invoke-PrivESC
 ---
 # Navigation
-- **[[#info about the OS]]**
+- **[info about the OS](#info%20about%20the%20OS)**
 - **[Determinig PS version](#Determinig%20PS%20version)**
-- **[[#User enumeration]]**
-- **[[#Network enumeration]]**
-- **[[#AV enumeration]]**
-- **[[#Download files using CMD]]**
-- **[[#Windows linux subsystem]]**
-- **[[#Alternative data streams]]**
-- **[[#Run As]]**
-- **[[#Auto Run]]**
-- **[[#AlwaysInstallElevated]]**
-- **[[#SeImpersonate]]**
-- **[[#Unquoted service path]]**
-- **[[#Get Services where the current user can write to its binary path or change arguments in the binary]]**
-- **[[#Get services whose configuration current user can modify]]**
-- **[[#Startup Apps]]**
-- **[[#Finding Saved Creds]]**
-- **[[#Deleted Files]]**
-- **[[#Unattended files]]**
-- **[[#Powershell history]]**
-- **[[#Powershell Trascript]]**
-- **[[#Feature Abuse - Enterprise applications]]**
+- **[User enumeration](#User%20enumeration)**
+- **[Network enumeration](#Network%20enumeration)**
+- **[AV enumeration](#AV%20enumeration)**
+- **[Download files using CMD](#Download%20files%20using%20CMD)**
+- **[Windows linux subsystem](#Windows%20linux%20subsystem)**
+- **[Alternative data streams](#Alternative%20data%20streams)**
+- **[Run As](#Run%20As)**
+- **[Auto Run](#Auto%20Run)**
+- **[AlwaysInstallElevated](#AlwaysInstallElevated)**
+- **[SeImpersonate](#SeImpersonate)**
+- **[Unquoted service path](#Unquoted%20service%20path)**
+- **[Get Services where the current user can write to its binary path or change arguments in the binary](#Get%20Services%20where%20the%20current%20user%20can%20write%20to%20its%20binary%20path%20or%20change%20arguments%20in%20the%20binary)**
+- **[Get services whose configuration current user can modify](#Get%20services%20whose%20configuration%20current%20user%20can%20modify)**
+- **[Startup Apps](#Startup%20Apps)**
+- **[Finding Saved Creds](#Finding%20Saved%20Creds)**
+- **[Deleted Files](#Deleted%20Files)**
+- **[Unattended files](#Unattended%20files)**
+- **[Powershell history](#Powershell%20history)**
+- **[Powershell Trascript](#Powershell%20Trascript)**
+- **[Feature Abuse - Enterprise applications](#Feature%20Abuse%20-%20Enterprise%20applications)**
 ---
 ## info about the OS
 ```powershell

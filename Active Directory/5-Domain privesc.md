@@ -1,19 +1,19 @@
 # Domain Privesc
 ---
 # Navigation
-- **[[#Kerberoast]]**
-	- [[#Users With SPN]]
-	- [[#AS-REPs]]
-	- [[#Set SPN]]
-- **[[#Uncontrained delegation]]**
-	- [[#Definition]]
-	- [[#Attack]]
-- **[[#Constrained delegation]]**
-	- [[#Definition]]
-	- [[#Attack]]
-- **[[#Further reading]]**
+- **[Kerberoast](#Kerberoast)**
+	- [Users With SPN](#Users%20With%20SPN)
+	- [AS-REPs](#AS-REPs)
+	- [Set SPN](#Set%20SPN)
+- **[Unconstrained delegation](#Unconstrained%20delegation)**
+	- [Definition](#Definition)
+	- [Attack](#Attack)
+- **[Constrained delegation](#Constrained%20delegation)**
+	- [Definition con](#Definition%20con)
+	- [Attack](#Attack)
+- **[Further reading](#Further%20reading)**
 >**Important:**
->[[Kerberoas#Synchronizing time is important]]
+>[Synchronizing time is important](Kerberoas#Synchronizing%20time%20is%20important)
 ---
 # Kerberoast
 ## Users With SPN
@@ -153,7 +153,7 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp/krbtgt"'
 
 ---
 # Constrained delegation
-## Definition
+## Definition con.
 Microsoft’s next iteration of delegation included the ability to limit where objects had delegation (impersonation) rights to.  Now a front-end web server that needed to impersonate users to access their data on a database could be restricted;** allowing it to only impersonate users on a specific service & system**.  However, as we will find out, the portion of the ticket that limits access to a certain service is not encrypted.  This gives us some room to gain additional access to systems if we gain access to an object configured with these rights. 
 If you can gain access to an account (user or computer) that is configured with constrained delegation.  You can find this by searching for the `TRUSTED_TO_AUTH_FOR_DELEGATION` value in the **UserAccountControl** attribute of AD objects.
 ## Attack

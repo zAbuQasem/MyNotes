@@ -1,49 +1,49 @@
 # Metasploit
 ---
 ## Navigation
-- **[[#Basic commands]]**
-- **[[#Information gathering]]**
-	- [[#Port scanning]]
-	- [[#Backup files from websites]]
-	- [[#Directory listing test]]
-	- [[#SSL testing]]
-	- [[#SSH kippo detection]]
-	- [[#Domain Name System]]
-	- [[#Remote Desktop protocol]]
-	- [[#Password Sniffing]]
-	- [[#Shodan qeuries]] 
-- **[[#Vulnerability Hunting]]**
-	- [[#Managing the database]] 
-	- [[#Importing scans]]
-	- [[#Backing up the database]]
-	- [[#Nmap with metasploit]]
-	- [[#Nessus]]
-	- [[#msf utilities]]
-- **[[#Client-Side attacks]]** 
-	- [[#Msfvenom]]
-	- [[#Listeners]] 
-- **[[#Antivirus Evasion and Anti-Forensics]]**
-	- **[[#Using encoders]]**
-		- [[#shikata_ga_nai encoder]]
-		- [[#opt_sub encoder]]
-	- **[[#Using the new evasion modules]]**
-		- [[#windows_defender_exe]]
-	- **[[#Using packagers and encrypters]]**
-		- [[#Using 7-zip utility]] 
-	- **[[#Understanding what a sandbox is]]**
-		- [[#Using Metasploit for anti-forensics]]
-			- [[#Timestomp]]
-			- [[#Clearev]]
-- **[[#Armitage]]** 
-	- [[#Scanning and enumeration]]
-	- [[#Finding and launching attacks]]
-- **[[#Importing external exploits]]** 
-- **[[#Pivoting]]**
-	- [[#Adding a route]]
-	- [[#Metasploit with Proxychains]]
-- **[[#Post-exploitation]]**
-- **[[#Powershell]]**
-- **[[#Further learning]]**
+- **[Basic commands](#Basic%20commands)**
+- **[Information gathering](#Information%20gathering)**
+	- [Port scanning](#Port%20scanning)
+	- [Backup files from websites](#Backup%20files%20from%20websites)
+	- [Directory listing test](#Directory%20listing%20test)
+	- [SSL testing](#SSL%20testing)
+	- [SSH kippo detection](#SSH%20kippo%20detection)
+	- [Domain Name System](#Domain%20Name%20System)
+	- [Remote Desktop protocol](#Remote%20Desktop%20protocol)
+	- [Password Sniffing](#Password%20Sniffing)
+	- [Shodan qeuries](#Shodan%20qeuries) 
+- **[Vulnerability Hunting](#Vulnerability%20Hunting)**
+	- [Managing the database](#Managing%20the%20database) 
+	- [Importing scans](#Importing%20scans)
+	- [Backing up the database](#Backing%20up%20the%20database)
+	- [Nmap with metasploit](#Nmap%20with%20metasploit)
+	- [Nessus](#Nessus)
+	- [msf utilities](#msf%20utilities)
+- **[Client-Side attacks](#Client-Side%20attacks)** 
+	- [Msfvenom](#Msfvenom)
+	- [Listeners](#Listeners) 
+- **[Antivirus Evasion and Anti-Forensics](#Antivirus%20Evasion%20and%20Anti-Forensics)**
+	- **[Using encoders](#Using%20encoders)**
+		- [shikata_ga_nai encoder](#shikata_ga_nai%20encoder)
+		- [opt_sub encoder](#opt_sub%20encoder)
+	- **[Using the new evasion modules](#Using%20the%20new%20evasion%20modules)**
+		- [windows_defender_exe](#windows_defender_exe)
+	- **[Using packagers and encrypters](#Using%20packagers%20and%20encrypters)**
+		- [Using 7-zip utility](#Using%207-zip%20utility) 
+	- **[Understanding what a sandbox is](#Understanding%20what%20a%20sandbox%20is)**
+		- [Using Metasploit for anti-forensics](#Using%20Metasploit%20for%20anti-forensics)
+			- [Timestomp](#Timestomp)
+			- [Clearev](#Clearev)
+- **[Armitage](#Armitage)** 
+	- [Scanning and enumeration](#Scanning%20and%20enumeration)
+	- [Finding and launching attacks](#Finding%20and%20launching%20attacks)
+- **[Importing scans](#Importing%20scans)** 
+- **[Pivoting](#Pivoting)**
+	- [Adding a route](#Adding%20a%20route)
+	- [Metasploit](#Metasploit)
+- **[Post-exploitation](#Post-exploitation)**
+- **[Powershell](#Powershell)**
+- **[Further learning](#Further%20learning)**
 ---
 # Basic commands
  - **Version**: Display version.

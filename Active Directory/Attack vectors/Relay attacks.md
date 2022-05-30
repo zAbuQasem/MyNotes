@@ -1,10 +1,10 @@
 # Relay attacks
 ---
 # Navigation
-- **[[#Whats LLMNR]]**
-- **[[#SMB Relay attack]]**
-- **[[#SMB scf attack]]**
-- **[[#Further reading]]**
+- **[Whats LLMNR](#Whats%20LLMNR)**
+- **[SMB relay attack](#SMB%20relay%20attack)**
+- **[SMB scf attack](#SMB%20scf%20attack)**
+- **[Further reading](#Further%20reading)**
 ---
 # Whats LLMNR?
 **Link-Local Multicast Name Resolution (LLMNR)** and **NetBIOS Name Service (NBT-NS)** are Microsoft Windows components that serve as alternate methods of host identification. **LLMNR is based upon the Domain Name System (DNS) format** and allows hosts on the same local link to perform name resolution for other hosts. NBT-NS identifies systems on a local network by their NetBIOS name.

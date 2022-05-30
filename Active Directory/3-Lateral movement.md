@@ -1,8 +1,8 @@
 # Lateral Movement
 ---
 # Navigation
-- **[[#PowerShell Remoting]]**
-- **[[#Mimikatz]]**
+- **[PowerShell Remoting](#PowerShell%20Remoting)**
+- **[Mimikatz](#Mimikatz)**
 ---
 # PowerShell Remoting
 - Enabled by deafult on server 2012 onwards.
