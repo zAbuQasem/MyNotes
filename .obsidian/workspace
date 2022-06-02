@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "WebPentesting/WebVulns/LFI.md",
             "mode": "source",
             "source": true
           }
@@ -49,8 +49,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "WebPentesting/WebVulns/LFI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,6 +89,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/LFI.md",
     "README.md",
     "WebPentesting/Proxy Servers.md",
     "WebPentesting/10-Authorization Testing.md",
@@ -98,7 +98,6 @@
     "WebPentesting/WebVulns/XSS.md",
     "WebPentesting/WebVulns/XPath injection.md",
     "WebPentesting/WebVulns/SSTI.md",
-    "WebPentesting/WebVulns/SSRF.md",
-    "WebPentesting/WebVulns/SSI (Server Side include).md"
+    "WebPentesting/WebVulns/SSRF.md"
   ]
 }
