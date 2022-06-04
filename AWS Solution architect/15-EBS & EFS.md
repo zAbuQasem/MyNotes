@@ -24,6 +24,11 @@
 	- Preserve root volume when instance is terminated
 ![Summary](https://i.imgur.com/RaPaE3T.png)
 
+# Encryption: encrypt an unencrypted EBS volume  
+- Create an EBS snapshot of the volume  
+- Encrypt the EBS snapshot ( using copy )  
+- Create new ebs volume from the snapshot ( the volume will also be encrypted )  
+- Now you can attach the encrypted volume to the original instance
 # EFS 
 - Elastic File System  
 - Managed **NFS** (network file system) that can be mounted on many EC2  
