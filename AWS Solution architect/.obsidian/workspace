@@ -1,17 +1,17 @@
 {
   "main": {
-    "id": "027ac9815967b628",
+    "id": "26f001707ef6d33d",
     "type": "split",
     "children": [
       {
-        "id": "f30c5d75814c573e",
+        "id": "9db4b3a009a4ab4a",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/LFI.md",
+            "file": "15-EBS & EFS.md",
             "mode": "source",
-            "source": true
+            "source": false
           }
         }
       }
@@ -19,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "cf818dd69b37e2d9",
+    "id": "800bc982de519500",
     "type": "split",
     "children": [
       {
-        "id": "96cef26e94a8a035",
+        "id": "8e88cc9f3e66a930",
         "type": "tabs",
         "children": [
           {
-            "id": "a86cb3428c8c286b",
+            "id": "aa81c587650ae7d7",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -35,13 +35,13 @@
             }
           },
           {
-            "id": "58bae17aa3d3ab3c",
+            "id": "07cfaa24247bbde7",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": true,
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -49,28 +49,27 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "ddd35fab4b863cdf",
+    "id": "eef797ea6903dec6",
     "type": "split",
     "children": [
       {
-        "id": "03eb81f39fd6f76b",
+        "id": "6383bf05fa1d4e0b",
         "type": "tabs",
         "children": [
           {
-            "id": "5321b36920afc9d1",
+            "id": "a0340bf7eefc7ed9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/LFI.md",
+                "file": "15-EBS & EFS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,17 +87,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f30c5d75814c573e",
+  "active": "9db4b3a009a4ab4a",
   "lastOpenFiles": [
-    "WebPentesting/WebVulns/LFI.md",
-    "README.md",
-    "WebPentesting/Proxy Servers.md",
-    "WebPentesting/10-Authorization Testing.md",
-    "WebPentesting/5- Authentication Testing.md",
-    "WebPentesting/0- Information gathering.md",
-    "WebPentesting/WebVulns/XSS.md",
-    "WebPentesting/WebVulns/XPath injection.md",
-    "WebPentesting/WebVulns/SSTI.md",
-    "WebPentesting/WebVulns/SSRF.md"
+    "15-EBS & EFS.md",
+    "10-EC2.md",
+    "0-footage.md",
+    "5-IAM.md"
   ]
 }
