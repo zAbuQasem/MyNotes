@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/LFI.md",
+            "file": "AWS Solution architect/15-EBS & EFS.md",
             "mode": "source",
             "source": true
           }
@@ -49,8 +49,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/LFI.md",
+                "file": "AWS Solution architect/15-EBS & EFS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,6 +89,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "AWS Solution architect/15-EBS & EFS.md",
     "WebPentesting/WebVulns/LFI.md",
     "README.md",
     "WebPentesting/Proxy Servers.md",
@@ -98,7 +98,6 @@
     "WebPentesting/0- Information gathering.md",
     "WebPentesting/WebVulns/XSS.md",
     "WebPentesting/WebVulns/XPath injection.md",
-    "WebPentesting/WebVulns/SSTI.md",
-    "WebPentesting/WebVulns/SSRF.md"
+    "WebPentesting/WebVulns/SSTI.md"
   ]
 }

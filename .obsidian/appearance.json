@@ -1,3 +1,4 @@
 {
-  "baseFontSize": 23
+  "baseFontSize": 20,
+  "cssTheme": "Minimal"
 }
