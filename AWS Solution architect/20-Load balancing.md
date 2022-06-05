@@ -58,9 +58,24 @@ Servers that forward traffic to multiple servers downstream
 	- The true IP of the client is inserted in the header `X-Forwarded-For` 
 	- We can also get Port (`X-Forwarded-Port`) and proto (`X-Forwarded-Proto`)
 - **Network Load Balancer (v2 - new generation)**
-	 - TCP, TLS (secure TCP), UDP  
+	 - TCP, TLS (secure TCP), UDP 
+	 - Has one static IP per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP)
+	 - NLB are used for extreme performance, TCP or UDP traffic
+	 - **Target groups**:
+		 - EC2 instances  
+		- IP Addresses – must be private IPs  
+		- Application Load Balancer
 - **Gateway Load Balancer**  
-	- Operates at layer 3 (Network layer) – IP Protocol  
+	- Operates at layer 3 (Network layer) – IP Protocol Deploy,  scale, and manage a fleet of 3 rd party network virtual appliances in AWS  
+	- **Example**: 
+		- Firewalls
+		- Intrusion Detection and Prevention Systems
+		- Deep Packet Inspection 
+		- Systems, payload manipulation ...  
+	- **Combines the following functions**:  
+		- Transparent Network Gateway – single entry/exit for all traffic  
+		- Load Balancer – distributes traffic to your virtual appliances  
+		- Uses the **GENEVE** protocol on port **6081**
 - Overall, it is recommended to use the newer generation load balancers as they  provide more features  
 - Some load balancers can be setup as `internal (private)` or `external (public) ELBs)`
 ![](https://i.imgur.com/Ienfe21.png)
