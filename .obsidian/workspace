@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "AWS Solution architect/15-EBS & EFS.md",
+            "file": "AWS Solution architect/20-Load balancing.md",
             "mode": "source",
             "source": true
           }
@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Solution architect/15-EBS & EFS.md",
+                "file": "AWS Solution architect/20-Load balancing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +90,7 @@
   },
   "active": "f30c5d75814c573e",
   "lastOpenFiles": [
+    "AWS Solution architect/20-Load balancing.md",
     "AWS Solution architect/15-EBS & EFS.md",
     "WebPentesting/WebVulns/LFI.md",
     "README.md",
@@ -97,7 +99,6 @@
     "WebPentesting/5- Authentication Testing.md",
     "WebPentesting/0- Information gathering.md",
     "WebPentesting/WebVulns/XSS.md",
-    "WebPentesting/WebVulns/XPath injection.md",
-    "WebPentesting/WebVulns/SSTI.md"
+    "WebPentesting/WebVulns/XPath injection.md"
   ]
 }
