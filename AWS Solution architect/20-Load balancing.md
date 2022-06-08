@@ -80,7 +80,7 @@ Servers that forward traffic to multiple servers downstream
 - Some load balancers can be setup as `internal (private)` or `external (public) ELBs)`
 ![](https://i.imgur.com/Ienfe21.png)
 
-## Sticky Sessions (Session Affinity)  
+# Sticky Sessions (Session Affinity)  
 - It is possible to implement stickiness so that the same client is always redirected to the same instance behind a load balancer  
 - This works for Classic Load Balancers & Application Load Balancers
 - The "cookie" used for stickiness has an expiration date you control  
@@ -104,7 +104,7 @@ Servers that forward traffic to multiple servers downstream
 		- **ALB** -> `AWSALB`
 		- **CLB** ->  `AWSELB`
 
-## Cross-Zone load balancing
+# Cross-Zone load balancing
 - **Application Load Balancer**  
 	- Always on (can’t be disabled)  
 	- No charges for inter AZ data  
@@ -114,7 +114,7 @@ Servers that forward traffic to multiple servers downstream
 - **Classic Load Balancer**  
 	- Disabled by default  
 	- No charges for inter AZ data if enabled
-## Load balancer -SSL Certs
+# Load balancer -SSL Certs
 The load balancer uses an `X.509 certificate` (SSL/TLS server certificate)
 - You can manage certificates using **ACM** (**AWS Certificate Manager**)  
 - You can create upload your own certificates alternatively  
@@ -132,7 +132,7 @@ The load balancer uses an `X.509 certificate` (SSL/TLS server certificate)
 - **Network Load Balancer (v2)**  
 	- Supports multiple listeners with multiple SSL certificates  
 	- Uses Server Name Indication (SNI) to make it work
-## SNI - Server Name Indication
+# SNI - Server Name Indication
 **SNI** solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)  
 - It’s a “newer” protocol, and requires the client to indicate the hostname of the target server in the initial SSL handshake  
 - The server will then find the correct certificate, or return the default one
@@ -141,3 +141,25 @@ The load balancer uses an `X.509 certificate` (SSL/TLS server certificate)
 > - Default option for `ALB` with no charges
 > - You can use it with `NLB`, but with charges
 
+# ASG - Auto Scaling Group
+- Add (scale out ), Remove (scale in), Increase, Decrease the numer of instances for a load balancer.
+- ![](https://i.imgur.com/CBXgGyJ.png)
+## ASG - with load balancer
+- It is possible to scale an ASG based on CloudWatch alarms  
+- An Alarm monitors a metric (such as Average CPU)
+- Scaling policies can be on CPU, Network... and can even be on custom metrics or based on a schedule (if you know your visitors patterns)
+- To update an ASG, you must provide a new launch configuration / launch template  
+- IAM roles attached to an ASG will get assigned to EC2 instances  
+- **ASG are free**. You pay for the underlying resources being launched  
+- Having instances under an ASG means that if they get terminated for whatever reason, the ASG will automatically create new ones as a replacement. Extra safety!  
+- ASG can terminate instances marked as unhealthy by an LB (and hence replace them)
+- After a scaling activity happens, you are in the cooldown period (default 300 seconds) 
+- During the cooldown period, the ASG will not launch or terminate additional instances (to allow for metrics to stabilize)  
+- **Advice**: 
+	- Use a ready-to-use AMI to reduce configuration time in order to be serving request fasters and reduce the cooldown period
+>  **Note**: Metrics are computed for the overall ASG instances
+##  Good metrics to scale on  
+- **CPUUtilization**: Average CPU utilization across your instances  
+- **RequestCountPerTarget**: to make sure the number of requests per EC2 instances is stable  
+- **Average Network In / Out** (if you’re application is network bound)  
+- **Any custom metric** (that you push using CloudWatch)
