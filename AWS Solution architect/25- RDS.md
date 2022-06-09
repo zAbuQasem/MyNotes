@@ -74,3 +74,24 @@ GRANT USAGE ON *.* TO 'mysqluser'@'%' REQUIRE SSL;
 	- Use auth token obtained through IAM & RDS Api calls (*15 min lifetime*)
 	- **Benefits**:
 		- Network in/out must be SSL/TLS encrypted
+# Elastic Cache - DB Cache
+Caches are in-memory databases with really high performance, low  
+latency  
+- Helps reduce load off of databases for read intensive workloads  
+- Helps make your application stateless  
+- AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups  
+- Using ElastiCache involves heavy application code changes
+## ElastiCache – Redis vs Memcached
+![](https://i.imgur.com/mxu1kgm.png)
+> **More**: [Memcached vs Redis](https://www.instaclustr.com/blog/redis-vs-memcached/)
+
+## ElasticCache Security
+- All caches in ElastiCache:  
+	- Do not support IAM authentication  
+	- IAM policies on ElastiCache are only used for AWS API-level security  
+- **Redis AUTH**:  
+	- You can set a “password/token” when you create a Redis cluster  
+	- This is an extra level of security for your cache (on top of security groups)  
+	- Support SSL in flight encryption  
+- **Memcached**:  
+	- Supports SASL-based authentication (advanced)
