@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "f30c5d75814c573e",
+        "id": "da3ad255cd0e05b7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "AWS Solution architect/20-Load balancing.md",
+            "file": "AWS Solution architect/25- RDS.md",
             "mode": "preview",
-            "source": true
+            "source": false
           }
         }
       }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Solution architect/20-Load balancing.md",
+                "file": "AWS Solution architect/25- RDS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,8 +88,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f30c5d75814c573e",
+  "active": "da3ad255cd0e05b7",
   "lastOpenFiles": [
+    "AWS Solution architect/25- RDS.md",
     "AWS Solution architect/20-Load balancing.md",
     "AWS Solution architect/15-EBS & EFS.md",
     "WebPentesting/WebVulns/LFI.md",
@@ -98,7 +99,6 @@
     "WebPentesting/10-Authorization Testing.md",
     "WebPentesting/5- Authentication Testing.md",
     "WebPentesting/0- Information gathering.md",
-    "WebPentesting/WebVulns/XSS.md",
-    "WebPentesting/WebVulns/XPath injection.md"
+    "WebPentesting/WebVulns/XSS.md"
   ]
 }

@@ -1,7 +1,7 @@
 
 # Scalability 
 - Scalability means that an application / system can handle greater loads  by adapting.  
-- There are two kinds of scalability:  
+## There are two kinds of scalability
 - **Vertical Scalability**  
 	- Increasing the size of the instance  
 	- Vertical scalability is very common for non distributed systems, such as a database.  
