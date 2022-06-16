@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "AWS Solution architect/Route53.md",
+            "file": "WebPentesting/DNS Rebinding.md",
             "mode": "source",
             "source": false
           }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Solution architect/Route53.md",
+                "file": "WebPentesting/DNS Rebinding.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,6 +89,7 @@
   },
   "active": "f14f1fc37b7f2ebe",
   "lastOpenFiles": [
+    "WebPentesting/DNS Rebinding.md",
     "AWS Solution architect/Route53.md",
     "AWS Solution architect/IAM.md",
     "AWS Solution architect/EC2.md",
@@ -98,7 +98,6 @@
     "AWS Solution architect/RDS.md",
     "WebPentesting/WebVulns/LDAP Injection.md",
     "WebPentesting/WebVulns/LFI.md",
-    "README.md",
-    "WebPentesting/Proxy Servers.md"
+    "README.md"
   ]
 }
