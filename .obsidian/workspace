@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "da3ad255cd0e05b7",
+        "id": "f14f1fc37b7f2ebe",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "AWS Solution architect/25- RDS.md",
+            "file": "AWS Solution architect/Route53.md",
             "mode": "source",
             "source": false
           }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Solution architect/25- RDS.md",
+                "file": "AWS Solution architect/Route53.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,17 +88,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "da3ad255cd0e05b7",
+  "active": "f14f1fc37b7f2ebe",
   "lastOpenFiles": [
-    "AWS Solution architect/25- RDS.md",
-    "AWS Solution architect/20-Load balancing.md",
-    "AWS Solution architect/15-EBS & EFS.md",
+    "AWS Solution architect/Route53.md",
+    "AWS Solution architect/IAM.md",
+    "AWS Solution architect/EC2.md",
+    "AWS Solution architect/EBS & EFS.md",
+    "AWS Solution architect/Load balancing.md",
+    "AWS Solution architect/RDS.md",
+    "WebPentesting/WebVulns/LDAP Injection.md",
     "WebPentesting/WebVulns/LFI.md",
     "README.md",
-    "WebPentesting/Proxy Servers.md",
-    "WebPentesting/10-Authorization Testing.md",
-    "WebPentesting/5- Authentication Testing.md",
-    "WebPentesting/0- Information gathering.md",
-    "WebPentesting/WebVulns/XSS.md"
+    "WebPentesting/Proxy Servers.md"
   ]
 }
