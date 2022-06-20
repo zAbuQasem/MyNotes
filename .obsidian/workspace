@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "f14f1fc37b7f2ebe",
+        "id": "5067e9994ba1e501",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/DNS Rebinding.md",
+            "file": "AWS Solution architect/S3.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/DNS Rebinding.md",
+                "file": "AWS Solution architect/S3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +88,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f14f1fc37b7f2ebe",
+  "active": "5067e9994ba1e501",
   "lastOpenFiles": [
-    "WebPentesting/DNS Rebinding.md",
-    "AWS Solution architect/Route53.md",
-    "AWS Solution architect/IAM.md",
-    "AWS Solution architect/EC2.md",
-    "AWS Solution architect/EBS & EFS.md",
+    "AWS Solution architect/S3.md",
     "AWS Solution architect/Load balancing.md",
-    "AWS Solution architect/RDS.md",
-    "WebPentesting/WebVulns/LDAP Injection.md",
-    "WebPentesting/WebVulns/LFI.md",
-    "README.md"
+    "AWS Solution architect/EC2.md",
+    "AWS Solution architect/Route53.md",
+    "WebPentesting/IIS Servers/attachments/IIS2.png",
+    "WebPentesting/IIS Servers/attachments/dnspy.png",
+    "WebPentesting/0- Information gathering.md",
+    "Reverse Engineering/ASM basics (MASM).md",
+    "Reverse Engineering/Binary analysis.md",
+    "Golang/0-variables.md"
   ]
 }

@@ -159,7 +159,7 @@ The load balancer uses an `X.509 certificate` (SSL/TLS server certificate)
 	- Use a ready-to-use AMI to reduce configuration time in order to be serving request fasters and reduce the cooldown period
 >  **Note**: Metrics are computed for the overall ASG instances
 ##  Good metrics to scale on  
-- **CPUUtilization**: Average CPU utilization across your instances  
+- **CPU Utilization**: Average CPU utilization across your instances  
 - **RequestCountPerTarget**: to make sure the number of requests per EC2 instances is stable  
 - **Average Network In / Out** (if you’re application is network bound)  
 - **Any custom metric** (that you push using CloudWatch)

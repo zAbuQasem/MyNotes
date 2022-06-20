@@ -27,8 +27,7 @@ error or it’s not launched
 - **Savings Plans (1 & 3 years)** –commitment to an amount of usage, long workload  
 - **Spot Instances** – short workloads, cheap, can lose instances (less reliable) 
 	- Can get a discount of up to 90% compared to On-demand  
-	- Instances that you can “lose” at any point of time if your max price is less than the  
-	current spot price  
+	- Instances that you can “lose” at any point of time if your max price is less than the current spot price  
 	- The MOST cost-efficient instances in AWS
 	- Useful for workloads that are resilient to failure  
 		- Batch jobs  
@@ -44,11 +43,9 @@ error or it’s not launched
 - **Capacity Reservations** – reserve capacity in a specific AZ for any duration
 	- You always have access to EC2 capacity when you need it  
 	- No time commitment (create/cancel anytime), no billing discounts  
-	- Combine with Regional Reserved Instances and Savings Plans to benefit  
-	from billing discounts  
+	- Combine with Regional Reserved Instances and Savings Plans to benefit from billing discounts  
 	- You’re charged at On-Demand rate whether you run instances or not  
-	- Suitable for short-term, uninterrupted workloads that needs to be in a  
-	specific AZ
+	- Suitable for short-term, uninterrupted workloads that needs to be in a  specific AZ
 
 
 ## Elastic IPs  
@@ -56,8 +53,7 @@ error or it’s not launched
 - If you need to have a fixed public IP for your instance, you need an Elastic IP  
 - An Elastic IP is a public IPv4 IP you own as long as you don’t delete it  
 - You can attach it to one instance at a time
-- You can only have 5 Elastic IP in your account (you can ask AWS to increase  
-that).  
+- You can only have 5 Elastic IP in your account (you can ask AWS to increase that).  
 - **Overall, try to avoid using Elastic IP**:  
 	- They often reflect poor architectural decisions  
 	- Instead, use a random public IP and register a DNS name to it  
@@ -73,7 +69,6 @@ that).
 - **Use case**:  
 	- Big Data job that needs to complete fast  
 	- Application that needs extremely low latency and high network throughput
-	
 ### Spread
 - **Pros**:  
 	- Can span across Availability Zones (AZ)  
@@ -84,7 +79,6 @@ that).
 - **Use case**:  
 	- Application that needs to maximize high availability  
 	- Critical Applications where each instance must be isolated from failure from each other
-
 ### Partition
 - **Pros**:
 	- Up to 7 partitions per AZ  
