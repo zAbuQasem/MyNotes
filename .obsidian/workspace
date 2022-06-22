@@ -91,6 +91,7 @@
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
     "AWS Solution architect/S3.md",
+    "AWS Pentesting/AWS Services Explained & Pentested.md",
     "AWS Solution architect/Load balancing.md",
     "AWS Solution architect/EC2.md",
     "AWS Solution architect/Route53.md",
@@ -98,7 +99,6 @@
     "WebPentesting/IIS Servers/attachments/dnspy.png",
     "WebPentesting/0- Information gathering.md",
     "Reverse Engineering/ASM basics (MASM).md",
-    "Reverse Engineering/Binary analysis.md",
-    "Golang/0-variables.md"
+    "Reverse Engineering/Binary analysis.md"
   ]
 }
