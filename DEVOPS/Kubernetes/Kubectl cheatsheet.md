@@ -58,9 +58,18 @@ kubectl port-forward service/hello-minikube 7080:8080
 - Running a Container in a pod
 ```bash
 # Images are pulled from dockerhub
-kubectl run nginx1 --image nginx
+kubectl run nginx --image nginx
 ```
 - Listing pods
 ```bash
 kubectl get pods
+kubectl get pods -o wide
+```
+- Getting daetailed pod information
+```bash
+kubectl describe pod
+```
+- Stop/Delete a pod
+```bash
+kubectl delete pod <PodName>
 ```
