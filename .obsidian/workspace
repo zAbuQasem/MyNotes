@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "AWS Solution architect/S3.md",
+            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Solution architect/S3.md",
+                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,15 +89,15 @@
   },
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
-    "AWS Solution architect/S3.md",
+    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+    "DEVOPS/Kubernetes/K8s Overview.md",
+    "Pasted image 20220622184103.png",
+    "Pasted image 20220622184054.png",
+    "DEVOPS/attachments/Pasted image 20220622185343.png",
+    "DEVOPS/AWS Solution architect/S3.md",
     "AWS Pentesting/AWS Services Explained & Pentested.md",
-    "AWS Solution architect/Load balancing.md",
-    "AWS Solution architect/EC2.md",
-    "AWS Solution architect/Route53.md",
-    "WebPentesting/IIS Servers/attachments/IIS2.png",
-    "WebPentesting/IIS Servers/attachments/dnspy.png",
-    "WebPentesting/0- Information gathering.md",
-    "Reverse Engineering/ASM basics (MASM).md",
-    "Reverse Engineering/Binary analysis.md"
+    "DEVOPS/AWS Solution architect/Load balancing.md",
+    "DEVOPS/AWS Solution architect/EC2.md",
+    "DEVOPS/AWS Solution architect/Route53.md"
   ]
 }
