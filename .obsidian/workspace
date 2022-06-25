@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
-            "mode": "source",
+            "file": "DEVOPS/Kubernetes/K8s Overview.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+                "file": "DEVOPS/Kubernetes/K8s Overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,11 +89,11 @@
   },
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
-    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "DEVOPS/Kubernetes/K8s Overview.md",
+    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+    "DEVOPS/attachments/Orchestration.png",
     "Pasted image 20220622184103.png",
     "Pasted image 20220622184054.png",
-    "DEVOPS/attachments/Pasted image 20220622185343.png",
     "DEVOPS/AWS Solution architect/S3.md",
     "AWS Pentesting/AWS Services Explained & Pentested.md",
     "DEVOPS/AWS Solution architect/Load balancing.md",

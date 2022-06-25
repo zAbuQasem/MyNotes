@@ -1,7 +1,11 @@
-# Kubectl begginer CS
 # Navgation
 - [**Installing and runinng minikube**](#Installing%20and%20runinng%20minikube)
 - [**List Nodes**](#List%20Nodes)
+- [**Create a deployment**](#Create%20a%20deployment)
+- [**Ports work**](#Ports%20work)
+- [**Managing PODS**](#Managing%20PODS)
+- [YAML intro](#YAML%20intro)
+	- [YAML examples](#YAML%20examples)
 ---
 # Installing and runinng minikube
 ```bash
@@ -15,6 +19,8 @@ minikube start --driver=virtualbox
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/) 
+
+---
 #  List Nodes
 ```bash
 kubectl get nodes
@@ -53,7 +59,7 @@ minikube service hello-minikube --url
 # Local:Remote 
 kubectl port-forward service/hello-minikube 7080:8080 
 ```
-
+---
 # Managing PODS
 - Running a Container in a pod
 ```bash
@@ -69,7 +75,12 @@ kubectl get pods -o wide
 ```bash
 kubectl describe pod
 ```
-- Stop/Delete a pod
+- Delete a pod
 ```bash
 kubectl delete pod <PodName>
 ```
+---
+# YAML intro
+- TODO
+## YAML examples
+- TODO
