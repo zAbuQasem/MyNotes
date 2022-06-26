@@ -1,4 +1,18 @@
-
+# Navigation
+- [**Scalability**](#Scalability)
+	- [There are two kinds of scalability](#There%20are%20two%20kinds%20of%20scalability)
+- [**High Availability**](#High%20Availability)
+- [**Load Balancer**](#Load%20Balancer)
+	- [Why use a load balancer](#Why%20use%20a%20load%20balancer)
+	- [Types of load balancer on AWS](#Types%20of%20load%20balancer%20on%20AWS)
+- [**Sticky Sessions Session Affinity**](#Sticky%20Sessions%20Session%20Affinity)
+	- [Sticky Sessions – Cookie Names](#Sticky%20Sessions%20–%20Cookie%20Names)
+- [**Cross-Zone load balancing**](#Cross-Zone%20load%20balancing)
+- [**Load balancer -SSL Certs**](#Load%20balancer%20-SSL%20Certs)
+- [**SNI - Server Name Indication**](#SNI%20-%20Server%20Name%20Indication)
+- [**ASG - Auto Scaling Group**](#ASG%20-%20Auto%20Scaling%20Group)
+	- [ASG - with load balancer](#ASG%20-%20with%20load%20balancer)
+	- [Good metrics to scale on](#Good%20metrics%20to%20scale%20on)
 # Scalability 
 - Scalability means that an application / system can handle greater loads  by adapting.  
 ## There are two kinds of scalability
