@@ -1,3 +1,14 @@
+# Navigation
+- [**Amazon Route53**](#Amazon%20Route53)
+- [**CNAME vs ALIAS**](#CNAME%20vs%20ALIAS)
+- [**Routing policies**](#Routing%20policies)
+	- [Simple](#Simple)
+	- [Weighted](#Weighted)
+	- [Latency-based](#Latency-based)
+	- [Geolocation](#Geolocation)
+	- [Geoproximity](#Geoproximity)
+	- [Multi-Value](#Multi-Value)
+	- [Traffic flow](#Traffic%20flow)
 # Amazon Route53
 - A highly available, scalable, fully managed and Authoritative DNS  
 - Authoritative = the customer (you) can update the DNS records  
