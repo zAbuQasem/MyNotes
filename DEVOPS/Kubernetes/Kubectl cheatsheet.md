@@ -4,7 +4,7 @@
 - [**Create a deployment**](#Create%20a%20deployment)
 - [**Ports work**](#Ports%20work)
 - [**Managing PODS**](#Managing%20PODS)
-- [YAML intro](#YAML%20intro)
+- [**YAML intro**](#YAML%20intro)
 	- [YAML examples](#YAML%20examples)
 ---
 # Installing and runinng minikube

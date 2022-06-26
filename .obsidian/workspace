@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/Kubernetes/K8s Overview.md",
-            "mode": "preview",
+            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+            "mode": "source",
             "source": false
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/Kubernetes/K8s Overview.md",
+                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,9 +89,9 @@
   },
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
-    "DEVOPS/Kubernetes/K8s Overview.md",
-    "DEVOPS/AWS Solution architect/S3.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+    "DEVOPS/AWS Solution architect/S3.md",
+    "DEVOPS/Kubernetes/K8s Overview.md",
     "DEVOPS/attachments/Orchestration.png",
     "Pasted image 20220622184103.png",
     "Pasted image 20220622184054.png",
