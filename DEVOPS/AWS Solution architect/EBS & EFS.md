@@ -1,3 +1,10 @@
+# Navigation
+- [**EBS Volume**](#EBS%20Volume)
+- [**EBS Volume Types**](#EBS%20Volume%20Types)
+- [**EBS behaviour when an EC2 instance terminates**](#EBS%20behaviour%20when%20an%20EC2%20instance%20terminates)
+- [**Encryption encrypt an unencrypted EBS volume**](#Encryption%20encrypt%20an%20unencrypted%20EBS%20volume)
+- [**EFS**](#EFS)
+- [EFS vs EBS](#EFS%20vs%20EBS)
 # EBS Volume  
 - Elastic Block Store
 - It’s a network drive (i.e. not a physical drive)  

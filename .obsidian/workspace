@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/Load balancing.md",
+            "file": "DEVOPS/AWS Solution architect/EBS & EFS.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/Load balancing.md",
+                "file": "DEVOPS/AWS Solution architect/EBS & EFS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
+    "DEVOPS/AWS Solution architect/EBS & EFS.md",
+    "DEVOPS/AWS Solution architect/EC2.md",
+    "DEVOPS/AWS Solution architect/IAM.md",
     "DEVOPS/AWS Solution architect/Load balancing.md",
     "DEVOPS/AWS Solution architect/RDS.md",
     "DEVOPS/AWS Solution architect/Route53.md",
     "DEVOPS/AWS Solution architect/S3.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "DEVOPS/Kubernetes/K8s Overview.md",
-    "DEVOPS/attachments/Orchestration.png",
-    "Pasted image 20220622184103.png",
-    "Pasted image 20220622184054.png",
-    "AWS Pentesting/AWS Services Explained & Pentested.md"
+    "DEVOPS/attachments/Orchestration.png"
   ]
 }
