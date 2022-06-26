@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/S3.md",
-            "mode": "source",
+            "file": "DEVOPS/Kubernetes/K8s Overview.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/S3.md",
+                "file": "DEVOPS/Kubernetes/K8s Overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,8 +89,8 @@
   },
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
-    "DEVOPS/AWS Solution architect/S3.md",
     "DEVOPS/Kubernetes/K8s Overview.md",
+    "DEVOPS/AWS Solution architect/S3.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "DEVOPS/attachments/Orchestration.png",
     "Pasted image 20220622184103.png",
