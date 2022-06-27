@@ -96,7 +96,6 @@ spec:
   containers:
   - name: nginx-container
     image: nginx
-    tier: frontend
     resources:
       limits:
         memory: 512Mi
