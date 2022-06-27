@@ -91,13 +91,13 @@ It is a good practice to declare resource requests and limits for both [memory](
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp-pod
+  name: abuqasem-firstpod # Always lowercase
   labels: 
     app: myapp
     type: server
 spec:
   containers:
-  - name: nginx-container
+  - name: abuqasem-nginx-container # Always lowercase
     image: nginx
     resources:
       limits:
