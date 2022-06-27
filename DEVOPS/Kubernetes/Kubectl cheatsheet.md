@@ -95,6 +95,8 @@ metadata:
   labels: 
     app: myapp
     type: server
+    env: production
+    tier: frontend
 spec:
   containers:
   - name: abuqasem-nginx-container # Always lowercase
