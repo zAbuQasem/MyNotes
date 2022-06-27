@@ -14,6 +14,9 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 # Start minikube with virtualbox driver
 minikube start --driver=virtualbox
+
+# If you faced some issues related to VTS on windows 11 (while it's enabled) 
+minikube start --no-vtx-check --driver virtualbox
 ```
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
