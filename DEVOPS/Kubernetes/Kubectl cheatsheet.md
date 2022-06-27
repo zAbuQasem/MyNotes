@@ -79,9 +79,15 @@ kubectl get pods --all-namespaces
  kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
  kubectl describe pods 
  <POD> -n <NAMESPACE>
- kubectl get pods # Ready column 1/2 (1 running container/2 total container)
+ kubectl get pods # Ready column 1/2 (1 running container/2 total containers)
  ```
-
+- Change pod spec
+```bash
+# Change an image for a pod
+kubectl set image <RESOURCE/RESOURCE_NAME> <CONTAINER_NAME>=<NEW_IMAGE_NAME>
+#Example:
+kubectl set image pod/redis-container redis-container=redis
+```
 - Getting detailed pod information
 ```bash
 kubectl describe pod # All pods
