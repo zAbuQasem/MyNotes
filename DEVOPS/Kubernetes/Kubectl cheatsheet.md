@@ -75,6 +75,8 @@ kubectl get pods -o wide
 # From Namespaces (kubectl create )
 kubectl get pods <NameSpace>
 kubectl get pods --all-namespaces
+# Get all containers within a POD
+ kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
 
 ```
 - Getting detailed pod information
