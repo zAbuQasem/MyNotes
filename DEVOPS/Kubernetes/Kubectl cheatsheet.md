@@ -4,8 +4,7 @@
 - [**Create a deployment**](#Create%20a%20deployment)
 - [**Ports work**](#Ports%20work)
 - [**Managing PODS**](#Managing%20PODS)
-- [**YAML intro**](#YAML%20intro)
-	- [YAML examples](#YAML%20examples)
+- [**YAML**](#YAML)
 ---
 # Installing and runinng minikube
 ```bash
@@ -73,7 +72,7 @@ kubectl get pods -o wide
 ```
 - Getting detailed pod information
 ```bash
-kubectl describe pod # All podsc
+kubectl describe pod # All pods
 kubectl describe pod <PodName>
 ```
 - Delete a pod
@@ -106,13 +105,11 @@ spec:
         memory: 256Mi
         cpu: "0.2"
 ```
--   **`apiVersion`** - Which version of the Kubernetes API you're using to create this object
+-  **`apiVersion`** - Which version of the Kubernetes API you're using to create this object
 -   **`kind`** - What kind of object you want to create
 -   **`metadata`** - Data that helps uniquely identify the object, including a `name` string, `UID`, and optional `namespace`
 -   **`spec`** - What state you desire for the object
-## YAML examples
-- TODO
-
 ## References:
+- [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
