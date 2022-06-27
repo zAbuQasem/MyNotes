@@ -57,7 +57,7 @@ kubectl get namespaces
 ```
 - Getting namespace information
 ```bash
-kubectl describe namespaces # All pods
+kubectl describe namespaces # All namespaces
 kubectl describe namespaces <NAMESPACE>
 ```
 - Delete a namespace
