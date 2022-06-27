@@ -80,7 +80,36 @@ kubectl describe pod
 kubectl delete pod <PodName>
 ```
 ---
-# YAML intro
-- TODO
+# YAML
+It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels: 
+    app: myapp
+    type: server
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    resources:
+      limits:
+        memory: 512Mi
+        cpu: "1"
+      requests:
+        memory: 256Mi
+        cpu: "0.2"
+```
+-   **`apiVersion`** - Which version of the Kubernetes API you're using to create this object
+-   **`kind`** - What kind of object you want to create
+-   **`metadata`** - Data that helps uniquely identify the object, including a `name` string, `UID`, and optional `namespace`
+-   **`spec`** - What state you desire for the object
 ## YAML examples
 - TODO
+
+## References:
+- [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
+- [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
