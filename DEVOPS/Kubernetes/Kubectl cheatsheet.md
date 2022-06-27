@@ -79,6 +79,7 @@ kubectl get pods --all-namespaces
  kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
  kubectl describe pods 
  <POD> -n <NAMESPACE>
+ kubectl get pods # Ready column 1/2 (1 running container/2 total container)
  ```
 
 - Getting detailed pod information
