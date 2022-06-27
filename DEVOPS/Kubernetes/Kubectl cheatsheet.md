@@ -1,7 +1,7 @@
 # Navgation
 - [**Installing and runinng minikube**](#Installing%20and%20runinng%20minikube)
-- [**List Nodes**](#List%20Nodes)
 - [**Create a deployment**](#Create%20a%20deployment)
+- 
 - [**Ports work**](#Ports%20work)
 - [**Managing PODS**](#Managing%20PODS)
 - [**YAML**](#YAML)
@@ -15,18 +15,13 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 # Start minikube with virtualbox driver
 minikube start --driver=virtualbox
 
-# If you faced some issues related to VTS on windows 11 (while it's enabled) 
+# If you faced some issues related to VTX on windows 11 (while it's enabled) 
 minikube start --no-vtx-check --driver virtualbox
 ```
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/) 
 
----
-#  List Nodes
-```bash
-kubectl get nodes
-```
 ---
 # Create a deployment
 A **Kubernetes Deployment** is used to tell Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can scale the number of replica pods, enable rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary. [**More info**](https://www.vmware.com/topics/glossary/content/kubernetes-deployment.html)
@@ -62,6 +57,25 @@ minikube service hello-minikube --url
 kubectl port-forward service/hello-minikube 7080:8080 
 ```
 ---
+# Namepaces
+- Create a namespace
+```bash
+kubectl create namespace <NAMESPACE>
+```
+- List namespaces
+```bash
+kubectl get namespaces
+```
+- Getting namespace information
+```bash
+kubectl describe namespaces # All pods
+kubectl describe namespaces <NAMESPACE>
+```
+- Delete a namespace
+```bash
+kubectl delete <NAMESPACE>
+```
+> **Important note**: Deleting a namespace will **delete everything** within it.
 # Managing PODS
 - Running a Container in a pod
 ```bash
@@ -72,6 +86,10 @@ kubectl run nginx --image nginx
 ```bash
 kubectl get pods
 kubectl get pods -o wide
+# From Namespaces (kubectl create )
+kubectl get pods <NameSpace>
+kubectl get pods --all-namespaces
+
 ```
 - Getting detailed pod information
 ```bash
@@ -102,6 +120,9 @@ spec:
   containers:
   - name: abuqasem-nginx-container # Always lowercase
     image: nginx
+     env:
+       - name: ENVIRONMENT_VARIABLE_PASSWORD
+         value: "SuperSecretPassword"
     resources:
       limits:
         memory: 512Mi
