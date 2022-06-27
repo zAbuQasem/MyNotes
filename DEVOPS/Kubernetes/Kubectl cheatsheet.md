@@ -72,13 +72,15 @@ kubectl run nginx --image nginx
 ```bash
 kubectl get pods
 kubectl get pods -o wide
-# From Namespaces (kubectl create )
+# From Namespaces
 kubectl get pods <NameSpace>
 kubectl get pods --all-namespaces
 # Get all containers within a POD
  kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
+ kubectl describe pods 
+ <POD> -n <NAMESPACE>
+ ```
 
-```
 - Getting detailed pod information
 ```bash
 kubectl describe pod # All pods
