@@ -12,6 +12,9 @@
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
+# On windows
+choco install minikube
+
 # Start minikube with virtualbox driver
 minikube start --driver=virtualbox
 
