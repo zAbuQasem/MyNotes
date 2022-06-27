@@ -71,13 +71,15 @@ kubectl run nginx --image nginx
 kubectl get pods
 kubectl get pods -o wide
 ```
-- Getting daetailed pod information
+- Getting detailed pod information
 ```bash
-kubectl describe pod
+kubectl describe pod # All podsc
+kubectl describe pod <PodName>
 ```
 - Delete a pod
 ```bash
 kubectl delete pod <PodName>
+kubectl delete -f <Pod.yml>
 ```
 ---
 # YAML
@@ -95,6 +97,7 @@ spec:
   containers:
   - name: nginx-container
     image: nginx
+    tier: frontend
     resources:
       limits:
         memory: 512Mi
