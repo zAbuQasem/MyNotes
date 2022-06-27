@@ -85,7 +85,7 @@ kubectl get pods # Ready column 1/2 (1 running container/2 total containers)
  ```
 - Change pod spec
 ```bash
-# Change an image for a pod
+# Change an image for a container
 kubectl set image <RESOURCE/RESOURCE_NAME> <CONTAINER_NAME>=<NEW_IMAGE_NAME>
 #Example:
 kubectl set image pod/redis-container redis-container=redis
