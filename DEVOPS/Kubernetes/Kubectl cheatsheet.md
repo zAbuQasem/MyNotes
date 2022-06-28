@@ -201,6 +201,10 @@ spec:
           ports:
             - containerPort: 9001
 ```
+
+```bash
+kubectl create replicaset -f <File.yml>
+```
 - List `ReplicaSet`
 ```bash
 kubectl get replicaset
