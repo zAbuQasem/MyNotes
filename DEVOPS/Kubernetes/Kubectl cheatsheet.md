@@ -154,7 +154,7 @@ spec:
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
 # Replicas
-- Create replicas
+- Create `ReplicationController`
 ```yaml
 apiVersion: v1
 kind: ReplicationController
@@ -174,9 +174,36 @@ spec:
           ports:
             - containerPort: 9001
 ```
-- List replicasets
+
 ```bash
-kubectl get replicasets
+kubectl create -f <File.yml>
+```
+- Create `ReplicaSet`
+```yaml
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: myfirst-replica-controller
+spec:
+  replicas: 3
+  selector:       # A Must in ReplicaSet
+    matchLabels:
+        type: frontend
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - name: nginx-contanier-1
+          image: nginx
+          ports:
+            - containerPort: 9001
+```
+- List `ReplicaSet`
+```bash
+kubectl get replicaset
 ```
 - Delete replicasets
 ```bash
