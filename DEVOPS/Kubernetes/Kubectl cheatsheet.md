@@ -5,7 +5,8 @@
 - [**Managing PODS**](#Managing%20PODS)
 - [**Ports work**](#Ports%20work)
 - [**YAML**](#YAML)
----
+- [**Replicas**](#Replicas)
+
 # Installing and runinng minikube
 ```bash
 # On debian x86_64
@@ -25,7 +26,7 @@ minikube start --no-vtx-check --driver virtualbox
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/) 
 
----
+
 # Create a deployment
 A **Kubernetes Deployment** is used to tell Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can scale the number of replica pods, enable rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary. [**More info**](https://www.vmware.com/topics/glossary/content/kubernetes-deployment.html)
 ```bash
@@ -45,6 +46,8 @@ kubectl delete services hello-minikube
 # Delete all minikube clusters
 minikube delete --all
 ```
+> **Note**:
+> Creating a deployment will have a replica set to 1; so when you delete a pod -> a new pod will be initiated. To override this you must set the `restartPolicy` to `Never`.
 ---
 # Namepaces
 - Create a namespace
@@ -101,7 +104,6 @@ kubectl delete pod <PodName>
 kubectl delete -f <Pod.yml>
 ```
 > **Note**: `.yml` or `.yaml` ?.... it doesn't matter, but it's advised for widows users to use `.yml` :)
----
 # Ports work
 - Exposing a port
 ```bash
@@ -115,7 +117,6 @@ minikube service hello-minikube --url
 # Local:Remote 
 kubectl port-forward service/hello-minikube 7080:8080 
 ```
----
 # YAML
 It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
 
@@ -123,7 +124,7 @@ It is a good practice to declare resource requests and limits for both [memory](
 apiVersion: v1
 kind: Pod
 metadata:
-  name: abuqasem-firstpod # Always lowercase
+  name: abuqasem-firstpod # Pod name - Always lowercase
   labels: 
     app: myapp
     type: server
@@ -131,7 +132,7 @@ metadata:
     tier: frontend
 spec:
   containers:
-  - name: abuqasem-nginx-container # Always lowercase
+  - name: abuqasem-nginx-container # Container name -Always lowercase
     image: nginx
      env:
        - name: ENVIRONMENT_VARIABLE_PASSWORD
@@ -152,3 +153,36 @@ spec:
 - [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
+# Replicas
+- Create replicas
+```yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myfirst-replica-controller
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - name: nginx-contanier-1
+          image: nginx
+          ports:
+            - containerPort: 9001
+```
+- List replicasets
+```bash
+kubectl get replicasets
+```
+- Delete replicasets
+```bash
+kubectl delete replicasets/<SET>
+```
+- Describe replicasets
+```bash
+kubectl describe replicasets/<SET>
+```
