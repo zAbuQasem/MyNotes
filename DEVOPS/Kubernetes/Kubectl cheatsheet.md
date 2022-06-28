@@ -217,3 +217,16 @@ kubectl delete replicasets/<SET>
 ```bash
 kubectl describe replicasets/<SET>
 ```
+## Sacling Replicas
+- Edit the Yaml file then
+```bash
+kubectl replace -f <File.yml>
+```
+- Scale directly from the cli
+```bash
+kubectl scale --replicas=<NUMBER> -f <File.yml>
+```
+- Scale from the cli as a resource
+```bash
+kubectl scale --replicas=<NUMBER> replicaset/<NAME>
+```
