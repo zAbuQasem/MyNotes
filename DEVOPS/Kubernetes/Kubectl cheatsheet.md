@@ -205,6 +205,10 @@ spec:
 ```bash
 kubectl create replicaset -f <File.yml>
 ```
+
+> **Note**: Selectors are mandatory in replicasets, becuase they will match any non-replicated pod based on the labels and will include them in the replecation.
+
+
 - List `ReplicaSet`
 ```bash
 kubectl get replicaset
