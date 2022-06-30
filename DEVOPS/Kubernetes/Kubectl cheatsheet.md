@@ -6,6 +6,10 @@
 - [**Ports work**](#Ports%20work)
 - [**YAML**](#YAML)
 - [**Replicas**](#Replicas)
+	- [Scaling Replicas](#Scaling%20Replicas)
+- [**Deployments**](#Deployments)
+	- [Deployment strategies](#Deployment%20strategies)
+	- [References](#References)
 
 # Installing and runinng minikube
 ```bash
@@ -184,7 +188,6 @@ kubectl create replicaset -f <File.yml>
 
 > **Note**: Selectors are mandatory in replicasets, becuase they will match any non-replicated pod based on the labels and will include them in the replecation.
 
-
 - List `ReplicaSet`
 ```bash
 kubectl get replicaset
@@ -201,7 +204,7 @@ kubectl describe replicasets/<SET>
 ```bash
 kubectl delete replicasets/<SET>
 ```
-## Sacling Replicas
+## Scaling Replicas
 - Edit the Yaml file then
 ```bash
 kubectl replace -f <File.yml>
