@@ -213,13 +213,17 @@ kubectl create replicaset -f <File.yml>
 ```bash
 kubectl get replicaset
 ```
-- Delete replicasets
+- Edit a ReplicaSet
 ```bash
-kubectl delete replicasets/<SET>
+kubectl edit rs/<SET>
 ```
 - Describe replicasets
 ```bash
 kubectl describe replicasets/<SET>
+```
+- Delete replicasets
+```bash
+kubectl delete replicasets/<SET>
 ```
 ## Sacling Replicas
 - Edit the Yaml file then
@@ -233,4 +237,8 @@ kubectl scale --replicas=<NUMBER> -f <File.yml>
 - Scale from the cli as a resource
 ```bash
 kubectl scale --replicas=<NUMBER> replicaset/<NAME>
+```
+- Cheat cmd to delete all pods within a replicaset
+```bash
+kubectl scale rs/<SET> --replicas=0
 ```
