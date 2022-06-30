@@ -25,30 +25,6 @@ minikube start --no-vtx-check --driver virtualbox
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/) 
-
-
-# Create a deployment
-A **Kubernetes Deployment** is used to tell Kubernetes how to create or modify instances of the pods that hold a containerized application. Deployments can scale the number of replica pods, enable rollout of updated code in a controlled manner, or roll back to an earlier deployment version if necessary. [**More info**](https://www.vmware.com/topics/glossary/content/kubernetes-deployment.html)
-```bash
-# Creating the deployment
-kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
-
-# Checking the deployment
-kubectl get deployment
-
-# Listing services
-kubectl get services # All
-kubectl get services hello-minikube # Specific
-
-# Delete a service
-kubectl delete services hello-minikube
-
-# Delete all minikube clusters
-minikube delete --all
-```
-> **Note**:
-> Creating a deployment will have a replica set to 1; so when you delete a pod -> a new pod will be initiated. To override this you must set the `restartPolicy` to `Never`.
----
 # Namepaces
 - Create a namespace
 ```bash
@@ -242,3 +218,55 @@ kubectl scale --replicas=<NUMBER> replicaset/<NAME>
 ```bash
 kubectl scale rs/<SET> --replicas=0
 ```
+# Deployments
+![](https://i.imgur.com/GgInLMb.png)
+- Create a deployment
+```bash
+kubectl create -f <File.yml>
+```
+- Apply an update to a deployment
+```bash
+kubectl apply -f <File.yml>
+```
+- Get rollout status
+```bash
+kubectl rollout status deployment/<DEPLOYMENT>
+kubectl rollout history deployment/<DEPLOYMENT>
+```
+> **Note**:
+> In order to view the rollout history, comsider adding `--record` option when applying or doing updates via cli.
+
+- Rollback to a previous version
+```bash
+kubectl rollout undo 
+```
+## Deployment strategies
+- **Recreate**
+	- This will delete the current replicaset and replace it with new updated one.
+	- Usable in dev/staging environments (Downtime)
+	- Not the best choice in a production environment
+```yaml
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate	
+```
+- **RollingUpdate**
+	- Will create a new version of replicaset and when it's ready, the old veriosn will be deleted
+	- Convenient for stateful applications that can handle rebalancing of the data
+	- Rollout/rollback can take time
+	- Supporting multiple APIs is hard
+	- No control over traffic
+```yaml
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2        # how many pods we can add at a time
+      maxUnavailable: 0  # maxUnavailable define how many pods can be unavailable
+                         # during the rolling update
+```
+
+## References
+- [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)

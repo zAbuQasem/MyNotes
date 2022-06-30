@@ -90,6 +90,7 @@
   "active": "5067e9994ba1e501",
   "lastOpenFiles": [
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+    "Active Directory/2-Local PrivEsc.md",
     "External-Pentest course/0-Auto Scanning.md",
     "DEVOPS/AWS Solution architect/EBS & EFS.md",
     "DEVOPS/AWS Solution architect/EC2.md",
@@ -97,7 +98,6 @@
     "DEVOPS/AWS Solution architect/Load balancing.md",
     "DEVOPS/AWS Solution architect/RDS.md",
     "DEVOPS/AWS Solution architect/Route53.md",
-    "DEVOPS/AWS Solution architect/S3.md",
-    "DEVOPS/Kubernetes/K8s Overview.md"
+    "DEVOPS/AWS Solution architect/S3.md"
   ]
 }
