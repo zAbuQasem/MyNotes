@@ -3,7 +3,6 @@
 - [**Create a deployment**](#Create%20a%20deployment)
 - [**Namepaces**](#Namepaces)
 - [**Managing PODS**](#Managing%20PODS)
-- [**Ports work**](#Ports%20work)
 - [**YAML**](#YAML)
 - [**Replicas**](#Replicas)
 	- [Scaling Replicas](#Scaling%20Replicas)
@@ -84,19 +83,6 @@ kubectl delete pod <PodName>
 kubectl delete -f <Pod.yml>
 ```
 > **Note**: `.yml` or `.yaml` ?.... it doesn't matter, but it's advised for widows users to use `.yml` :)
-# Ports work
-- Exposing a port
-```bash
-kubectl expose deployment hello-minikube --type=NodePort --port=8080
-
-# Get the Exposed port access URL
-minikube service hello-minikube --url
-```
-- PortForwarding
-```bash
-# Local:Remote 
-kubectl port-forward service/hello-minikube 7080:8080 
-```
 # YAML
 It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
 
@@ -273,3 +259,73 @@ spec:
 
 ## References
 - [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
+# Services
+## NodePort
+ A service that forwads traffic from a node to a pod, so users can access the application in a pod from the node ip.
+ 
+ ![https://i.imgur.com/prltTNj.png](https://i.imgur.com/prltTNj.png)
+- Create a NodePort service
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: myapp-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008 # A port we will connect to
+  selector:
+    app: myapp
+    type: front-end
+```
+- Create a NodePort service
+```bash
+kubectl create -f <File.yml>
+```
+- Get the Service URL
+```bash
+# Minikube
+minikube service <SERVICE-NAME> --url
+# kubernetes cluster
+kubectl port-forward svc/<SERVICE-NAME> LOCALPORT:REMOTEPORT -n <NAME>
+```
+> **Note**: If the label matches multiple instances, the service will distribute the load among them.
+> 
+## ClusterIp
+Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster.
+
+![](https://i.imgur.com/IoqQzAV.png)
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: back-end
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    app: myapp
+    type: back-end
+```
+
+## LoadBalancer
+On a supporting Cloud platform this will work, but on a non-supporting platform such as virtual box; it will work as a regular **Nodeport**.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: myapp-service
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+```

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/CloudFront.md",
+            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/CloudFront.md",
+                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,10 +89,10 @@
   },
   "active": "e06da73916343ccf",
   "lastOpenFiles": [
+    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "DEVOPS/AWS Solution architect/CloudFront.md",
     "DEVOPS/AWS Solution architect/S3.md",
     "AWS Pentesting/AWS Services Explained & Pentested.md",
-    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "Active Directory/2-Local PrivEsc.md",
     "External-Pentest course/0-Auto Scanning.md",
     "DEVOPS/AWS Solution architect/EBS & EFS.md",
