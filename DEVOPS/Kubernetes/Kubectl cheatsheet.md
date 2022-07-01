@@ -9,6 +9,10 @@
 - [**Deployments**](#Deployments)
 	- [Deployment strategies](#Deployment%20strategies)
 	- [References](#References)
+- [**Services**](#Services)
+	- [NodePort](#NodePort)
+	- [ClusterIp](#ClusterIp)
+	- [LoadBalancer](#LoadBalancer)
 
 # Installing and runinng minikube
 ```bash
