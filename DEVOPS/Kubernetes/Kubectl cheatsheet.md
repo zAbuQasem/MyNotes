@@ -1,20 +1,19 @@
 # Navgation
-- [**Installing and runinng minikube**](#Installing%20and%20runinng%20minikube)
-- [**Create a deployment**](#Create%20a%20deployment)
+- [Installing-and-runinng-minikube](#Installing-and-runinng-minikube)
 - [**Namepaces**](#Namepaces)
-- [**Managing PODS**](#Managing%20PODS)
+- [**Managing-PODS**](#Managing-PODS)
 - [**YAML**](#YAML)
 - [**Replicas**](#Replicas)
-	- [Scaling Replicas](#Scaling%20Replicas)
+	- [Scaling-Replicas](#Scaling-Replicas)
 - [**Deployments**](#Deployments)
-	- [Deployment strategies](#Deployment%20strategies)
+	- [Deployment-strategies](#Deployment%20strategies)
 	- [References](#References)
 - [**Services**](#Services)
 	- [NodePort](#NodePort)
 	- [ClusterIp](#ClusterIp)
 	- [LoadBalancer](#LoadBalancer)
 
-# Installing and runinng minikube
+# Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -51,7 +50,7 @@ kubectl describe namespaces <NAMESPACE>
 kubectl delete <NAMESPACE>
 ```
 > **Important note**: Deleting a namespace will **delete everything** within it.
-# Managing PODS
+# Managing-PODS
 - Running a Container in a pod
 ```bash
 # Images are pulled from dockerhub
@@ -194,7 +193,7 @@ kubectl describe replicasets/<SET>
 ```bash
 kubectl delete replicasets/<SET>
 ```
-## Scaling Replicas
+## Scaling-Replicas
 - Edit the Yaml file then
 ```bash
 kubectl replace -f <File.yml>
@@ -233,7 +232,7 @@ kubectl rollout history deployment/<DEPLOYMENT>
 ```bash
 kubectl rollout undo 
 ```
-## Deployment strategies
+## Deployment-strategies
 - **Recreate**
 	- This will delete the current replicaset and replace it with new updated one.
 	- Usable in dev/staging environments (Downtime)
