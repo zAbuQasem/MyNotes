@@ -5,6 +5,8 @@
 	- [Volume-gateway](#Volume-gateway)
 	- [Tape-gateway](#Tape-gateway)
 - [**AWS-Storage-Gateway-Summary**](#AWS-Storage-Gateway-Summary)
+- [**Amazon-FSx-File-Gateway**](#Amazon-FSx-File-Gateway)
+- [**Storage-Comparison**](#Storage-Comparison)
 # AWS Snow Family
 Offline devices to perform data migrations  
 - **Data Migration**:
