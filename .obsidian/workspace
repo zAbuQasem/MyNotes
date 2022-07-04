@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Red-teaming/Tunneling.md",
+            "file": "DEVOPS/AWS Solution architect/CloudFront.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304
+    "width": 304,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Red-teaming/Tunneling.md",
+                "file": "DEVOPS/AWS Solution architect/CloudFront.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +90,15 @@
   },
   "active": "e06da73916343ccf",
   "lastOpenFiles": [
+    "DEVOPS/AWS Solution architect/CloudFront.md",
+    "WebPentesting/WebVulns/LFI.md",
     "Red-teaming/Tunneling.md",
     "CTF notes/Untitled.md",
     "Red-teaming/Powerfull automation.md",
     "Active Directory/2-Local PrivEsc.md",
     "Active Directory/3-Lateral movement.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
-    "DEVOPS/AWS Solution architect/CloudFront.md",
     "DEVOPS/AWS Solution architect/S3.md",
-    "AWS Pentesting/AWS Services Explained & Pentested.md",
-    "External-Pentest course/0-Auto Scanning.md"
+    "AWS Pentesting/AWS Services Explained & Pentested.md"
   ]
 }
