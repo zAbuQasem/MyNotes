@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/AWS Snow Family.md",
+            "file": "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
             "mode": "source",
             "source": false
           }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/AWS Snow Family.md",
+                "file": "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,7 +90,7 @@
   },
   "active": "e06da73916343ccf",
   "lastOpenFiles": [
-    "DEVOPS/AWS Solution architect/AWS Snow Family.md",
+    "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
     "DEVOPS/AWS Solution architect/AWS S3.md",
     "DEVOPS/AWS Solution architect/AWS Route53.md",
     "DEVOPS/AWS Solution architect/AWS RDS.md",
