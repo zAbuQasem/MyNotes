@@ -8,6 +8,7 @@
 - [**CloudFront–Field-Level-Encryption**](#CloudFront–Field-Level-Encryption)
 - [**Unicast-IP-vs-Anycast-IP**](#Unicast-IP-vs-Anycast-IP)
 - [**AWS-Global-Accelerator**](#AWS-Global-Accelerator)
+- [AWS-Global-Accelerator-vs-CloudFront](#AWS-Global-Accelerator-vs-CloudFront)
 # CloudFront
 - A Content Delivery Network (CDN)
 - DDoS protection, integration withShield, AWS Web Application Firewall  
