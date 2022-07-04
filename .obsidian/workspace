@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/S3.md",
+            "file": "DEVOPS/AWS Solution architect/AWS S3.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/S3.md",
+                "file": "DEVOPS/AWS Solution architect/AWS S3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,7 +89,7 @@
   },
   "active": "e06da73916343ccf",
   "lastOpenFiles": [
-    "DEVOPS/AWS Solution architect/S3.md",
+    "DEVOPS/AWS Solution architect/AWS S3.md",
     "DEVOPS/AWS Solution architect/AWS Route53.md",
     "DEVOPS/AWS Solution architect/AWS RDS.md",
     "DEVOPS/AWS Solution architect/AWS Load balancing.md",
