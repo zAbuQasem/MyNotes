@@ -11,6 +11,10 @@
 	- [Amazon-SQS-Long-Polling](#Amazon-SQS-Long-Polling)
 	- [Amazon-SQS–FIFO-Queue](#Amazon-SQS–FIFO-Queue)
 - [**Kinesis-Overview**](#Kinesis-Overview)
+	- [Kinesis-Data-Streams](#Kinesis-Data-Streams)
+	- [Kinesis-Data-Firehose](#Kinesis-Data-Firehose)
+	- [Kinesis-Data-Streams-vs-Firehose](#Kinesis-Data-Streams-vs-Firehose)
+	- [Kinesis-Data-Analytics- SQL application](#Kinesis-Data-Analytics-%20SQL%20application)
 # SQS–Standard Queue
 - Fully managed service, used to decouple applications
 - **Attributes**:  
@@ -127,4 +131,14 @@
 - Can send failed or all data to a backup S3 bucket
 # Kinesis-Data-Streams-vs-Firehose
 ![](https://i.imgur.com/4R8M3ZH.png)
-# 
+# Kinesis-Data-Analytics-(SQL application)
+- Perform real-time analytics on Kinesis Streams using SQL  
+- Fully managed, no servers to provision  
+- Automatic scaling  
+- Real-time analytics  
+- Pay for actual consumption rate  
+- Can create streams out of the real-time queries  
+- **Use cases**:  
+	- Time-series analytics  
+	- Real-time dashboards  
+	- Real-time metrics
