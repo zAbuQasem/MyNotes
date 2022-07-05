@@ -15,7 +15,7 @@
 	- [Kinesis-Data-Firehose](#Kinesis-Data-Firehose)
 	- [Kinesis-Data-Streams-vs-Firehose](#Kinesis-Data-Streams-vs-Firehose)
 	- [Kinesis-Data-Analytics- SQL application](#Kinesis-Data-Analytics-%20SQL%20application)
-# SQS–Standard Queue
+# SQS–Standard-Queue
 - Fully managed service, used to decouple applications
 - **Attributes**:  
 	- Unlimited throughput, unlimited number of messages in queue  
@@ -25,7 +25,7 @@
 	- Can have duplicate messages (at least once delivery, occasionally)  
 	- Can have out of order messages (best effort ordering)
 ![](https://i.imgur.com/a46UVxx.png)
-## SQS–Producing Messages
+## SQS–Producing-Messages
 - Produced to SQS using the SDK (SendMessage API)  
 - The message is persisted in SQS until a consumer deletes it  
 - Message retention: default 4 days, up to 14 day
@@ -34,7 +34,7 @@
 	- Order id  
 	- Customer id  
 	- Any attributes you want
-## SQS–Consuming Messages  
+## SQS–Consuming-Messages  
 - Consumers (running on EC2 instances, servers, or AWS Lambda)...  
 - Poll SQS for messages (receive up to 10 messages at a time)  
 - Process the messages (example: insert the message into an RDS database)  
@@ -131,7 +131,7 @@
 - Can send failed or all data to a backup S3 bucket
 # Kinesis-Data-Streams-vs-Firehose
 ![](https://i.imgur.com/4R8M3ZH.png)
-# Kinesis-Data-Analytics-(SQL application)
+# Kinesis-Data-Analytics-(SQL-application)
 - Perform real-time analytics on Kinesis Streams using SQL  
 - Fully managed, no servers to provision  
 - Automatic scaling  
