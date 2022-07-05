@@ -7,7 +7,10 @@
 	- [SQS–Message-Visibility-Timeout](#SQ%20–Message-Visibility-Timeout)
 	- [Amazon-SQS–Dead-Letter-Queue](#Amazon-SQS–Dead-Letter-Queue)
 	- [SQS-DLQ–Redrive-to-Source](#SQS-DLQ–Redrive-to-Source)
-- 
+	- [Amazon-SQS–Delay Queue](#Amazon-SQS–Delay%20Queue)
+	- [Amazon-SQS-Long-Polling](#Amazon-SQS-Long-Polling)
+	- [Amazon-SQS–FIFO-Queue](#Amazon-SQS–FIFO-Queue)
+- [**Kinesis-Overview**](#Kinesis-Overview)
 # SQS–Standard Queue
 - Fully managed service, used to decouple applications
 - **Attributes**:  
@@ -66,3 +69,62 @@
 ## SQS-DLQ–Redrive-to-Source
 - When our code is fixed, we can redrive the messages from the DLQ back into the source queue (or any other queue) in batches without writing custom code.
 ![](https://i.imgur.com/s64AF89.png)
+
+## Amazon-SQS–Delay Queue  
+- Delay a message (consumers don’t see it immediately) up to 15 minutes  
+- Default is 0 seconds (message is available right away)  
+- Can set a default at queue level  
+- Can override the default on send using the DelaySeconds parameter
+## Amazon-SQS-Long-Polling  
+- When a consumer requests messages from the queue, it can optionally “wait” for messages to arrive if there are none in the queue  
+- This is called Long Polling  
+- LongPolling decreases the number of API calls made to SQS while increasing the efficiency and reducing latency of your application  
+- The wait time can be between 1 sec to 20 sec (20 sec preferable)  
+- Long Polling is preferable to Short Polling  
+- Long polling can be enabled at the queue level or at the API level using WaitTimeSeconds
+## Amazon-SQS–FIFO-Queue  
+- FIFO = First In First Out (ordering of messages in the queue)
+- Limited throughput: 300 msg/s without batching, 3000 msg/s with  
+- Exactly-once send capability (by removing duplicates)  
+- Messages are processed in order by the consumer 
+# Kinesis-Overview  
+- Makes it easy to collect, process, and analyze streaming data in real-time
+- Ingest real-time data such as: Application logs, Metrics, Website clickstreams, IoT telemetry data...  
+- **Kinesis Data Streams**: capture, process, and store data streams  
+- **Kinesis Data Firehose**: load data streams into AWS data stores  
+- **Kinesis Data Analytics**: analyze data streams with SQL or Apache Flink  
+- **Kinesis Video Streams**: capture, process, and store video streams
+## Kinesis-Data-Streams
+- Retention between 1 day to 365 days  
+- Ability to reprocess (replay) data  
+- Once data is inserted in Kinesis, it can’t be deleted (immutability)  
+- Data that shares the same partition goes to the same shard (ordering)  
+- Producers: AWS SDK, Kinesis Producer Library (KPL), Kinesis Agent  
+- **Consumers**:  
+	- Write your own: Kinesis Client Library (KCL), AWS SDK  
+	- Managed: AWS Lambda, Kinesis Data Firehose, Kinesis Data Analytics
+- **Provisioned mode**:  
+	- You choose the number of shards provisioned, scale manually or using API  
+	- Each shard gets 1MB/s in (or 1000 records per second)  
+	- Each shard gets 2MB/s out (classic or enhanced fan-out consumer)  
+	- You pay per shard provisioned per hour  
+- **On-demand mode**:  
+	- No need to provision or manage the capacity  
+	- Default capacity provisioned (4 MB/s in or 4000 records per second)  
+	- Scales automatically based on observed throughput peak during the last 30 days  
+	- Pay per stream per hour & data in/out per GB
+## Kinesis-Data-Firehose
+- Fully Managed Service, no administration, automatic scaling, serverless  
+	- AWS: Redshift / Amazon S3 / ElasticSearch  
+	- 3rd party partner: Splunk / MongoDB / DataDog / NewRelic / ...  
+	- Custom: send to any HTTP endpoint  
+- Pay for data going through Firehose  
+- **Near Real Time**  
+	- 60 seconds latency minimum for non full batches  
+	- Or minimum 32 MB of data at a time  
+- Supports many data formats, conversions, transformations, compression  
+- Supports custom data transformations using AWS Lambda  
+- Can send failed or all data to a backup S3 bucket
+# Kinesis-Data-Streams-vs-Firehose
+![](https://i.imgur.com/4R8M3ZH.png)
+# 
