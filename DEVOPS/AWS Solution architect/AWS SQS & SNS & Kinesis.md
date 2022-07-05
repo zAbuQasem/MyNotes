@@ -1,7 +1,7 @@
 # Navigation
 - [**SQS–Standard Queue**](#SQS–Standard%20Queue)
-	- [SQS–Producing Messages](#SQS–Producing%20Messages)
-	- [SQS–Consuming Messages](#SQS–Consuming%20Messages)
+	- [SQS–Producing-Messages](#SQS–Producing-Messages)
+	- [SQS–Consuming-Messages](#SQS–Consuming-Messages)
 	- [SQS–Multiple-EC2-Instances-Consumers](#SQS–Multiple-EC2-Instances-Consumers)
 	- [SQS-Security](#SQS-Security)
 	- [SQS–Message-Visibility-Timeout](#SQ%20–Message-Visibility-Timeout)
