@@ -15,6 +15,11 @@
 	- [Kinesis-Data-Firehose](#Kinesis-Data-Firehose)
 	- [Kinesis-Data-Streams-vs-Firehose](#Kinesis-Data-Streams-vs-Firehose)
 	- [Kinesis-Data-Analytics- SQL application](#Kinesis-Data-Analytics-%20SQL%20application)
+- [**Amazon-SNS**](#Amazon-SNS)
+	- [Amazon-SNS–FIFO Topic](#Amazon-SNS–FIFO%20Topic)
+	- [SNS–Message-Filtering](#SNS–Message-Filtering)
+- [**Amazon-MQ**](#Amazon-MQ)
+- [**Summary**](#Summary)
 # SQS–Standard-Queue
 - Fully managed service, used to decouple applications
 - **Attributes**:  
@@ -174,7 +179,7 @@
 - If a subscription doesn’t have a filter policy, it receives every message
 # Amazon-MQ
 - Traditional applications running from on-premises may use open protocols such as: MQTT, AMQP, STOMP, Openwire, WSS  
-- When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, we can use Amazon MQ  
+- **When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, we can use Amazon MQ**  
 - Amazon MQ = managed Apache ActiveMQ  
 - Amazon MQ doesn’t “scale” as much as SQS / SNS  
 - Amazon MQ runs on a dedicated machine, can run in HA with failover  
