@@ -156,3 +156,28 @@
 	- You have up to 300 messages per second (or 3000 if using batching
 # Amazon-SNS
 - Send one message to many receivers
+- The “event producer” only sends message to one SNS topic  
+- As many “event receivers” (subscriptions) as we want to listen to the SNS topic notifications  
+- Each subscriber to the topic will get all the messages (note: new feature to filter messages)  
+- Up to 12,500,000 subscriptions per topic  
+- 100,000 topics limit
+- Security same as [**SQS-Security**](#SQS-Security)
+## Amazon-SNS–FIFO Topic
+- FIFO = First In First Out (ordering of messages in the topic)
+- Similar features as SQS FIFO:  
+- Ordering by Message Group ID (all messages in the same group are ordered)  
+- Deduplication using a Deduplication ID or Content Based Deduplication  
+- **Can only have SQS FIFO queues as subscribers**  
+- Limited throughput (same throughput as SQS FIFO)
+## SNS–Message-Filtering
+- JSON policy used to filter messages sent to SNS topic’s subscriptions  
+- If a subscription doesn’t have a filter policy, it receives every message
+# Amazon-MQ
+- Traditional applications running from on-premises may use open protocols such as: MQTT, AMQP, STOMP, Openwire, WSS  
+- When migrating to the cloud, instead of re-engineering the application to use SQS and SNS, we can use Amazon MQ  
+- Amazon MQ = managed Apache ActiveMQ  
+- Amazon MQ doesn’t “scale” as much as SQS / SNS  
+- Amazon MQ runs on a dedicated machine, can run in HA with failover  
+- Amazon MQ has both queue feature (~SQS) and topic features (~SNS)
+# Summary
+![](https://i.imgur.com/DBVyHSn.png)
