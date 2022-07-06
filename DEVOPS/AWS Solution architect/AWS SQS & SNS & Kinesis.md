@@ -16,7 +16,7 @@
 	- [Kinesis-Data-Streams-vs-Firehose](#Kinesis-Data-Streams-vs-Firehose)
 	- [Kinesis-Data-Analytics- SQL application](#Kinesis-Data-Analytics-%20SQL%20application)
 - [**Amazon-SNS**](#Amazon-SNS)
-	- [Amazon-SNS–FIFO Topic](#Amazon-SNS–FIFO%20Topic)
+	- [Amazon-SNS–FIFO](#Amazon-SNS–FIFO)
 	- [SNS–Message-Filtering](#SNS–Message-Filtering)
 - [**Amazon-MQ**](#Amazon-MQ)
 - [**Summary**](#Summary)

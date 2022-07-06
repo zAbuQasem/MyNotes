@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
+            "file": "DEVOPS/AWS Solution architect/AWS Container ECS.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304
+    "width": 304,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
+                "file": "DEVOPS/AWS Solution architect/AWS Container ECS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +90,15 @@
   },
   "active": "e06da73916343ccf",
   "lastOpenFiles": [
-    "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
+    "DEVOPS/AWS Solution architect/AWS Container ECS.md",
+    "Untitled.md",
     "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
+    "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
     "DEVOPS/AWS Solution architect/AWS S3.md",
     "DEVOPS/AWS Solution architect/AWS Route53.md",
     "DEVOPS/AWS Solution architect/AWS RDS.md",
     "DEVOPS/AWS Solution architect/AWS Load balancing.md",
     "DEVOPS/AWS Solution architect/AWS IAM.md",
-    "DEVOPS/AWS Solution architect/AWS EC2.md",
-    "DEVOPS/AWS Solution architect/AWS EBS & EFS.md",
-    "DEVOPS/AWS Solution architect/AWS CloudFront.md"
+    "DEVOPS/AWS Solution architect/AWS EC2.md"
   ]
 }
