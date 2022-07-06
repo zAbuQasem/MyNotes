@@ -154,3 +154,5 @@
 	- You will have 100 Group ID  
 	- You can have up to 100 Consumers (due to the 100 Group ID)  
 	- You have up to 300 messages per second (or 3000 if using batching
+# Amazon-SNS
+- Send one message to many receivers
