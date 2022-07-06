@@ -167,7 +167,7 @@
 - Up to 12,500,000 subscriptions per topic  
 - 100,000 topics limit
 - Security same as [**SQS-Security**](#SQS-Security)
-## Amazon-SNS–FIFO Topic
+## Amazon-SNS–FIFO
 - FIFO = First In First Out (ordering of messages in the topic)
 - Similar features as SQS FIFO:  
 - Ordering by Message Group ID (all messages in the same group are ordered)  
