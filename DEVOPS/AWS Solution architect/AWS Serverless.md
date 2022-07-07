@@ -14,6 +14,7 @@
 	- [Integrations-high-level](#Integrations-high-level)
 	- [Endpoint-Types](#Endpoint-Types)
 	- [Security](#Security)
+	- [Lambda-Authorizer](#Lambda-Authorizer)
 # Serverless
 - Function as a Service => FaaS
 - Serverless does not mean there are no servers...it means you just don’t manage /provision / see them
@@ -162,3 +163,39 @@ Ordered stream of item-level modifications (create/update/delete) in a table
 - Good to provide access within your own infrastructure  
 - Leverages “Sig v4” capability *where IAM credential are in headers*
 ![](https://i.imgur.com/Th3vDwt.png) 
+## Lambda-Authorizer
+- Uses AWS Lambda to validate the token in header being passed  
+- Option to cache result of authentication  
+- Helps to use OAuth / SAML / 3rd party type of authentication  
+- Lambda must return an IAM policy for the user
+![](https://i.imgur.com/mk94M55.png)
+# Amazon Cognito
+
+- We want to give our users an identity so that they can interact with our application.  
+- **Cognito User Pools**:  
+	- Sign in functionality for app users  
+	- Integrate with API Gateway  
+- **Cognito Identity Pools** (Federated Identity):  
+	- Provide AWS credentials to users so they can access AWS resources directly  
+	- Integrate with Cognito User Pools as an identity provider  
+- **Cognito Sync**:  
+	- Synchronize data from device to Cognito.  
+	-  **Note**: *May be deprecated and replaced by AppSync*
+## Cognito-User-Pools-CUPS
+- Create a serverless database of user for your mobile apps  
+- Simple login: Username (or email) / password combination  
+- Possibility to verify emails / phone numbers and add MFA  
+- Can enable Federated Identities (Facebook, Google, SAML...)  
+- Sends back a JSON Web Tokens (JWT)  
+- Can be integrated with API Gateway for authentication
+## Federated-Identity-Pools
+- **Goal**:  
+	- Provide direct access to AWS Resources from the Client Side  
+- **How**:  
+	- Log in to federated identity provider – or remain anonymous  
+	- Get temporary AWS credentials back from the Federated Identity Pool  
+	- These credentials come with a pre-defined IAM policy stating their permissions  
+- **Example**:  
+	- provide (temporary) access to write to S3 bucket using Facebook Login
+![](https://i.imgur.com/3SxcxL7.png)
+
