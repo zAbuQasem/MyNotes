@@ -15,6 +15,11 @@
 	- [Endpoint-Types](#Endpoint-Types)
 	- [Security](#Security)
 	- [Lambda-Authorizer](#Lambda-Authorizer)
+- [Amazon Cognito](#Amazon%20Cognito)
+	- [Cognito-User-Pools-CUPS](#Cognito-User-Pools-CUPS)
+	- [Federated-Identity-Pools](#Federated-Identity-Pools)
+	- [Amazon-Serverless-Application-Model-SAM](#Amazon-Serverless-Application-Model-SAM)
+
 # Serverless
 - Function as a Service => FaaS
 - Serverless does not mean there are no servers...it means you just don’t manage /provision / see them
@@ -199,3 +204,12 @@ Ordered stream of item-level modifications (create/update/delete) in a table
 	- provide (temporary) access to write to S3 bucket using Facebook Login
 ![](https://i.imgur.com/3SxcxL7.png)
 
+# Amazon-Serverless-Application-Model-SAM
+- Framework for developing and deploying serverless applications  
+- **All the configuration is YAML code**  
+	- Lambda Functions  
+	- DynamoDB tables  
+	- API Gateway  
+	- Cognito User Pools  
+- SAM can help you to run Lambda, API Gateway, DynamoDB locally  
+- SAM can use CodeDeploy to deploy Lambda functions
