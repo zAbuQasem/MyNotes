@@ -15,7 +15,7 @@
 	- [Endpoint-Types](#Endpoint-Types)
 	- [Security](#Security)
 	- [Lambda-Authorizer](#Lambda-Authorizer)
-- [Amazon Cognito](#Amazon%20Cognito)
+- [**Amazon-Cognito**](#Amazon%20Cognito)
 	- [Cognito-User-Pools-CUPS](#Cognito-User-Pools-CUPS)
 	- [Federated-Identity-Pools](#Federated-Identity-Pools)
 	- [Amazon-Serverless-Application-Model-SAM](#Amazon-Serverless-Application-Model-SAM)

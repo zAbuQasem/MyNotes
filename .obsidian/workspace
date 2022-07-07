@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "e06da73916343ccf",
+        "id": "7010ad4106328b71",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304,
-    "collapsed": true
+    "width": 304
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -88,7 +87,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e06da73916343ccf",
+  "active": "7010ad4106328b71",
   "lastOpenFiles": [
     "DEVOPS/AWS Solution architect/AWS Serverless.md",
     "DEVOPS/AWS Solution architect/AWS Container ECS.md",
