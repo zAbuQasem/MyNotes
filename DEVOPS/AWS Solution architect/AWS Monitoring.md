@@ -13,7 +13,15 @@
 	- [Schema-Registry](#Schema-Registry)
 	- [Resource-based-Policy](#Resource-based-Policy)
 	- [EventBridge-vs-CloudWatch-Events](#EventBridge-vs-CloudWatch-Events)
-- [AWS-CloudTrail](#AWS-CloudTrail)
+- [**AWS-CloudTrail**](#AWS-CloudTrail)
+	- [CloudTrail-Events](#CloudTrail-Events)
+	- [CloudTrail-Events-Retention](#CloudTrail-Events-Retention)
+- [**AWS-Config**](#AWS-Config)
+	- [Config Rules](#Config%20Rules)
+	- [Remediation](#Remediation)
+	- [Notifications](#Notifications)
+- [**Summary**](#Summary)
+	- [Elastic-LoadBalancer](#Elastic-LoadBalancer)
 # CloudWatch-Mertics
 - CloudWatch provides metrics for every services in AWS
 - Up to 10 dimensions per metric  
@@ -114,3 +122,95 @@
 - EventBridge has a different name to mark the new capabilities  
 - Over time, the CloudWatch Events name will be replaced with EventBridge
 # AWS-CloudTrail
+- Provides governance, compliance and audit for your AWS Account  
+- CloudTrail is enabled by default!  
+- **Get a history of events / API calls made within your AWS Account by**:  
+	- Console  
+	- SDK  
+	- CLI  
+	- AWS Services  
+- Can put logs from CloudTrail into CloudWatch Logs or S3  
+- A trail can be applied to All Regions (default) or a single Region.  
+> **Note**:If a resource is deleted in AWS, investigate CloudTrail first!
+## CloudTrail-Events
+- **Management Events**:  
+- Operations that are performed on resources in your AWS account....Examples:  
+	- Configuring security (IAM AttachRolePolicy)  
+	- Configuring rules for routing data (Amazon EC2 CreateSubnet)  
+	- Setting up logging (AWS CloudTrail CreateTrail)  
+- **By default, trails are configured to log management events**.  
+- Can separate **Read Events** (that don’t modify resources) from **Write Events** (that may modify resources)  
+- **Data Events**:  
+	- **By default, data events are not logged** (because high volume operations)  
+	- Amazon S3 object-level activity (ex: GetObject, DeleteObject, PutObject): can separate Read and Write Events  
+	- AWS Lambda function execution activity (the Invoke API)
+## CloudTrail-Insights
+- **Enable CloudTrail Insights to detect unusual activity in your account:**  
+	- inaccurate resource provisioning  
+	- hitting service limits  
+	- Bursts of AWS IAM actions  
+	- Gaps in periodic maintenance activity  
+- CloudTrail Insights analyzes normal management events to create a baseline and then **continuously analyzes write events to detect unusual patterns**  
+	- Anomalies appear in the CloudTrail console  
+	- Event is sent to Amazon S3  
+	- An EventBridge event is generated (for automation needs)
+![](https://i.imgur.com/Hf1nYDi.png)
+
+## CloudTrail-Events-Retention
+- Events are stored for 90 days
+- To keep events beyond this period, log them to S3 and use Athena
+# AWS-Config
+- Helps with auditing and recording compliance of your AWS resources  
+- Helps record configurations and changes over time  
+- **Questions that can be solved by AWS Config**:  
+	- Is there unrestricted SSH access to my security groups?  
+	- Do my buckets have any public access?  
+	- How has my ALB configuration changed over time?  
+- You can receive alerts (SNS notifications) for any changes  
+- AWS Config is a per-region service  
+- Can be aggregated across regions and accounts  
+- Possibility of storing the configuration data into S3 (analyzed by Athena)
+## Config Rules
+- Can use AWS managed config rules (over 75)  
+- Can make custom config rules (must be defined in AWS Lambda)  
+	- Ex: evaluate if each EBS disk is of type gp2  
+	- Ex: evaluate if each EC2 instance is t2.micro  
+- Rules can be evaluated / triggered:  
+	- For each config change  
+	- And / or: at regular time intervals  
+- **AWS Config Rules does not prevent actions from happening** (no deny)
+## Remediation
+- Automate remediation of non-compliant resources using **SSM Automation Documents**  
+- Use AWS-Managed Automation Documents or create custom Automation Documents  
+- Tip: you can create custom Automation Documents that invokes Lambda function  
+- You can set Remediation Retries if the resource is still non-compliant after auto-remediation
+## Notifications
+- Use EventBridge to trigger notifications when AWS resources are non-compliant
+![](https://i.imgur.com/45XSF6M.png)
+- Ability to send configuration changes and compliance state notifications to SNS (all events – use SNS Filtering or filter at client-side)
+![](https://i.imgur.com/7u91eqE.png)
+
+# Summary  
+- **CloudWatch**  
+	- Performance monitoring (metrics, CPU, network, etc...) & dashboards  
+	- Events & Alerting  
+	- Log Aggregation & Analysis  
+- **CloudTrail**  
+	- Record API calls made within your Account by everyone  
+	- Can define trails for specific resources  
+	- Global Service  
+- **Config**  
+	- Record configuration changes  
+	- Evaluate resources against compliance rules  
+	- Get timeline of changes and compliance
+## Elastic-LoadBalancer
+- **CloudWatch:**  
+	- Monitoring Incoming connections metric  
+	- Visualize error codes as % over time  
+	- Make a dashboard to get an idea of your load balancer performance  
+- **Config:**  
+	- Track security group rules for the Load Balancer  
+	- Track configuration changes for the Load Balancer  
+	- Ensure an SSL certificate is always assigned to the Load Balancer (compliance)  
+- **CloudTrail:**  
+	- Track who made any changes to the Load Balancer with API calls
