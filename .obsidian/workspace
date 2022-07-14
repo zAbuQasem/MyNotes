@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/AWS STS.md",
+            "file": "DEVOPS/AWS Solution architect/AWS Security and Encryption.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/AWS STS.md",
+                "file": "DEVOPS/AWS Solution architect/AWS Security and Encryption.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "7010ad4106328b71",
   "lastOpenFiles": [
+    "DEVOPS/AWS Solution architect/AWS STS.md",
     "DEVOPS/AWS Solution architect/AWS Monitoring.md",
     "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
     "CTF notes/JavaScript.md",
@@ -97,7 +98,6 @@
     "Untitled.md",
     "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
     "DEVOPS/AWS Solution architect/AWS S3.md",
-    "DEVOPS/AWS Solution architect/AWS Route53.md",
-    "DEVOPS/AWS Solution architect/AWS RDS.md"
+    "DEVOPS/AWS Solution architect/AWS Route53.md"
   ]
 }
