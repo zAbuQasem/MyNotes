@@ -97,7 +97,7 @@
 - Stop,Terminate,Reboot or Recover an EC2 instance
 - Trigger Auto Scaling group
 - Send Notification from SNS
--  Period: 
+-  **Period**: 
 	- Length of time in seconds to evaluate the metric
 	- **High resolution custom metrics: 10 sec, 30 sec or multiples of 60 sec**
 # Amazon-EventBridge

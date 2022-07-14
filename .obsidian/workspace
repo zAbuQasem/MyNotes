@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/AWS Monitoring.md",
+            "file": "DEVOPS/AWS Solution architect/AWS STS.md",
             "mode": "source",
             "source": false
           }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 177,
-    "collapsed": true
+    "width": 176
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/AWS Monitoring.md",
+                "file": "DEVOPS/AWS Solution architect/AWS STS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
