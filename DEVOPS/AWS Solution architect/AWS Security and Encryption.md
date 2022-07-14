@@ -3,7 +3,6 @@
 	- [KMS-CMK](#KMS-CMK)
 	- [KMS-Automatic-Key-Rotation](#KMS-Automatic-Key-Rotation)
 	- [KMS-Manual-Key-Rotation](#KMS-Manual-Key-Rotation)
-	- [[#]]
 # AWS-KMS
 - **KMS**: Key Management Service
 - Easy way to control access to your data, AWS manages keys for us  
@@ -37,3 +36,11 @@
 - Keep the previous key active so you can decrypt old data  
 - Better to use aliases in this case (to hide the change of key for the application)  
 - Good solution to rotate CMK that are not eligible for automatic rotation (like asymmetric CMK)
+# SSM-Parameter-Store
+- Secure storage for configuration and secrets  
+- Optional Seamless Encryption using KMS  
+- Serverless, scalable, durable, easy SDK  
+- Version tracking of configurations / secrets  
+- Configuration management using path & IAM  
+- Notifications with CloudWatch Events  
+- Integration with CloudFormation
