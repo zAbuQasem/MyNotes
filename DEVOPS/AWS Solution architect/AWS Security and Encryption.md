@@ -3,6 +3,9 @@
 	- [KMS-CMK](#KMS-CMK)
 	- [KMS-Automatic-Key-Rotation](#KMS-Automatic-Key-Rotation)
 	- [KMS-Manual-Key-Rotation](#KMS-Manual-Key-Rotation)
+- [**SSM-Parameter-Store**](#SSM-Parameter-Store)
+	- [Parameter-Policies](#Parameter-Policies)
+- [**AWS-Secrets-Manager**](#AWS-Secrets-Manager)
 # AWS-KMS
 - **KMS**: Key Management Service
 - Easy way to control access to your data, AWS manages keys for us  
@@ -44,3 +47,34 @@
 - Configuration management using path & IAM  
 - Notifications with CloudWatch Events  
 - Integration with CloudFormation
+## Parameter-Policies
+- For Advanced parameters
+- **Allow to assign a TTL to a parameter (expiration date) to force updating or deleting sensitive data such as passwords**  
+- Can assign multiple policies at a time
+# AWS-Secrets-Manager
+- Newer service, meant for storing secrets  
+- **Capability to force rotation of secrets every X days**  
+- Automate generation of secrets on rotation (uses Lambda)  
+- Integration with Amazon RDS (MySQL, PostgreSQL, Aurora)  
+- Secrets are encrypted using KMS  
+- **Mostly meant for RDS integration**
+# AWS-Shield
+- **AWS Shield Standard:**  
+	- *Free service that is activated for every AWS customer*  
+	- Provides protection from attacks such as SYN/UDP Floods, Reflection attacks and other layer 3/layer 4 attacks
+- **AWS Shield Advanced:**  
+	- Optional DDoS mitigation service ($3,000 per month per organization)  
+	- Protect against more sophisticated attack on `Amazon EC2`, `Elastic Load  Balancing (ELB)`, `Amazon CloudFront`, `AWS Global Accelerator`, and `Route 53`  
+	- 24/7 access to AWS DDoS response team (DRP)  
+	- Protect against higher fees during usage spikes due to DDoS
+# CloudHSM
+- **Dedicated Hardware (HSM = Hardware Security Module)**
+- **KMS** => AWS manages the software for encryption  
+- **CloudHSM** => AWS provisions encryption hardware    
+- **You manage your own encryption keys entirely (not AWS)**  
+- HSM device is tamper resistant, FIPS 140-2 Level 3 compliance  
+- Supports both symmetric and asymmetric encryption (SSL/TLS keys)  
+- No free tier available  
+- Must use the CloudHSM Client Software  
+- Redshift supports CloudHSM for database encryption and key management 
+- Good option to use with SSE-C encryption
