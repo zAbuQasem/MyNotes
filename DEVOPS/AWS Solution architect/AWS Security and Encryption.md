@@ -12,6 +12,13 @@
 	- [CloudHSM-vs-KMS](#CloudHSM-vs-KMS)
 - [**AWS-WAF**](#AWS-WAF)
 - [**AWS-Firewall-Manager**](#AWS-Firewall-Manager)
+- [**AWS-GuardDuty**](#AWS-GuardDuty)
+- [**AWS-Inspector**](#AWS-Inspector)
+- [**AWS-Macie**](#AWS-Macie)
+- [**AWS-Shared-Responsibility-Model**](#AWS-Shared-Responsibility-Model)
+	- [RDS-Example](#RDS-Example)
+	- [S3-Example](#S3-Example)
+	- [Diagram](#Diagram)
 # AWS-KMS
 - **KMS**: Key Management Service
 - Easy way to control access to your data, AWS manages keys for us  
