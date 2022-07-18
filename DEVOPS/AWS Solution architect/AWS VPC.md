@@ -8,6 +8,19 @@
 	- [NAT-Gateway](#NAT-Gateway)
 	- [NAT-Gateway-High-Availability](#NAT-Gateway-High-Availability)
 - [**DNS-Resolution-VPC**](#DNS-Resolution-VPC)
+- [**Security-Groups-And-NACLs**](#Security-Groups-And-NACLs)
+	- [Default-NACL](#Default-NACL)
+	- [Summary](#Summary)
+- [**VPC-Reachability-Analyzer**](#VPC-Reachability-Analyzer)
+- [**VPC-Peering**](#VPC-Peering)
+- [**VPC-Endpoints**](#VPC-Endpoints)
+	- [Types-Of-Endpoints](#Types-Of-Endpoints)
+- [**VPC-FLow-Logs**](#VPC-FLow-Logs)
+- [**AWS-Site-to-Site-VPN**](#AWS-Site-to-Site-VPN)
+- [AWS-VPN-CloudHub](#AWS-VPN-CloudHub)
+- [**Direct-Connect**](#Direct-Connect)
+	- [Direct-Connect-Gateway](#Direct-Connect-Gateway)
+		- [Direct-Connect-Encryption](#Direct-Connect-Encryption)
 # VPC-Overview
 - VPC = Virtual Private Cloud
 - All new AWS accounts have a default VPC  
@@ -90,3 +103,105 @@
 - **If you use custom DNS domain names in a Private Hosted Zone in Route 53, you must set both these attributes (enableDnsSupport & enableDnsHostname) to true**
 ![](https://i.imgur.com/q7sucng.png)
 
+# Security-Groups-And-NACLs
+- NACL are like a firewall which control traffic from and to subnets  
+- One NACL per subnet, new subnets are assigned the Default NACL  
+- **You define NACL Rules**:
+	- Rules have a number (1-32766), higher precedence with a lower number
+	- First rule match will drive the decision  
+	- Example: if you define #100 ALLOW 10.0.0.10/32 and #200 DENY 10.0.0.10/32, the IP address will be allowed because 100 has a higher precedence over 200  
+	- The last rule is an asterisk (\*) and denies a request in case of no rule match  
+	- AWS recommends adding rules by increment of 100  
+- Newly created NACLs will deny everything  
+- NACL are a great way of blocking a specific IP address at the subnet level
+![](https://i.imgur.com/qqDaQKi.png)
+## Default-NACL
+- Accepts everything inbound/outbound with the subnets it’s associated with  
+> **Note**: Do NOT modify the Default NACL, instead create custom NACLs
+![](https://i.imgur.com/Rrep2Gy.png)
+## Summary
+![](https://i.imgur.com/ZjQNeag.png)
+# VPC-Reachability-Analyzer
+- A network diagnostics tool that troubleshoots network connectivity between two endpoints in your VPC(s)  
+- It builds a model of the network configuration, then checks the reachability based on these configurations (it doesn’t send packets)
+- When the destination is reachable – it produces hop-by-hop details of the virtual network path.  
+- Not reachable – it identifies the blocking component(s) (e.g., configuration issues in SGs, NACLs, Route Tables, ...)  
+- **Use cases**: troubleshoot connectivity issues, ensure network configuration is as intended
+# VPC-Peering
+- Privately connect two VPCs using AWS network  
+- Make them behave as if they were in the same network  
+- Must not have overlapping CIDRs  
+- VPC Peering connection is **NOT transitive** (must be established for each VPC that need to communicate with one another)  
+- **You must update route tables in each VPC’s subnets to ensure EC2 instances can communicate with each other**
+- Can Create a connection between between VPCs in **different AWS accounts/regions**
+- You can reference a security group in a peered VPC (work accross accounts - same region)
+# VPC-Endpoints
+- Every AWS service is publicly exposed (public URL)  
+- **VPC Endpoints (powered by AWS PrivateLink) allows you to connect to AWS services using a private network instead of using the public Internet**
+- They’re redundant and scale horizontally  
+- They remove the need of IGW, NATGW .... to access AWS Services  
+- **In case of issues**:  
+	- Check DNS Setting Resolution in your VPC  
+	- Check Route Tables
+## Types-Of-Endpoints
+- **Interface Endpoints**
+	- Provisions an ENI (private IP address) as an entry point (must attach a Security Group)  
+	- Supports most AWS services
+- **Gateway Endpoints**
+	-  Provisions a gateway and must be used as a target in a route table  
+	- Supports both S3 and DynamoDB
+![](https://i.imgur.com/GY5EunJ.png)
+# VPC-FLow-Logs
+- **Capture information about IP traffic going into your interfaces**:  
+	- VPC Flow Logs  
+	- Subnet Flow Logs  
+	- Elastic Network Interface (ENI) Flow Logs  
+- Helps to monitor & troubleshoot connectivity issues  
+- Flow logs data can go to S3 / CloudWatch Logs  
+- Captures network information from AWS managed interfaces too: ELB, RDS, ElastiCache, Redshift, WorkSpaces, NATGW, Transit Gateway...
+# AWS-Site-to-Site-VPN
+- **Virtual Private Gateway (VGW)**  
+	- VPN concentrator on the AWS side of the VPN connection  
+	- VGW is created and attached to the VPC from which you want to create the Site-to-Site VPN connection  
+	- Possibility to customize the ASN (Autonomous System Number)  
+- **Customer Gateway (CGW)**  
+	- Software application or physical device on customer side of the VPN connection
+- **Customer Gateway Device (On-premises)**  
+	- **What IP address to use?**  
+		- Public Internet-routable IP address for your Customer Gateway device  
+		- If it’s behind a NAT device that’s enabled for NAT traversal (NAT-T), use the public IP address of the NAT device
+	- **Important step: enable Route Propagation for the Virtual Private Gateway in the route table that is associated with your subnets**  
+	- If you need to ping your EC2 instances from on-premises, make sure you add the ICMP protocol on the inbound of your security groups
+# AWS-VPN-CloudHub  
+- Provide secure communication between multiple sites, if you have multiple VPN connections  
+- **Low-cost hub-and-spoke model for primary or secondary network connectivity between different locations (VPN only)**
+- It’s a VPN connection so it goes over the public Internet
+- To set it up, connect multiple VPN connections on the same VGW, setup dynamic routing and configure route tables
+![](https://i.imgur.com/s5UaCrr.png)
+# Direct-Connect
+- DX = Direct Connect
+- Provides a dedicated private connection from a remote network to your VPC  
+- Dedicated connection must be setup between your DC and AWS Direct Connect locations  
+- You need to setup a Virtual Private Gateway on your VPC  
+- Access public resources (S3) and private (EC2) on same connection  
+- **Use Cases**:  
+	- Increase bandwidth throughput - working with large data sets – lower cost  
+	- More consistent network experience - applications using real-time data feeds  
+	- Hybrid Environments (on prem + cloud)
+- Support both IPv4 and IPv6
+![](https://i.imgur.com/hdqJB5A.png)
+## Direct-Connect-Gateway
+- If you want to setup a Direct Connect to one or more VPC in many different regions (same account), **you must use a Direct Connect Gateway**.
+- **Connection Types**:
+	- **Dedicated Connections**: 1Gbps and 10 Gbps capacity  
+		- Physical ethernet port dedicated to a customer  
+		- Request made to AWS first, then completed by AWS Direct Connect Partners  
+	- **Hosted Connections**: 50Mbps, 500 Mbps, to 10 Gbps  
+		- Connection requests are made via AWS Direct Connect Partners  
+		- Capacity can be added or removed on demand  
+		- 1, 2, 5, 10 Gbps available at select AWS Direct Connect Partners  
+	- Lead times are often longer than 1 month to establish a new connection.
+### Direct-Connect-Encryption
+- Data in transit is not encrypted but is private.
+- AWS Direct Connect + VPN provides an IPSEC-encrypted private connection.
+- Good for an extra level of security, but slightly more complex to put in a place.
