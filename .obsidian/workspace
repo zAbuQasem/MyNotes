@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "7010ad4106328b71",
+        "id": "1abb4b9c09ad0211",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 176,
-    "collapsed": true
+    "width": 176
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -88,8 +87,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7010ad4106328b71",
+  "active": "1abb4b9c09ad0211",
   "lastOpenFiles": [
+    "DEVOPS/AWS Solution architect/AWS VPC.md",
     "DEVOPS/AWS Solution architect/AWS Security and Encryption.md",
     "DEVOPS/AWS Solution architect/AWS STS.md",
     "DEVOPS/AWS Solution architect/AWS Monitoring.md",
@@ -98,7 +98,6 @@
     "DEVOPS/AWS Solution architect/AWS Serverless.md",
     "DEVOPS/AWS Solution architect/AWS Container ECS.md",
     "Untitled.md",
-    "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
-    "DEVOPS/AWS Solution architect/AWS S3.md"
+    "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md"
   ]
 }

@@ -13,14 +13,19 @@
 	- [Summary](#Summary)
 - [**VPC-Reachability-Analyzer**](#VPC-Reachability-Analyzer)
 - [**VPC-Peering**](#VPC-Peering)
-- [**VPC-Endpoints**](#VPC-Endpoints)
+- [**VPC-Endpoints-PrivateLink**](#VPC-Endpoints-PrivateLink)
 	- [Types-Of-Endpoints](#Types-Of-Endpoints)
 - [**VPC-FLow-Logs**](#VPC-FLow-Logs)
 - [**AWS-Site-to-Site-VPN**](#AWS-Site-to-Site-VPN)
-- [AWS-VPN-CloudHub](#AWS-VPN-CloudHub)
+- [**AWS-VPN-CloudHub**](#AWS-VPN-CloudHub)
 - [**Direct-Connect**](#Direct-Connect)
 	- [Direct-Connect-Gateway](#Direct-Connect-Gateway)
 		- [Direct-Connect-Encryption](#Direct-Connect-Encryption)
+- [**Transit-Gateway**](#Transit-Gateway)
+	- [Site-to-Site-VPN-ECMP](#Site-to-Site-VPN-ECMP)
+	- [VPC-Traffic-Mirroring](#VPC-Traffic-Mirroring)
+- [**Egress-Only-Internet-Gateway**](#Egress-Only-Internet-Gateway)
+- [**VPC-Summary**](#VPC-Summary)
 # VPC-Overview
 - VPC = Virtual Private Cloud
 - All new AWS accounts have a default VPC  
@@ -135,14 +140,19 @@
 - **You must update route tables in each VPC’s subnets to ensure EC2 instances can communicate with each other**
 - Can Create a connection between between VPCs in **different AWS accounts/regions**
 - You can reference a security group in a peered VPC (work accross accounts - same region)
-# VPC-Endpoints
+# VPC-Endpoints-PrivateLink
 - Every AWS service is publicly exposed (public URL)  
 - **VPC Endpoints (powered by AWS PrivateLink) allows you to connect to AWS services using a private network instead of using the public Internet**
 - They’re redundant and scale horizontally  
-- They remove the need of IGW, NATGW .... to access AWS Services  
+- They remove the need of IGW, NATGW .... to access AWS Services 
+- **Most secure & scalable way to expose a service to 1000s of VPC (own or other accounts)**  
+- Does not require VPC peering, internet gateway, NAT, route tables...  
+- Requires a network load balancer (Service VPC) and ENI (Customer VPC) or GWLB  
+- **If the NLB is in multiple AZ, and the ENIs in multiple AZ, the solution is fault tolerant!**
 - **In case of issues**:  
 	- Check DNS Setting Resolution in your VPC  
 	- Check Route Tables
+![](https://i.imgur.com/Y2w32Z6.png)
 ## Types-Of-Endpoints
 - **Interface Endpoints**
 	- Provisions an ENI (private IP address) as an entry point (must attach a Security Group)  
@@ -205,3 +215,56 @@
 - Data in transit is not encrypted but is private.
 - AWS Direct Connect + VPN provides an IPSEC-encrypted private connection.
 - Good for an extra level of security, but slightly more complex to put in a place.
+# Transit-Gateway
+For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection  
+- Regional resource, can work cross-region  
+- Share cross-account using Resource Access Manager (RAM)  
+- You can peer Transit Gateways across regions  
+- **Route Tables: limit which VPC can talk with other VPC**  
+- Works with Direct Connect Gateway, VPN connections  
+- Supports IP Multicast (not supported by any other AWS service)
+## Site-to-Site-VPN-ECMP
+- ECMP = Equal-cost multi-path routing  
+- Routing strategy to allow to forward a packet over multiple best path
+- **Use case**: create multiple Site-to-Site VPN connections to increase the bandwidth of your connection to AWS
+![](https://i.imgur.com/L95aT8a.png)
+## VPC-Traffic-Mirroring
+- Allows you to capture and inspect network traffic in your VPC  
+- Route the traffic to security appliances that you manage
+- **Capture the traffic**
+	- From (Source) – ENIs  
+	- To (Targets) – an ENI or a Network Load Balancer  
+- Capture all packets or capture the packets of your interest (optionally, truncate packets)  
+- Source and Target can be in the same VPC or different VPCs (VPC Peering)
+- **Use cases**: content inspection, threat monitoring, troubleshooting
+# Egress-Only-Internet-Gateway
+- **Used for IPv6 only**
+- - Allows instances in your VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to your instances  
+- **You must update the Route Tables**
+# VPC-Summary
+- **CIDR** – IP Range  
+- **VPC – Virtual Private Cloud** => we define a list of IPv4 & IPv6 CIDR  
+- **Subnets** – tied to an AZ, we define a CIDR  
+- **Internet Gateway** – at the VPC level, provide IPv4 & IPv6 Internet Access  
+- **Route Tables** – must be edited to add routes from subnets to the IGW, VPC Peering Connections, VPC Endpoints, ...  
+- **Bastion Host** – public EC2 instance to SSH into, that has SSH connectivity to EC2 instances in private subnets  
+- **NAT Instances** – gives Internet access to EC2 instances in private subnets. Old, must be setup in a public subnet, disable Source / Destination check flag  
+- **NAT Gateway** – managed by AWS, provides scalable Internet access to private EC2 instances, IPv4 only  
+- **Private DNS + Route 53** – enable DNS Resolution + DNS **Hostnames (VPC NACL** – stateless, subnet rules for inbound and outbound, don’t forget Ephemeral Ports  
+- **Security Groups** – stateful, operate at the EC2 instance level  
+- **Reachability Analyzer** – perform network connectivity testing between AWS resources  
+- **VPC Peering** – connect two VPCs with non overlapping CIDR, non-transitive  
+- **VPC Endpoints** – provide private access to AWS Services (S3, DynamoDB, CloudFormation, SSM) within a VPC  
+- **VPC Flow Logs** – can be setup at the VPC / Subnet / ENI Level, for ACCEPT and REJECT traffic, helps identifying attacks, analyze using Athena or CloudWatch Logs Insights  
+- **Site-to-Site VPN** – setup a Customer Gateway on DC, a Virtual Private Gateway on VPC, and site-to-site VPN over public Internet  
+- **AWS VPN CloudHub** – hub-and-spoke VPN model to connect your sites
+- **Direct Connect** – setup a Virtual Private Gateway on VPC, and establish a direct private connection to an AWS Direct Connect Location  
+- **Direct Connect Gateway** – setup a Direct Connect to many VPCs in different AWS regions  
+- **AWS PrivateLink / VPC Endpoint Services:**  
+	- Connect services privately from your service VPC to customers VPC  
+	- Doesn’t need VPC Peering, public Internet, NAT Gateway, Route Tables  
+	- Must be used with Network Load Balancer & ENI  
+	- ClassicLink – connect EC2-Classic EC2 instances privately to your VPC  
+- **Transit Gateway** – transitive peering connections for VPC, VPN & DX  
+- **Traffic Mirroring** – copy network traffic from ENIs for further analysis  
+- **Egress-only Internet Gateway** – like a NAT Gateway, but for IPv6
