@@ -3,7 +3,7 @@ Simple
 ```
 IN MAI os GIMME system LIKE exc F CAN HAS exc WIT "revshell"
 ```
-Execute Commands (scoket)
+Execute Commands (socket)
 ```
 GIMME socket 
 GIMME os

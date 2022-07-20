@@ -3,7 +3,7 @@
 - [**Strategies**](#Strategies)
 	- [Backup-and-Restore](#Backup-and-Restore)
 	- [Pilot-Light](#Pilot-Light)
-	- [Warm-Standby](#Warm-Standby)C
+	- [Warm-Standby](#Warm-Standby)
 	- [Multi-Site](#Multi-Site)
 - [**All-AWS-Multi-Region**](#All-AWS-Multi-Region)
 - [**Disaster-Recovery**](#Disaster-Recovery)
@@ -16,8 +16,6 @@
 - [**AWS-Backup**](#AWS-Backup)
 - [**Vault-Lock**](#Vault-Lock)
 - [**Transferring-large-amount-of-data-into-AWS**](#Transferring-large-amount-of-data-into-AWS)
-
-
 # Disaster-recovery-overview
 **What kind of disaster recovery?**  
 	- **On-premise => On-premise:** traditional DR, and very expensive  
