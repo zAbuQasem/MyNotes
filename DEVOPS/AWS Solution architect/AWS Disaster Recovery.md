@@ -1,5 +1,24 @@
 # Navigation
-# Disaster recovery
+- [**Disaster recovery**](#Disaster%20recovery)
+- [**Strategies**](#Strategies)
+	- [Backup-and-Restore](#Backup-and-Restore)
+	- [Pilot-Light](#Pilot-Light)
+	- [Warm-Standby](#Warm-Standby)
+	- [Multi-Site](#Multi-Site)
+- [**All-AWS-Multi-Region**](#All-AWS-Multi-Region)
+- [**Disaster-Recovery**](#Disaster-Recovery)
+- [**Database-Migration-Service**](#Database-Migration-Service)
+	- [DMS-Sources-Targets](#DMS-Sources-Targets)
+	- [AWS-Schema-Convertion-Tool](#AWS-Schema-Convertion-Tool)
+	- [Continuos-Replication](#Continuos-Replication)
+- [**On-Premise-Strategy-with-AWS**](#On-Premise-Strategy-with-AWS)
+- [**AWS-DataSync**](#AWS-DataSync)
+- [AWS-Backup](#AWS-Backup)
+- [**Vault-Lock**](#Vault-Lock)
+- [**Transferring-large-amount-of-data-into-AWS**](#Transferring-large-amount-of-data-into-AWS)
+
+
+# Disaster-recovery-overview
 **What kind of disaster recovery?**  
 	- **On-premise => On-premise:** traditional DR, and very expensive  
 	- **On-premise => AWS Cloud**: hybrid recovery  
@@ -33,7 +52,7 @@
 
 # All-AWS-Multi-Region
 ![](https://i.imgur.com/MgQqwxf.png)
-# Disaster Recovery
+# Disaster-Recovery
 - **Backup**  
 	- EBS Snapshots, RDS automated backups / Snapshots, etc...  
 	- Regular pushes to S3 / S3 IA / Glacier, Lifecycle Policy, Cross Region Replication  
