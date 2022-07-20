@@ -1,3 +1,17 @@
+# Navigation
+- [**AWS-CloudFormation**](#AWS-CloudFormation)
+	- [Benefits](#Benefits)
+	- [CloudFormation-WorkFLow](#CloudFormation-WorkFLow)
+	- [Deploying](#Deploying)
+	- [Building-Blocks](#Building-Blocks)
+	- [StackSets](#StackSets)
+- [**AWS-StepFunctions**](#AWS-StepFunctions)
+- [**AWS-SWF**](#AWS-SWF)
+- [**AWS-EMR**](#AWS-EMR)
+- [**AWS-Opsworks**](#AWS-Opsworks)
+- [**AWS-WorkSpaces**](#AWS-WorkSpaces)
+- [**AWS-AppSync**](#AWS-AppSync)
+- [**Cost-Explorer**](#Cost-Explorer)
 # AWS-CloudFormation
 - CloudFormation is a declarative way of outlining your AWS  Infrastructure, for any resources (most of them are supported).  
 - **For example, within a CloudFormation template, you say**:  
@@ -79,7 +93,7 @@
 - **Step Functions is recommended to be used for new applications, except**:  
 	- If you need external signals to intervene in the processes  
 	- If you need child processes that return values to parent processes
-# Amazon EMR  
+# AWS-EMR  
 - EMR stands for “Elastic MapReduce”  
 - EMR helps creating **Hadoop clusters (Big Data)** to analyze and process vast amount of data  
 - The clusters can be made of hundreds of EC2 instances  
@@ -91,7 +105,7 @@
 	- Machine learning
 	- Web indexing
 	- Big data... 
-# AWS Opsworks  
+# AWS-Opsworks  
 - Chef & Puppet help you perform server configuration automatically, or repetitive actions  
 - They work great with EC2 & On Premise VM  
 - AWS Opsworks = Managed Chef & Puppet  
@@ -99,13 +113,13 @@
 - No hands on here, no knowledge of chef and puppet needed  
 > **Important Note**: In the exam: Chef & Puppet needed => AWS Opsworks
 
-# AWS WorkSpaces  
+# AWS-WorkSpaces  
 - **Managed, Secure Cloud Desktop**  
 - **Great to eliminate management of on-premises VDI (Virtual Desktop Infrastructure)**  
 - On Demand, pay per by usage  
 - Secure, Encrypted, Network Isolation  
 - Integrated with Microsoft Active Directory
-# AWS AppSync  
+# AWS-AppSync  
 - Store and sync data across mobile and web apps in real-time  
 - **Makes use of GraphQL (mobile technology from Facebook)**  
 - Client Code can be generated automatically  
@@ -113,7 +127,7 @@
 - Real-time subscriptions  
 - Offline data synchronization (replaces Cognito Sync)  
 - Fine Grained Security
-# Cost Explorer  
+# Cost-Explorer  
 - Visualize, understand, and manage your AWS costs and usage over time  
 - Create custom reports that analyze cost and usage data.  
 - Analyze your data at a high level: total costs and usage across all accounts  
