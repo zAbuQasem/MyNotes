@@ -1,9 +1,9 @@
 # Navigation
-- [**Disaster recovery**](#Disaster%20recovery)
+- [**Disaster-recovery-overview**](#Disaster-recovery-overview)
 - [**Strategies**](#Strategies)
 	- [Backup-and-Restore](#Backup-and-Restore)
 	- [Pilot-Light](#Pilot-Light)
-	- [Warm-Standby](#Warm-Standby)
+	- [Warm-Standby](#Warm-Standby)C
 	- [Multi-Site](#Multi-Site)
 - [**All-AWS-Multi-Region**](#All-AWS-Multi-Region)
 - [**Disaster-Recovery**](#Disaster-Recovery)
@@ -13,7 +13,7 @@
 	- [Continuos-Replication](#Continuos-Replication)
 - [**On-Premise-Strategy-with-AWS**](#On-Premise-Strategy-with-AWS)
 - [**AWS-DataSync**](#AWS-DataSync)
-- [AWS-Backup](#AWS-Backup)
+- [**AWS-Backup**](#AWS-Backup)
 - [**Vault-Lock**](#Vault-Lock)
 - [**Transferring-large-amount-of-data-into-AWS**](#Transferring-large-amount-of-data-into-AWS)
 
