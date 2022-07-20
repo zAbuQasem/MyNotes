@@ -141,4 +141,24 @@
 	- Backup window  
 	- Transition to Cold Storage (Never, Days, Weeks, Months, Years)  
 	- Retention Period (Always, Days, Weeks, Months, Years)
-- 
+![](https://i.imgur.com/SMUWZAP.png)
+
+## Vault-Lock
+- Enforce a WORM (Write Once Read Many) state for all the backups that you store in your AWS Backup Vault  
+- Additional layer of defense to protect yourbackups against:  
+	- Inadvertent or malicious delete operations  
+	- Updates that shorten or alter retention periods  
+- Even the root user cannot delete backups when enabled
+# Transferring-large-amount-of-data-into-AWS  
+- Example: transfer 200 TB of data in the cloud. We have a 100 Mbps internet connection.  
+- **Over the internet / Site-to-Site VPN:**  
+	- Immediate to setup  
+	- Will take 200(TB)*1000(GB)*1000(MB)*8(Mb)/100 Mbps = 16,000,000s = 185d  
+- **Over direct connect 1Gbps:**  
+	- Long for the one-time setup (over a month)  
+	- Will take 200(TB)*1000(GB)*8(Gb)/1 Gbps = 1,600,000s = 18.5d  
+- **Over Snowball:**  
+	- Will take 2 to 3 snowballs in parallel  
+	- Takes about 1 week for the end-to-end transfer  
+	- Can be combined with DMS  
+- For on-going replication / transfers: Site-to-Site VPN or DX with DMS or DataSync
