@@ -1,24 +1,24 @@
 # Navigation
-- [**Amazon S3 Overview - Buckets**](#Amazon%20S3%20Overview%20-%20Buckets)
-	- [S3 Encryption for Objects](#S3%20Encryption%20for%20Objects)
-- [**Advanced Amazon S3**](#Advanced%20Amazon%20S3)
-	- [S3 MFA-Delete](#S3%20MFA-Delete)
-	- [S3 Access log Warning](#S3%20Access%20log%20Warning)
-	- [S3 Replication CRR SRR](#S3%20Replication%20CRR%20SRR)
-	- [S3 Replication – Notes](#S3%20Replication%20–%20Notes)
-	- [S3 Pre-Signed URLs](#S3%20Pre-Signed%20URLs)
-- [**S3 Storage Classes**](#S3%20Storage%20Classes)
-- [**S3 Lifecycle Rules**](#S3%20Lifecycle%20Rules)
-- [**S3 Performance**](#S3%20Performance)
-	- [S3 Performance – S3 Byte-Range Fetches](#S3%20Performance%20–%20S3%20Byte-Range%20Fetches)
-- [**S3 Select Glacier Select**](#S3%20Select%20Glacier%20Select)
-- [**S3 Event Notifications**](#S3%20Event%20Notifications)
-- [**S3 – Requester Pays**](#S3%20–%20Requester%20Pays)
-- [**Amazon Athena**](#Amazon%20Athena)
-- [**Glacier Vault Lock**](#Glacier%20Vault%20Lock)
-- [**S3 Object Lock**](#S3%20Object%20Lock)
+- [**Amazon-S3-Overview-Buckets**](#Amazon-S3-Overview-Buckets)
+	- [S3-Encryption-for-Objects](#S3-Encryption-for-Objects)
+- [**Advanced-Amazon-S3**](#Advanced-Amazon-S3)
+	- [S3-MFA-Delete](#S3-MFA-Delete)
+	- [S3-Access-log-Warning](#S3-Access-log-Warning)
+	- [S3-Replication](#S3-Replication)
+	- [S3-Replication–Notes](#S3-Replication–Notes)
+	- [S3-Pre-Signed-URLs](#S3-Pre-Signed-URLs)
+- [**S3-Storage-Classes**](#S3-Storage-Classes)
+- [**S3-Lifecycle-Rules**](#S3-Lifecycle-Rules)
+- [**S3-Performance**](#S3-Performance)
+	- [S3-Performance–S3-Byte-Range-Fetches](#S3-Performance–S3-Byte-Range-Fetches)
+- [**S3-Select-and-Glacier-Select**](#S3-Select-and-Glacier-Select)
+- [**S3-Event-Notifications**](#S3-Event-Notifications)
+	- [S3-Event-Notifications-with-Amazon-EventBridge](#S3-Event-Notifications-with-Amazon-EventBridge)
+- [S3–Requester-Pays](#S3–Requester-Pays)
+- [**Amazon-Athena**](#Amazon-Athena)
+- [**S3-Object-Lock**](#S3-Object-Lock)
 ---
-# Amazon S3 Overview - Buckets  
+# Amazon-S3-Overview-Buckets  
 - Amazon S3 allows people to store objects (files) in “buckets” (directories)  
 - Buckets must have a globally unique name  
 - Buckets are defined at the region level  
@@ -33,7 +33,7 @@
 - If uploading more than 5GB, must use "multi-part upload"
 
 
-## S3 Encryption for Objects  
+## S3-Encryption-for-Objects  
 - **There are 4 methods of encrypting objects in S3**  
 	- **SSE-S3**: encrypts S3 objects using keys handled & managed by AWS  
 		- Object is encrypted server side  
@@ -52,8 +52,8 @@
 	- Clients must encrypt data themselves before sending to S3  
 	- Clients must decrypt data themselves when retrieving from S3  
 	- Customer fully manages the keys and encryption cycle
-# Advanced Amazon S3
-## S3 MFA-Delete
+# Advanced-Amazon-S3
+## S3-MFA-Delete
 - You will need MFA to
 	- Permanently delete an object version
 	- Suspend versioning on the bucket
@@ -62,9 +62,9 @@
 	- Listing deleted versions
 - **Only the bucket owner (root account) can enable/disable MFA-Delete**
 - MFA-Delete currently can only be enabled using the CLI
-## S3 Access log :Warning
+## S3-Access-log-Warning
 - Don't set your logging bucket to be the monitored bucket as it will create a logging loopback, and the bucket will grow exponentially.
-## S3 Replication (CRR & SRR)
+## S3-Replication
 - Must enable versioning in source and destination  
 - Cross Region Replication (**CRR**)  
 - Same Region Replication (**SRR**)  
@@ -74,7 +74,7 @@
 - **CRR - Use cases**: compliance, lower latency access, replication across accounts  
 - **SRR – Use cases**: log aggregation, live replication between production and test accounts
   
-## S3 Replication – Notes  
+## S3-Replication–Notes  
 - After activating, only new objects are replicated  
 - Optionally, you can replicate existing objects using **S3 Batch Replication**  
 	- Replicates existing objects and objects that failed replication  
@@ -84,7 +84,7 @@
 - **There is no "chaining" of replication**  
 	- If bucket 1 has replication into bucket 2, which has replication into bucket 3  
 	- Then objects created in bucket 1 are not replicated to bucket 3
-## S3 Pre-Signed URLs  
+## S3-Pre-Signed-URLs  
 - Can generate pre-signed URLs using SDK or CLI  
 - For downloads (easy, **can use the CLI**)  
 - For uploads (harder, **must use the SDK**)  
@@ -95,7 +95,7 @@
 	- Allow an ever changing list of users to download files by generating URLs dynamically  
 	- Allow temporarily a user to upload a file to a precise location in our bucket
 
-# S3 Storage Classes
+# S3-Storage-Classes
 - **Amazon S3 Standard - General Purpose**
 	-  Used for frequently accessed data  
 	-  Low latency and high throughput  
@@ -125,7 +125,7 @@
 
 > **Note**: Can move between classes manually or using S3 Lifecycle configurations
 
-# S3 Lifecycle Rules
+# S3-Lifecycle-Rules
 - **Transition actions**: It defines when objects are transitioned to another storage class.  
 	- Move objects to Standard IA class 60 days after creation  
 	- Move to Glacier for archiving after 6 months  
@@ -135,7 +135,7 @@
 	- Can be used to delete incomplete multi-part uploads
 - Rules can be created for a certain prefix (ex - s3://mybucket/mp3/\*)  
 - Rules can be created for certain objects tags (ex - Department: Finance)
-# S3 Performance
+# S3-Performance
 - **Multi-Part upload**:  
 	- Recommended for files > `100MB`
 	- Must use for files > `5GB`  
@@ -147,34 +147,34 @@
 	- Compatible with multi-part upload
 ![TransferAcceleration](https://i.imgur.com/q9DKtBb.png)
 
-## S3 Performance – S3 Byte-Range Fetches
+## S3-Performance–S3-Byte-Range-Fetches
 - Parallelize GETs by requesting specific byte ranges  
 - Better resilience in case of failures
 - Can be used to retrieve only partial data (for example the head of a file)
 - Can be used to speed up downloads
-# S3 Select & Glacier Select
+# S3-Select-and-Glacier-Select
 - Retrieve less data using SQL by performing server side filtering  
 - Can filter by rows & columns (simple SQL statements)  
 - Less network transfer, less CPU cost client-side
 ![Glacierselect](https://i.imgur.com/bo96AQI.png)
 
-# S3 Event Notifications
+# S3-Event-Notifications
 - S3:ObjectCreated, S3:ObjectRemoved, S3:ObjectRestore, S3:Replication....etc
 - Object name filtering possible (\*.jpg)
 - Use case: generate thumbnails of images uploaded to S3  
 - Can create as many “S3 events” as desired
-## S3 Event Notifications with Amazon EventBridge
+## S3-Event-Notifications-with-Amazon-EventBridge
 - **Advanced filtering** options with JSON rules (metadata, object size, name...)  
 - **Multiple Destinations** – ex Step Functions, Kinesis Streams / Firehose...  
 - **EventBridge Capabilities** – Archive, Replay Events, Reliable delivery
 ![](https://i.imgur.com/nTbRYyB.png)
 
-# S3 – Requester Pays
+# S3–Requester-Pays
 Helpful when you want to share large datasets with other accounts.
 ![](https://i.imgur.com/seu8uwU.png)
 > **Important note**: The requester must be authenticated in AWS (cannot be anonymous)
 
-# Amazon Athena
+# Amazon-Athena
 Serverless query service to perform analytics against S3 objects  
 - Uses standard SQL language to query the files  
 - Supports` CSV`,`JSON`,`ORC`, `Avro`, and `Parquet` (built on Presto)  
@@ -192,11 +192,11 @@ Serverless query service to perform analytics against S3 objects
 
 ![](https://i.imgur.com/oWyAlPD.png)
 
-# Glacier Vault Lock
+# Glacier-Vault-Lock
 Adopt a WORM (Write Once Read Many) model  
 - Lock the policy for future edits (can no longer be changed)  
 - Helpful for compliance and data retention
-# S3 Object Lock
+# S3-Object-Lock
 Adopt a WORM (Write Once Read Many) model  
 - Block an object version deletion for a specified amount of time  
 - **Object retention**:  
