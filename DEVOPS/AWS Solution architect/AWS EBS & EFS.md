@@ -1,10 +1,10 @@
 # Navigation
-- [**EBS Volume**](#EBS%20Volume)
-- [**EBS Volume Types**](#EBS%20Volume%20Types)
-- [**EBS behaviour when an EC2 instance terminates**](#EBS%20behaviour%20when%20an%20EC2%20instance%20terminates)
-- [**Encryption encrypt an unencrypted EBS volume**](#Encryption%20encrypt%20an%20unencrypted%20EBS%20volume)
+- [**EBS-Volume**](#EBS-Volume)
+- [**EBS-Volume-Types**](#EBS-Volume-Types)
+- [**EBS-behaviour-when-an-EC2-instance-terminates**](#EBS-behaviour-when-an-EC2-instance-terminates)
+- [**Encrypt-unencrypted-EBS-volume**](#Encrypt-unencrypted-EBS-volume)
 - [**EFS**](#EFS)
-- [EFS vs EBS](#EFS%20vs%20EBS)
+- [**EFS-vs-EBS**](#EFS-vs-EBS)
 # EBS-Volume  
 - Elastic Block Store
 - It’s a network drive (i.e. not a physical drive)  
@@ -24,14 +24,14 @@
 	- **st1 (HDD)**: Low cost HDD volume designed for frequently accessed, throughput- intensive workloads  
 	- **sc1 (HDD)**: Lowest cost HDD volume designed for less frequently accessed workloads
 - Only **gp2/gp3** and **io1/io2** can be used as boot volumes.
-# EBS behaviour when an EC2 instance terminates 
+# EBS-behaviour-when-an-EC2-instance-terminates 
 - By default, the root EBS volume is deleted (attribute enabled)  
 - By default, any other attached EBS volume is not deleted (attribute disabled)
 - **Use case**: 
 	- Preserve root volume when instance is terminated
 ![Summary](https://i.imgur.com/RaPaE3T.png)
 
-# Encryption: encrypt an unencrypted EBS volume  
+# Encrypt-unencrypted-EBS-volume  
 - Create an EBS snapshot of the volume  
 - Encrypt the EBS snapshot ( using copy )  
 - Create new ebs volume from the snapshot ( the volume will also be encrypted )  
