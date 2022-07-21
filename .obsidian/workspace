@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/AWS Solution architect/AWS EBS & EFS.md",
+            "file": "DEVOPS/AWS Solution architect/AWS Load balancing.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/AWS Solution architect/AWS EBS & EFS.md",
+                "file": "DEVOPS/AWS Solution architect/AWS Load balancing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,12 +89,12 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
+    "DEVOPS/AWS Solution architect/AWS EBS & EFS.md",
     "DEVOPS/AWS Solution architect/AWS Disaster Recovery.md",
     "DEVOPS/AWS Solution architect/AWS Container ECS.md",
     "DEVOPS/AWS Solution architect/AWS CloudFront.md",
     "DEVOPS/AWS Solution architect/AWS Load balancing.md",
     "DEVOPS/AWS Solution architect/AWS EC2.md",
-    "DEVOPS/AWS Solution architect/AWS EBS & EFS.md",
     "DEVOPS/AWS Solution architect/AWS Security and Encryption.md",
     "DEVOPS/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
     "DEVOPS/AWS Solution architect/AWS Storage Extras.md",
