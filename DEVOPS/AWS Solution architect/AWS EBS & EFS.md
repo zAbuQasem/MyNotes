@@ -5,7 +5,7 @@
 - [**Encryption encrypt an unencrypted EBS volume**](#Encryption%20encrypt%20an%20unencrypted%20EBS%20volume)
 - [**EFS**](#EFS)
 - [EFS vs EBS](#EFS%20vs%20EBS)
-# EBS Volume  
+# EBS-Volume  
 - Elastic Block Store
 - It’s a network drive (i.e. not a physical drive)  
 	- It uses the network to communicate the instance, which means there might be a bit of  latency  
@@ -17,7 +17,7 @@
 	- You get billed for all the provisioned capacity  
 	- You can increase the capacity of the drive over time
 
-# EBS Volume Types  
+# EBS-Volume-Types  
 - EBS Volumes come in 6 types  
 	- **gp2 / gp3 (SSD)**: General purpose SSD volume that balances price and performance for  a wide variety of workloads  
 	- **io1 / io2 (SSD)**: Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads  
@@ -49,7 +49,7 @@
 	- Data sharing
 	- Wordpress
 
-# EFS vs EBS
+# EFS-vs-EBS
 - **EBS :
 	- Can be attached to only one instance at a time  
 	- Are locked at the Availability Zone (AZ) level  

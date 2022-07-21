@@ -12,8 +12,7 @@
 - Does live “outside” the EC2 – if traffic is blocked the EC2 instance won’t see it  
 - It’s good to maintain one separate security group for SSH access  
 - If your application is not accessible (time out), then it’s a security group issue  
-- If your application gives a “connection refused“ error, then it’s an application  
-error or it’s not launched  
+- If your application gives a “connection refused“ error, then it’s an application error or it’s not launched  
 - All inbound traffic is blocked by default  
 - All outbound traffic is authorised by default
 
@@ -24,7 +23,7 @@ error or it’s not launched
 	- Reserved Instances – long workloads  
 	- Convertible Reserved Instances – long workloads with flexible instances  
 	- Recommended for steady-state usage applications (think database)
-- **Savings Plans (1 & 3 years)** –commitment to an amount of usage, long workload  
+- **Savings Plans (1 & 3 years)** – commitment to an amount of usage, long workload  
 - **Spot Instances** – short workloads, cheap, can lose instances (less reliable) 
 	- Can get a discount of up to 90% compared to On-demand  
 	- Instances that you can “lose” at any point of time if your max price is less than the current spot price  
