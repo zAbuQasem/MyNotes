@@ -1,21 +1,21 @@
 # Navigation
-- [**Amazon Route53**](#Amazon%20Route53)
-- [**CNAME vs ALIAS**](#CNAME%20vs%20ALIAS)
-- [**Routing policies**](#Routing%20policies)
+- [**Amazon-Route53**](#Amazon-Route53)
+- [**CNAME-vs-ALIAS**](#CNAME-vs-ALIAS)
+- [**Routing-policies**](#Routing-policies)
 	- [Simple](#Simple)
 	- [Weighted](#Weighted)
 	- [Latency-based](#Latency-based)
 	- [Geolocation](#Geolocation)
 	- [Geoproximity](#Geoproximity)
 	- [Multi-Value](#Multi-Value)
-	- [Traffic flow](#Traffic%20flow)
-# Amazon Route53
+	- [Traffic-flow](#Traffic-flow)
+# Amazon-Route53
 - A highly available, scalable, fully managed and Authoritative DNS  
 - Authoritative = the customer (you) can update the DNS records  
 - Route 53 is also a Domain Registrar  
 - Ability to check the health of your resources  
 - The only AWS service which provides 100% availability SLA
-# CNAME vs ALIAS
+# CNAME-vs-ALIAS
 - **CNAME**:  
 	- Points a hostname to any *other hostname*. (app.mydomain.com => blabla.anything.com)  
 	- ONLY FOR NON ROOT DOMAIN (aka.something.mydomain.com)  
@@ -27,7 +27,7 @@
 	- Free of charge  
 	- Native health check
 
-# Routing policies
+# Routing-policies
 ## Simple
 - Route traffic to a single resource
 - Can specify multiple values in the same record
@@ -64,7 +64,7 @@ Use when routing traffic to multiple resources
 - Can be associated with Health Checks (return only values for healthy resources)  
 - Up to 8 healthy records are returned for each Multi-Value query  
 - Multi-Value is not a substitute for having an **ELB**
-## Traffic flow
+## Traffic-flow
 - Simplify the process of creating and maintaining records in large and complex configurations  
 - Visual editor to manage complex routing decision trees  
 - Configurations can be saved as **Traffic Flow Policy**
