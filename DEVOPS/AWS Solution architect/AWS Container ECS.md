@@ -1,6 +1,7 @@
 # Navigation
 - [**Amazon-ECS**](#Amazon-ECS)
 - [**Amazon-ECS-EC2-Launch-Type**](#Amazon-ECS-EC2-Launch-Type)
+- [**Amazon-ECS–Fargate-Launch-Type**](#Amazon-ECS–Fargate-Launch-Type)
 - [**Amazon-ECS–IAM-Roles-for-ECS**](#Amazon-ECS–IAM-Roles-for-ECS)
 - [**Amazon-ECS–Load-Balancer-Integrations**](#Amazon-ECS–Load-Balancer-Integrations)
 - [**Amazon-ECS–Data-Volumes-EFS**](#Amazon-ECS–Data-Volumes-EFS)

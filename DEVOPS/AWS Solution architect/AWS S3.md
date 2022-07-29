@@ -14,7 +14,7 @@
 - [**S3-Select-and-Glacier-Select**](#S3-Select-and-Glacier-Select)
 - [**S3-Event-Notifications**](#S3-Event-Notifications)
 	- [S3-Event-Notifications-with-Amazon-EventBridge](#S3-Event-Notifications-with-Amazon-EventBridge)
-- [S3–Requester-Pays](#S3–Requester-Pays)
+- [**S3–Requester-Pays**](#S3–Requester-Pays)
 - [**Amazon-Athena**](#Amazon-Athena)
 - [**S3-Object-Lock**](#S3-Object-Lock)
 ---

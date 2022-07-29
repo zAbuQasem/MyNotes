@@ -1,0 +1,23 @@
+# Practice Tests notes
+Those notes are from my experience with exam practice tests.
+- **scale globally and handle frequent schema changes + low-latency** = nosql db (DynamoDB)
+- **Relational DBs doesn't scale well**
+- **Redshift is primarily used for OLAP systems.** (Online Analytical Processing) and not **OLTP**
+- **Amazon Aurora Serverless is an on-demand, auto-scaling relational DB**
+- Site-to-Site VPN is just used for establishing secure connections between an on-premises network and Amazon VPC
+- Monitor API calls = Cloudtrail
+- Migrate on-premesis to aws without rewriting the messaging code in your application = Amazon MQ
+- **Amazon SWF** is a fully-managed **state tracker and task coordinator service** and not a messaging service, unlike Amazon MQ, AmazonSQS and Amazon SNS.
+- Share resources between AWS accounts = AWS Resource access manager (RAM)
+- Need to handle larger amount of request on API Gateway = use throttling limits
+-  AWS VPN CloudHub is mainly used to provide secure communication between remote sites
+- **DynamoDB stream** is an ordered flow of information about changes to items in an Amazon DynamoDB table. When you enable a stream on a table, DynamoDB captures information about every modification to data items in the table
+- Restrict access to S3 to a vpc = s3 access point + object lock feature (must create a new bucket)
+- Enhanced Monitoring is a feature of Amazon RDS
+- Always remember that the messages in the SQS queue will continue to exist even after the EC2 instance has processed it, until you delete that message. You have to ensure that you delete the message after processing to prevent the message from being received and processed again once the visibility timeout expires.
+- ensure that your RDS database can only be accessed using the profile credentials specific to your EC2 instances via an **authentication token.** = iam db authentication
+-  **Use signed cookies for the following cases**
+	- You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of a website.
+	- You don't want to change your current URLs.
+- RDS ![](https://i.imgur.com/jeVrX54.png)
+- **AWS Lake Formation** is a service that makes it easy to set up a secure data lake in days. A data lake is a centralized, curated, and secured repository that stores all your data, both in its original form and prepared for analysis. A data lake enables you to break down data silos and combine different types of analytics to gain insights and guide better business decisions.
