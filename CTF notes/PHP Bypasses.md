@@ -35,3 +35,10 @@ Sec-GPC: 1
 
 > **References:**
 > https://www.hackingarticles.in/apache-log-poisoning-through-lfi/
+# htmlentities() & htmlspecialchars
+It doesn't encode single quotes by default
+```html
+`'onerror='alert("XSS")''`
+```
+> **Reference**:
+> https://github.com/X-Vector/XSS_Bypass/blob/master/htmlspecialchars%20-%20htmlentities/README.md

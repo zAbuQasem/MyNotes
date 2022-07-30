@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
+            "file": "CTF notes/PHP Bypasses.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
+                "file": "CTF notes/PHP Bypasses.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,8 +87,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a86cb3428c8c286b",
+  "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
+    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "CTF notes/MISC.md",
     "CTF notes/PHP Bypasses.md",
     "DevOps/AWS Solution architect/AWS Monitoring.md",
@@ -97,7 +98,6 @@
     "DevOps/AWS Solution architect/AWS Storage Extras.md",
     "DevOps/AWS Solution architect/Other Services.md",
     "DevOps/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
-    "DevOps/AWS Solution architect/AWS Serverless.md",
-    "DevOps/AWS Solution architect/Exam-Notes.md"
+    "DevOps/AWS Solution architect/AWS Serverless.md"
   ]
 }
