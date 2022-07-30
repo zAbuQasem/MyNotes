@@ -38,7 +38,23 @@ Sec-GPC: 1
 # htmlentities() & htmlspecialchars
 It doesn't encode single quotes by default
 ```html
-`'onerror='alert("XSS")''`
+'onerror='alert("XSS")''
 ```
 > **Reference**:
 > https://github.com/X-Vector/XSS_Bypass/blob/master/htmlspecialchars%20-%20htmlentities/README.md
+
+# Loose Comparison
+- `===`
+```php
+<?php
+if(NULL === NULL){ echo "Equal"; } else{ echo "not Equal"; }
+?>
+// Equal
+```
+- `==`
+```php
+<?php 
+if(NULL == ''){ echo "Equal"; } else{ echo "not Equal"; }
+?>
+// Equal
+```

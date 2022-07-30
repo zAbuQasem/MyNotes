@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "sql",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,8 +90,8 @@
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-    "CTF notes/MISC.md",
     "CTF notes/PHP Bypasses.md",
+    "CTF notes/MISC.md",
     "DevOps/AWS Solution architect/AWS Monitoring.md",
     "DevOps/AWS Solution architect/AWS STS.md",
     "DevOps/AWS Solution architect/AWS Route53.md",
