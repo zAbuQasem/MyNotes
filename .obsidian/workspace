@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+            "file": "WebPentesting/WebVulns/SSTI.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "sql",
+                "query": "SSTI",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -49,7 +49,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+                "file": "WebPentesting/WebVulns/SSTI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,8 +90,8 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
-    "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "DevOps/Kubernetes/K8s Overview.md",
     "CTF notes/PHP Bypasses.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "CTF notes/MISC.md",
