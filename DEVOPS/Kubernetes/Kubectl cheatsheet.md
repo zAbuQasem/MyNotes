@@ -13,7 +13,7 @@
 	- [NodePort](#NodePort)
 	- [ClusterIp](#ClusterIp)
 	- [LoadBalancer](#LoadBalancer)
-
+- [**Scheduling**](#Scheduling)
 # Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
