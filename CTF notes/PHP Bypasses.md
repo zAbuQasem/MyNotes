@@ -49,7 +49,6 @@ It doesn't encode single quotes by default
 <?php
 if(NULL === NULL){ echo "Equal"; } else{ echo "not Equal"; }
 ?>
-
 // Equal
 ```
 - `==`

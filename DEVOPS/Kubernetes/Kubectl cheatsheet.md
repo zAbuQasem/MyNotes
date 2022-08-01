@@ -1,8 +1,9 @@
 # Navgation
-- [Installing-and-runinng-minikube](#Installing-and-runinng-minikube)
+- [**Installing-and-runinng-minikube**](#Installing-and-runinng-minikube)
 - [**Namepaces**](#Namepaces)
 - [**Managing-PODS**](#Managing-PODS)
 - [**YAML**](#YAML)
+	- [Generate-template](#Generate-template)
 - [**Replicas**](#Replicas)
 	- [Scaling-Replicas](#Scaling-Replicas)
 - [**Deployments**](#Deployments)
@@ -118,6 +119,14 @@ spec:
 -   **`kind`** - What kind of object you want to create
 -   **`metadata`** - Data that helps uniquely identify the object, including a `name` string, `UID`, and optional `namespace`
 -   **`spec`** - What state you desire for the object
+## Generate-template
+You can let kubectl generate a yaml file for you by using the `--dry-run` option
+- **Examples**
+```bash
+1- kubectl run nginx --image nginx --dry-run client -o yaml
+2- kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+3- kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml 
+```
 ## References:
 - [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
