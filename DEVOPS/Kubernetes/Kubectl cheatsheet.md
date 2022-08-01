@@ -341,3 +341,29 @@ spec:
       port: 80
       nodePort: 30008
 ```
+# Scheduling
+What if we want to manually schedule pods and assign them to nodes, instead of leaving it to be automated by the scheduler.
+we have to add `nodeName` atrribute to the `spec`
+```yaml
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: myfirst-replica-controller
+spec:
+  nodeName: abuqasem-node
+  replicas: 3
+  selector:       # A Must in ReplicaSet
+    matchLabels:
+        type: frontend
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - name: nginx-contanier-1
+          image: nginx
+          ports:
+            - containerPort: 9001
+```

@@ -90,6 +90,7 @@
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
     "DevOps/Kubernetes/K8s Overview.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "CTF notes/PHP Bypasses.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "CTF notes/MISC.md",
@@ -97,7 +98,6 @@
     "DevOps/AWS Solution architect/AWS STS.md",
     "DevOps/AWS Solution architect/AWS Route53.md",
     "DevOps/AWS Solution architect/AWS Storage Extras.md",
-    "DevOps/AWS Solution architect/Other Services.md",
-    "DevOps/AWS Solution architect/AWS SQS & SNS & Kinesis.md"
+    "DevOps/AWS Solution architect/Other Services.md"
   ]
 }
