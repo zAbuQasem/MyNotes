@@ -297,7 +297,7 @@ spec:
 ```bash
 kubectl create -f <File.yml>
 ```
-- Get the Service URL
+ - Get the Service URL
 ```bash
 # Minikube
 minikube service <SERVICE-NAME> --url
