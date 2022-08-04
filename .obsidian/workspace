@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/5- Authentication Testing.md",
+            "file": "WebPentesting/10-Authorization Testing.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/5- Authentication Testing.md",
+                "file": "WebPentesting/10-Authorization Testing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
+    "WebPentesting/5- Authentication Testing.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/IMAP & SMTP injection.md",
     "Reverse Engineering/Binary analysis.md",
@@ -97,7 +98,6 @@
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/Kubernetes/K8s Overview.md",
     "WebPentesting/WebVulns/SSTI.md",
-    "CTF notes/PHP Bypasses.md",
-    "CTF notes/MISC.md"
+    "CTF notes/PHP Bypasses.md"
   ]
 }
