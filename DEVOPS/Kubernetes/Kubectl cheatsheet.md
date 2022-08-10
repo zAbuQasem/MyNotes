@@ -14,6 +14,8 @@
 	- [ClusterIp](#ClusterIp)
 	- [LoadBalancer](#LoadBalancer)
 - [**Scheduling**](#Scheduling)
+	- [Taints-and-Tolerations](#Taints-and-Tolerations)
+	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
 # Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
@@ -367,3 +369,89 @@ spec:
           ports:
             - containerPort: 9001
 ```
+## Taints-and-Tolerations
+Supposing a node have a taint called blue, no pods can be placed on it  except ones which is tolerant to blue.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "example-key"
+    operator: "Exists"
+    effect: "NoSchedule"
+```
+Usable effects:
+- `NoSchedule`
+- `PreferNoSchedule`
+- `NoExecute`
+> **Note:**
+	There are two special cases:
+	An empty `key` with operator `Exists` matches all keys, values and effects which means this will tolerate everything.
+	An empty `effect` matches all effects with key `key1`.
+
+### Example
+For example, imagine you taint a node like this
+
+```shell
+kubectl taint nodes node1 key1=value1:NoSchedule
+kubectl taint nodes node1 key1=value1:NoExecute
+kubectl taint nodes node1 key2=value2:NoSchedule
+```
+
+And a pod has two tolerations:
+
+```yaml
+tolerations:
+- key: "key1"
+  operator: "Equal"
+  value: "value1"
+  effect: "NoSchedule"
+- key: "key1"
+  operator: "Equal"
+  value: "value1"
+  effect: "NoExecute"
+```
+
+In this case, the pod will not be able to schedule onto the node, because there is no toleration matching the third taint. But it will be able to continue running if it is already running on the node when the taint is added, because the third taint is the only one of the three that is not tolerated by the pod.
+### Reference
+- https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+## NodeSelector-and-NodeAffinity
+Control how the schedular will place pods on specifc nodes based on pre-defined attributes.
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - antarctica-east1
+            - antarctica-west1
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
+  containers:
+  - name: with-node-affinity
+    image: k8s.gcr.io/pause:2.0
+```
+### Reference
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/

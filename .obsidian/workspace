@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "CTF notes/PHP Bypasses.md",
+            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CTF notes/PHP Bypasses.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
+    "CTF notes/PHP Bypasses.md",
     "WebPentesting/10-Authorization Testing.md",
     "WebPentesting/DNS Rebinding.md",
     "WebPentesting/5- Authentication Testing.md",
@@ -97,7 +98,6 @@
     "WebPentesting/WebVulns/IMAP & SMTP injection.md",
     "Reverse Engineering/Binary analysis.md",
     "Reverse Engineering/ASM basics (MASM).md",
-    "Active Directory/Powershell/COM Objects.md",
-    "DevOps/Kubernetes/K8s Overview.md"
+    "Active Directory/Powershell/COM Objects.md"
   ]
 }
