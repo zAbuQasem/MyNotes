@@ -17,7 +17,7 @@
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
 	- [Daemon-Sets](#Daemon-Sets)
-- [**Monitoring**](#Monitoring)
+
 # Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
@@ -481,4 +481,3 @@ spec:
           ports:
             - containerPort: 9001
 ```
-# Monitoring
