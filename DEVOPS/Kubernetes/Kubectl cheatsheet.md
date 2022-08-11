@@ -16,6 +16,8 @@
 - [**Scheduling**](#Scheduling)
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
+	- [Daemon-Sets](#Daemon-Sets)
+- [**Monitoring**](#Monitoring)
 # Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
@@ -179,7 +181,7 @@ spec:
         - name: nginx-contanier-1
           image: nginx
           ports:
-            - containerPort: 9001
+            - containerPort: 9001-
 ```
 
 ```bash
@@ -455,3 +457,28 @@ spec:
 ```
 ### Reference
 - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+## Daemon-Sets
+ReplicaSet ensures that the number of pods of an application is running on the correct scale as specified in the conf file. Whereas in the case of DaemonSet it will ensure that **one copy of pod defined in our configuration will always be available on every worker node.**
+```yml
+apiVersion: v1
+kind: DaemonSet
+metadata:
+  name: myfirst-replica-controller
+spec:
+  replicas: 3
+  selector:       # A Must in ReplicaSet
+    matchLabels:
+        type: frontend
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - name: nginx-contanier-1
+          image: nginx
+          ports:
+            - containerPort: 9001
+```
+# Monitoring
