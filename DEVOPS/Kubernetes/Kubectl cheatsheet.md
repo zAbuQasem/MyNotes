@@ -1,5 +1,6 @@
 # Navgation
 - [**Installing-and-runinng-minikube**](#Installing-and-runinng-minikube)
+- [**EKS**](#EKS)
 - [**Namepaces**](#Namepaces)
 - [**Managing-PODS**](#Managing-PODS)
 - [**YAML**](#YAML)
@@ -35,7 +36,24 @@ minikube start --no-vtx-check --driver virtualbox
 ```
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
-> - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/) 
+> - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/)
+
+# EKS
+Make sure to have the required privileges [Minimum Required](https://eksctl.io/usage/minimum-iam-policies/)
+1. Creating a Cluster
+```bash
+eksctl create cluster --name DemoCluster --fargate
+```
+2. Configure your cluster with kubectl
+```bash
+aws eks update-kubeconfig --name DemoCluster
+```
+3. Verify
+```bash
+# Look for aws-auth
+kubectl get configmap -A
+# -A = --all-namespaces
+```
 # Namepaces
 - Create a namespace
 ```bash

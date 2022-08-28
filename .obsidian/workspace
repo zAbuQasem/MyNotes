@@ -89,15 +89,15 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
-    "CTF notes/PHP Bypasses.md",
-    "WebPentesting/10-Authorization Testing.md",
-    "WebPentesting/DNS Rebinding.md",
-    "WebPentesting/5- Authentication Testing.md",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
-    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-    "WebPentesting/WebVulns/IMAP & SMTP injection.md",
-    "Reverse Engineering/Binary analysis.md",
-    "Reverse Engineering/ASM basics (MASM).md",
-    "Active Directory/Powershell/COM Objects.md"
+    "DevOps/AWS Solution architect/Exam-Notes.md",
+    "DevOps/AWS Solution architect/AWS Monitoring.md",
+    "DevOps/AWS Solution architect/AWS EC2.md",
+    "DevOps/AWS Solution architect/Other Services.md",
+    "DevOps/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
+    "DevOps/AWS Solution architect/AWS Storage Extras.md",
+    "DevOps/AWS Solution architect/AWS CloudFront.md",
+    "DevOps/AWS Solution architect/AWS IAM.md",
+    "DevOps/AWS Solution architect/AWS RDS.md",
+    "DevOps/AWS Solution architect/AWS S3.md"
   ]
 }

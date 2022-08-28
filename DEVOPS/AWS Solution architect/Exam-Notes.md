@@ -21,3 +21,20 @@ Those notes are from my experience with exam practice tests.
 	- You don't want to change your current URLs.
 - RDS ![](https://i.imgur.com/jeVrX54.png)
 - **AWS Lake Formation** is a service that makes it easy to set up a secure data lake in days. A data lake is a centralized, curated, and secured repository that stores all your data, both in its original form and prepared for analysis. A data lake enables you to break down data silos and combine different types of analytics to gain insights and guide better business decisions.
+- Lambda@Edge is a feature of Amazon CloudFront that lets you run code closer to users of your application, which improves performance and reduces latency. With Lambda@Edge, you don't have to provision or manage infrastructure in multiple locations around the world. You pay only for the compute time you consume there is no charge when your code is not running.
+- **AWS Step Functions** provides serverless orchestration for modern applications. Orchestration centrally manages a workflow by breaking it into multiple steps, adding flow logic, and tracking the inputs and outputs between the steps. As your applications execute, Step Functions maintains application state, tracking exactly which workflow step your application is in, and stores an event log of data that is passed between application components. That means that if networks fail or components hang, your application can pick up right where it left off.
+- **Amazon Athena** is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL expressions. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries you run. Athena is easy to use. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL expressions. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets.
+- **AWS Config** is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. Config continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations.
+- **AWS Trusted Advisor** is an online tool that provides you real-time guidance to help you provision your resources following AWS best practices. It inspects your AWS environment and makes recommendations for saving money, improving system performance and reliability, or closing security gaps.
+- When you know that objects are infrequently accessed, you might transition them to the STANDARD_IA storage class. Or transition your data to the GLACIER storage class in case you want to archive objects that you don't need to access in real time.
+- **ETL** = AWS Glue
+- **IAM roles are global services** that are available to all regions hence, all you have to do is assign the existing IAM role to the instance in the new region.
+- **ASG teminating**: next to billing hour, oldest, most number of instances 
+- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by PrivateLink without requiring an Internet gateway, NAT device, VPN connection, or AWS Direct Connect connection.
+- HDD cannot used a boot volume 
+- If AWS Aurora failed over it will try with the best effort to create  new instance in the same AZ
+- ![](Pasted%20image%2020220825193826.png)
+- **If client's IP address and network latencies must also be tracked** then use cloudwatch instead of X-RAY
+- By default, CloudTrail event log files are encrypted using Amazon S3 server-side encryption (SSE).
+- You can use the implemented IAM in RDS for authentication (short sessions) instead of implementing AWS secrets manager
+- EBS can be used during a snapshot.

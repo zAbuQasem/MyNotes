@@ -79,3 +79,11 @@ Always pay attention to the behaviour and aim to fix the syntax in order to ache
 The challenge here is to break out of the code syntax and keep a clean syntax. There are many ways to do it:
 -   By adding dummy code: `".system('uname -a'); $dummy="`
 -   By using comment: `".system('uname -a');#` or `".system('uname -a');//`
+# usort
+When ordering information, developers can use two methods:
+-   `order by` in a SQL request;
+-   `usort` in PHP code.
+The function `usort` is often used with the function `create_function` to dynamically generate the "sorting" function, based on user-controlled information. If the web application lacks potent filtering and validation, this can lead to code execution.
+ ```
+?order=id);}system('uname%20-a');//
+```
