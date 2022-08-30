@@ -89,6 +89,8 @@
   },
   "active": "b9a2e31614da6ca1",
   "lastOpenFiles": [
+    "DevOps/Terraform/Untitled.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/AWS Solution architect/Exam-Notes.md",
     "DevOps/AWS Solution architect/AWS Monitoring.md",
     "DevOps/AWS Solution architect/AWS EC2.md",
@@ -96,8 +98,6 @@
     "DevOps/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
     "DevOps/AWS Solution architect/AWS Storage Extras.md",
     "DevOps/AWS Solution architect/AWS CloudFront.md",
-    "DevOps/AWS Solution architect/AWS IAM.md",
-    "DevOps/AWS Solution architect/AWS RDS.md",
-    "DevOps/AWS Solution architect/AWS S3.md"
+    "DevOps/AWS Solution architect/AWS IAM.md"
   ]
 }

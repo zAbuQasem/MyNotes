@@ -8,7 +8,7 @@
 - [**Replicas**](#Replicas)
 	- [Scaling-Replicas](#Scaling-Replicas)
 - [**Deployments**](#Deployments)
-	- [Deployment-strategies](#Deployment%20strategies)
+	- [Deployment-strategies](#Deployment-strategies)
 	- [References](#References)
 - [**Services**](#Services)
 	- [NodePort](#NodePort)
@@ -18,7 +18,7 @@
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
 	- [Daemon-Sets](#Daemon-Sets)
-
+- [**Monitoring**](#Monitoring)
 # Installing-and-runinng-minikube
 ```bash
 # On debian x86_64
@@ -499,3 +499,42 @@ spec:
           ports:
             - containerPort: 9001
 ```
+# Monitoring
+Using Built-In metrics server (in memory solution).
+- Installing Metrics-Server
+```bash
+# Minikube
+minikube addons eanble metrics-server
+
+# Cluster
+ Check: https://github.com/kubernetes-sigs/metrics-server
+```
+- Viewing data
+```bash
+kubectl top node
+kubectl top pod
+```
+- Viewing logs
+```bash
+kubectl logs -f <PodName> <ContainerName>
+# -f: View live
+# ContianerName: Only mandatory if your pod had multiple containers
+```
+# Commands
+Commands in manifest override `ENTRYPOINT` and `CMD` in Dockerfile
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+  - name: command-demo-container
+    image: debian
+    command: ["printenv"]
+    args: ["HOSTNAME", "KUBERNETES_PORT"]
+  restartPolicy: OnFailure
+```
+> **Note**: You cannot change command while the pod is running
