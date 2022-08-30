@@ -538,3 +538,45 @@ spec:
   restartPolicy: OnFailure
 ```
 > **Note**: You cannot change command while the pod is running
+
+# Secrets
+- Imperative method
+```yaml
+kubectl create secret generic <SecretName> --from-litral=<KEY>=<VALUE>
+kubectl create secret generic <SecretName> --from-file=<FileName>
+```
+- Declarative method
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secret
+data:
+  DB_Host: c3FsMDE=
+  DB_User: cm9vdA==
+  DB_Password: cGFzc3dvcmQxMjM= 
+```
+**Secrets can be injected into pods in 3 different ways:**
+- ENV
+```yml
+envFrom:
+  - secretRef:
+        name: app-config
+```
+- Single env
+```yml
+env:
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: app-secret
+        key: DB_PASSWORD
+```
+- Volume
+```yml
+volumes:
+- name: app-secret-volume
+  secret:
+    secretName: app-secret
+```
+> **Note**: When mounting secrets as volumes, each key will be a seperate file in the /opt/<SecretName> folder
