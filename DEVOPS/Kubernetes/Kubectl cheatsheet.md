@@ -1,4 +1,4 @@
-# Navgation
+# Navigation
 - [**Installing-and-runinng-minikube**](#Installing-and-runinng-minikube)
 - [**EKS**](#EKS)
 - [**Namepaces**](#Namepaces)
@@ -19,7 +19,15 @@
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
 	- [Daemon-Sets](#Daemon-Sets)
 - [**Monitoring**](#Monitoring)
-# Installing-and-runinng-minikube
+- [**Commands**](#Commands)
+- [**Secrets**](#Secrets)
+- [**Multi-Containers**](#Multi-Containers)
+- [**Secrets**](#Secrets)
+- [**initContainer**](#initContainer)
+- [[#maintenance]]
+	- [Software-Releases](#Software-Releases)
+	- [Cluster-Upgrade](#Cluster-Upgrade)
+# Installing-and-running-minikube
 ```bash
 # On debian x86_64
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -538,7 +546,6 @@ spec:
   restartPolicy: OnFailure
 ```
 > **Note**: You cannot change command while the pod is running
-
 # Secrets
 - Imperative method
 ```yaml
@@ -579,4 +586,85 @@ volumes:
   secret:
     secretName: app-secret
 ```
-> **Note**: When mounting secrets as volumes, each key will be a seperate file in the /opt/<SecretName> folder
+ > **Note**: When mounting secrets as volumes, each key will be a separate file in the /opt/\<SecretName\> folder
+
+# Multi-Containers
+There are 3 common patterns:
+- **Sidecar pattern**: An extra container in your pod to **enhance** or **extend** the functionality of the main container.
+- **Ambassador pattern**: A container that **proxy the network connection** to the main container.
+- **Adapter pattern**: A container that **transform output** of the main container.
+# initContainer
+A Container that runs a defined task once when the pod is started. 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox
+    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done;']
+    ```
+# Maintenance
+The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
+```bash
+kube-controller-manager --pod-eviction-timeout=5m0s
+```
+When a node is gone down we don't know for sure if it's going to be back online so we can drain the pods from it to another nodes. (Terminated from the node and recreated on another node).
+The following command also marks the node as non-schedulable.
+```bash
+kubectl drain node-1
+```
+The following command will be marked as non-schedulable, So no pods will be created on it without draining the pods.
+```bash
+kubectl cordon node-1
+```
+To remove the mark
+```bash
+kubectl uncordon node-1
+```
+> **Note**: Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
+
+## Software-Releases
+Software version in k8s consists of 3 parts:
+```txt
+v1.11.3
+Major.Minor.Patch
+
+# Minor = [Features,Functionalities]
+# Patch = [BugFixes]
+```
+>**Notes**: 
+>Kubernetes only support 3 minor releases.
+>It's advised to upgrade version 1 minor version at a time.
+>
+
+## Cluster-Upgrade
+1. Upgrade `Kubeadm`
+```bash
+apt-get upgrade kubeadm=<Version>
+kubeadm upgrade apply <Version>
+systemctl restart kubelet
+kubectl get nodes # To verify
+```
+2.  Upgrade `Kubelet` on the master node
+```bash
+apt-get upgrade kubelet=<Version>
+systemctl restart kubelet
+```
+3. Upgrading the working nodes (For every node in the cluster)
+```
+kubectl drain <Node>
+apt-get upgrade kubeadm=<Version>
+apt-get upgrade kubelet=<Version>
+kubeadm upgrade node config --kubelet-version <Version>
+systemctl restart kubelet
+kubectl uncordon <Node> 
+```

@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "b9a2e31614da6ca1",
+        "id": "f030318d60e62bb8",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -87,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b9a2e31614da6ca1",
+  "active": "f030318d60e62bb8",
   "lastOpenFiles": [
-    "DevOps/Terraform/Untitled.md",
+    "Pasted image 20220825193826.png",
+    "README.md",
+    "Red-teaming/Credential Harvesting/Linux.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "DevOps/Kubernetes/K8s Overview.md",
+    "DevOps/Terraform/Untitled.md",
     "DevOps/AWS Solution architect/Exam-Notes.md",
     "DevOps/AWS Solution architect/AWS Monitoring.md",
     "DevOps/AWS Solution architect/AWS EC2.md",
-    "DevOps/AWS Solution architect/Other Services.md",
-    "DevOps/AWS Solution architect/AWS SQS & SNS & Kinesis.md",
-    "DevOps/AWS Solution architect/AWS Storage Extras.md",
-    "DevOps/AWS Solution architect/AWS CloudFront.md",
-    "DevOps/AWS Solution architect/AWS IAM.md"
+    "DevOps/AWS Solution architect/Other Services.md"
   ]
 }

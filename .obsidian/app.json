@@ -2,5 +2,8 @@
   "legacyEditor": false,
   "livePreview": true,
   "useMarkdownLinks": true,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "spellcheck": true,
+  "showFrontmatter": false,
+  "promptDelete": false
 }
