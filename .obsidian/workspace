@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,10 +89,10 @@
   },
   "active": "f030318d60e62bb8",
   "lastOpenFiles": [
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "Pasted image 20220825193826.png",
     "README.md",
     "Red-teaming/Credential Harvesting/Linux.md",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/Terraform/Untitled.md",
     "DevOps/AWS Solution architect/Exam-Notes.md",
