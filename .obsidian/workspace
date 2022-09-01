@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "f030318d60e62bb8",
   "lastOpenFiles": [
+    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "Pasted image 20220825193826.png",
     "README.md",
@@ -97,7 +98,6 @@
     "DevOps/Terraform/Untitled.md",
     "DevOps/AWS Solution architect/Exam-Notes.md",
     "DevOps/AWS Solution architect/AWS Monitoring.md",
-    "DevOps/AWS Solution architect/AWS EC2.md",
-    "DevOps/AWS Solution architect/Other Services.md"
+    "DevOps/AWS Solution architect/AWS EC2.md"
   ]
 }
