@@ -675,7 +675,7 @@ kubectl get all -A -o yaml > all-deploy-services.yml
 ```
 - Backup ETCD
 ```bash
-ETCDL_API=3 etcdl snapshot save snapshot.db
+ETCDL_API=3 etcdl snapshot save snapshot.db --endpoints= --cacert= --cert= --key=
 ```
 - Restore Snapshot
 ```bash
