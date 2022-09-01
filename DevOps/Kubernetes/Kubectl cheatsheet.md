@@ -668,3 +668,20 @@ kubeadm upgrade node config --kubelet-version <Version>
 systemctl restart kubelet
 kubectl uncordon <Node> 
 ```
+## Backup-and-Restore
+- Backup resource configs
+```bash
+kubectl get all -A -o yaml > all-deploy-services.yml
+```
+- Backup ETCD
+```bash
+ETCDL_API=3 etcdl snapshot save snapshot.db
+```
+- Restore Snapshot
+```bash
+service kube-apiserver stop
+ETCDL_API=3 etcdl snapshot restore snapshot.db --data-dir <Destination-Restore-DIR>
+systemctl daemon-reload
+service etcd restart
+service kube-apiserver start
+```
