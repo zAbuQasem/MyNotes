@@ -24,7 +24,7 @@
 - [**Multi-Containers**](#Multi-Containers)
 - [**Secrets**](#Secrets)
 - [**initContainer**](#initContainer)
-- [[#maintenance]]
+- [**Maintenance**](#Maintenance)
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
 - [**Security**](#Security)
@@ -614,8 +614,8 @@ spec:
   initContainers:
   - name: init-myservice
     image: busybox
-    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done;']
-    ```
+    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done
+```
 # Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
 ```bash
