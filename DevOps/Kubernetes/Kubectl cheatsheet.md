@@ -712,7 +712,7 @@ service kube-apiserver start
 kubectl describe pod kube-apiserver-controlplane -n kube-system
 ```
 ## RBAC
-Create a role and assign people to that role.
+Create a role and assign users to that role.
 ```yml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -728,6 +728,7 @@ rules:
   resourceNames: ["Blue","Orange"]
 ```
 - **Binding**
+	- A role binding grants the permissions defined in a role to a user or set of users. It holds a list of _subjects_ (users, groups, or service accounts), and a reference to the role being granted. A RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding grants that access cluster-wide.
 ```yml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -755,4 +756,5 @@ kubectl auth can-i create deployments --as <USER>
 ```
 ### Great Tools
 [**KubiScan**](kubectl auth can-i create deployments) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
+
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
