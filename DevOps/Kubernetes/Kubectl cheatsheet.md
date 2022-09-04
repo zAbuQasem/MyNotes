@@ -27,6 +27,10 @@
 - [[#maintenance]]
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
+- [**Security**](#Security)
+	- [API-Groups](#API-Groups)
+	- [Authorization](#Authorization)
+	- [RBAC](#RBAC)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -680,8 +684,75 @@ ETCDL_API=3 etcdl snapshot save snapshot.db --endpoints= --cacert= --cert= --key
 - Restore Snapshot
 ```bash
 service kube-apiserver stop
-ETCDL_API=3 etcdl snapshot restore snapshot.db --data-dir <Destination-Restore-DIR>
+ETCDL_API=3 etcdl snapshot restore snapshot.db --data-dir --endpoints= --cacert= --cert= --key=<Destination-Restore-DIR>
 systemctl daemon-reload
 service etcd restart
 service kube-apiserver start
 ```
+# Security
+## API-Groups
+- **Core**
+![](https://i.imgur.com/Vn99kDL.png)
+- **Named**
+![](https://i.imgur.com/3ihypbt.png)
+## Authorization
+- **Node**: Every request comes from user with name system node and part of the systems nodes group is authorized by the node authorizer.
+- **ABAC**: Attribute based Access Control
+![](https://i.imgur.com/yRskq0x.png)
+> **Note**: For each change you have to edit the file manually.
+- **RBAC**: Role Based Access Control
+![](https://i.imgur.com/5AYzTAt.png)
+- **Webhook**: Used for out-sourcing authorization methods by leveraging`OpenPolicyAgent`
+- **AlwaysAllow**: Always allow -> `By default`
+- **AlwaysDeny**: Always deny
+>  **Note**: If you specified more than one auth mode they will work in order.
+
+- Describe Auth modes on a cluster
+```bash
+kubectl describe pod kube-apiserver-controlplane -n kube-system
+```
+## RBAC
+Create a role and assign people to that role.
+```yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "get","create", "update","delete"]
+- apiGroups: [""]
+  resources: ["configMap"]
+  verbs: ["create"]
+  resourceNames: ["Blue","Orange"]
+```
+- **Binding**
+```yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devuser-developer-binding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+```
+- View RBAC
+```bash
+kubectl get roles
+kubectl get rolebindings
+kubectl describe role <ROLE>
+```
+- Check access
+```bash
+kubectl auth can-i create deployments
+kubectl auth can-i create deployments --as <USER>
+```
+### Great Tools
+[**KubiScan**](kubectl auth can-i create deployments) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
+[**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
