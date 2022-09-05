@@ -20,7 +20,6 @@
 	- [Daemon-Sets](#Daemon-Sets)
 - [**Monitoring**](#Monitoring)
 - [**Commands**](#Commands)
-- [**Secrets**](#Secrets)
 - [**Multi-Containers**](#Multi-Containers)
 - [**Secrets**](#Secrets)
 - [**initContainer**](#initContainer)
@@ -32,6 +31,8 @@
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
 	- [ServiceAccounts](#ServiceAccounts)
+	- [ImageSecurity](#ImageSecurity)
+	- [SecurityContexts](#SecurityContexts)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -831,3 +832,4 @@ spec:
 ```
 **Note**: Capabilities are only supported at the container level not at pod level.
 
+## NetworkPolicy
