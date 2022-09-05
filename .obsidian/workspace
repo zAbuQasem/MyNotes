@@ -4,33 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1f70583e0ba83264",
-        "type": "split",
-        "children": [
-          {
-            "id": "f030318d60e62bb8",
-            "type": "leaf",
-            "dimension": 76.79144385026738,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e9d3dc8250353501",
-            "type": "leaf",
-            "dimension": 23.20855614973262,
-            "state": {
-              "type": "mindmap",
-              "state": {}
-            }
+        "id": "f030318d60e62bb8",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+            "mode": "source",
+            "source": false
           }
-        ],
-        "direction": "horizontal"
+        }
       }
     ],
     "direction": "vertical"
@@ -106,14 +89,14 @@
   },
   "active": "f030318d60e62bb8",
   "lastOpenFiles": [
+    "Red-teaming/Credential Harvesting/Linux.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "WebPentesting/WebVulns/SSRF.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/Open Redirect.md",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "Pasted image 20220825193826.png",
     "README.md",
-    "Red-teaming/Credential Harvesting/Linux.md",
     "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/Terraform/Untitled.md"
   ]

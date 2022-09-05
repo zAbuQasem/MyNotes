@@ -31,6 +31,7 @@
 	- [API-Groups](#API-Groups)
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
+	- [ServiceAccounts](#ServiceAccounts)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -730,12 +731,13 @@ rules:
 - **Binding**
 	- A role binding grants the permissions defined in a role to a user or set of users. It holds a list of _subjects_ (users, groups, or service accounts), and a reference to the role being granted. A RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding grants that access cluster-wide.
 ```yml
+\
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: devuser-developer-binding
 subjects:
-- kind: User
+- kind: User # or ServiceAccount
   name: dev-user
   apiGroup: rbac.authorization.k8s.io
 roleRef:
@@ -759,9 +761,11 @@ kubectl auth can-i create deployments --as <USER>
 
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
 
-# ServiceAccounts
+## ServiceAccounts
 A service account provides an identity for processes that run in a Pod.
-The name of the ServiceAccount **must be a vaild DNS subdomain name**.
+1. The name of the ServiceAccount **must be a vaild DNS subdomain name**.
+2. It's usually used to give access to the cluster. [**More Info**](https://medium.com/the-programmer/working-with-service-account-in-kubernetes-df129cb4d1cc)
+- Applying it to a POD
 ```yaml
 apiVersion: v1
 kind: Pod
