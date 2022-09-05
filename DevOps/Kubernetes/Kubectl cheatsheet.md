@@ -34,6 +34,8 @@
 	- [ImageSecurity](#ImageSecurity)
 	- [SecurityContexts](#SecurityContexts)
 	- [NetworkPolicy](#NetworkPolicy)
+		- [Ingress](#Ingress)
+		- [Egress](#Egress)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -840,7 +842,7 @@ spec:
 |calico|x|
 |Romana|x|
 |Weave-net|x|
-## **Ingress**
+### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
 1. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
@@ -868,7 +870,7 @@ spec:
     - protocol: TCP
       port: 3306
 ```
-## Egress
+### Egress
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -896,4 +898,9 @@ spec:
     ports:
     - protocol: TCP
       port: 80
+```
+-  Inspection
+```bash
+kubectl get networkpolicy
+kubectl get netpol
 ```
