@@ -25,5 +25,13 @@
       ],
       "key": "P"
     }
+  ],
+  "obsidian-mind-map:app:markmap-preview": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "N"
+    }
   ]
 }

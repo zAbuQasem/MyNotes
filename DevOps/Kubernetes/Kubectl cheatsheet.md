@@ -758,3 +758,16 @@ kubectl auth can-i create deployments --as <USER>
 [**KubiScan**](kubectl auth can-i create deployments) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
 
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
+
+# ServiceAccounts
+A service account provides an identity for processes that run in a Pod.
+The name of the ServiceAccount **must be a vaild DNS subdomain name**.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  serviceAccountName: build-robot
+  automountServiceAccountToken: false
+```
