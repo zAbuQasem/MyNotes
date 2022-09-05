@@ -1,7 +1,7 @@
 # Navigation
 - [**Installing-and-runinng-minikube**](#Installing-and-runinng-minikube)
 - [**EKS**](#EKS)
-- [**Namepaces**](#Namepaces)
+- [**NameSpaces**](#NameSpaces)
 - [**Managing-PODS**](#Managing-PODS)
 - [**YAML**](#YAML)
 	- [Generate-template](#Generate-template)
@@ -33,6 +33,7 @@
 	- [ServiceAccounts](#ServiceAccounts)
 	- [ImageSecurity](#ImageSecurity)
 	- [SecurityContexts](#SecurityContexts)
+	- [NetworkPolicy](#NetworkPolicy)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -68,7 +69,7 @@ aws eks update-kubeconfig --name DemoCluster
 kubectl get configmap -A
 # -A = --all-namespaces
 ```
-# Namepaces
+# NameSpaces
 - Create a namespace
 ```bash
 kubectl create namespace <NAMESPACE>
