@@ -877,11 +877,8 @@ kind: NetworkPolicy
 metadata:
   name: db-policy
 spec:
-  podSelector:
-    matchLabels:
-      role: db
   policyTypes:
-  - Ingrss
+  - Ingress
   - Egress
   ingress:
   - from:
@@ -898,6 +895,37 @@ spec:
     ports:
     - protocol: TCP
       port: 80
+```
+- **Example**: Allow External trafiic from mysql and webapp on port 3306,8080 and allow all ingress.
+```yml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: internal-policy
+spec:
+  podSelector:
+    matchLabels:
+      name: mysql 
+  policyTypes:
+  - Egress
+  - Ingress
+  ingress:
+  - {}
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          name: payroll
+    ports:
+    - protocol: TCP
+      port: 8080
+  - to:
+    - podSelector:
+        matchLabels:
+          name: mysql
+    ports:
+    - protocol: TCP
+      port: 3306
 ```
 -  Inspection
 ```bash
