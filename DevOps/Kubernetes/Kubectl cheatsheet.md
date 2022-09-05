@@ -840,7 +840,7 @@ spec:
 |calico|x|
 |Romana|x|
 |Weave-net|x|
-- Ingress
+- **Ingress**
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -857,6 +857,9 @@ spec:
     - podSelector:
         matchLabels:
           name: api-pod
+      namespaceSelector:
+        matchLabel:
+          name: prod
     ports:
     - protocol: TCP
       port: 3306
