@@ -756,7 +756,7 @@ kubectl auth can-i create deployments
 kubectl auth can-i create deployments --as <USER>
 ```
 ### Great Tools
-[**KubiScan**](kubectl auth can-i create deployments) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
+[**KubiScan**](https://github.com/cyberark/KubiScan) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
 
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
 
@@ -800,3 +800,34 @@ spec:
   imagePullSecrets:
   - name: regcred
 ```
+## SecurityContexts
+- Container Level
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: private-registery.io/apps/internal-app
+    securityContext:
+      runAsUser: 1000
+      capabilities:
+          add: ["MAC_ADMIN"]
+```
+- Pod Level
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+  - name: nginx
+    image: private-registery.io/apps/internal-app
+```
+**Note**: Capabilities are only supported at the container level not at pod level.
+
