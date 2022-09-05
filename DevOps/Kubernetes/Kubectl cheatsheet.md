@@ -697,8 +697,10 @@ service kube-apiserver start
 # Security
 ## API-Groups
 - **Core**
+
 ![](https://i.imgur.com/Vn99kDL.png)
 - **Named**
+
 ![](https://i.imgur.com/3ihypbt.png)
 ## Authorization
 - **Node**: Every request comes from user with name system node and part of the systems nodes group is authorized by the node authorizer.
