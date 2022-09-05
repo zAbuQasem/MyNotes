@@ -834,3 +834,30 @@ spec:
 **Note**: Capabilities are only supported at the container level not at pod level.
 
 ## NetworkPolicy
+|Support network policies|Doesn't support network policies|
+|-|-|
+|kube-router|Flannel|
+|calico|x|
+|Romana|x|
+|Weave-net|x|
+- Ingress
+```yml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+```
