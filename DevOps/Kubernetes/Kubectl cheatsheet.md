@@ -731,7 +731,6 @@ rules:
 - **Binding**
 	- A role binding grants the permissions defined in a role to a user or set of users. It holds a list of _subjects_ (users, groups, or service accounts), and a reference to the role being granted. A RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding grants that access cluster-wide.
 ```yml
-\
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -774,4 +773,30 @@ metadata:
 spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
+```
+## ImageSecurity
+```txt
+docker.io/library/nginx
+Registry  User/
+          Account  Image/
+                   Repository
+                   
+# Example: gcr.io/kubernetes-e2e-test-images/dnsutils
+```
+- Creating a Secret for imagePulling
+```yaml
+kubectl create secret docker-registry regcred --docker-server=private-registry.io --docker-username=registry-user --docker-password=registry-password --docker-email=zabuqasem@spiderlabs.org
+```
+- Attaching the secret to a pod
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: private-registery.io/apps/internal-app
+  imagePullSecrets:
+  - name: regcred
 ```
