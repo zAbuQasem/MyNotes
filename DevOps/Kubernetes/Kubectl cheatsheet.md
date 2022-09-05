@@ -840,7 +840,9 @@ spec:
 |calico|x|
 |Romana|x|
 |Weave-net|x|
-- **Ingress**
+## **Ingress**
+`namespaceSelector`: Used when you want to allow traffic from another namespace.
+1. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -860,7 +862,38 @@ spec:
       namespaceSelector:
         matchLabel:
           name: prod
+    - ipBlock:
+        cidr: 192.168.5.10/32
     ports:
     - protocol: TCP
       port: 3306
+```
+## Egress
+```yml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingrss
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 192.168.5.10/32
+    ports:
+    - protocol: TCP
+      port: 80
 ```
