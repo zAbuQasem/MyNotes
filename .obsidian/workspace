@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/SSTI.md",
+            "file": "WebPentesting/WebVulns/XPath injection.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "SSTI",
+                "query": "XML",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/SSTI.md",
+                "file": "WebPentesting/WebVulns/XPath injection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "a86cb3428c8c286b",
   "lastOpenFiles": [
+    "WebPentesting/IIS Servers/IIS Servers.md",
     "DevOps/Kubernetes/Security.md",
+    "WebPentesting/WebVulns/SSTI.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "Red-teaming/Credential Harvesting/Linux.md",
     "WebPentesting/WebVulns/SSRF.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/Open Redirect.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
-    "Pasted image 20220825193826.png",
-    "README.md",
-    "DevOps/Kubernetes/K8s Overview.md"
+    "Pasted image 20220825193826.png"
   ]
 }
