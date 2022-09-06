@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+            "file": "WebPentesting/WebVulns/SSTI.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "SSTI",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+                "file": "WebPentesting/WebVulns/SSTI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f030318d60e62bb8",
+  "active": "a86cb3428c8c286b",
   "lastOpenFiles": [
-    "Red-teaming/Credential Harvesting/Linux.md",
+    "DevOps/Kubernetes/Security.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "Red-teaming/Credential Harvesting/Linux.md",
     "WebPentesting/WebVulns/SSRF.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "WebPentesting/WebVulns/Open Redirect.md",
     "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
     "Pasted image 20220825193826.png",
     "README.md",
-    "DevOps/Kubernetes/K8s Overview.md",
-    "DevOps/Terraform/Untitled.md"
+    "DevOps/Kubernetes/K8s Overview.md"
   ]
 }

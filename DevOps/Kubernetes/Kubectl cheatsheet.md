@@ -36,6 +36,7 @@
 	- [NetworkPolicy](#NetworkPolicy)
 		- [Ingress](#Ingress)
 		- [Egress](#Egress)
+- [**Volumes**](#Volumes)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -934,3 +935,5 @@ spec:
 kubectl get networkpolicy
 kubectl get netpol
 ```
+# Volumes
+Volumes created in a docker container is located at `/var/lib/docker/volumes` 
