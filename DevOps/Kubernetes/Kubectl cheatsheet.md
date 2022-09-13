@@ -44,7 +44,7 @@
 			- [Delete](#Delete)
 			- [Recycle](#Recycle)
 	- [Persistent-Volume-Claim](#Persistent-Volume-Claim)
-	- [Security Risks](#Security%20Risks)
+	- [Security-Risks](#Security-Risks)
 		- [HostPath](#HostPath)
 	- [StorageClass](#StorageClass)
 	- [TLDR](#TLDR)
@@ -1051,7 +1051,7 @@ spec:
       persistentVolumeClaim:
         claimName: myclaim
 ```
-## Security Risks
+## Security-Risks
 ### HostPath
 Not recommended for a multi-node cluster, And If not applied securely it may cause a security concern.
 - DOD: Docker in docker
