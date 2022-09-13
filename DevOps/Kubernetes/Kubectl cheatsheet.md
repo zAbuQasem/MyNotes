@@ -36,7 +36,13 @@
 	- [NetworkPolicy](#NetworkPolicy)
 		- [Ingress](#Ingress)
 		- [Egress](#Egress)
-- [**Volumes**](#Volumes)
+- [**Volumes-Mounts**](#Volumes-Mounts)
+	- [Pod-Volume](#Pod-Volume)
+	- [Persistent-Volume](#Persistent-Volume)
+	- [Persistent-Volume-Claim](#Persistent-Volume-Claim)
+	- [Security Risks](#Security%20Risks)
+		- [HostPath](#HostPath)
+- 
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -935,5 +941,89 @@ spec:
 kubectl get networkpolicy
 kubectl get netpol
 ```
-# Volumes
-Volumes created in a docker container is located at `/var/lib/docker/volumes` 
+# Volumes-Mounts
+## Pod-Volume
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: private-registery.io/apps/internal-app
+    securityContext:
+      runAsUser: 1000
+      capabilities:
+          add: ["MAC_ADMIN"]
+    volumeMounts:
+    - mountPath: /opt
+      name: data-volume
+  volumes:
+  - name: data-volume
+    hostPath:    # Mount on the host machine
+      path: /data
+      type: Directory
+```
+##  Persistent-Volume
+```yml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-voll
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /tmp/data
+```
+
+## Persistent-Volume-Claim
+A _PersistentVolumeClaim_ (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources.
+- Every PVC is bounded to a single PV.
+- Binding process is based on the following attributes:
+	1. Sufficient Capacity
+	2. Access Modes
+	3. Volume Modes
+	4. Storage Class
+	5. Selector
+```yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-voll
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+```
+- Using it in a pod
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/var/www/html"
+        name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: myclaim
+```
+## Security Risks
+### HostPath
+Not recommended for a multi-node cluster, And If not applied securely it may cause a security concern.
+- DOD: Docker in docker
+- DinD: Docker in docker using dind 
+> **References**:
+> 1. https://devopscube.com/run-docker-in-docker
+

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WebPentesting/WebVulns/XPath injection.md",
+            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WebPentesting/WebVulns/XPath injection.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a86cb3428c8c286b",
+  "active": "f030318d60e62bb8",
   "lastOpenFiles": [
-    "WebPentesting/IIS Servers/IIS Servers.md",
-    "DevOps/Kubernetes/Security.md",
-    "WebPentesting/WebVulns/SSTI.md",
+    "WebPentesting/WebVulns/XSS.md",
+    "WebPentesting/5- Authentication Testing.md",
+    "WebPentesting/10-Authorization Testing.md",
+    "Active Directory/Powershell/Powershell Basics.md",
+    "Active Directory/Powershell/Offensive Powershell.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
-    "Red-teaming/Credential Harvesting/Linux.md",
-    "WebPentesting/WebVulns/SSRF.md",
-    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
-    "WebPentesting/WebVulns/Open Redirect.md",
-    "DEVOPS/Kubernetes/Kubectl cheatsheet.md",
-    "Pasted image 20220825193826.png"
+    "DevOps/Kubernetes/Security.md",
+    "CTF notes/JavaScript.md",
+    "WebPentesting/WebVulns/XPath injection.md",
+    "WebPentesting/IIS Servers/IIS Servers.md"
   ]
 }
