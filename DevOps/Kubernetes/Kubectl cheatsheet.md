@@ -47,7 +47,7 @@
 	- [Security Risks](#Security%20Risks)
 		- [HostPath](#HostPath)
 	- [StorageClass](#StorageClass)
-	[TLDR](#TLDR)
+	- [TLDR](#TLDR)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
