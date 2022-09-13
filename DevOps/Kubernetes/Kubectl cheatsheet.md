@@ -39,10 +39,14 @@
 - [**Volumes-Mounts**](#Volumes-Mounts)
 	- [Pod-Volume](#Pod-Volume)
 	- [Persistent-Volume](#Persistent-Volume)
+		- [Reclaiming](#Reclaiming)
+			- [Retain](#Retain)
+			- [Delete](#Delete)
+			- [Recycle](#Recycle)
 	- [Persistent-Volume-Claim](#Persistent-Volume-Claim)
 	- [Security Risks](#Security%20Risks)
 		- [HostPath](#HostPath)
-- 
+	[TLDR](#TLDR)
 # Installing-and-running-minikube
 ```bash
 # On debian x86_64
@@ -979,7 +983,33 @@ spec:
   hostPath:
     path: /tmp/data
 ```
-
+## Reclaiming
+When a user is done with their volume, they can delete the PVC objects from the API that allows reclamation of the resource. The reclaim policy for a `PersistentVolume` tells the cluster what to do with the volume after it has been released of its claim. Currently, volumes can either be Retained, Recycled, or Deleted
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-voll
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /tmp/data
+  persistentVolumeReclaimPolicy: <Reclaim> ##
+```
+### Retain
+Allows for manual reclamation of the resource. When the `PersistentVolumeClaim` is deleted, the PersistentVolume still exists and the volume is considered "released". But it is not yet available for another claim because the previous claimant's data remains on the volume. An administrator can manually reclaim the volume with the following steps.
+	1.  Delete the `PersistentVolume`. The associated storage asset in external infrastructure (such as an AWS EBS, GCE PD, Azure Disk, or Cinder volume) still exists after the PV is deleted.
+	2.  Manually clean up the data on the associated storage asset accordingly.
+	3.  Manually delete the associated storage asset.
+If you want to reuse the same storage asset, create a new `PersistentVolume` with the same storage asset definition.
+### Delete
+Deletion removes both the `PersistentVolume` object from Kubernetes, as well as the associated storage asset in the external infrastructure.
+### Recycle
+**Warning:** The `Recycle` reclaim policy is deprecated. Instead, the recommended approach is to use dynamic provisioning.
+> **Reference**: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle
 ## Persistent-Volume-Claim
 A _PersistentVolumeClaim_ (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources.
 - Every PVC is bounded to a single PV.
@@ -1026,4 +1056,7 @@ Not recommended for a multi-node cluster, And If not applied securely it may cau
 - DinD: Docker in docker using dind 
 > **References**:
 > 1. https://devopscube.com/run-docker-in-docker
+
+## TLDR
+An Admin creates a PV, Then he creates a PVC that binds to a suitable PV then a user creates a pod and attaches it to the PVC.
 
