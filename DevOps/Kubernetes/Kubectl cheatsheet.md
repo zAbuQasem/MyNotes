@@ -46,6 +46,7 @@
 	- [Persistent-Volume-Claim](#Persistent-Volume-Claim)
 	- [Security Risks](#Security%20Risks)
 		- [HostPath](#HostPath)
+	- [StorageClass](#StorageClass)
 	[TLDR](#TLDR)
 # Installing-and-running-minikube
 ```bash
@@ -1027,6 +1028,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
+  storageClassName: local-storage
   resources:
     requests:
       storage: 500Mi
@@ -1057,6 +1059,23 @@ Not recommended for a multi-node cluster, And If not applied securely it may cau
 > **References**:
 > 1. https://devopscube.com/run-docker-in-docker
 
+## StorageClass
+Each StorageClass has a provisioner that determines what volume plugin is used for provisioning PVs. This field must be specified. And every `provisioner` have his own parameters.
+> **Reference**: https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+provisioner: kubernetes.io/aws-ebs 
+parameters:
+  type: gp2
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+mountOptions:
+  - debug
+volumeBindingMode: Immediate
+```
 ## TLDR
 An Admin creates a PV, Then he creates a PVC that binds to a suitable PV then a user creates a pod and attaches it to the PVC.
-
+ 
