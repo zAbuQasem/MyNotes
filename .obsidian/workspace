@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+            "file": "Reverse Engineering/GDB cheatsheet.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "XML",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+                "file": "Reverse Engineering/GDB cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,12 +89,12 @@
   },
   "active": "f030318d60e62bb8",
   "lastOpenFiles": [
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "WebPentesting/WebVulns/XSS.md",
     "WebPentesting/5- Authentication Testing.md",
     "WebPentesting/10-Authorization Testing.md",
     "Active Directory/Powershell/Powershell Basics.md",
     "Active Directory/Powershell/Offensive Powershell.md",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/Kubernetes/Security.md",
     "CTF notes/JavaScript.md",
     "WebPentesting/WebVulns/XPath injection.md",

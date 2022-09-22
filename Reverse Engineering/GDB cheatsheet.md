@@ -31,6 +31,11 @@ Continue running the program
 ```bash
 continue
 ```
+View variables
+```
+info variables
+x/s &<VAR>
+```
 View registers
 ```bash
 info registers
@@ -40,14 +45,14 @@ Set a value to a register
 ```bash
 set $eax=0 # for example
 ```
-Dispaly formats
+Display formats
 
 1. **`o`** => Display in octal.
 2. **`x`** => Display in hexadecimal.
 3. **`u`** => Display in unsigned, standard base-10 decimal.
 4. **`t`** => Display in binary.
 
-Example using sing examine command ( **`x`** ):
+Example using examine command ( **`x`** ):
 ```bash
 (gdb) x/o $rip
 #0x55555555521b <main>:	037207407763
@@ -84,3 +89,4 @@ Examine command also accepts instruction ( **`i`** ) that display the memory as 
 #   0x555555555220 <main+5>:	mov    rbp,rsp
 #   0x555555555223 <main+8>:	sub    rsp,0x20
 ```
+You can view vars

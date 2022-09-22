@@ -631,7 +631,7 @@ spec:
   initContainers:
   - name: init-myservice
     image: busybox
-    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done
+    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application>']
 ```
 # Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
@@ -1078,4 +1078,3 @@ volumeBindingMode: Immediate
 ```
 ## TLDR
 An Admin creates a PV, Then he creates a PVC that binds to a suitable PV then a user creates a pod and attaches it to the PVC.
- 
