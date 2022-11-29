@@ -1,4 +1,5 @@
 {
-  "baseFontSize": 20,
-  "cssTheme": "Things"
+  "baseFontSize": 18,
+  "cssTheme": "Things",
+  "accentColor": ""
 }

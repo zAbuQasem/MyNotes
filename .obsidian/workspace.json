@@ -4,16 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "f030318d60e62bb8",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Forensics/Windows.md",
-            "mode": "source",
-            "source": false
+        "id": "6ecf547da2504859",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de5fc2da43cbd6fd",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "a35189a65288ef21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Monitoring.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -31,7 +46,9 @@
             "type": "leaf",
             "state": {
               "type": "file-explorer",
-              "state": {}
+              "state": {
+                "sortOrder": "alphabetical"
+              }
             }
           },
           {
@@ -40,7 +57,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "INSERT",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Forensics/Windows.md",
+                "file": "DevOps/Monitoring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,20 +101,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
-  "active": "f030318d60e62bb8",
+  "active": "a35189a65288ef21",
   "lastOpenFiles": [
+    "Securing Cloud.md",
+    "Pasted image 20221011154330.png",
+    "Pasted image 20221011161217.png",
     "K8s-2.md",
+    "CTF notes/PHP Bypasses.md",
+    "DevOps/Security/Image Integrity.md",
+    "WebPentesting/WebVulns/LDAP Injection.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
-    "Reverse Engineering/attachments/Nasm structure.png",
-    "Reverse Engineering/attachments/operand notation.png",
-    "Reverse Engineering/attachments/offsetpic.png",
-    "Reverse Engineering/attachments/arithmeticinHLL.png",
-    "Reverse Engineering/attachments/littleEndian.png",
-    "Reverse Engineering/attachments/PTRexample 1.png",
-    "Reverse Engineering/attachments/PTRexample.png",
-    "Reverse Engineering/ASM basics (MASM).md"
+    "Forensics/Windows.md",
+    "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md"
   ]
 }

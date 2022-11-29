@@ -22,3 +22,5 @@ docker service create \
 ```
 
 https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952
+# Privileged
+Privileged containers can list fs and mount and non privileged cant

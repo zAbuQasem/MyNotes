@@ -89,4 +89,3 @@ Examine command also accepts instruction ( **`i`** ) that display the memory as 
 #   0x555555555220 <main+5>:	mov    rbp,rsp
 #   0x555555555223 <main+8>:	sub    rsp,0x20
 ```
-You can view vars

@@ -665,7 +665,6 @@ Major.Minor.Patch
 >**Notes**: 
 >Kubernetes only support 3 minor releases.
 >It's advised to upgrade version 1 minor version at a time.
->
 
 ## Cluster-Upgrade
 1. Upgrade `Kubeadm`
