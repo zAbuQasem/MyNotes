@@ -24,7 +24,7 @@ Password: admin
 ```bash
 sudo groupadd --system prometheus
 sudo useradd -s /sbin/nologin --system -g prometheus prometheus
-sudo mkdir /etc/prometheus
+#sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/prometheus
 for i in rules rules.d files_sd; do sudo mkdir -p /etc/prometheus/${i}; done
 ```
