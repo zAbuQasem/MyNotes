@@ -387,6 +387,14 @@ proxychains nmap -A -Pn -T4 127.0.0.1
 ---
 # Post-exploitation
 ## Windows-based systems
+**Run commands from meterpreter shell**
+```
+execute -f <COMMAND> -a <ARGS>
+execute -f "cmd.exe" -a "/c"
+# To get the output
+execute -f "whoami" -a "/all" -i
+```
+
 **Elevate your permissions**
 ```bash
 use priv
