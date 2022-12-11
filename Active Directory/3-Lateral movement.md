@@ -24,9 +24,9 @@ Enter-PSSession
 - Non-interactive
 - Executes commands parallely
 - Runs Commands and scripts on
--- Multiple computers
--- In disconnected sessions (v3)
--- As background jobs and more
+	- Multiple computers
+	- In disconnected sessions (v3)
+	- As background jobs and more
 ### Useful cmdlets
 ```powershell
 Invoke-Command -ComputerName <ComputerName>
