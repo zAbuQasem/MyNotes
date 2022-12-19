@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Metasploit/Metasploit Cheatsheet.md",
+                "file": "DevOps/Monitoring.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Metasploit/Metasploit Cheatsheet.md",
+                "file": "DevOps/Monitoring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,15 +97,15 @@
   },
   "active": "38ab1570d5827d05",
   "lastOpenFiles": [
+    "Metasploit/Metasploit Cheatsheet.md",
+    "AWS Pentesting/AWS Services Explained & Pentested.md",
+    "Red-teaming/Tunneling.md",
     "WebPentesting/WebVulns/SQLI/0-SQLI Overview.md",
     "Active Directory/2-Local PrivEsc.md",
     "Active Directory/3-Lateral movement.md",
     "Active Directory/4-Domain persistence.md",
     "Active Directory/5-Domain privesc.md",
     "Active Directory/Powershell/Powershell Basics.md",
-    "AWS Pentesting/AWS Services Explained & Pentested.md",
-    "DevOps/Monitoring.md",
-    "Securing Cloud.md",
-    "Pasted image 20221011154330.png"
+    "DevOps/Monitoring.md"
   ]
 }

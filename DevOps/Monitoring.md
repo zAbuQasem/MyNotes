@@ -106,3 +106,4 @@ server {
         }
 ```
 - [Node Exporter](https://devopscube.com/monitor-linux-servers-prometheus-node-exporter/)
+- [BlackBox Exporter](https://devconnected.com/how-to-install-and-configure-blackbox-exporter-for-prometheus/) : Probing legend
