@@ -20,7 +20,7 @@ Username: admin
 Password: admin
 ```
 ### Prometheus Setup
-- Pre-requisties
+- Prerequisites
 ```bash
 sudo groupadd --system prometheus
 sudo useradd -s /sbin/nologin --system -g prometheus prometheus
