@@ -7,6 +7,10 @@
 	- [Variables_Usage](#Variables_Usage)
 	- [Example](#Example)
 	- [Variables_Order](#Variables_Order)
+	- [Resource_Attributes](#Resource_Attributes)
+	- [Implicit_dependency](#Implicit_dependency)
+	- [Explicit_dependency](#Explicit_dependency)
+	- [Output](#Output)
 
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
