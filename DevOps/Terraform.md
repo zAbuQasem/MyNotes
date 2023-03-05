@@ -11,6 +11,9 @@
 	- [Implicit_dependency](#Implicit_dependency)
 	- [Explicit_dependency](#Explicit_dependency)
 	- [Output](#Output)
+- [**Mutable_vs_Immutable**](#Mutable_vs_Immutable)
+	- [LifeCycle_Rules](#LifeCycle_Rules)
+- [**Datasource**](#Datasource)
 
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
@@ -228,3 +231,36 @@ terraform output
 terraform output pet-name
 terraform output welcome_message
 ```
+
+# Mutable_vs_Immutable
+Mutable infrastructures allow for regular updates and modifications after the software has been deployed, whereas immutable infrastructures do not allow modifications once the software has been deployed.
+
+## LifeCycle_Rules
+```sh
+
+resource "local_file" "welcome" {
+	filename = "/root/message.txt"
+	content = "Welcome to Kodekloud."
+
+	lifecycle {
+		#ignore_changes = []
+		ignore_changes = all
+}
+}
+```
+
+# Datasources
+- **`data`**: To read a file not managed by terraform.
+```sh
+resource "local_file" "welcome" {
+	filename = "/root/message.txt"
+	content = data.local_file.dog.content
+}
+
+data "local_file" "msg" {
+	filename = "/root/WelcomeMsg.txt"
+}
+```
+
+#  Meta_Arguments
+## Count
