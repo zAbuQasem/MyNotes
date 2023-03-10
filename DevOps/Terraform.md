@@ -228,3 +228,9 @@ terraform output
 terraform output pet-name
 terraform output welcome_message
 ```
+# Terraform_commands
+- **validate**: Check for syntax errors.
+- **output**: Extract the value of an output variable from the state file.
+- **fmt**: Format the syntax to match the style convention.
+- **refresh**: Update the state file with new non-terraform changes (manual changes). This option is invoked by default when running `terrafrom plan`.
+- **graph**: Print a `dot` formatted graph.

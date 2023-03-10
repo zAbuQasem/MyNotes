@@ -95,8 +95,9 @@ sudo ntpdate <machine IP>
 #Fourth method (xct notes)
 sudo date -s "$(curl -sI <Target> | grep -i '^date:'|cut -d' ' -f2-)"
 ```
+ 
  # Further reading
  - Tutorial -> [**Impacket-Tools**](https://www.hackingarticles.in/abusing-kerberos-using-impacket/)
 - Cheatsheet -> [**Kerbrute CheatSheet**](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
 - Explained -> [**Kerberoasting**](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting)
-
+- Ticket-Conversion -> [Experimenting with Kerberos Ticket Formats (tw1sm.github.io)](https://tw1sm.github.io/2021-02-01-kerberos-conversion/)

