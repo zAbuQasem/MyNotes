@@ -11,6 +11,9 @@
 	- [Implicit_dependency](#Implicit_dependency)
 	- [Explicit_dependency](#Explicit_dependency)
 	- [Output](#Output)
+- [**Mutable_vs_Immutable**](#Mutable_vs_Immutable)
+	- [LifeCycle_Rules](#LifeCycle_Rules)
+- [**Datasource**](#Datasource)
 
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
@@ -228,9 +231,44 @@ terraform output
 terraform output pet-name
 terraform output welcome_message
 ```
+<<<<<<< HEAD
 # Terraform_commands
 - **validate**: Check for syntax errors.
 - **output**: Extract the value of an output variable from the state file.
 - **fmt**: Format the syntax to match the style convention.
 - **refresh**: Update the state file with new non-terraform changes (manual changes). This option is invoked by default when running `terrafrom plan`.
 - **graph**: Print a `dot` formatted graph.
+=======
+
+# Mutable_vs_Immutable
+Mutable infrastructures allow for regular updates and modifications after the software has been deployed, whereas immutable infrastructures do not allow modifications once the software has been deployed.
+
+## LifeCycle_Rules
+```sh
+
+resource "local_file" "welcome" {
+	filename = "/root/message.txt"
+	content = "Welcome to Kodekloud."
+
+	lifecycle {
+		#ignore_changes = []
+		ignore_changes = all
+}
+}
+```
+
+# Datasource
+- **`data`**: To read a file not managed by terraform.
+```sh
+resource "local_file" "welcome" {
+	filename = "/root/message.txt"
+	content = data.local_file.dog.content
+}
+
+data "local_file" "msg" {
+	filename = "/root/WelcomeMsg.txt"
+}
+```
+
+#  Meta_Arguments
+## Count

@@ -4,22 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "48d9d0e366903185",
+        "id": "e8a211bd97744c65",
         "type": "tabs",
         "children": [
           {
-            "id": "60bf326c80511c0e",
+            "id": "f030318d60e62bb8",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "4ba57e464ed40765",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Active Directory/Attack vectors/Kerberoas.md",
+                "file": "DevOps/Terraform.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +57,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ldap",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Active Directory/Attack vectors/Kerberoas.md",
+                "file": "DevOps/Terraform.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,28 +112,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "60bf326c80511c0e",
+  "active": "4ba57e464ed40765",
   "lastOpenFiles": [
-    "Active Directory/Attack vectors/AD CS.md",
-    "DevOps/Terraform.md",
-    "Active Directory/8-Detection and Defence - Architectural changes.md",
-    "Metasploit/Metasploit Cheatsheet.md",
-    "Metasploit/attachments/armscan.png",
-    "Metasploit/attachments/armitage.png",
-    "Metasploit/attachments/7zip.png",
-    "Red-teaming/Tunneling.md",
-    "Reverse Engineering/GDB cheatsheet.md",
-    "WebPentesting/WebVulns/SQLI/25-MS Access.md",
-    "Reverse Engineering/attachments/arithmeticinHLL.png",
-    "Forensics/Windows.md",
-    "README.md",
     "conflict-files-obsidian-git.md",
-    "WebPentesting/WebVulns/SSTI.md",
-    "Active Directory/Attack vectors/LDAP.md",
-    "Active Directory/5-Domain privesc.md",
-    "Active Directory/2-Local PrivEsc.md",
-    "DevOps/Security/Image Integrity.md",
-    "DevOps/Monitoring.md",
-    "AWS Pentesting/AWS Services Explained & Pentested.md"
+    "K8s-2.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "Reverse Engineering/attachments/Nasm structure.png",
+    "Reverse Engineering/attachments/operand notation.png",
+    "Reverse Engineering/attachments/offsetpic.png",
+    "Reverse Engineering/attachments/arithmeticinHLL.png",
+    "Reverse Engineering/attachments/littleEndian.png",
+    "Reverse Engineering/attachments/PTRexample 1.png",
+    "Reverse Engineering/attachments/PTRexample.png",
+    "Reverse Engineering/ASM basics (MASM).md"
   ]
 }
