@@ -14,7 +14,10 @@
 - [**Mutable_vs_Immutable**](#Mutable_vs_Immutable)
 	- [LifeCycle_Rules](#LifeCycle_Rules)
 - [**Datasource**](#Datasource)
-
+- [**Meta_Arguments**](#Meta_Arguments)
+	- [Count](#Count)
+	- [For-Each](#For-Each)
+- [**Version-Constraints**](#Version-Constraints)
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
 ```bash
@@ -272,3 +275,67 @@ data "local_file" "msg" {
 
 #  Meta_Arguments
 ## Count
+Create multiple instances of a resource, however if an instance is removed or added; the whole resource will be recreated.
+- **`main.tf`**
+```
+resource "local_file" "pet" {
+	filename = var.filename[count.index]
+	count = length(var.filename) 
+}
+```
+- **`variables.tf`**
+```
+variable "filename" {  
+	default = "["/root/horse.txt", "/root/meow.txt", "/root/cats.txt"] 
+}
+```
+## For-Each
+Only works with a `map` or `set`, and doesn't need to recreate the whole resource on any change
+- **`main.tf`**
+```
+resource "local_file" "pet" {
+	filename = each.value
+	for_each = var.filename
+	# for_each = toset(var.filename) -- use this if you don't want to change the type in "variables.tf" file 
+}
+```
+- **`variables.tf`**
+```
+variable "filename" {
+	type = set(string)
+	default = "["/root/horse.txt", "/root/meow.txt", "/root/cats.txt"] 
+}
+```
+# Version-Constraints
+We can use comparison operators to specify versions
+- Use a specific version of a provider
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.57.1"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+```
+- Do not use `4.57.1` version
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "! 4.57.1"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+```
+- **More info**: [Version Constraints - Configuration Language | Terraform | HashiCorp Developer](https://developer.hashicorp.com/terraform/language/expressions/version-constraints)

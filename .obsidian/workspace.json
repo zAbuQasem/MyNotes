@@ -114,6 +114,10 @@
   },
   "active": "4ba57e464ed40765",
   "lastOpenFiles": [
+    "Red-teaming/Credential Harvesting/MacOS.md",
+    "Red-teaming/Credential Harvesting/Linux.md",
+    "Red-teaming/Tunneling.md",
+    "DevOps/Terraform.md",
     "conflict-files-obsidian-git.md",
     "K8s-2.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
