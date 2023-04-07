@@ -234,14 +234,13 @@ terraform output
 terraform output pet-name
 terraform output welcome_message
 ```
-<<<<<<< HEAD
+
 # Terraform_commands
 - **validate**: Check for syntax errors.
 - **output**: Extract the value of an output variable from the state file.
 - **fmt**: Format the syntax to match the style convention.
 - **refresh**: Update the state file with new non-terraform changes (manual changes). This option is invoked by default when running `terrafrom plan`.
 - **graph**: Print a `dot` formatted graph.
-=======
 
 # Mutable_vs_Immutable
 Mutable infrastructures allow for regular updates and modifications after the software has been deployed, whereas immutable infrastructures do not allow modifications once the software has been deployed.
