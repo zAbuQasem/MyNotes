@@ -8,20 +8,24 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f030318d60e62bb8",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
             "id": "4ba57e464ed40765",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/Terraform.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6bc1f586252358fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,6 +69,14 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "697bae3170cc3d97",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Terraform.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,12 +124,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4ba57e464ed40765",
+  "active": "6bc1f586252358fc",
   "lastOpenFiles": [
+    "DevOps/Terraform.md",
     "Red-teaming/Credential Harvesting/MacOS.md",
     "Red-teaming/Credential Harvesting/Linux.md",
     "Red-teaming/Tunneling.md",
-    "DevOps/Terraform.md",
     "conflict-files-obsidian-git.md",
     "K8s-2.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
