@@ -596,10 +596,10 @@ Using Built-In metrics server (in memory solution).
 - Installing Metrics-Server
 ```bash
 # Minikube
-minikube addons eanble metrics-server
+minikube addons enable metrics-server
 
 # Cluster
- Check: https://github.com/kubernetes-sigs/metrics-server
+Check: https://github.com/kubernetes-sigs/metrics-server
 ```
 
 - Viewing data
