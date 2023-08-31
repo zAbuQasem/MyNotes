@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4ba57e464ed40765",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6bc1f586252358fc",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
