@@ -640,17 +640,14 @@ spec:
 #     - "sleep"
 #     - "5000"
 ```
-
 > **Note**: You cannot change command while the pod is running
 
 # Secrets
-
 - Imperative method
 ```yaml
-kubectl create secret generic <SecretName> --from-litral=<KEY>=<VALUE>
+kubectl create secret generic <SecretName> --from-lietral=<KEY>=<VALUE>
 kubectl create secret generic <SecretName> --from-file=<FileName>
 ```
-
 - Declarative method
 ```yaml
 apiVersion: v1
@@ -662,16 +659,13 @@ data:
   DB_User: cm9vdA==
   DB_Password: cGFzc3dvcmQxMjM= 
 ```
-
 **Secrets can be injected into pods in 3 different ways:**
-
 - ENV
 ```yml
 envFrom:
   - secretRef:
         name: app-config
 ```
-
 - Single env
 ```yml
 env:
