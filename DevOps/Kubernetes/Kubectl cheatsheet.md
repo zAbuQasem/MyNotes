@@ -337,7 +337,7 @@ kubectl rollout undo
 ## Deployment-strategies
 
 - **Recreate**
-	- This will delete the current replicaset and replace it with new updated one.
+	- This will delete the current `ReplicaSet` and replace it with new updated one.
 	- Usable in dev/staging environments (Downtime)
 	- Not the best choice in a production environment
 ```yaml
@@ -348,7 +348,7 @@ spec:
 ```
 
 - **RollingUpdate**
-	- Will create a new version of replicaset and when it's ready, the old veriosn will be deleted
+	- Will create a new version of `ReplicaSet` and when it's ready, the old version will be deleted
 	- Convenient for stateful applications that can handle rebalancing of the data
 	- Rollout/rollback can take time
 	- Supporting multiple APIs is hard
@@ -364,6 +364,11 @@ spec:
                          # during the rolling update
 ```
 
+- Rollout commands
+```sh
+kubectl rollout status <DEPLOYMENT>
+kubectl rollout history <DEPLOYMENT>
+```
 ## References
 - [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
 
@@ -614,7 +619,6 @@ kubectl logs -f <PodName> <ContainerName>
 # -f: View live
 # ContianerName: Only mandatory if your pod had multiple containers
 ```
-
 # Commands
 Commands in manifest override `ENTRYPOINT` and `CMD` in Dockerfile
 ```yml
@@ -683,11 +687,11 @@ volumes:
  > **Note**: When mounting secrets as volumes, each key will be a separate file in the /opt/\<SecretName\> folder
 
 # Multi-Containers
+
 **There are 3 common patterns:**
 - **Sidecar pattern**: An extra container in your pod to **enhance** or **extend** the functionality of the main container.
 - **Ambassador pattern**: A container that **proxy the network connection** to the main container.
 - **Adapter pattern**: A container that **transform output** of the main container.
-
 # initContainer
 A Container that runs a defined task once when the pod is started. 
 ```yaml
@@ -707,25 +711,29 @@ spec:
     image: busybox
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application>']
 ```
-
 # Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
 ```bash
 kube-controller-manager --pod-eviction-timeout=5m0s
 ```
+
 When a node is gone down we don't know for sure if it's going to be back online so we can drain the pods from it to another nodes. (Terminated from the node and recreated on another node).
+
 The following command also marks the node as non-schedulable.
 ```bash
 kubectl drain node-1
 ```
+
 The following command will be marked as non-schedulable, So no pods will be created on it without draining the pods.
 ```bash
 kubectl cordon node-1
 ```
+
 To remove the mark
 ```bash
 kubectl uncordon node-1
 ```
+
 > **Note**: Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
 
 ## Software-Releases
@@ -766,7 +774,6 @@ kubeadm upgrade node config --kubelet-version <Version>
 systemctl restart kubelet
 kubectl uncordon <Node> 
 ```
-
 ## Backup-and-Restore
 
 - Backup resource configs
@@ -787,7 +794,6 @@ systemctl daemon-reload
 service etcd restart
 service kube-apiserver start
 ```
-
 # Security
 
 ## API-Groups
