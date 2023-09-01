@@ -368,7 +368,7 @@ spec:
 ```sh
 kubectl rollout status <DEPLOYMENT>
 kubectl rollout history <DEPLOYMENT>
-kubectl rollout history <DEPLOYMENT>
+kubectl rollout undo <DEPLOYMENT>
 ```
 ## References
 - [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
@@ -635,8 +635,12 @@ spec:
     image: debian
     command: ["printenv"]
     args: ["HOSTNAME", "KUBERNETES_PORT"]
-  restartPolicy: OnFailure
+    restartPolicy: OnFailure
+#   command:
+#     - "sleep"
+#     - "5000"
 ```
+
 > **Note**: You cannot change command while the pod is running
 
 # Secrets
