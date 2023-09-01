@@ -368,6 +368,7 @@ spec:
 ```sh
 kubectl rollout status <DEPLOYMENT>
 kubectl rollout history <DEPLOYMENT>
+kubectl rollout history <DEPLOYMENT>
 ```
 ## References
 - [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
