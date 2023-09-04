@@ -761,8 +761,8 @@ kubectl get nodes # To verify
 
 2.  Upgrade `Kubelet` on the master node
 ```bash
-apt-get upgrade kubelet=<Version>
-systemctl restart kubelet
+sudo apt-get upgrade kubelet=<Version>
+sudo systemctl restart kubelet
 ```
 
 3. Upgrading the working nodes (For every node in the cluster)
