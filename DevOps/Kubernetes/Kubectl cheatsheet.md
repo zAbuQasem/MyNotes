@@ -733,7 +733,8 @@ To remove the mark
 kubectl uncordon node-1
 ```
 
-> **Note**: Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
+> -  Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
+> - Pods that aren't part of a replicaset isn't drained, you have to use --force
 
 ## Software-Releases
 Software version in k8s consists of 3 parts:
