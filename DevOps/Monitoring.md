@@ -105,5 +105,27 @@ server {
         }
         }
 ```
+### Alerting
+For this one i will use [node-exporter](https://samber.github.io/awesome-prometheus-alerts/rules.html#host-and-hardware)
+```sh
+curl https://raw.githubusercontent.com/zAbuQasem/Misc/main/node-exporter-prom-alerts.yml -o alerts.yml
+cp alerts.yml /etc/prometheus/
+# Verify with promtool
+promtool check rules alerts.yml
+```
+Finally load it with:
+```yml
+global:
+  scrape_interval: 15s
+
+rule_files:
+  - alerts.yml
+
+scrape_configs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['172.17.0.1:9100']
+```
+
 - [Node Exporter](https://devopscube.com/monitor-linux-servers-prometheus-node-exporter/)
 - [BlackBox Exporter](https://devconnected.com/how-to-install-and-configure-blackbox-exporter-for-prometheus/) : Probing legend
