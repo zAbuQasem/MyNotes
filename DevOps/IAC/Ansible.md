@@ -1,0 +1,4 @@
+# Navigation
+- [**Inventory**](#Inventory)
+---
+# Inventory

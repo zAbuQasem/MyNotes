@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/Kubernetes/Security.md",
+                "file": "DevOps/IAC/Ansible.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Kubernetes/Security.md",
+                "file": "DevOps/IAC/Ansible.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,9 +125,11 @@
   },
   "active": "6bc1f586252358fc",
   "lastOpenFiles": [
+    "DevOps/Kubernetes/Security.md",
+    "DevOps/IAC",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
-    "DevOps/Untitled.md",
-    "DevOps/Terraform.md",
+    "DevOps/IAC/Ansible.md",
+    "DevOps/IAC/Terraform.md",
     "DevOps/Monitoring.md",
     "DevOps/Security/Image Signing.md",
     "Red-teaming/Credential Harvesting/MacOS.md",
