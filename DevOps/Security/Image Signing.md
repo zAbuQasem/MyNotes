@@ -1,3 +1,8 @@
+# Navigation
+- [**Cosign**](#Cosign)
+- [**Cluster-Integration**](#Cluster-Integration)
+- [**Pulling-Images-securely**](#Pulling-Images-securely)
+- [**Github-Action-Integration**](#Github-Action-Integration)
 # Cosign
 ## Installation
 ```bash
@@ -208,7 +213,7 @@ logLevel: INFO
 kubeclt create ns connaisseur
 helm upgrade --install connaisseur --values values.yaml .  -n connaisseur
 ```
-# Pulling Images securely
+# Pulling-Images-securely
 It's always advised to pull images by digest instead of tags.
 ```bash
 docker pull <NameSpace>/<REPO>:<TAG>@<SHA256-Digest>
@@ -222,4 +227,67 @@ go install github.com/google/go-containerregistry/cmd/crane@latest
 
 # Usage
 crane digest <REPO>
+```
+
+# Github-Action-Integration
+1. Create cosign secrets
+```sh
+#!/bin/bash
+export REPO_OWNER="zAbuQasem"
+export REPO_NAME="GitOps-K8s"
+export GITHUB_TOKEN="TOKEN"
+export COSIGN_PASSWORD="PASSWORD"
+
+cosign generate-key-pair github://$REPO_OWNER/$REPO_NAME
+```
+2. Use the following pipeline
+```yaml
+name: Build-Push
+
+on:
+  push
+
+jobs:
+    build-image:
+      runs-on: ubuntu-latest
+  
+      name: build-image
+      steps:
+        - uses: actions/checkout@v4.1.1
+
+        - name: Install Cosign
+          uses: sigstore/cosign-installer@v3.4.0
+          with:
+            cosign-release: 'v2.2.3'
+
+
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v3
+  
+        - name: Login to GitHub Container Registry
+          uses: docker/login-action@v3
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_SECRET }}
+              
+        - name: Build and Push container images
+          uses: docker/build-push-action@v5
+          id: build-and-push
+          with:
+            platforms: linux/amd64
+            push: true
+            tags: zeyadabuqasem/django
+
+        - name: Sign image
+          env:
+            TAGS: zeyadabuqasem/django
+            COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+            COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+            DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          run: |
+            images=""
+            for tag in ${TAGS}; do
+              images+="${tag}@${DIGEST} "
+            done
+            cosign sign --yes --key env://COSIGN_PRIVATE_KEY ${images}
 ```
