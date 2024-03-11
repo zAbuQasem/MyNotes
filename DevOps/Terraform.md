@@ -18,6 +18,7 @@
 	- [Count](#Count)
 	- [For-Each](#For-Each)
 - [**Version-Constraints**](#Version-Constraints)
+---
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
 ```bash

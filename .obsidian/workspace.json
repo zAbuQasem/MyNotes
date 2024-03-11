@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/Security/Image Signing.md",
+                "file": "DevOps/Kubernetes/Security.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/Security/Image Signing.md",
+                "file": "DevOps/Kubernetes/Security.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +126,10 @@
   "active": "6bc1f586252358fc",
   "lastOpenFiles": [
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "DevOps/Untitled.md",
     "DevOps/Terraform.md",
+    "DevOps/Monitoring.md",
+    "DevOps/Security/Image Signing.md",
     "Red-teaming/Credential Harvesting/MacOS.md",
     "Red-teaming/Credential Harvesting/Linux.md",
     "Red-teaming/Tunneling.md",

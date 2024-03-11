@@ -3,6 +3,7 @@
 - [**Cluster-Integration**](#Cluster-Integration)
 - [**Pulling-Images-securely**](#Pulling-Images-securely)
 - [**Github-Action-Integration**](#Github-Action-Integration)
+---
 # Cosign
 ## Installation
 ```bash

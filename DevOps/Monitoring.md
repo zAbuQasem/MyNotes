@@ -1,4 +1,3 @@
-
 # Ubuntu 22.04|20.04|18.04
 ### Grafana Setup
 ```bash
