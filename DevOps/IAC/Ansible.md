@@ -2,8 +2,6 @@
 - [**Inventory**](#Inventory)
 	- [INI](#INI)
 	- [YAML](#YAML)
-		- [Basic](#Basic)
-		- [Parent-Child](#Parent-Child)
 - 
 ---
 # Inventory
