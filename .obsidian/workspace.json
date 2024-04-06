@@ -4,22 +4,45 @@
     "type": "split",
     "children": [
       {
-        "id": "e8a211bd97744c65",
+        "id": "4037f6d47861d253",
         "type": "tabs",
         "children": [
           {
-            "id": "6bc1f586252358fc",
+            "id": "3fe048db66f9b41c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/IAC/Ansible.md",
+                "file": "DevOps/Kafka/Kafka-For-Beginners.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "931fd4af6ae9a15e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DevOps/Kafka/Assets/Pasted image 20240406074625.png"
+              }
+            }
+          },
+          {
+            "id": "0869678bedecafeb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevOps/Kafka/Kafka-For-Beginners.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -85,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/IAC/Ansible.md",
+                "file": "DevOps/Kafka/Kafka-For-Beginners.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,12 +146,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6bc1f586252358fc",
+  "active": "a86cb3428c8c286b",
   "lastOpenFiles": [
+    "DevOps/Kafka/Assets/Pasted image 20240406082046.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081937.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081820.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081815.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081757.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081739.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081630.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406081115.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406074752.png",
+    "DevOps/Kafka/Assets/Pasted image 20240406074625.png",
+    "DevOps/Kafka/Kafka-For-Beginners.md",
+    "DevOps/Kafka/Assets/Pasted image 20240406074411.png",
+    "README.md",
+    "DevOps/Kafka/Assets",
+    "DevOps/IAC/Ansible.md",
+    "DevOps/Kafka",
     "DevOps/Kubernetes/Security.md",
     "DevOps/IAC",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
-    "DevOps/IAC/Ansible.md",
     "DevOps/IAC/Terraform.md",
     "DevOps/Monitoring.md",
     "DevOps/Security/Image Signing.md",
@@ -137,13 +175,6 @@
     "Red-teaming/Tunneling.md",
     "conflict-files-obsidian-git.md",
     "K8s-2.md",
-    "Reverse Engineering/attachments/Nasm structure.png",
-    "Reverse Engineering/attachments/operand notation.png",
-    "Reverse Engineering/attachments/offsetpic.png",
-    "Reverse Engineering/attachments/arithmeticinHLL.png",
-    "Reverse Engineering/attachments/littleEndian.png",
-    "Reverse Engineering/attachments/PTRexample 1.png",
-    "Reverse Engineering/attachments/PTRexample.png",
     "Reverse Engineering/ASM basics (MASM).md"
   ]
 }
