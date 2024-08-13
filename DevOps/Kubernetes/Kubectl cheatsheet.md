@@ -849,6 +849,7 @@ subjects:
 - kind: User # or ServiceAccount
   name: dev-user
   apiGroup: rbac.authorization.k8s.io
+  namespace: default
 roleRef:
   kind: Role
   name: developer
@@ -866,6 +867,7 @@ kubectl describe role <ROLE>
 ```bash
 kubectl auth can-i create deployments
 kubectl auth can-i create deployments --as <USER>
+kubectl auth can-i create deployments --as=system:serviceaccount:default:<SA>
 ```
 
 ### Great Tools
