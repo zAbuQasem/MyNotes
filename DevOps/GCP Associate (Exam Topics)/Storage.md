@@ -5,7 +5,6 @@
 - **Cost Optimization**: Use lifecycle management to transition data to lower-cost storage classes as it ages.
 
 ---
-
 #  Persistent-Disk
 
 - **Description**: High-performance block storage for Compute Engine and Google Kubernetes Engine (GKE).
