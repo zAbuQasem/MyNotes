@@ -83,4 +83,56 @@ You created a Google Cloud Platform project with an App Engine application insid
     - A GCP project can contain **only one App Engine application**.
 
 ---
+## Question-45
+#deployments 
+You recently deployed a new version of an application to App Engine and then discovered a bug in the release. You need to immediately revert to the prior version of the application. What should you do?  
 
+- A. Run gcloud app restore.
+- B. On the App Engine page of the GCP Console, select the application that needs to be reverted and click Revert.
+- ***C. On the App Engine Versions page of the GCP Console, route 100% of the traffic to the previous version.***
+- D. Deploy the original version as a separate application. Then go to App Engine settings and split traffic between applications so that the original version serves 100% of the requests.
+
+Option A is wrong as gcloud app restore was used for backup and restore and has been deprecated.Option B is wrong as there is no application revert functionality available.Option D is wrong as App Engine maintains version and need not be redeployed.
+
+---
+## Question-46
+#deployments 
+You deployed an App Engine application using gcloud app deploy, but it did not deploy to the intended project. You want to find out why this happened and where the application deployed. What should you do?  
+
+- A. Check the app.yaml file for your application and check project settings.
+- B. Check the web-application.xml file for your application and check project settings.
+- C. Go to Deployment Manager and review settings for deployment of applications.
+- ***D. Go to Cloud Shell and run gcloud config list to review the Google Cloud configuration used for deployment.***]
+### Explanation:
+
+1. **`gcloud config list`**:
+    - This command displays the current **Google Cloud SDK configuration**, including:
+- **Active project**: The project where commands, like `gcloud app deploy`, are executed.
+- Account and other configurations.
+    - If the application was deployed to the wrong project, it’s likely because the active project setting was incorrect during deployment.
+2. **Why This Happens**:
+    - The `gcloud` CLI uses the **active project** in the configuration for deployments.
+    - If no project is explicitly specified in the command (e.g., `--project` flag), the active project in the configuration is used.
+3. **How to Resolve**:
+	- Run the following to view your configuration:
+```bash
+gcloud config list
+```
+
+- Check the `project` field under the **[core]** section to confirm where the app was deployed.
+
+- If needed, set the correct project:
+```bash
+gcloud config set project PROJECT_ID
+```
+
+### Why Not the Other Options?
+
+- **A. Check the app.yaml file for your application and check project settings**:
+	- The `app.yaml` file does not specify the project for deployment; the project comes from `gcloud` configuration or the `--project` flag.
+- **B. Check the web-application.xml file for your application and check project settings**:
+	- This file is not relevant to App Engine deployments.
+- **C. Go to Deployment Manager and review settings for deployment**:
+    - Deployment Manager is not used for deploying App Engine applications. `gcloud app deploy` is the correct command.
+
+---

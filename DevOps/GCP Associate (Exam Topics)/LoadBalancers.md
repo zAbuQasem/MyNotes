@@ -54,7 +54,6 @@
 - [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp-proxy)
 
 ---
-
 # Key-Features-and-Best-Practices
 
 - **Health Checks**:
