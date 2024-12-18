@@ -43,6 +43,7 @@
 	- **Audit Logs**: Use audit logs to track access and changes to resources.
 	- **Activity Logs** only show administrative events (e.g., IAM role changes) and not data access events.
 	- **Stackdriver Logs (Cloud Logging)** provide detailed information about data access, including file reads, writes, and metadata changes.
+	- Google Cloud’s **Stackdriver Monitoring** (now called Cloud Monitoring) allows you to monitor resources across multiple projects by creating a **single Workspace**.
 
 ---
 # Additional-Resources

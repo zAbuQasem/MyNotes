@@ -31,16 +31,13 @@ Monitoring dashboard. What should you do?
 ### Explanation:
 
 1. **Single Stackdriver (Cloud Monitoring) Workspace**:
-    
     - Google Cloud’s **Stackdriver Monitoring** (now called Cloud Monitoring) allows you to monitor resources across multiple projects by creating a **single Workspace**.
     - You can **link multiple projects** to the same Cloud Monitoring Workspace, enabling centralized monitoring and reporting.
 2. **How It Works**:
-    
     - Choose a primary project to host the **Workspace**.
     - Link the additional GCP projects (containing the distributed resources) to this Workspace.
     - All metrics, dashboards, and alerts can then be managed and viewed centrally.
 3. **Benefits**:
-    
     - A single Workspace provides a **consolidated view** of resources across projects.
     - It avoids creating unnecessary accounts or roles.
     - Simplifies monitoring setup and management.
@@ -48,13 +45,10 @@ Monitoring dashboard. What should you do?
 ### Why Not the Other Options?
 
 - **A. Use Shared VPC and link Stackdriver to one of the projects**:
-    
     - Shared VPC is for networking, not for consolidating monitoring data. Linking Stackdriver to a single project doesn’t automatically gather metrics across multiple projects.
 - **B. Create a Stackdriver account per project and service accounts**:
-    
     - Creating separate Stackdriver accounts is inefficient and unnecessarily complex. There’s no need to grant Stackdriver roles across all projects.
 - **D. Create a Group and add project names as criteria**:
-    
     - Stackdriver Groups help organize resources **within** a Workspace but do not consolidate monitoring data across projects. A single Workspace is still required to centralize metrics.
 
 ---

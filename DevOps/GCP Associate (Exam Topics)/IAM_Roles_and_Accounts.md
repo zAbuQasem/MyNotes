@@ -1,7 +1,7 @@
 
 ## Key IAM Roles
 
-### Compute Engine
+### Compute-Engine
 
 - **Compute Admin**: Full control over Compute Engine resources.
 ```
@@ -19,7 +19,6 @@ roles/compute.viewer
 ```
 roles/compute.instanceAdmin.v1
 ```
-
 
 ### Storage
 
@@ -41,7 +40,6 @@ roles/storage.objectAdmin
 roles/storage.viewer
 ```
 
-
 ### BigQuery
 
 - **BigQuery Admin**: Full control over BigQuery resources.
@@ -62,7 +60,6 @@ roles/bigquery.dataViewer
 roles/bigquery.jobUser
 ```
 
-
 ### Networking
 
 - **Network Admin**: Full control over networking resources.
@@ -77,8 +74,7 @@ roles/compute.networkAdmin
 roles/compute.securityAdmin
 ```
 
-
-## Common Service Accounts
+## Common-Service-Accounts
 
 ### Compute Engine
 
@@ -88,8 +84,7 @@ roles/compute.securityAdmin
 [PROJECT_NUMBER]-compute@developer.gserviceaccount.com
 ```
 
-
-### Cloud SQL
+### Cloud-SQL
 
 - **Cloud SQL Service Account**: Manages Cloud SQL instances.
 
@@ -97,8 +92,7 @@ roles/compute.securityAdmin
 service-[PROJECT_NUMBER]@gcp-sa-cloud-sql.iam.gserviceaccount.com
 ```
 
-
-### Cloud Storage
+### Cloud-Storage
 
 - **Storage Transfer Service Account**: Performs storage transfer operations.
 
@@ -106,8 +100,7 @@ service-[PROJECT_NUMBER]@gcp-sa-cloud-sql.iam.gserviceaccount.com
 service-[PROJECT_NUMBER]@gcp-sa-storage-transfer.iam.gserviceaccount.com
 ```
 
-
-### Kubernetes Engine
+### Kubernetes-Engine
 
 - **GKE Service Account**: Manages Kubernetes clusters.
 
@@ -115,10 +108,8 @@ service-[PROJECT_NUMBER]@gcp-sa-storage-transfer.iam.gserviceaccount.com
 service-[PROJECT_NUMBER]@container-engine-robot.iam.gserviceaccount.com
 ```
 
-
 ---
-
-## Best Practices
+## Best-Practices
 
 - Use the principle of **least privilege**: Assign roles with only the permissions necessary for the job.
 - Regularly audit roles and service accounts to ensure compliance with security policies.
@@ -126,8 +117,7 @@ service-[PROJECT_NUMBER]@container-engine-robot.iam.gserviceaccount.com
 - Enable **Cloud Audit Logs** to track changes and access.
 
 ---
-
-## Additional Resources
+## Additional-Resources
 
 - [IAM Documentation](https://cloud.google.com/iam/docs)
 - [Service Accounts](https://cloud.google.com/iam/docs/service-accounts)
