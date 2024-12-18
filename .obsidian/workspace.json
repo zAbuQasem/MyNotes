@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IAM_Roles_and_Accounts"
+              "title": "Interesting-Questions"
             }
           }
         ]
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for IAM_Roles_and_Accounts"
+              "title": "Backlinks for Interesting-Questions"
             }
           },
           {
@@ -137,8 +137,8 @@
   },
   "active": "d606bd62895494a6",
   "lastOpenFiles": [
-    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
+    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",

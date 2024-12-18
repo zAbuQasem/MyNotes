@@ -52,3 +52,35 @@ Monitoring dashboard. What should you do?
     - Stackdriver Groups help organize resources **within** a Workspace but do not consolidate monitoring data across projects. A single Workspace is still required to centralize metrics.
 
 ---
+
+## Question #37
+#deployments 
+You created a Google Cloud Platform project with an App Engine application inside the project. You initially configured the application to be served from the us- central region. Now you want the application to be served from the asia-northeast1 region. What should you do?  
+
+- A. Change the default region property setting in the existing GCP project to asia-northeast1.
+- B. Change the region property setting in the existing App Engine application from us-central to asia-northeast1.
+- C. Create a second App Engine application in the existing GCP project and specify asia-northeast1 as the region to serve your application.
+- ***D. Create a new GCP project and create an App Engine application inside this new project. Specify asia-northeast1 as the region to serve your application.***
+### Explanation:
+
+1. **App Engine Region Selection**:
+    - The region for an App Engine application is **immutable** and cannot be changed once the application is created.
+    - You cannot move an App Engine app from one region (e.g., `us-central`) to another region (e.g., `asia-northeast1`).
+2. **Recommended Action**:
+    - To serve the application from a different region, you must **create a new App Engine application** in a new Google Cloud Platform project.
+    - During creation, specify the desired region (`asia-northeast1`).
+3. **Why a New Project?**:
+    - A GCP project can have **only one App Engine application**.
+    - Since the existing project already has an App Engine app in `us-central`, you cannot create a second one in the same project.
+
+### Why Not the Other Options?
+
+- **A. Change the default region property setting in the existing GCP project**:
+    - The region of an App Engine application cannot be changed after creation.
+- **B. Change the region property setting in the existing App Engine application**:
+    - The App Engine region is immutable and cannot be updated.
+- **C. Create a second App Engine application in the existing GCP project**:
+    - A GCP project can contain **only one App Engine application**.
+
+---
+
