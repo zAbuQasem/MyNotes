@@ -40,9 +40,9 @@
 - **Cloud Logging**:
     - Enable logging for all critical services.
     - Regularly review logs to identify anomalies and performance bottlenecks.
-- **Audit Logs**: Use audit logs to track access and changes to resources.
-- **Activity Logs** only show administrative events (e.g., IAM role changes) and not data access events.
-- **Stackdriver Logs (Cloud Logging)** provide detailed information about data access, including file reads, writes, and metadata changes.
+	- **Audit Logs**: Use audit logs to track access and changes to resources.
+	- **Activity Logs** only show administrative events (e.g., IAM role changes) and not data access events.
+	- **Stackdriver Logs (Cloud Logging)** provide detailed information about data access, including file reads, writes, and metadata changes.
 
 ---
 # Additional-Resources
