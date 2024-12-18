@@ -3,7 +3,7 @@
   "livePreview": true,
   "useMarkdownLinks": true,
   "alwaysUpdateLinks": true,
-  "spellcheck": true,
+  "spellcheck": false,
   "showFrontmatter": false,
   "promptDelete": false
 }
