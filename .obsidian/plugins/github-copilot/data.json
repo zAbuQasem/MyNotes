@@ -1,0 +1,22 @@
+{
+  "nodePath": "C:\\Users\\zeyad\\AppData\\Roaming\\fnm\\aliases\\default\\node.exe",
+  "enabled": true,
+  "hotkeys": {
+    "accept": "Tab",
+    "cancel": "Escape",
+    "request": "Ctrl- ",
+    "partial": "Cmd-Shift-.",
+    "next": "Ctrl-ArrowUp",
+    "disable": "Ctrl-Alt-"
+  },
+  "suggestionDelay": 500,
+  "debug": false,
+  "onlyOnHotkey": false,
+  "onlyInCodeBlock": false,
+  "exclude": [],
+  "deviceSpecificSettings": [
+    "nodePath"
+  ],
+  "useDeviceSpecificSettings": false,
+  "proxy": ""
+}

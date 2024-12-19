@@ -313,27 +313,89 @@ DaemonSet in the kube-system namespace of the cluster. You want a solution that 
 ### Explanation:
 
 1. **Type Provider in Deployment Manager**:
-    
     - A **Type Provider** allows Deployment Manager to interact with additional APIs, such as the Kubernetes API.
     - By adding the Kubernetes API as a new Type Provider, Deployment Manager can manage Kubernetes resources (like DaemonSets) directly as part of the deployment.
-2. **Fewest Possible Services**:
-    
+2. **Fewest Possible Services**: 
     - This approach keeps the solution clean and integrates everything within Deployment Manager, avoiding the need for extra services or scripts.
-    - It allows Deployment Manager to handle both the GKE cluster creation and the DaemonSet deployment.
+    - It allows Deployment Manager to handle both the GKE cluster creation and the DaemonSet deployment. 
 3. **How It Works**:
-    
     - After defining the cluster creation in Deployment Manager, you define the DaemonSet as a resource using the custom Type Provider linked to the Kubernetes API.
     - Deployment Manager then creates the cluster and deploys the DaemonSet in the specified namespace.
+
+### Example Configuration:
+
+- **Create a Type Provider for Kubernetes API**
+	- You need to configure the **Kubernetes API** as a custom **Type Provider** in Deployment Manager.
+	- Create a file called `k8s-type-provider.yaml`:
+```yml
+name: kubernetes-type-provider
+type: typeProvider
+properties:
+  descriptorUrl: https://$(ref.gke-cluster.endpoint)/swagger.json
+  options:
+    validationOptions:
+      schemaValidation: IGNORE_WITH_WARNINGS
+```
+- **Define the Deployment Manager Configuration**
+	- Create a configuration file `deployment.yaml` that defines both the GKE cluster and the DaemonSet.
+```yml
+resources:
+- name: gke-cluster
+  type: container.v1.cluster
+  properties:
+    zone: us-central1-a
+    cluster:
+      name: example-cluster
+      initialClusterVersion: "1.25"
+      nodePools:
+      - name: default-pool
+        initialNodeCount: 1
+        config:
+          machineType: n1-standard-1
+          oauthScopes:
+          - https://www.googleapis.com/auth/devstorage.read_only
+          - https://www.googleapis.com/auth/logging.write
+          - https://www.googleapis.com/auth/monitoring
+
+- name: daemonset
+  type: kubernetes-type-provider:apps/v1:namespaces/kube-system/DaemonSet
+  properties:
+    metadata:
+      name: example-daemonset
+      namespace: kube-system
+    spec:
+      selector:
+        matchLabels:
+          app: example-daemon
+      template:
+        metadata:
+          labels:
+            app: example-daemon
+        spec:
+          containers:
+          - name: example-container
+            image: nginx:1.17
+            ports:
+            - containerPort: 80s
+```
+- Deploy the configuration using Deployment Manager:
+```bash
+# Step 1: Deploy the Type Provider
+gcloud deployment-manager deployments create k8s-type-provider \
+    --config k8s-type-provider.yaml
+
+# Step 2: Deploy the GKE cluster and DaemonSet
+gcloud deployment-manager deployments create gke-deployment \
+    --config deployment.yaml
+```
+
 
 ### Why Not the Other Options?
 
 - **B. Use the Deployment Manager Runtime Configurator**:
-    
     - Runtime Configurator is not designed for creating Kubernetes resources like DaemonSets. It is primarily used for dynamic configurations and runtime variables.
 - **C. Create a Compute Engine instance with a startup script**:
-    
     - While this could work, it adds unnecessary complexity and introduces additional services (Compute Engine). It is not efficient or recommended.
 - **D. Add metadata to the cluster definition in Deployment Manager**:
-    
     - Metadata in a Deployment Manager cluster definition cannot be used to directly create Kubernetes resources like DaemonSets. This option is invalid.
 ---
