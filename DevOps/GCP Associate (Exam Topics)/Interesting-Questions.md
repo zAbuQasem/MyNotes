@@ -349,13 +349,13 @@ resources:
       initialClusterVersion: "1.30"
       nodePools:
       - name: default-pool
-        initialNodeCount: 1
-        config:
-          machineType: n1-standard-1
-          oauthScopes:
-          - https://www.googleapis.com/auth/devstorage.read_only
-          - https://www.googleapis.com/auth/logging.write
-          - https://www.googleapis.com/auth/monitoring
+initialNodeCount: 1
+config:
+  machineType: n1-standard-1
+  oauthScopes:
+  - https://www.googleapis.com/auth/devstorage.read_only
+  - https://www.googleapis.com/auth/logging.write
+  - https://www.googleapis.com/auth/monitoring
 
 - name: daemonset
   type: kubernetes-type-provider:apps/v1:namespaces/kube-system/DaemonSet
@@ -365,18 +365,18 @@ resources:
       namespace: kube-system
     spec:
       selector:
-        matchLabels:
-          app: example-daemon
+matchLabels:
+  app: example-daemon
       template:
-        metadata:
-          labels:
-            app: example-daemon
-        spec:
-          containers:
-          - name: example-container
-            image: nginx:1.17
-            ports:
-            - containerPort: 80s
+metadata:
+  labels:
+    app: example-daemon
+spec:
+  containers:
+  - name: example-container
+    image: nginx:1.17
+    ports:
+    - containerPort: 80s
 ```
 - Deploy the configuration using Deployment Manager:
 ```bash
@@ -398,4 +398,52 @@ gcloud deployment-manager deployments create gke-deployment \
     - While this could work, it adds unnecessary complexity and introduces additional services (Compute Engine). It is not efficient or recommended.
 - **D. Add metadata to the cluster definition in Deployment Manager**:
     - Metadata in a Deployment Manager cluster definition cannot be used to directly create Kubernetes resources like DaemonSets. This option is invalid.
+---
+## Question-70
+#iam 
+You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?  
+
+- A. Use service account credentials in your on-premises application.
+- ***B. Use gcloud to create a key file for the service account that has appropriate permissions.***
+- C. Set up direct interconnect between your data center and Google Cloud Platform to enable authentication for your on-premises applications.
+- D. Go to the IAM & admin console, grant a user account permissions similar to the service account permissions, and use this user account for authentication from your data center.
+
+### Explanation:
+
+To enable authentication to Google Cloud APIs, including AutoML, from an **on-premises environment**, the recommended approach is to use **service account key files**.
+
+1. **Why Service Account Key Files?**
+    
+    - A service account is a secure identity used by applications to authenticate and interact with Google Cloud services.
+    - You can generate a **key file** for the service account, which allows your on-premises application to securely authenticate with the required APIs.
+2. **Steps to Generate and Use a Service Account Key File**:
+    
+    - Use the `gcloud` CLI to create a key file for the service account:
+
+```bash
+gcloud iam service-accounts keys create key-file.json \
+    --iam-account=SERVICE_ACCOUNT_EMAIL
+```
+
+- Save the key file (`key-file.json`) securely and use it in your on-premises application to authenticate with Google Cloud services by setting the `GOOGLE_APPLICATION_CREDENTIALS` environment variable:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/key-file.json"
+```
+**Why This Is Recommended**:  
+- Service accounts are the **standard approach** for authenticating non-interactive workloads.
+- The key file provides the necessary credentials while keeping authentication secure and manageable.
+
+### Why Not the Other Options?
+
+- **A. Use service account credentials in your on-premises application**:
+    
+    - While this may seem correct, the term **"service account credentials"** is ambiguous. You must use a **service account key file**, which is explicitly addressed in Option B.
+- **C. Set up direct interconnect**:
+    
+    - Direct Interconnect is a network connection solution and does not handle authentication. It is unnecessary for enabling authentication to APIs from on-premises environments.
+- **D. Use a user account for authentication**:
+    
+    - This violates **Google-recommended best practices**, as user accounts are not meant for non-interactive authentication. Service accounts are the correct approach for applications.
+
 ---

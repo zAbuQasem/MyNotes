@@ -6,7 +6,7 @@
       {
         "id": "3135e67df672ed74",
         "type": "tabs",
-        "dimension": 50,
+        "dimension": 41.21532364597093,
         "children": [
           {
             "id": "d606bd62895494a6",
@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/README.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Interesting-Questions"
             },
             "group": "dbbe9c94896c6227"
           }
@@ -28,7 +28,7 @@
       {
         "id": "f1462c2214cedfe4",
         "type": "tabs",
-        "dimension": 50,
+        "dimension": 58.78467635402907,
         "children": [
           {
             "id": "75f147caa0534ef5",
@@ -36,12 +36,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/README.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Interesting-Questions"
             },
             "group": "dbbe9c94896c6227"
           }
@@ -101,7 +101,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -160,18 +161,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a86cb3428c8c286b",
+  "active": "d606bd62895494a6",
   "lastOpenFiles": [
-    "README.md",
+    "DevOps/GCP Associate (Exam Topics)/Databases.md",
+    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/README.md",
+    "README.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
     "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
     "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
-    "DevOps/GCP Associate (Exam Topics)/Databases.md",
-    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/AWS Solution Architect (v2)/AWS CloudFront.md",
     "Active Directory/Attack vectors/Group Policy Preferences.md",
     "DevOps/Kafka/Kafka-For-Beginners.md",
