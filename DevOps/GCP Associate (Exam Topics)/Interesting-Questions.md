@@ -299,3 +299,41 @@ This approach aligns with **Google-recommended practices** and is the simplest a
     
     - This approach is unnecessarily complicated and inefficient. Direct export from Cloud Logging to BigQuery is simpler and more cost-effective.
 ---
+## Question-69
+
+#deployments 
+
+You are using Deployment Manager to create a Google Kubernetes Engine cluster. Using the same Deployment Manager deployment, you also want to create a  
+DaemonSet in the kube-system namespace of the cluster. You want a solution that uses the fewest possible services. What should you do?  
+
+- ***A. Add the cluster's API as a new Type Provider in Deployment Manager, and use the new type to create the DaemonSet.***
+- B. Use the Deployment Manager Runtime Configurator to create a new Config resource that contains the DaemonSet definition.
+- C. With Deployment Manager, create a Compute Engine instance with a startup script that uses kubectl to create the DaemonSet.
+- D. In the cluster's definition in Deployment Manager, add a metadata that has kube-system as key and the DaemonSet manifest as value.
+### Explanation:
+
+1. **Type Provider in Deployment Manager**:
+    
+    - A **Type Provider** allows Deployment Manager to interact with additional APIs, such as the Kubernetes API.
+    - By adding the Kubernetes API as a new Type Provider, Deployment Manager can manage Kubernetes resources (like DaemonSets) directly as part of the deployment.
+2. **Fewest Possible Services**:
+    
+    - This approach keeps the solution clean and integrates everything within Deployment Manager, avoiding the need for extra services or scripts.
+    - It allows Deployment Manager to handle both the GKE cluster creation and the DaemonSet deployment.
+3. **How It Works**:
+    
+    - After defining the cluster creation in Deployment Manager, you define the DaemonSet as a resource using the custom Type Provider linked to the Kubernetes API.
+    - Deployment Manager then creates the cluster and deploys the DaemonSet in the specified namespace.
+
+### Why Not the Other Options?
+
+- **B. Use the Deployment Manager Runtime Configurator**:
+    
+    - Runtime Configurator is not designed for creating Kubernetes resources like DaemonSets. It is primarily used for dynamic configurations and runtime variables.
+- **C. Create a Compute Engine instance with a startup script**:
+    
+    - While this could work, it adds unnecessary complexity and introduces additional services (Compute Engine). It is not efficient or recommended.
+- **D. Add metadata to the cluster definition in Deployment Manager**:
+    
+    - Metadata in a Deployment Manager cluster definition cannot be used to directly create Kubernetes resources like DaemonSets. This option is invalid.
+---
