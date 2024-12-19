@@ -346,7 +346,7 @@ resources:
     zone: us-central1-a
     cluster:
       name: example-cluster
-      initialClusterVersion: "1.25"
+      initialClusterVersion: "1.30"
       nodePools:
       - name: default-pool
         initialNodeCount: 1
