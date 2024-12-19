@@ -400,7 +400,7 @@ gcloud deployment-manager deployments create gke-deployment \
     - Metadata in a Deployment Manager cluster definition cannot be used to directly create Kubernetes resources like DaemonSets. This option is invalid.
 ---
 ## Question-70
-#iam 
+#iam #deployments 
 You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?  
 
 - A. Use service account credentials in your on-premises application.
