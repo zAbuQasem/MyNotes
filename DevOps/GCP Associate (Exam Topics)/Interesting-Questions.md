@@ -447,3 +447,17 @@ export GOOGLE_APPLICATION_CREDENTIALS="/path/to/key-file.json"
     - This violates **Google-recommended best practices**, as user accounts are not meant for non-interactive authentication. Service accounts are the correct approach for applications.
 
 ---
+## Question-71
+
+#deployments #iam 
+
+You are using Container Registry to centrally store your company's container images in a separate project. In another project, you want to create a Google  
+Kubernetes Engine (GKE) cluster. You want to ensure that Kubernetes can download images from Container Registry. What should you do?  
+
+- ***A. In the project where the images are stored, grant the Storage Object Viewer IAM role to the service account used by the Kubernetes nodes.***
+- B. When you create the GKE cluster, choose the Allow full access to all Cloud APIs option under 'Access scopes'.
+- C. Create a service account, and give it access to Cloud Storage. Create a P12 key for this service account and use it as an imagePullSecrets in Kubernetes.
+- D. Configure the ACLs on each image in Cloud Storage to give read-only access to the default Compute Engine service account.
+
+---
+Continue [Here](https://www.secexams.com/exams/Google/associate-cloud-engineer/view/16) for more questions.
