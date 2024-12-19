@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Interesting-Questions"
+              "title": "Gcloud-Commands"
             }
           }
         ]
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Interesting-Questions"
+              "title": "Backlinks for IAM_Roles_and_Accounts"
             }
           },
           {
@@ -137,11 +137,12 @@
   },
   "active": "d606bd62895494a6",
   "lastOpenFiles": [
-    "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
-    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
-    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
+    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
+    "README.md",
+    "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
+    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
     "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
@@ -159,7 +160,6 @@
     "DevOps/Kafka/Assets/Pasted image 20240406081115.png",
     "DevOps/Kafka/Assets/Pasted image 20240406074752.png",
     "DevOps/Kafka/Assets/Pasted image 20240406074625.png",
-    "README.md",
     "DevOps/Kafka/Assets",
     "DevOps/IAC/Ansible.md",
     "DevOps/Kafka",
