@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/Navigation.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Navigation"
+              "title": "Interesting-Questions"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#iam",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -137,15 +137,15 @@
   },
   "active": "d606bd62895494a6",
   "lastOpenFiles": [
+    "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
+    "DevOps/GCP Associate (Exam Topics)/Storage.md",
+    "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
+    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
-    "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
     "README.md",
-    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
-    "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
-    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/AWS Solution Architect (v2)/AWS CloudFront.md",
     "Active Directory/Attack vectors/Group Policy Preferences.md",
     "DevOps/Kafka/Kafka-For-Beginners.md",

@@ -3,7 +3,6 @@
 - Placeholder for general notes and tips. Expand as needed.
 
 ---
-
 # Cloud-SQL
 
 - **Point-in-Time Recovery**: Enabling binary logging in Cloud SQL allows point-in-time recovery, which is essential for relational data management in single geographic locations.
@@ -14,7 +13,6 @@
 - [Official Documentation](https://cloud.google.com/sql/docs/mysql/backup-recovery/restore#tips-pitr)
 
 ---
-
 # Cloud-Spanner
 
 - **Global Scalability**: Designed for globally distributed databases with low-latency access.
@@ -25,7 +23,6 @@
 - [Official Documentation](https://cloud.google.com/spanner/docs)
 
 ---
-
 # Cloud-Storage
 
 - **Storage Classes**:
@@ -39,7 +36,6 @@
 - [Official Documentation](https://cloud.google.com/storage/docs)
 
 ---
-
 # BigQuery
 
 - **On-Demand Pricing**: Charges are based on the number of bytes processed ("bytes read") by queries.
@@ -52,7 +48,6 @@
 - [Official Documentation](https://cloud.google.com/bigquery/docs)
 
 ---
-
 # Firestore
 
 - **Flexible Database**: Cloud Firestore is a NoSQL document database.
@@ -63,7 +58,6 @@
 - [Official Documentation](https://cloud.google.com/firestore/docs)
 
 ---
-
 # Cloud-Bigtable
 
 - **Wide-Column Database**: Designed for low-latency and high-throughput workloads.
@@ -73,7 +67,6 @@
 - [Official Documentation](https://cloud.google.com/bigtable/docs)
 
 ---
-
 # Persistent-Disk
 
 - **Block Storage**: Provides high-performance block storage for Compute Engine and GKE.
@@ -85,7 +78,6 @@
 - [Official Documentation](https://cloud.google.com/compute/docs/disks)
 
 ---
-
 # Filestore
 
 - **Managed File Storage**: Provides a fully managed NFS service.

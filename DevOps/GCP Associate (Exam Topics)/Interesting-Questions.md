@@ -1,5 +1,7 @@
 ## Question-24
+
 #deployments
+
 You have a project for your App Engine application that serves a development environment. The required testing has succeeded and you want to create a new project to serve as your production environment. What should you do?  
 
 - ***A. Use gcloud to create the new project, and then deploy your application to the new project. Most Voted***
@@ -9,7 +11,9 @@ You have a project for your App Engine application that serves a development env
 
 ---
 ## Question-26 
+
 #iam
+
 You need to set up permissions for a set of Compute Engine instances to enable them to write data into a particular Cloud Storage bucket. You want to follow  
 Google-recommended practices. What should you do?  
 
@@ -20,7 +24,9 @@ Google-recommended practices. What should you do?
 
 ---
 # Question-32
+
 #monitoring
+
 You need to monitor resources that are distributed over different projects in Google Cloud Platform. You want to consolidate reporting under the same Stackdriver  
 Monitoring dashboard. What should you do?  
 
@@ -54,7 +60,9 @@ Monitoring dashboard. What should you do?
 ---
 
 ## Question #37
+
 #deployments 
+
 You created a Google Cloud Platform project with an App Engine application inside the project. You initially configured the application to be served from the us- central region. Now you want the application to be served from the asia-northeast1 region. What should you do?  
 
 - A. Change the default region property setting in the existing GCP project to asia-northeast1.
@@ -84,7 +92,9 @@ You created a Google Cloud Platform project with an App Engine application insid
 
 ---
 ## Question-45
+
 #deployments 
+
 You recently deployed a new version of an application to App Engine and then discovered a bug in the release. You need to immediately revert to the prior version of the application. What should you do?  
 
 - A. Run gcloud app restore.
@@ -96,7 +106,9 @@ Option A is wrong as gcloud app restore was used for backup and restore and has 
 
 ---
 ## Question-46
+
 #deployments 
+
 You deployed an App Engine application using gcloud app deploy, but it did not deploy to the intended project. You want to find out why this happened and where the application deployed. What should you do?  
 
 - A. Check the app.yaml file for your application and check project settings.
@@ -138,7 +150,9 @@ gcloud config set project PROJECT_ID
 ---
 
 ## Question-58
+
 #deployments 
+
 You are building an application that stores relational data from users. Users across the globe will use this application. Your CTO is concerned about the scaling requirements because the size of the user base is unknown. You need to implement a database solution that can scale with your user growth with minimum configuration changes. Which storage solution should you use?  
 
 - A. Cloud SQL
@@ -161,18 +175,17 @@ You are building an application that stores relational data from users. Users ac
 ### Why Not the Other Options?
 
 - **A. Cloud SQL**:
-    
     - While Cloud SQL is a managed relational database, it is not designed for global scaling. It is better suited for smaller, single-region use cases or moderate workloads.
 - **C. Cloud Firestore**:
-    
     - Cloud Firestore is a NoSQL document database and not designed for relational data. It is better suited for semi-structured or hierarchical data, not structured relational data.
 - **D. Cloud Datastore**:
-    
     - Cloud Datastore is also a NoSQL database and does not support relational schemas or SQL queries. It is suitable for structured or hierarchical data, not relational data.
 
 ---
 ## Question-59
+
 #billing
+
 You are the organization and billing administrator for your company. The engineering team has the Project Creator role on the organization. You do not want the engineering team to be able to link projects to the billing account. Only the finance team should be able to link a project to a billing account, but they should not be able to make any other changes to projects. What should you do?  
 
 - ***A. Assign the finance team only the Billing Account User role on the billing account.***
@@ -189,7 +202,6 @@ You are the organization and billing administrator for your company. The enginee
     - By limiting the **Billing Account User** role to the finance team, you restrict the ability to link projects to the billing account.
     - The engineering team retains the ability to create projects (as they have the **Project Creator** role) but cannot link those projects to the billing account.
 
----
 ### Why Not the Other Options?
 
 - **B. Assign the engineering team only the Billing Account User role on the billing account**:
@@ -201,4 +213,89 @@ You are the organization and billing administrator for your company. The enginee
 - **D. Assign the engineering team the Billing Account User role on the billing account and the Project Billing Manager role on the organization**:
     
     - This would allow the engineering team to link projects to the billing account, which is explicitly against the requirements.
+---
+## Question-64
+
+#deployments 
+
+You want to deploy an application on Cloud Run that processes messages from a Cloud Pub/Sub topic. You want to follow Google-recommended practices. What should you do?  
+
+- A. 1. Create a Cloud Function that uses a Cloud Pub/Sub trigger on that topic. 2. Call your application on Cloud Run from the Cloud Function for every message.
+- B. 1. Grant the Pub/Sub Subscriber role to the service account used by Cloud Run. 2. Create a Cloud Pub/Sub subscription for that topic. 3. Make your application pull messages from that subscription.
+- ***C. 1. Create a service account. 2. Give the Cloud Run Invoker role to that service account for your Cloud Run application. 3. Create a Cloud Pub/Sub subscription that uses that service account and uses your Cloud Run application as the push endpoint.***
+- D. 1. Deploy your application on Cloud Run on GKE with the connectivity set to Internal. 2. Create a Cloud Pub/Sub subscription for that topic. 3. In the same Google Kubernetes Engine cluster as your application, deploy a container that takes the messages and sends them to your application.
+
+### Explanation:
+
+This approach aligns with **Google-recommended practices** for deploying applications on Cloud Run that process messages from a Cloud Pub/Sub topic.
+
+1. **Service Account for Secure Communication**:
+    - Create a dedicated service account to ensure secure communication between Cloud Pub/Sub and your Cloud Run service.
+    - Grant the **Cloud Run Invoker role** to this service account, allowing Pub/Sub to invoke your Cloud Run service.
+2. **Cloud Pub/Sub Push Subscription**:
+    - Set up a Pub/Sub subscription for the topic and configure it to use your Cloud Run application's URL as the push endpoint. Pub/Sub will push messages to your Cloud Run service automatically.
+3. **Efficient Processing with Push**:
+    - Using a **push subscription** eliminates the need for your application to pull messages, reducing complexity and ensuring low latency message processing.
+
+
+### Why Not the Other Options?
+
+- **A. Use a Cloud Function with a Pub/Sub trigger to invoke Cloud Run**:
+    - This introduces unnecessary complexity and latency. Pub/Sub can directly push messages to Cloud Run without requiring a Cloud Function as an intermediary.
+- **B. Grant Pub/Sub Subscriber role and pull messages from the subscription**:
+    - While pulling messages is possible, it is **not the recommended practice** for Cloud Run. Using a push subscription simplifies the setup and ensures immediate message delivery.
+- **D. Use Cloud Run on GKE with an internal connectivity configuration**:
+    - Deploying Cloud Run on GKE is overly complex and unnecessary for this use case. Standard Cloud Run with a push subscription is simpler, more scalable, and cost-effective.
+---
+## Question-66
+
+#billing 
+
+Your company has an existing GCP organization with hundreds of projects and a billing account. Your company recently acquired another company that also has hundreds of projects and its own billing account. You would like to consolidate all GCP costs of both GCP organizations onto a single invoice. You would like to consolidate all costs as of tomorrow. What should you do?  
+
+- ***A. Link the acquired company's projects to your company's billing account.***
+- B. Configure the acquired company's billing account and your company's billing account to export the billing data into the same BigQuery dataset.
+- C. Migrate the acquired company's projects into your company's GCP organization. Link the migrated projects to your company's billing account.
+- D. Create a new GCP organization and a new billing account. Migrate the acquired company's projects and your company's projects into the new GCP organization and link the projects to the new billing account.
+
+To me, A looks correct. projects are linked to another organization as well in the acquired company so migrating would need google cloud support. we can not do ourselves. however, we can link other company projects to an existing billing account to generate total cost. https://medium.com/google-cloud/google-cloud-platform-cross-org-billing-41c5db8fefa6
+
+---
+
+## Question-68
+
+#monitoring #billing 
+
+For analysis purposes, you need to send all the logs from all of your Compute Engine instances to a BigQuery dataset called platform-logs. You have already installed the Cloud Logging agent on all the instances. You want to minimize cost. What should you do?  
+
+- A. 1. Give the BigQuery Data Editor role on the platform-logs dataset to the service accounts used by your instances. 2. Update your instances' metadata to add the following value: logs-destination: bq://platform-logs.
+- B. 1. In Cloud Logging, create a logs export with a Cloud Pub/Sub topic called logs as a sink. 2. Create a Cloud Function that is triggered by messages in the logs topic. 3. Configure that Cloud Function to drop logs that are not from Compute Engine and to insert Compute Engine logs in the platform-logs dataset.
+- ***C. 1. In Cloud Logging, create a filter to view only Compute Engine logs. 2. Click Create Export. 3. Choose BigQuery as Sink Service, and the platform-logs dataset as Sink Destination.***
+- D. 1. Create a Cloud Function that has the BigQuery User role on the platform-logs dataset. 2. Configure this Cloud Function to create a BigQuery Job that executes this query: INSERT INTO dataset.platform-logs (timestamp, log) SELECT timestamp, log FROM compute.logs WHERE timestamp > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) 3. Use Cloud Scheduler to trigger this Cloud Function once a day.
+
+### Explanation:
+
+This approach aligns with **Google-recommended practices** and is the simplest and most cost-effective way to send Compute Engine logs to a BigQuery dataset.
+
+1. **Filtering Logs**:
+    
+    - Use **Cloud Logging's export feature** to filter logs specific to Compute Engine instances. This ensures that only relevant logs are sent to BigQuery, minimizing unnecessary data processing and storage costs.
+2. **BigQuery as a Sink**:
+    
+    - Select **BigQuery** as the sink destination and specify the `platform-logs` dataset. This automatically sends the filtered logs to the specified dataset for analysis.
+3. **Cost Efficiency**:
+    
+    - By directly exporting filtered logs to BigQuery, you avoid additional costs associated with intermediary services like Cloud Pub/Sub or Cloud Functions.
+
+### Why Not the Other Options?
+
+- **A. Update instances' metadata to direct logs to BigQuery**:
+    
+    - There is no feature in GCP that allows logs to be sent to BigQuery by simply updating instance metadata. This option is not valid.
+- **B. Use Cloud Pub/Sub and Cloud Functions**:
+    
+    - This adds unnecessary complexity and cost. Logs can be exported directly from Cloud Logging to BigQuery without needing Cloud Pub/Sub or a Cloud Function.
+- **D. Use Cloud Functions and Cloud Scheduler**:
+    
+    - This approach is unnecessarily complicated and inefficient. Direct export from Cloud Logging to BigQuery is simpler and more cost-effective.
 ---
