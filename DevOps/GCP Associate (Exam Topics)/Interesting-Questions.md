@@ -136,4 +136,69 @@ gcloud config set project PROJECT_ID
     - Deployment Manager is not used for deploying App Engine applications. `gcloud app deploy` is the correct command.
 
 ---
-## Continue at 54
+
+## Question-58
+#deployments 
+You are building an application that stores relational data from users. Users across the globe will use this application. Your CTO is concerned about the scaling requirements because the size of the user base is unknown. You need to implement a database solution that can scale with your user growth with minimum configuration changes. Which storage solution should you use?  
+
+- A. Cloud SQL
+- ***B. Cloud Spanner***
+- C. Cloud Firestore
+- D. Cloud Datastore
+
+### Explanation:
+
+1. **Global Scalability with Relational Data**:
+    - **Cloud Spanner** is a fully managed, globally distributed, horizontally scalable **relational database**. It is designed to handle massive user growth with minimal configuration changes.
+    - It supports strong consistency, SQL queries, and schemas, making it ideal for applications that require relational data storage.
+2. **Reasons to Choose Cloud Spanner**:
+    - **Scalability**: Scales seamlessly across regions and handles high throughput and low latency for users worldwide.
+    - **Global Distribution**: Data is replicated across multiple regions to ensure availability and global access.
+    - **Relational Database Features**: Full SQL capabilities with ACID transactions.
+    - **Minimal Configuration Changes**: Automatically handles replication, sharding, and scaling without developer intervention.
+
+---
+### Why Not the Other Options?
+
+- **A. Cloud SQL**:
+    
+    - While Cloud SQL is a managed relational database, it is not designed for global scaling. It is better suited for smaller, single-region use cases or moderate workloads.
+- **C. Cloud Firestore**:
+    
+    - Cloud Firestore is a NoSQL document database and not designed for relational data. It is better suited for semi-structured or hierarchical data, not structured relational data.
+- **D. Cloud Datastore**:
+    
+    - Cloud Datastore is also a NoSQL database and does not support relational schemas or SQL queries. It is suitable for structured or hierarchical data, not relational data.
+
+---
+## Question-59
+#billing
+You are the organization and billing administrator for your company. The engineering team has the Project Creator role on the organization. You do not want the engineering team to be able to link projects to the billing account. Only the finance team should be able to link a project to a billing account, but they should not be able to make any other changes to projects. What should you do?  
+
+- ***A. Assign the finance team only the Billing Account User role on the billing account.***
+- B. Assign the engineering team only the Billing Account User role on the billing account.
+- C. Assign the finance team the Billing Account User role on the billing account and the Project Billing Manager role on the organization.
+- D. Assign the engineering team the Billing Account User role on the billing account and the Project Billing Manager role on the organization.
+
+### Explanation:
+
+1. **Role Responsibilities**:
+    - **Billing Account User**: This role allows users to link or unlink projects to/from the billing account. By assigning this role **only to the finance team**, you ensure that only the finance team can perform this action.
+    - **Project Creator**: The engineering team can create projects, but without the **Billing Account User** or **Project Billing Manager** roles, they cannot link those projects to the billing account.
+2. **Why This Works**:
+    - By limiting the **Billing Account User** role to the finance team, you restrict the ability to link projects to the billing account.
+    - The engineering team retains the ability to create projects (as they have the **Project Creator** role) but cannot link those projects to the billing account.
+
+---
+### Why Not the Other Options?
+
+- **B. Assign the engineering team only the Billing Account User role on the billing account**:
+    
+    - This would allow the engineering team to link projects to the billing account, violating the requirement that only the finance team should have this ability.
+- **C. Assign the finance team the Billing Account User role on the billing account and the Project Billing Manager role on the organization**:
+    
+    - The **Project Billing Manager** role on the organization is unnecessary. The **Billing Account User** role alone is sufficient to allow the finance team to link projects to the billing account.
+- **D. Assign the engineering team the Billing Account User role on the billing account and the Project Billing Manager role on the organization**:
+    
+    - This would allow the engineering team to link projects to the billing account, which is explicitly against the requirements.
+---
