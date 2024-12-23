@@ -716,7 +716,7 @@ Your company has a large quantity of unstructured data in different file formats
 ---
 ## Question-121
 
-#deployments 
+#depoyments 
 
 Your managed instance group raised an alert stating that new instance creation has failed to create new instances. You need to maintain the number of running instances specified by the template to be able to process expected application traffic. What should you do?  
 
@@ -727,27 +727,22 @@ Your managed instance group raised an alert stating that new instance creation h
 ### Explanation:
 
 1. **Why Validate the Instance Template**:
-    
     - The instance template must have valid syntax and proper configurations to ensure instances can be created successfully. Any issues in the template, such as improper configurations or naming conflicts, will cause instance creation to fail.
 2. **Persistent Disk Conflicts**:
-    
     - If a persistent disk with the same name as the instance already exists, the new instance cannot be created because instance names must be unique within a project. Deleting conflicting disks resolves this issue.
 3. **Set `disks.autoDelete` to `true`**:
-    
     - Enabling the `disks.autoDelete` property ensures that disks created with instances are automatically deleted when the instances are removed. This avoids conflicts with future instance creations.
 4. **How This Solves the Problem**:
-    
     - Verifying the template syntax ensures the configurations are correct.
     - Deleting conflicting persistent disks removes obstacles to instance creation.
     - Setting `disks.autoDelete` ensures that instances and their associated resources are cleaned up properly, preventing future issues.
 ### Why Not the Other Options?
 
 - **A. Create a new instance template and delete conflicting disks**:
-    
     - Creating a new instance template is unnecessary unless the current template is invalid. Verifying the existing template and fixing issues is more efficient.
 - **B. Create a new template and verify naming conflicts**:
-    
     - Similar to A, creating a new instance template is redundant unless the current one is invalid. Fixing the existing one is sufficient.
 - **D. Replace the current template and enable `disks.autoDelete`**:
-    
     - Replacing the current template is unnecessary unless it's invalid. Verifying and fixing the existing template is simpler and avoids extra work.
+
+---
