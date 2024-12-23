@@ -400,7 +400,9 @@ gcloud deployment-manager deployments create gke-deployment \
     - Metadata in a Deployment Manager cluster definition cannot be used to directly create Kubernetes resources like DaemonSets. This option is invalid.
 ---
 ## Question-70
+
 #iam #deployments 
+
 You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?  
 
 - A. Use service account credentials in your on-premises application.
@@ -460,4 +462,123 @@ Kubernetes Engine (GKE) cluster. You want to ensure that Kubernetes can download
 - D. Configure the ACLs on each image in Cloud Storage to give read-only access to the default Compute Engine service account.
 
 ---
-Continue [Here](https://www.secexams.com/exams/Google/associate-cloud-engineer/view/16) for more questions.
+
+## Question-82
+
+#deployments #network
+
+Your VMs are running in a subnet that has a subnet mask of 255.255.255.240. The current subnet has no more free IP addresses and you require an additional  
+10 IP addresses for new VMs. The existing and new VMs should all be able to reach each other without additional routes. What should you do?  
+
+1. ***Use gcloud to expand the IP range of the current subnet.***
+    
+2. Delete the subnet, and recreate it using a wider range of IP addresses.
+    
+3. Create a new project. Use Shared VPC to share the current network with the new project.
+    
+4. Create a new subnet with the same starting IP but a wider range to overwrite the current subnet.
+
+### Explanation:
+
+1. **Subnet Expansion in Google Cloud**:
+    
+    - Google Cloud allows you to **expand the IP range of an existing subnet** without disrupting the current resources or requiring a new subnet.
+    - Expanding the subnet's IP range ensures that the new and existing VMs remain in the same subnet and can communicate without additional routes.
+2. **Command to Expand the Subnet**: Use the following command to expand the IP range:
+```bash
+gcloud compute networks subnets expand-ip-range SUBNET_NAME \
+    --region=REGION \
+    --prefix-length=NEW_PREFIX_LENGTH
+```
+- Replace `SUBNET_NAME` with the name of your current subnet.
+    - Replace `REGION` with the region where your subnet resides.
+    - Replace `NEW_PREFIX_LENGTH` with a smaller prefix length (e.g., `28` for a larger subnet).
+- **Why Subnet Expansion Works**:
+    
+    - By expanding the IP range, the existing subnet is updated to include more IP addresses, ensuring all VMs (existing and new) can communicate within the same subnet.
+    - This avoids the need to delete or recreate resources, minimizing disruption.
+
+
+### Why Not the Other Options?
+
+- **B. Delete the subnet, and recreate it using a wider range of IP addresses**:
+    
+    - Deleting the subnet would require you to reconfigure the existing VMs, causing downtime. Expanding the IP range is more efficient and non-disruptive.
+- **C. Create a new project and use Shared VPC**:
+    
+    - Creating a new project and using Shared VPC adds unnecessary complexity. It also creates separate subnets, requiring additional routes for communication.
+- **D. Create a new subnet with the same starting IP but a wider range**:
+    
+    - Google Cloud does not allow overlapping IP ranges for subnets in the same network. Creating a new subnet with the same starting IP would conflict with the existing subnet.
+---
+## Question-83
+
+#iam 
+
+Your organization uses G Suite for communication and collaboration. All users in your organization have a G Suite account. You want to grant some G Suite users access to your Cloud Platform project. What should you do?  
+
+1. Enable Cloud Identity in the GCP Console for your domain.
+    
+2. Grant them the required IAM roles using their G Suite email address.
+    
+3. Create a CSV sheet with all users' email addresses. Use the gcloud command line tool to convert them into Google Cloud Platform accounts.
+    
+4. In the G Suite console, add the users to a special group called [[email protected]](https://www.secexams.com/cdn-cgi/l/email-protection). Rely on the default behavior of the Cloud Platform to grant users access if they are members of this group.
+### Explanation:
+
+1. **IAM and G Suite Integration**:
+    - G Suite accounts (now known as Google Workspace) can be used directly as identities in Google Cloud Platform (GCP) for authentication and access management.
+    - You can grant users access to GCP resources by assigning the appropriate IAM roles using their G Suite email addresses.
+2. **How to Grant Access**:
+    - In the GCP Console or via the `gcloud` CLI, add the user's G Suite email to the project and assign the required roles.
+3. **Why This Works**:
+	- G Suite accounts are natively supported in GCP, so no additional setup or configuration is required.
+	- This method ensures that only the required users are granted access with the appropriate level of permissions.
+### Why Not the Other Options?
+
+- **A. Enable Cloud Identity in the GCP Console for your domain**:
+    
+    - Cloud Identity is used to manage users without G Suite accounts or for organizations without G Suite. Since your organization already uses G Suite, this is unnecessary.
+- **C. Use a CSV sheet and convert users into GCP accounts**:
+    
+    - G Suite users do not need to be "converted" into GCP accounts. They are already recognized as valid identities in GCP.
+- **D. Add users to a special G Suite group called `gcp-admins@your-domain.com`**:
+    
+    - While you can use groups to manage IAM roles, GCP does not automatically grant access to a group called `gcp-admins`. You must explicitly assign IAM roles to the group.
+---
+## Question-111
+
+#iam 
+
+Your management has asked an external auditor to review all the resources in a specific project. The security team has enabled the Organization Policy called  
+Domain Restricted Sharing on the organization node by specifying only your Cloud Identity domain. You want the auditor to only be able to view, but not modify, the resources in that project. What should you do?  
+
+1. Ask the auditor for their Google account, and give them the Viewer role on the project.
+2. Ask the auditor for their Google account, and give them the Security Reviewer role on the project.
+3. ***Create a temporary account for the auditor in Cloud Identity, and give that account the Viewer role on the project.***
+4. Create a temporary account for the auditor in Cloud Identity, and give that account the Security Reviewer role on the project.
+### Explanation:
+
+1. **Domain Restricted Sharing Policy**:
+    
+    - The **Domain Restricted Sharing** policy restricts resource access to only users within your organization's **Cloud Identity domain**.
+    - External auditors not in your domain cannot be granted access directly to the project without violating this policy.
+2. **Solution: Temporary Cloud Identity Account**:
+    
+    - To comply with the policy, create a **temporary account** for the auditor within your Cloud Identity domain.
+    - This allows the auditor to access resources without relaxing or violating the Domain Restricted Sharing policy.
+3. **Viewer Role**:
+    
+    - Assign the **Viewer role** to the auditor’s temporary account. This role allows them to view (but not modify) all resources within the project, which matches the requirements.
+### Why Not the Other Options?
+
+- **A. Ask the auditor for their Google account and give them the Viewer role**:
+    
+    - Since the **Domain Restricted Sharing** policy is enabled, external accounts (outside your domain) cannot be granted access.
+- **B. Ask the auditor for their Google account and give them the Security Reviewer role**:
+    
+    - Same issue as Option A: external accounts are blocked by the Domain Restricted Sharing policy.
+- **D. Create a temporary Cloud Identity account and give the Security Reviewer role**:
+    
+    - The **Security Reviewer role** provides access to security-related resources (IAM policies, logs, etc.), but it does not meet the broader requirement of viewing **all resources**. The Viewer role is more appropriate here.
+---
