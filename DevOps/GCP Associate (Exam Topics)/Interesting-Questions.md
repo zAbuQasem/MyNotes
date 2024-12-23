@@ -582,3 +582,172 @@ Domain Restricted Sharing on the organization node by specifying only your Cloud
     
     - The **Security Reviewer role** provides access to security-related resources (IAM policies, logs, etc.), but it does not meet the broader requirement of viewing **all resources**. The Viewer role is more appropriate here.
 ---
+
+## Question-112
+
+#iam 
+
+You need to assign a Cloud Identity and Access Management (Cloud IAM) role to an external auditor. The auditor needs to have permissions to review your  
+Google Cloud Platform (GCP) Audit Logs and also to review your Data Access logs. What should you do?  
+
+1. Assign the auditor the IAM role roles/logging.privateLogViewer. Perform the export of logs to Cloud Storage. 
+2. Assign the auditor the IAM role roles/logging.privateLogViewer. Direct the auditor to also review the logs for changes to Cloud IAM policy.
+3. Assign the auditor's IAM user to a custom role that has logging.privateLogEntries.list permission. Perform the export of logs to Cloud Storag.
+4. Assign the auditor's IAM user to a custom role that has logging.privateLogEntries.list permission. Direct the auditor to also review the logs for changes to Cloud IAM policy.
+
+### Explanation:
+
+1. **Role for Accessing Audit Logs**:
+    
+    - The `roles/logging.privateLogViewer` role provides access to **all audit logs**, including **Data Access logs**, which are private and require elevated permissions.
+    - This role ensures the auditor can view **Admin Activity logs**, **System logs**, and **Data Access logs**, covering the required scope.
+2. **Changes to Cloud IAM Policies**:
+    
+    - **Admin Activity logs** include changes to IAM policies, making them essential for security and compliance reviews.
+    - By reviewing these logs, the auditor can verify changes made to IAM roles and permissions.
+3. **Why No Need for Export**:
+    
+    - Direct access to logs via the `roles/logging.privateLogViewer` role eliminates the need to export logs to Cloud Storage or create custom roles.
+
+### Why Not the Other Options?
+
+- **A. Assign `roles/logging.privateLogViewer` and export logs to Cloud Storage**:
+    
+    - Exporting logs is unnecessary. The `roles/logging.privateLogViewer` role already allows the auditor to access the logs directly.
+- **C. Create a custom role with `logging.privateLogEntries.list` and export logs**:
+    
+    - Creating a custom role is redundant when the predefined `roles/logging.privateLogViewer` role already provides the required permissions.
+    - Exporting logs adds unnecessary complexity.
+- **D. Create a custom role with `logging.privateLogEntries.list`**:
+    
+    - Similar to Option C, creating a custom role is unnecessary, and the predefined role (`roles/logging.privateLogViewer`) is sufficient for the auditor's needs.
+---
+## Question-116
+
+#iam
+
+You are configuring service accounts for an application that spans multiple projects. Virtual machines (VMs) running in the web-applications project need access to BigQuery datasets in crm-databases-proj. You want to follow Google-recommended practices to give access to the service account in the web-applications project. What should you do?  
+
+1. Give project owner for web-applications appropriate roles to crm-databases-proj.
+2. Give project owner role to crm-databases-proj and the web-applications project.
+3. Give project owner role to crm-databases-proj and bigquery.dataViewer role to web-applications.
+4. ***Give bigquery.dataViewer role to crm-databases-proj and appropriate roles to web-applications.***
+
+### Explanation:
+
+1. **Service Accounts for Cross-Project Access**:
+    - When an application spans multiple projects, service accounts are used to securely grant specific permissions across projects.
+    - The virtual machines (VMs) in the `web-applications` project need access to BigQuery datasets in the `crm-databases-proj`. This access should follow the **principle of least privilege**.
+2. **Steps to Implement Cross-Project Access**:
+    - **Grant the `bigquery.dataViewer` role**:
+        - Assign the `bigquery.dataViewer` role in the **crm-databases-proj** project to the **service account used by the VMs in the web-applications project**.
+3. **Why This Works**:
+    - The `bigquery.dataViewer` role provides read access to BigQuery datasets, allowing the VMs to query the data without write permissions.
+    - This approach aligns with Google-recommended practices by granting the minimum required permissions for the service account to function effectively.
+
+### Why Not the Other Options?
+
+- **1. Give project owner for `web-applications` appropriate roles to `crm-databases-proj`**:
+    - The **Project Owner** role provides broad, unrestricted access and is excessive for this use case. This violates the principle of least privilege.
+- **2. Give project owner role to both projects**:
+    - Assigning the **Project Owner** role to both projects is highly insecure and unnecessary. It provides administrative permissions far beyond what's needed.
+- **3. Give project owner role to `crm-databases-proj` and `bigquery.dataViewer` to `web-applications`**:
+    - Granting the **Project Owner** role to `crm-databases-proj` is excessive and violates best practices. Only the necessary permissions should be granted.
+
+---
+
+## Question-118
+
+#iam 
+
+You need to create a custom IAM role for use with a GCP service. All permissions in the role must be suitable for production use. You also want to clearly share with your organization the status of the custom role. This will be the first version of the custom role. What should you do?  
+
+1. ***Use permissions in your role that use the 'supported' support level for role permissions. Set the role stage to ALPHA while testing the role permissions.***
+2. Use permissions in your role that use the 'supported' support level for role permissions. Set the role stage to BETA while testing the role permissions.
+3. Use permissions in your role that use the 'testing' support level for role permissions. Set the role stage to ALPHA while testing the role permissions.
+4. Use permissions in your role that use the 'testing' support level for role permissions. Set the role stage to BETA while testing the role permissions.
+
+### Explanation:
+
+1. **Support Levels for Permissions**:
+    - **Supported**: Permissions that are production-ready and stable. These should be used when creating roles for production use.
+    - **Testing**: Permissions that are not production-ready and could be removed or changed without notice. These should not be used in roles intended for production.
+2. **Role Stage**:
+    - **ALPHA**: Used to indicate that the role is in an early testing phase and not ready for general use.
+    - **BETA**: Used to indicate that the role is more stable but still undergoing testing.
+    - **GA (General Availability)**: Used to indicate that the role is ready for production use.
+3. **Best Practices for Custom IAM Roles**:
+    - Use **'supported' permissions** to ensure production readiness.
+    - Set the **role stage to ALPHA** during initial testing so the organization knows it is not yet fully tested or ready for general use.
+
+### Why Not the Other Options?
+
+- **B. Use 'supported' permissions and set the stage to BETA**:
+    - The BETA stage is intended for roles that are stable but still under testing. For the **first version** of a role, you should start with ALPHA to clearly indicate it's an initial version.
+- **C and D. Use 'testing' permissions**:
+    - Permissions with the 'testing' support level are not suitable for production use. These permissions are unstable and might be deprecated without notice, making them inappropriate for production roles.
+---
+## Question #119
+
+#security #storage 
+
+Your company has a large quantity of unstructured data in different file formats. You want to perform ETL transformations on the data. You need to make the data accessible on Google Cloud so it can be processed by a Dataflow job. What should you do?  
+
+1. Upload the data to BigQuery using the bq command line tool.
+2. ***Upload the data to Cloud Storage using the gsutil command line tool.***
+3. Upload the data into Cloud SQL using the import function in the console.
+4. Upload the data into Cloud Spanner using the import function in the console.
+
+### Explanation:
+
+1. **Why Cloud Storage?**
+    
+    - **Cloud Storage** is designed for storing unstructured data in various file formats, making it the ideal storage solution for your large dataset.
+    - **Dataflow** can directly read data from Cloud Storage as input for ETL (Extract, Transform, Load) jobs, making the data processing pipeline seamless.
+
+### Why Not the Other Options?
+
+- **A. Upload the data to BigQuery using the bq command-line tool**:
+    - BigQuery is designed for structured, tabular data (like CSV, JSON, or Avro). Uploading unstructured data to BigQuery is not suitable without first transforming it.
+- **C. Upload the data into Cloud SQL using the import function**:
+    - Cloud SQL is a relational database for structured data, not for storing large quantities of unstructured data in different file formats.
+- **D. Upload the data into Cloud Spanner using the import function**:
+    - Cloud Spanner is also a relational database for structured data with strong consistency. It is not designed for handling large quantities of unstructured files.
+---
+## Question-121
+
+#deployments 
+
+Your managed instance group raised an alert stating that new instance creation has failed to create new instances. You need to maintain the number of running instances specified by the template to be able to process expected application traffic. What should you do?  
+
+1. Create an instance template that contains valid syntax which will be used by the instance group. Delete any persistent disks with the same name as instance names.
+2. Create an instance template that contains valid syntax that will be used by the instance group. Verify that the instance name and persistent disk name values are not the same in the template.
+3. ***Verify that the instance template being used by the instance group contains valid syntax. Delete any persistent disks with the same name as instance names. Set the disks.autoDelete property to true in the instance template.***
+4. Delete the current instance template and replace it with a new instance template. Verify that the instance name and persistent disk name values are not the same in the template. Set the disks.autoDelete property to true in the instance template.
+### Explanation:
+
+1. **Why Validate the Instance Template**:
+    
+    - The instance template must have valid syntax and proper configurations to ensure instances can be created successfully. Any issues in the template, such as improper configurations or naming conflicts, will cause instance creation to fail.
+2. **Persistent Disk Conflicts**:
+    
+    - If a persistent disk with the same name as the instance already exists, the new instance cannot be created because instance names must be unique within a project. Deleting conflicting disks resolves this issue.
+3. **Set `disks.autoDelete` to `true`**:
+    
+    - Enabling the `disks.autoDelete` property ensures that disks created with instances are automatically deleted when the instances are removed. This avoids conflicts with future instance creations.
+4. **How This Solves the Problem**:
+    
+    - Verifying the template syntax ensures the configurations are correct.
+    - Deleting conflicting persistent disks removes obstacles to instance creation.
+    - Setting `disks.autoDelete` ensures that instances and their associated resources are cleaned up properly, preventing future issues.
+### Why Not the Other Options?
+
+- **A. Create a new instance template and delete conflicting disks**:
+    
+    - Creating a new instance template is unnecessary unless the current template is invalid. Verifying the existing template and fixing issues is more efficient.
+- **B. Create a new template and verify naming conflicts**:
+    
+    - Similar to A, creating a new instance template is redundant unless the current one is invalid. Fixing the existing one is sufficient.
+- **D. Replace the current template and enable `disks.autoDelete`**:
+    
+    - Replacing the current template is unnecessary unless it's invalid. Verifying and fixing the existing template is simpler and avoids extra work.
