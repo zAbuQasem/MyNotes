@@ -1,6 +1,6 @@
 # Tags
 
-#monitoring #iam #deployments #billing 
+#monitoring #iam #deployments #billing #security #network #deployments 
 
 ---
 # [**Databases**](Databases.md)

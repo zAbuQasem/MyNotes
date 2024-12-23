@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Navigation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LoadBalancers"
+              "title": "Navigation"
             }
           }
         ]
@@ -138,10 +138,10 @@
   },
   "active": "d606bd62895494a6",
   "lastOpenFiles": [
+    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
-    "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/README.md",
     "README.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
