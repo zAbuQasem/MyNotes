@@ -754,9 +754,44 @@ Your company runs one batch process in an on-premises server that takes around 3
 
 - A. Migrate the workload to a Compute Engine Preemptible VM.
 - B. Migrate the workload to a Google Kubernetes Engine cluster with Preemptible nodes.
-- **C. Migrate the workload to a Compute Engine VM. Start and stop the instance as needed.**
+- ***C. Migrate the workload to a Compute Engine VM. Start and stop the instance as needed.***
 - D. Create an Instance Template with Preemptible VMs On. Create a Managed Instance Group from the template and adjust Target CPU Utilization. Migrate the workload.
 
 > Preeemptible VMs are not suitable for long-running tasks. They can be terminated at any time and are not suitable for tasks that take 30 hours to complete. Using a regular Compute Engine VM and starting/stopping it as needed is a more cost-effective and reliable approach for this scenario.
 
+---
+## Question-140
+
+#monitoring 
+
+You are asked to set up application performance monitoring on Google Cloud projects A, B, and C as a single pane of glass. You want to monitor CPU, memory, and disk. What should you do?  
+
+- A. Enable API and then share charts from project A, B, and C.
+- B. Enable API and then give the metrics.reader role to projects A, B, and C.
+- C. Enable API and then use default dashboards to view all projects in sequence.
+- ***D. Enable API, create a workspace under project A, and then add projects B and C.***
+
+### Explanation:
+
+1. **Cloud Monitoring Workspaces**:
+    - **Cloud Monitoring (formerly Stackdriver)** allows you to create a **workspace** to monitor multiple projects in a single pane of glass.
+    - A **workspace** is associated with one project (the "host project") and can include resources from multiple other projects.
+2. **Steps**:
+    - **Step 1**: Enable the Cloud Monitoring API in projects A, B, and C.
+    - **Step 2**: Create a **Cloud Monitoring Workspace** in **project A**.
+    - **Step 3**: Add **projects B and C** to the workspace:
+        - Navigate to **Monitoring > Settings > Workspace** in the Google Cloud Console.
+        - Add the additional projects to the workspace.
+    - Once the workspace is set up, you can monitor metrics like **CPU, memory, and disk** for resources across all projects.
+3. **Why This Is the Best Option**:
+    - By creating a workspace and adding all projects, you can view metrics across all projects in a single pane of glass.
+    - This approach ensures centralized monitoring without requiring additional tools or manual aggregation.
+### Why Not the Other Options?
+
+- **A. Enable API and then share charts from project A, B, and C**:
+    - Sharing individual charts from multiple projects does not provide a unified view. It is inefficient and lacks the ability to correlate metrics across projects.
+- **B. Enable API and then give the `metrics.reader` role to projects A, B, and C**:
+    - Assigning the `metrics.reader` role alone does not aggregate monitoring data. You still need a workspace to view metrics centrally.
+- **C. Enable API and then use default dashboards to view all projects in sequence**:
+    - Default dashboards allow you to view metrics for each project individually, but they do not provide a consolidated view across multiple projects.
 ---
