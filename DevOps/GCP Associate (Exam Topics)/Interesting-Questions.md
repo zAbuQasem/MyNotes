@@ -746,3 +746,15 @@ Your managed instance group raised an alert stating that new instance creation h
     - Replacing the current template is unnecessary unless it's invalid. Verifying and fixing the existing template is simpler and avoids extra work.
 
 ---
+## Question -136
+
+Your company runs one batch process in an on-premises server that takes around 30 hours to complete. The task runs monthly, can be performed offline, and must be restarted if interrupted. You want to migrate this workload to the cloud while minimizing cost. What should you do?  
+
+- A. Migrate the workload to a Compute Engine Preemptible VM.
+- B. Migrate the workload to a Google Kubernetes Engine cluster with Preemptible nodes.
+- **C. Migrate the workload to a Compute Engine VM. Start and stop the instance as needed.**
+- D. Create an Instance Template with Preemptible VMs On. Create a Managed Instance Group from the template and adjust Target CPU Utilization. Migrate the workload.
+
+> Preeemptible VMs are not suitable for long-running tasks. They can be terminated at any time and are not suitable for tasks that take 30 hours to complete. Using a regular Compute Engine VM and starting/stopping it as needed is a more cost-effective and reliable approach for this scenario.
+
+---
