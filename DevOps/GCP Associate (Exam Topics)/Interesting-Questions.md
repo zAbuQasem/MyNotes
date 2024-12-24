@@ -748,6 +748,8 @@ Your managed instance group raised an alert stating that new instance creation h
 ---
 ## Question -136
 
+#depoyments 
+
 Your company runs one batch process in an on-premises server that takes around 30 hours to complete. The task runs monthly, can be performed offline, and must be restarted if interrupted. You want to migrate this workload to the cloud while minimizing cost. What should you do?  
 
 - A. Migrate the workload to a Compute Engine Preemptible VM.
