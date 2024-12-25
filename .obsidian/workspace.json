@@ -20,16 +20,16 @@
               "icon": "lucide-file",
               "title": "Interesting-Questions"
             },
-            "group": "d8ca4d8ac90919cc"
+            "group": "43a1478ecac7fefc"
           }
         ]
       },
       {
-        "id": "78dde1c50ca24957",
+        "id": "e3a1a760b513e40b",
         "type": "tabs",
         "children": [
           {
-            "id": "efe53de7bdc59fe5",
+            "id": "aea6e2290a3ca3e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -41,7 +41,7 @@
               "icon": "lucide-file",
               "title": "Interesting-Questions"
             },
-            "group": "d8ca4d8ac90919cc"
+            "group": "43a1478ecac7fefc"
           }
         ]
       }
@@ -161,10 +161,10 @@
   },
   "active": "b3c43116d140df40",
   "lastOpenFiles": [
-    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
-    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
+    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
+    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
