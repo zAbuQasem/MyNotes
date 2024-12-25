@@ -863,3 +863,26 @@ You have developed a containerized web application that will serve internal coll
 - **D. App Engine flexible environment with manual scaling (instances=0)**:
     - Setting `instances=0` in manual scaling is not supported. App Engine flexible always requires at least one running instance.
 ---
+## Question-165
+
+#iam 
+
+You are running a data warehouse on BigQuery. A partner company is offering a recommendation engine based on the data in your data warehouse. The partner company is also running their application on Google Cloud. They manage the resources in their own project, but they need access to the BigQuery dataset in your project. You want to provide the partner company with access to the dataset. What should you do?  
+
+- A. Create a Service Account in your own project, and grant this Service Account access to BigQuery in your project.
+- B. Create a Service Account in your own project, and ask the partner to grant this Service Account access to BigQuery in their project.
+- C. Ask the partner to create a Service Account in their project, and have them give the Service Account access to BigQuery in their project.
+- ***D. Ask the partner to create a Service Account in their project, and grant their Service Account access to the BigQuery dataset in your project.***
+
+### Why This Approach Works:
+- **Cross-Project Resource Sharing**: Service accounts are the standard way to securely grant access to resources across projects in Google Cloud.
+- **Least Privilege**: By granting access to the partner's Service Account, you limit access to only the necessary dataset and ensure that permissions are not broadly applied.
+### Why Not the Other Options?
+
+- **A. Create a Service Account in your project and grant it access**:
+    - If the Service Account resides in your project, it cannot directly interact with the partner's project. The partner's application would not have access to the Service Account in your project.
+- **B. Create a Service Account in your project and ask the partner to grant it access**:
+    - This reverses the intended setup. The partner's application requires access to your BigQuery dataset, not vice versa.
+- **C. Ask the partner to create a Service Account and give it access to BigQuery in their project**:
+    - The dataset resides in **your project**, so granting access to BigQuery in the partner's project is irrelevant.
+---
