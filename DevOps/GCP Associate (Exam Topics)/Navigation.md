@@ -11,6 +11,7 @@
 - [**Cloud-Storage**](Databases.md#Cloud-Storage)
 - [**Firestore**](Databases.md#Firestore)
 - [**Cloud-Bigtable**](Databases.md#Cloud-Bigtable)
+- [**Comparison-Table**](Databases.md#Comparison-Table)
 
 # [**Load-Balancers**](LoadBalancers.md)
 

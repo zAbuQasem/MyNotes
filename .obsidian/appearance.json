@@ -1,5 +1,7 @@
 {
   "baseFontSize": 16,
   "cssTheme": "Horizon",
-  "accentColor": ""
+  "accentColor": "",
+  "monospaceFontFamily": "MesloLGL Nerd Font",
+  "textFontFamily": "MesloLGS Nerd Font"
 }

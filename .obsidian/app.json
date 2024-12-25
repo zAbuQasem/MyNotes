@@ -6,5 +6,6 @@
   "spellcheck": false,
   "showFrontmatter": false,
   "promptDelete": false,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "readableLineLength": false
 }

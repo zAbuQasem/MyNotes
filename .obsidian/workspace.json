@@ -6,7 +6,6 @@
       {
         "id": "3d8e8f83787b6f33",
         "type": "tabs",
-        "dimension": 44.62046204620462,
         "children": [
           {
             "id": "b3c43116d140df40",
@@ -21,17 +20,16 @@
               "icon": "lucide-file",
               "title": "Interesting-Questions"
             },
-            "group": "b21cbec4fa7e38de"
+            "group": "d8ca4d8ac90919cc"
           }
         ]
       },
       {
-        "id": "856673936b15bd2b",
+        "id": "78dde1c50ca24957",
         "type": "tabs",
-        "dimension": 55.37953795379538,
         "children": [
           {
-            "id": "ab7e6c1f6c29191a",
+            "id": "efe53de7bdc59fe5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -43,7 +41,7 @@
               "icon": "lucide-file",
               "title": "Interesting-Questions"
             },
-            "group": "b21cbec4fa7e38de"
+            "group": "d8ca4d8ac90919cc"
           }
         ]
       }
@@ -165,9 +163,9 @@
   "lastOpenFiles": [
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
+    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
-    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
     "DevOps/GCP Associate (Exam Topics)/README.md",
