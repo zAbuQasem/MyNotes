@@ -831,3 +831,35 @@ The core business of your company is to rent out construction equipment at large
     - While Datastore supports transactions, it is not designed for high-throughput IoT workloads.
     - Datastore enforces strong consistency within an entity group but can become a bottleneck for thousands of events per second.
 ---
+## Question-163
+
+#deployments 
+
+You have developed a containerized web application that will serve internal colleagues during business hours. You want to ensure that no costs are incurred outside of the hours the application is used. You have just created a new Google Cloud project and want to deploy the application. What should you do?  
+
+- A. Deploy the container on Cloud Run for Anthos, and set the minimum number of instances to zero.
+- ***B. Deploy the container on Cloud Run (fully managed), and set the minimum number of instances to zero.***
+- C. Deploy the container on App Engine flexible environment with autoscaling, and set the value min_instances to zero in the app.yaml.
+- D. Deploy the container on App Engine flexible environment with manual scaling, and set the value instances to zero in the app.yaml.
+
+### Explanation:
+
+1. **Why Cloud Run (fully managed)?**
+    - **Cloud Run (fully managed)** is a serverless platform designed for running containerized applications. It scales down to **zero instances** when not in use, which ensures no costs are incurred outside of business hours.
+    - This fits the use case of serving an internal application during business hours and avoiding costs during idle times.
+2. **Setting Minimum Instances to Zero**:
+    - By setting `min-instances=0`, Cloud Run ensures that no container instances are kept running when there is no traffic. This eliminates idle costs entirely.
+    - Cloud Run automatically spins up instances when traffic arrives and scales down when traffic stops.
+3. **Why Cloud Run Is Best for This Use Case**:
+    - **Cost Efficiency**: Only incurs costs when the application is actively serving traffic.
+    - **Simplicity**: Does not require manual intervention or complex configuration to scale down during non-business hours.
+    - **Serverless**: You don’t have to manage infrastructure, and scaling is automatic.
+### Why Not the Other Options?
+
+- **A. Cloud Run for Anthos with minimum instances set to zero**:
+    - **Cloud Run for Anthos** is designed for Kubernetes clusters. It requires managing a Kubernetes cluster, which incurs infrastructure costs even when no traffic is being served. This is not a cost-efficient choice for this use case.
+- **C. App Engine flexible environment with autoscaling (min_instances=0)**:
+    - App Engine flexible environment does not support `min_instances=0`. The minimum number of instances must be at least 1, which incurs costs even during idle times.
+- **D. App Engine flexible environment with manual scaling (instances=0)**:
+    - Setting `instances=0` in manual scaling is not supported. App Engine flexible always requires at least one running instance.
+---
