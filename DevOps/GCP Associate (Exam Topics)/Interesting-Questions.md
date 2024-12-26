@@ -886,3 +886,40 @@ You are running a data warehouse on BigQuery. A partner company is offering a re
 - **C. Ask the partner to create a Service Account and give it access to BigQuery in their project**:
     - The dataset resides in **your project**, so granting access to BigQuery in the partner's project is irrelevant.
 ---
+## Question-184
+
+#storage 
+
+You need to configure optimal data storage for files stored in Cloud Storage for minimal cost. The files are used in a mission-critical analytics pipeline that is used continually. The users are in Boston, MA (United States). What should you do?  
+
+- A. Configure regional storage for the region closest to the users. Configure a Nearline storage class.
+- ***B. Configure regional storage for the region closest to the users. Configure a Standard storage class.***
+- C. Configure dual-regional storage for the dual region closest to the users. Configure a Nearline storage class.
+- D. Configure dual-regional storage for the dual region closest to the users. Configure a Standard storage class.
+
+### Explanation:
+
+1. **Data Storage Class for Mission-Critical and Frequently Accessed Data**:
+    
+    - The **Standard storage class** is ideal for frequently accessed data because it offers the **lowest latency** and **highest availability**, making it optimal for mission-critical workloads like a continually used analytics pipeline.
+    - Other storage classes (e.g., Nearline, Coldline) are designed for infrequent access and would incur higher retrieval costs for frequently accessed data.
+2. **Regional Storage**:
+    
+    - **Regional storage** is appropriate because the users are located in a single location (Boston, MA). Storing data in the closest region (e.g., `us-east1`) minimizes latency while keeping costs lower compared to multi-regional or dual-regional storage.
+    - Dual-region storage, while offering additional redundancy, incurs higher costs and is unnecessary if data access is localized and latency-sensitive.
+3. **Cost Optimization**:
+    
+    - **Regional Standard storage** minimizes costs while meeting the requirements for frequent data access and mission-critical performance.
+    - **Nearline storage** is cheaper for storage but has higher data retrieval costs, making it unsuitable for continual access.
+
+### Why Not the Other Options?
+
+- **A. Regional storage with Nearline class**:
+    
+    - Nearline storage is designed for data accessed less than once a month. Since the pipeline accesses data continually, retrieval costs would outweigh the lower storage costs.
+- **C. Dual-regional storage with Nearline class**:
+    
+    - Dual-region storage is more expensive than regional storage and unnecessary for a single-user location. Additionally, Nearline is not suitable for frequent data access.
+- **D. Dual-regional storage with Standard class**:
+    
+    - Dual-regional storage provides added redundancy and availability but is more expensive than regional storage. Since the users are in a single location, the additional redundancy is unnecessary.
