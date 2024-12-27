@@ -923,3 +923,94 @@ You need to configure optimal data storage for files stored in Cloud Storage for
 - **D. Dual-regional storage with Standard class**:
     
     - Dual-regional storage provides added redundancy and availability but is more expensive than regional storage. Since the users are in a single location, the additional redundancy is unnecessary.
+---
+## Question-187
+
+#monitoring #depoyments 
+
+You need to manage a Cloud Spanner instance for best query performance. Your instance in production runs in a single Google Cloud region. You need to improve performance in the shortest amount of time. You want to follow Google best practices for service configuration. What should you do?  
+
+- A. Create an alert in Cloud Monitoring to alert when the percentage of high priority CPU utilization reaches 45%. If you exceed this threshold, add nodes to your instance.
+- B. Create an alert in Cloud Monitoring to alert when the percentage of high priority CPU utilization reaches 45%. Use database query statistics to identify queries that result in high CPU usage, and then rewrite those queries to optimize their resource usage.
+- ***C. Create an alert in Cloud Monitoring to alert when the percentage of high priority CPU utilization reaches 65%. If you exceed this threshold, add nodes to your instance.***
+- D. Create an alert in Cloud Monitoring to alert when the percentage of high priority CPU utilization reaches 65%. Use database query statistics to identify queries that result in high CPU usage, and then rewrite those queries to optimize their resource usage.
+### Explanation:
+
+1. **High Priority CPU Utilization in Cloud Spanner**:
+    - High-priority CPU utilization indicates the percentage of CPU resources consumed by read and write operations necessary for query execution and transaction processing.
+    - Google recommends monitoring **high-priority CPU utilization** to ensure sufficient capacity for workloads and scaling Cloud Spanner instances when utilization reaches critical thresholds.
+2. **Why 65%?**:
+    - Google Cloud's **best practice** is to add nodes when high-priority CPU utilization exceeds **65%**. This ensures that there is enough capacity to handle spikes in workload without risking performance degradation.
+    - Scaling based on a 65% threshold helps maintain query performance and reduces the risk of latency issues.
+3. **Short-Term Performance Improvement**:
+    - Adding nodes is the **fastest way** to improve query performance in the short term because it provides additional CPU and storage capacity to handle increased workloads.
+### Why Not the Other Options?
+
+- **A. Alert at 45% and add nodes**:
+    - 45% is a conservative threshold, and adding nodes at this point is unnecessary and may result in over-provisioning, leading to higher costs without a significant performance benefit.
+- **B. Alert at 45% and rewrite queries**
+    - Optimizing queries is a long-term performance improvement strategy but does not immediately resolve performance issues. Additionally, 45% utilization is not a critical level.
+- **D. Alert at 65% and rewrite queries**
+    - While query optimization is beneficial for long-term performance and cost management, adding nodes is the quickest way to improve performance in the short term, as required by the scenario.
+---
+## Question-190
+#depoyments 
+
+You are assigned to maintain a Google Kubernetes Engine (GKE) cluster named 'dev' that was deployed on Google Cloud. You want to manage the GKE configuration using the command line interface (CLI). You have just downloaded and installed the Cloud SDK. You want to ensure that future CLI commands by default address this specific cluster What should you do?  
+
+- ***A. Use the command gcloud config set container/cluster dev.***
+- B. Use the command gcloud container clusters update dev.
+- C. Create a file called gke.default in the ~/.gcloud folder that contains the cluster name.
+- D. Create a file called defaults.json in the ~/.gcloud folder that contains the cluster name.
+
+---
+## Question-194
+
+#iam 
+
+You have been asked to set up the billing configuration for a new Google Cloud customer. Your customer wants to group resources that share common IAM policies. What should you do?  
+
+- A. Use labels to group resources that share common IAM policies.
+- ***B. Use folders to group resources that share common IAM policies.***
+- C. Set up a proper billing account structure to group IAM policies.
+- D. Set up a proper project naming structure to group IAM policies.
+
+"Folders are used to group resources that share common IAM policies" https://cloud.google.com/resource-manager/docs/creating-managing-folders
+
+---
+## Question-202
+
+#iam #deployments 
+
+You have an application that runs on Compute Engine VM instances in a custom Virtual Private Cloud (VPC). Your company’s security policies only allow the use of internal IP addresses on VM instances and do not let VM instances connect to the internet. You need to ensure that the application can access a file hosted in a Cloud Storage bucket within your project. What should you do?
+
+- A. Enable Private Service Access on the Cloud Storage Bucket.
+- B. Add storage.googleapis.com to the list of restricted services in a VPC Service Controls perimeter and add your project to the list of protected projects.
+- ***C. Enable Private Google Access on the subnet within the custom VPC.***
+- D. Deploy a Cloud NAT instance and route the traffic to the dedicated IP address of the Cloud Storage bucket.
+
+C is the correct Answer as Private Google Access allows you to the connect on the internal networks, A is incorrect becuause Cloud Storage bucket dont have such services to connect to Private Acesss`
+
+---
+## Question-203
+
+#iam #deployments 
+
+Your company completed the acquisition of a startup and is now merging the IT systems of both companies. The startup had a production Google Cloud project in their organization. You need to move this project into your organization and ensure that the project is billed to your organization. You want to accomplish this task with minimal effort. What should you do?
+
+- ***A. Use the projects.move method to move the project to your organization. Update the billing account of the project to that of your organization.***
+- B. Ensure that you have an Organization Administrator Identity and Access Management (IAM) role assigned to you in both organizations. Navigate to the Resource Manager in the startup’s Google Cloud organization, and drag the project to your company's organization.
+- C. Create a Private Catalog for the Google Cloud Marketplace, and upload the resources of the startup's production project to the Catalog. Share the Catalog with your organization, and deploy the resources in your company’s project.
+- D. Create an infrastructure-as-code template for all resources in the project by using Terraform, and deploy that template to a new project in your organization. Delete the project from the startup’s Google Cloud organization.
+### Why Not the Other Options?
+
+- **B. Drag the project in the Resource Manager**
+    - There is no drag-and-drop functionality in the Google Cloud Console to move projects between organizations.
+    - This option is invalid.
+- **C. Use a Private Catalog**
+    - The Private Catalog is not designed for migrating projects or resources. It is used for sharing pre-configured solutions within an organization.
+- **D. Use Terraform to recreate resources in a new project**
+    - Recreating the project and its resources using Terraform is time-consuming and error-prone.
+    - This approach does not preserve the project ID or its existing resources, leading to significant effort and disruption.
+
+---
