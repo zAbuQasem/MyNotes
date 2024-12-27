@@ -1014,3 +1014,25 @@ Your company completed the acquisition of a startup and is now merging the IT sy
     - This approach does not preserve the project ID or its existing resources, leading to significant effort and disruption.
 
 ---
+## Question-206
+
+#iam #network 
+
+You have two subnets (subnet-a and subnet-b) in the default VPC. Your database servers are running in subnet-a. Your application servers and web servers are running in subnet-b. You want to configure a firewall rule that only allows database traffic from the application servers to the database servers. What should you do?
+
+- ***A. • Create service accounts sa-app and sa-db.***  
+    ***• Associate service account sa-app with the application servers and the service account sa-db with the database servers.***  
+    ***• Create an ingress firewall rule to allow network traffic from source service account sa-app to target service account sa-db.***
+- B. • Create network tags app-server and db-server.  
+    • Add the app-server tag to the application servers and the db-server tag to the database servers.  
+    • Create an egress firewall rule to allow network traffic from source network tag app-server to target network tag db-server.
+- C. • Create a service account sa-app and a network tag db-server.  
+    • Associate the service account sa-app with the application servers and the network tag db-server with the database servers.  
+    • Create an ingress firewall rule to allow network traffic from source VPC IP addresses and target the subnet-a IP addresses.
+- D. • Create a network tag app-server and service account sa-db.  
+    • Add the tag to the application servers and associate the service account with the database servers.  
+    • Create an egress firewall rule to allow network traffic from source network tag app-server to target service account sa-db.
+
+Both service accounts and network tags can be used for creating a Cloud Firewall rule. The prime word is "to allow network traffic from app server to database server" which is achievable by inbound/ingress rule and not egress rule. https://cloud.google.com/firewall/docs/firewalls#rule_assignment
+
+--- 
