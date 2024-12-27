@@ -975,7 +975,7 @@ You have been asked to set up the billing configuration for a new Google Cloud c
 - C. Set up a proper billing account structure to group IAM policies.
 - D. Set up a proper project naming structure to group IAM policies.
 
-"Folders are used to group resources that share common IAM policies" https://cloud.google.com/resource-manager/docs/creating-managing-folders
+> "Folders are used to group resources that share common IAM policies" https://cloud.google.com/resource-manager/docs/creating-managing-folders
 
 ---
 ## Question-202
@@ -989,7 +989,7 @@ You have an application that runs on Compute Engine VM instances in a custom Vir
 - ***C. Enable Private Google Access on the subnet within the custom VPC.***
 - D. Deploy a Cloud NAT instance and route the traffic to the dedicated IP address of the Cloud Storage bucket.
 
-C is the correct Answer as Private Google Access allows you to the connect on the internal networks, A is incorrect becuause Cloud Storage bucket dont have such services to connect to Private Acesss`
+> C is the correct Answer as Private Google Access allows you to the connect on the internal networks, A is incorrect becuause Cloud Storage bucket dont have such services to connect to Private Acesss`
 
 ---
 ## Question-203
@@ -1033,6 +1033,21 @@ You have two subnets (subnet-a and subnet-b) in the default VPC. Your database s
     • Add the tag to the application servers and associate the service account with the database servers.  
     • Create an egress firewall rule to allow network traffic from source network tag app-server to target service account sa-db.
 
-Both service accounts and network tags can be used for creating a Cloud Firewall rule. The prime word is "to allow network traffic from app server to database server" which is achievable by inbound/ingress rule and not egress rule. https://cloud.google.com/firewall/docs/firewalls#rule_assignment
+> Both service accounts and network tags can be used for creating a Cloud Firewall rule. The prime word is "to allow network traffic from app server to database server" which is achievable by inbound/ingress rule and not egress rule. https://cloud.google.com/firewall/docs/firewalls#rule_assignment
+
+--- 
+
+## Question-222
+
+#deployments 
+
+You want to permanently delete a Pub/Sub topic managed by Config Connector in your Google Cloud project. What should you do?
+
+- A. Use kubectl to create the label deleted-by-cnrm and to change its value to true for the topic resource.
+- ***B. Use kubectl to delete the topic resource.***
+- C. Use gcloud CLI to delete the topic.
+- D. Use gcloud CLI to update the topic label managed-by-cnrm to false.
+
+> If a resource is managed by the Config Connector, you can update/delete it through kubectl command. https://cloud.google.com/config-connector/docs/how-to/getting-started#before_you_begin
 
 --- 
