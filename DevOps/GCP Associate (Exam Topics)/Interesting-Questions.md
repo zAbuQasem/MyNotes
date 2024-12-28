@@ -1051,3 +1051,16 @@ You want to permanently delete a Pub/Sub topic managed by Config Connector in yo
 > If a resource is managed by the Config Connector, you can update/delete it through kubectl command. https://cloud.google.com/config-connector/docs/how-to/getting-started#before_you_begin
 
 --- 
+## Question-225
+
+#depoyments 
+
+Your managed instance group raised an alert stating that new instance creation has failed to create new instances. You need to solve the instance creation problem. What should you do?
+
+- ***A. Create an instance template that contains valid syntax which will be used by the instance group. Delete any persistent disks with the same name as instance names.***
+- B. Create an instance template that contains valid syntax that will be used by the instance group. Verify that the instance name and persistent disk name values are not the same in the template.
+- C. Verify that the instance template being used by the instance group contains valid syntax. Delete any persistent disks with the same name as instance names. Set the disks.autoDelete property to true in the instance template.
+- D. Delete the current instance template and replace it with a new instance template. Verify that the instance name and persistent disk name values are not the same in the template. Set the disks.autoDelete property to true in the instance template.
+> instance templates are immutable so can not modify or update them. https://cloud.google.com/compute/docs/instance-templates#instance-templates
+
+---
