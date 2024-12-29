@@ -1064,3 +1064,67 @@ Your managed instance group raised an alert stating that new instance creation h
 > instance templates are immutable so can not modify or update them. https://cloud.google.com/compute/docs/instance-templates#instance-templates
 
 ---
+## Question-228
+
+#deployments 
+
+You have a batch workload that runs every night and uses a large number of virtual machines (VMs). It is fault-tolerant and can tolerate some of the VMs being terminated. The current cost of VMs is too high. What should you do?
+
+- ***A. Run a test using simulated maintenance events. If the test is successful, use Spot N2 Standard VMs when running future jobs.***
+- B. Run a test using simulated maintenance events. If the test is successful, use N2 Standard VMs when running future jobs.
+- C. Run a test using a managed instance group. If the test is successful, use N2 Standard VMs in the managed instance group when running future jobs.
+- D. Run a test using N1 standard VMs instead of N2. If the test is successful, use N1 Standard VMs when running future jobs.
+
+### Explanation:
+
+1. **Why Spot VMs?**
+    - **Spot VMs** are the most cost-effective option for workloads that are fault-tolerant and can handle interruptions. They are priced **up to 91% cheaper** than regular on-demand VMs.
+    - Since the batch workload is fault-tolerant and runs nightly, it can tolerate the possibility of Spot VMs being terminated, making them an ideal choice.
+2. **Why Test with Simulated Maintenance Events?**
+    - Testing with **simulated maintenance events** ensures that the workload can recover properly from VM interruptions or terminations.
+    - If the test confirms the workload can tolerate interruptions, Spot VMs can be safely used.
+3. **Why Use N2 Standard VMs?**
+    - **N2 Standard VMs** offer better performance and flexibility compared to N1 Standard VMs. They are also cost-optimized for general-purpose workloads.
+### Why Not the Other Options?
+
+- **B. Use N2 Standard VMs**:
+    - Regular N2 Standard VMs are not cost-effective for a fault-tolerant batch workload. Spot VMs are a much cheaper alternative.
+- **C. Use a managed instance group (MIG) with N2 Standard VMs**:
+    - While a MIG can help manage VMs, it does not address cost reduction. Regular N2 Standard VMs are still more expensive than Spot VMs.
+- **D. Use N1 Standard VMs instead of N2**:
+    - N1 Standard VMs are older and generally less cost-efficient than N2 Standard VMs. Additionally, Spot VMs provide much greater cost savings than switching from N2 to N1.
+---
+## Question-261
+
+#iam 
+
+You are in charge of provisioning access for all Google Cloud users in your organization. Your company recently acquired a startup company that has their own Google Cloud organization. You need to ensure that your Site Reliability Engineers (SREs) have the same project permissions in the startup company's organization as in your own organization. What should you do?
+
+- A. In the Google Cloud console for your organization, select Create role from selection, and choose destination as the startup company's organization.
+- B. In the Google Cloud console for the startup company, select Create role from selection and choose source as the startup company's Google Cloud organization.
+- ***C. Use the gcloud iam roles copy command, and provide the Organization ID of the startup company's Google Cloud Organization as the destination.***
+- D. Use the gcloud iam roles copy command, and provide the project IDs of all projects in the startup company's organization as the destination.
+### Explanation:
+
+1. **Cross-Organization Role Consistency**:
+    - Since your SREs need the same permissions in the startup company’s Google Cloud Organization as in your organization, you must replicate the **custom roles** that define these permissions.
+    - The `gcloud iam roles copy` command is designed to duplicate custom roles from one organization to another.
+2. **Why Use `gcloud iam roles copy`?**
+    - This command allows you to copy an existing custom role to another project or organization.
+    - By specifying the **Organization ID** of the startup’s Google Cloud organization as the destination, you ensure the custom roles are applied at the organizational level, enabling consistency across all projects in the startup’s organization.
+- **Command Syntax**:
+```sh
+gcloud iam roles copy SOURCE_ROLE_ID \
+    --source-organization=SOURCE_ORGANIZATION_ID \
+    --destination-organization=DESTINATION_ORGANIZATION_ID \
+    --destination-role=DESTINATION_ROLE_ID
+```
+### Why Not the Other Options?
+
+- **A. Create a role from selection in your organization and set the startup company as the destination**:
+    - The Google Cloud Console does not have functionality to copy roles between organizations directly.
+- **B. Create a role from selection in the startup’s organization**:
+    - Similar to Option A, the Google Cloud Console cannot directly replicate roles across organizations.
+- **D. Copy roles to individual projects in the startup’s organization**:
+    - Copying roles to individual projects is unnecessarily repetitive and inefficient. It is better to copy roles at the organization level to ensure consistency across all projects.
+---
