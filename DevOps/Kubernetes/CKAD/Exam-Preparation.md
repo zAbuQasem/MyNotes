@@ -9,20 +9,26 @@
 
 ----
 # Pod-Design
+### Definition
 ## Commands
 
 ---
-# StatefulSets-HeadlessServices
-## Definition
+# State-Persistence
+## StatefulSets
 
+### Usage
+
+### Commands
+## Headless-Services
 ## Usage
-## Commands
+
+### Commands
 ---
 # Security
 ## Admission-Controls
 ## API-Security
 ## CRDs
 
----
+
 
 
