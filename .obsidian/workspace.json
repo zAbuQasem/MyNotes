@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
+                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exam-Preparation"
+              "title": "Interesting-Questions"
             }
           }
         ]
@@ -72,12 +72,23 @@
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
+          },
+          {
+            "id": "ea4bc078ce68f263",
+            "type": "leaf",
+            "state": {
+              "type": "mk-path-view",
+              "state": {},
+              "icon": "layout-grid",
+              "title": "Navigator"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 293.5026054382324,
     "collapsed": true
   },
   "right": {
@@ -139,16 +150,20 @@
   },
   "active": "b3c43116d140df40",
   "lastOpenFiles": [
-    "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
+    "DevOps/Kubernetes/CKAD/CKAD.md",
+    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
+    "DevOps/Kubernetes/K8s Overview.md",
+    "DevOps/GCP Associate (Exam Topics)/Storage.md",
+    "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
+    "WebPentesting/IIS Servers/Untitled.md",
+    "WebPentesting/10-Authorization Testing.md",
+    "Tags",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/Kubernetes/CKAD",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
-    "DevOps/GCP Associate (Exam Topics)/Navigation.md",
-    "DevOps/GCP Associate (Exam Topics)/Storage.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
-    "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
     "DevOps/GCP Associate (Exam Topics)/README.md",
     "README.md",
     "DevOps/GCP Associate (Exam Topics)/BestPractices.md",
@@ -176,9 +191,6 @@
     "DevOps/Monitoring.md",
     "DevOps/Security/Image Signing.md",
     "Red-teaming/Credential Harvesting/MacOS.md",
-    "Red-teaming/Credential Harvesting/Linux.md",
-    "Red-teaming/Tunneling.md",
-    "conflict-files-obsidian-git.md",
-    "K8s-2.md"
+    "Red-teaming/Credential Harvesting/Linux.md"
   ]
 }
