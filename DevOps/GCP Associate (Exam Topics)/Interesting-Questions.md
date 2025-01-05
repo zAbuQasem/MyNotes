@@ -214,10 +214,10 @@ You are the organization and billing administrator for your company. The enginee
 
 You want to deploy an application on Cloud Run that processes messages from a Cloud Pub/Sub topic. You want to follow Google-recommended practices. What should you do?  
 
-- A. 1. Create a Cloud Function that uses a Cloud Pub/Sub trigger on that topic. 2. Call your application on Cloud Run from the Cloud Function for every message.
-- B. 1. Grant the Pub/Sub Subscriber role to the service account used by Cloud Run. 2. Create a Cloud Pub/Sub subscription for that topic. 3. Make your application pull messages from that subscription.
-- ***C. 1. Create a service account. 2. Give the Cloud Run Invoker role to that service account for your Cloud Run application. 3. Create a Cloud Pub/Sub subscription that uses that service account and uses your Cloud Run application as the push endpoint.***
-- D. 1. Deploy your application on Cloud Run on GKE with the connectivity set to Internal. 2. Create a Cloud Pub/Sub subscription for that topic. 3. In the same Google Kubernetes Engine cluster as your application, deploy a container that takes the messages and sends them to your application.
+- A. Create a Cloud Function that uses a Cloud Pub/Sub trigger on that topic. 2. Call your application on Cloud Run from the Cloud Function for every message.
+- B. Grant the Pub/Sub Subscriber role to the service account used by Cloud Run. 2. Create a Cloud Pub/Sub subscription for that topic. 3. Make your application pull messages from that subscription.
+- ***C. Create a service account. 2. Give the Cloud Run Invoker role to that service account for your Cloud Run application. 3. Create a Cloud Pub/Sub subscription that uses that service account and uses your Cloud Run application as the push endpoint.***
+- D. Deploy your application on Cloud Run on GKE with the connectivity set to Internal. 2. Create a Cloud Pub/Sub subscription for that topic. 3. In the same Google Kubernetes Engine cluster as your application, deploy a container that takes the messages and sends them to your application.
 
 ### Explanation:
 
@@ -509,14 +509,11 @@ gcloud compute networks subnets expand-ip-range SUBNET_NAME \
 
 #iam 
 
-Your organization uses G Suite for communication and collaboration. All users in your organization have a G Suite account. You want to grant some G Suite users access to your Cloud Platform project. What should you do?  
+Your organization uses G-Suite for communication and collaboration. All users in your organization have a G Suite account. You want to grant some G Suite users access to your Cloud Platform project. What should you do?  
 
 1. Enable Cloud Identity in the GCP Console for your domain.
-    
-2. Grant them the required IAM roles using their G Suite email address.
-    
+2. **Grant them the required IAM roles using their G Suite email address.**
 3. Create a CSV sheet with all users' email addresses. Use the gcloud command line tool to convert them into Google Cloud Platform accounts.
-    
 4. In the G Suite console, add the users to a special group called [[email protected]](https://www.secexams.com/cdn-cgi/l/email-protection). Rely on the default behavior of the Cloud Platform to grant users access if they are members of this group.
 ### Explanation:
 
@@ -585,7 +582,7 @@ You need to assign a Cloud Identity and Access Management (Cloud IAM) role to an
 Google Cloud Platform (GCP) Audit Logs and also to review your Data Access logs. What should you do?  
 
 1. Assign the auditor the IAM role roles/logging.privateLogViewer. Perform the export of logs to Cloud Storage. 
-2. Assign the auditor the IAM role roles/logging.privateLogViewer. Direct the auditor to also review the logs for changes to Cloud IAM policy.
+2. **Assign the auditor the IAM role roles/logging.privateLogViewer. Direct the auditor to also review the logs for changes to Cloud IAM policy.**
 3. Assign the auditor's IAM user to a custom role that has logging.privateLogEntries.list permission. Perform the export of logs to Cloud Storag.
 4. Assign the auditor's IAM user to a custom role that has logging.privateLogEntries.list permission. Direct the auditor to also review the logs for changes to Cloud IAM policy.
 
