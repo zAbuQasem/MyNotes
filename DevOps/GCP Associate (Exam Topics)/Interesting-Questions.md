@@ -94,7 +94,9 @@ You recently deployed a new version of an application to App Engine and then dis
 - ***C. On the App Engine Versions page of the GCP Console, route 100% of the traffic to the previous version.***
 - D. Deploy the original version as a separate application. Then go to App Engine settings and split traffic between applications so that the original version serves 100% of the requests.
 
-Option A is wrong as gcloud app restore was used for backup and restore and has been deprecated.Option B is wrong as there is no application revert functionality available.Option D is wrong as App Engine maintains version and need not be redeployed.
+Option A is wrong as gcloud app restore was used for backup and restore and has been deprecated.
+Option B is wrong as there is no application revert functionality available.
+Option D is wrong as App Engine maintains version and need not be redeployed.
 
 ---
 ## Question-46
