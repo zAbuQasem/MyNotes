@@ -83,13 +83,11 @@
               "title": "Navigator"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 293.5026054382324,
-    "collapsed": true
+    "width": 293.5026054382324
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -151,8 +149,9 @@
   "active": "b3c43116d140df40",
   "lastOpenFiles": [
     "DevOps/Kubernetes/CKAD/CKAD.md",
-    "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
+    "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/GCP Associate (Exam Topics)/Storage.md",
@@ -186,7 +185,6 @@
     "DevOps/Kafka",
     "DevOps/Kubernetes/Security.md",
     "DevOps/IAC",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/IAC/Terraform.md",
     "DevOps/Monitoring.md",
     "DevOps/Security/Image Signing.md",
