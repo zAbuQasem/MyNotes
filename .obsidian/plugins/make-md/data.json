@@ -36,10 +36,9 @@
   "deleteFileOption": "trash",
   "expandedSpaces": [
     "/",
-    "//DevOps",
     "//DevOps/DevOps/Kubernetes/DevOps/Kubernetes/CKAD",
-    "//DevOps/DevOps/GCP Associate (Exam Topics)",
-    "//DevOps/DevOps/Kubernetes"
+    "//DevOps/DevOps/Kubernetes",
+    "//DevOps"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",

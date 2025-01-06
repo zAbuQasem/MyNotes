@@ -12,6 +12,16 @@ Init Containers are specialized containers that run before app containers in a P
 
 This snippet runs a simple `busybox` container that waits for 5 seconds, simulating an initialization task before the main containers start.
 
+## Troubleshooting
+- **Viewing Init Container logs**:
+```bash
+kubectl logs <pod-name> -c <init-container-name>
+```
+- **Debugging Init Containers**:
+```bash
+kubectl describe pod <pod-name>
+```
+---
 # Pod-Design
 
 ### Definition

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
+                "file": "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Interesting-Questions"
+              "title": "Exam-Preparation"
             }
           }
         ]
@@ -150,8 +150,9 @@
   },
   "active": "b3c43116d140df40",
   "lastOpenFiles": [
-    "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
     "DevOps/Kubernetes/CKAD/CKAD.md",
+    "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
+    "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/Kubernetes/K8s Overview.md",
     "DevOps/GCP Associate (Exam Topics)/Storage.md",
@@ -159,7 +160,6 @@
     "WebPentesting/IIS Servers/Untitled.md",
     "WebPentesting/10-Authorization Testing.md",
     "Tags",
-    "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/Kubernetes/CKAD",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
