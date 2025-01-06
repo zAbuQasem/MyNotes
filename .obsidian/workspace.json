@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
+                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exam-Preparation"
+              "title": "Kubectl cheatsheet"
             }
           }
         ]
@@ -148,8 +148,8 @@
   },
   "active": "b3c43116d140df40",
   "lastOpenFiles": [
-    "DevOps/Kubernetes/CKAD/CKAD.md",
     "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
+    "DevOps/Kubernetes/CKAD/CKAD.md",
     "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
