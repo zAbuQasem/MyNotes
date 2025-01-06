@@ -938,8 +938,6 @@ spec:
           add: ["MAC_ADMIN"]
 ```
 >  capabilities can be added only to the container level.
->  
-
 - Pod Level
 ```yml
 apiVersion: v1
