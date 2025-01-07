@@ -476,7 +476,25 @@ spec:
 ```
 
 ## Taints-and-Tolerations
-Supposing a node have a taint called blue, no pods can be placed on it  except ones which is tolerant to blue.
+
+- **Taints:** Applied to Kubernetes nodes to **mark them as unsuitable** for hosting any pods by default. A taint has three parts:    
+    1. **Key**: Identifies the taint.
+    2. **Value**: Provides additional information.
+    3. **Effect**: Determines what happens to pods that don’t tolerate the taint (`NoSchedule`, `PreferNoSchedule`, or `NoExecute`).
+- **Tolerations:** Applied to pods to **allow them to be scheduled** on nodes with matching taints. A toleration specifies:
+    1. **Key and Value**: Must match the node’s taint.
+    2. **Effect**: Should align with the taint’s effect.
+    3. **Operator** and **TolerationSeconds** (optional): Define how the toleration matches and for how long.
+
+**Purpose:**
+- **Control Pod Placement:** Ensure that only specific pods run on certain nodes, useful for dedicating nodes to particular workloads, handling specialized hardware, or isolating sensitive applications.
+- **Enhance Cluster Efficiency:** Prevent unsuitable pods from being scheduled on inappropriate nodes, maintaining optimal resource usage and performance.
+**Example Use Case:**
+- **Dedicated GPU Nodes:**
+    - **Taint the GPU node:** `gpu=true:NoSchedule`
+    - **Tolerate in GPU-enabled pods:** Pods requiring GPUs add a toleration for `gpu=true`.
+
+This setup ensures that only pods needing GPU resources are placed on GPU-equipped nodes, keeping other nodes free for general workloads.
 
 - Taint a node
 ```sh
@@ -541,7 +559,7 @@ In this case, the pod will not be able to schedule onto the node, because there 
 
 ## NodeSelector-and-NodeAffinity
 Control how the schedular will place pods on specifc nodes based on pre-defined attributes.
-```yaml
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -890,7 +908,7 @@ spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
 ```
-> **NOTE**: In deployment, you can specify the service account name in the spec of the container.
+> **NOTE**: In deployment, you can specify the service account name in the spec of the containers.
 
 ## ImageSecurity
 ```txt
