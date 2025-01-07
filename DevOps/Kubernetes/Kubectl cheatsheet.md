@@ -551,6 +551,15 @@ tolerations:
   value: "value1"
   effect: "NoExecute"
 ```
+- Running a pod with to
+```sh
+# Image name: nginx
+# Key: spray
+# Value: mortein
+# Effect: NoSchedule
+kubectl run nginx --image=nginx --restart=Never --overrides='{"apiVersion":"v1","spec":{"tolerations":[{"key":"spray","operator":"Equal","value":"mortein","effect":"NoSchedule"}]}}'
+```
+
 
 In this case, the pod will not be able to schedule onto the node, because there is no toleration matching the third taint. But it will be able to continue running if it is already running on the node when the taint is added, because the third taint is the only one of the three that is not tolerated by the pod.
 
