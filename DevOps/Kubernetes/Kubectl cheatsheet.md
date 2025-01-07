@@ -615,7 +615,6 @@ kubectl scale deployment/<DEPLOYMENT_NAME> --replicas=<NUMBER_OF_REPLICAS>
 kubectl set image deployment/<DEPLOYMENT_NAME> <CONTAINER_NAME>=<NEW_IMAGE>
 ```
 
-
 ### **Example Workflow: RollingUpdate Deployment**
 
 1. **Create a Deployment:**
