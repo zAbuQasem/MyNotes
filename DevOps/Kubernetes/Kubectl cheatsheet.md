@@ -890,6 +890,7 @@ spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
 ```
+> **NOTE**: In deployment, you can specify the service account name in the spec of the container.
 
 ## ImageSecurity
 ```txt
@@ -937,7 +938,6 @@ spec:
       capabilities:
           add: ["MAC_ADMIN"]
 ```
-
 - Pod Level
 ```yml
 apiVersion: v1
