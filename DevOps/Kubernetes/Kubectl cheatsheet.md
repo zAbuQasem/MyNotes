@@ -68,7 +68,7 @@ minikube start --no-vtx-check --driver virtualbox
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/)
-
+---
 # EKS
 Make sure to have the required privileges [Minimum Required](https://eksctl.io/usage/minimum-iam-policies/)
 1. Creating a Cluster
@@ -87,7 +87,7 @@ aws eks update-kubeconfig --name DemoCluster
 kubectl get configmap -A
 # -A = --all-namespaces
 ```
-
+---
 # NameSpaces
 
 - Create a namespace
@@ -111,7 +111,7 @@ kubectl describe namespaces <NAMESPACE>
 kubectl delete <NAMESPACE>
 ```
 > **Important note**: Deleting a namespace will **delete everything** within it.
-
+---
 # Managing-PODS
 
 - Running a Container in a pod
@@ -153,7 +153,7 @@ kubectl delete pod <PodName>
 kubectl delete -f <Pod.yml>
 ```
 > **Note**: `.yml` or `.yaml` ?.... it doesn't matter, but it's advised for widows users to use `.yml` :)
-
+---
 # YAML
 It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
 
@@ -208,7 +208,7 @@ kubectl explain deployment
 - [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
-
+---
 # Replicas
 - Create `ReplicationController`
 ```yaml
@@ -307,6 +307,7 @@ kubectl scale --replicas=<NUMBER> replicaset/<NAME>
 ```bash
 kubectl scale rs/<SET> --replicas=0
 ```
+---
 # Deployments
 
 ![](https://i.imgur.com/GgInLMb.png)
@@ -372,7 +373,7 @@ kubectl rollout undo <DEPLOYMENT>
 ```
 ## References
 - [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
-
+---
 # Services
 
 ## NodePort
@@ -409,7 +410,6 @@ minikube service <SERVICE-NAME> --url
 kubectl port-forward svc/<SERVICE-NAME> LOCALPORT:REMOTEPORT -n <NAME>
 ```
 > **Note**: If the label matches multiple instances, the service will distribute the load among them.
-> 
 
 ## ClusterIp
 Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster.
@@ -447,6 +447,7 @@ spec:
       nodePort: 30008
 ```
 
+---
 # Scheduling
 What if we want to manually schedule pods and assign them to nodes, instead of leaving it to be automated by the scheduler.
 we have to add `nodeName` atrribute to the `spec`
@@ -474,7 +475,7 @@ spec:
           ports:
             - containerPort: 9001
 ```
-
+---
 ## Taints-and-Tolerations
 
 - **Taints:** Applied to Kubernetes nodes to **mark them as unsuitable** for hosting any pods by default. A taint has three parts:    
@@ -576,9 +577,43 @@ In this case, the pod will not be able to schedule onto the node, because there 
 ### Reference
 - https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 
+---
 ## NodeSelector-and-NodeAffinity
-Control how the schedular will place pods on specifc nodes based on pre-defined attributes.
-```yml
+
+**Control where pods run by matching node labels.**
+### **NodeSelector**
+
+**Simple way** to assign pods to specific nodes based on labels.
+
+**Use Case:** When you have straightforward label matching without complex rules.
+
+**Example:**
+
+This pod **must** run on nodes labeled with `disktype=ssd`.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-selector
+spec:
+  nodeSelector:
+    disktype: ssd
+  containers:
+    - name: nginx
+      image: k8s.gcr.io/pause:2.0
+```
+### **NodeAffinity**
+
+**Advanced way** to control pod placement with more flexible and expressive rules.
+
+**Use Case:** When you need complex scheduling rules, such as multiple conditions or preference weighting.
+
+**Example:**
+
+This pod **must** run on nodes in the `antarctica-east1` or `antarctica-west1` zones and **prefers** nodes with `another-node-label-key: another-node-label-value`.
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -586,14 +621,16 @@ metadata:
 spec:
   affinity:
     nodeAffinity:
+      # Required: Must match one of these zones
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
           - key: topology.kubernetes.io/zone
             operator: In
             values:
-            - antarctica-east1
-            - antarctica-west1
+              - antarctica-east1
+              - antarctica-west1
+      # Preferred: Prefer nodes with this label
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:
@@ -601,14 +638,130 @@ spec:
           - key: another-node-label-key
             operator: In
             values:
-            - another-node-label-value
+              - another-node-label-value
   containers:
-  - name: with-node-affinity
-    image: k8s.gcr.io/pause:2.0
+    - name: nginx
+      image: k8s.gcr.io/pause:2.0
 ```
-### Reference
-- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
 
+### **Combined Example**
+
+You can use both **NodeSelector** and **NodeAffinity** in the same pod for simple and advanced scheduling rules.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: combined-scheduling
+spec:
+  nodeSelector:
+    disktype: ssd
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: environment
+            operator: In
+            values:
+              - production
+              - staging
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 2
+        preference:
+          matchExpressions:
+          - key: gpu
+            operator: Exists
+  containers:
+    - name: nginx
+      image: k8s.gcr.io/pause:2.0
+```
+
+**Explanation:**
+
+- **nodeSelector:**
+    - **disktype: ssd**: Pod **must** be on nodes with `disktype=ssd`.
+- **nodeAffinity:**
+    - **requiredDuringSchedulingIgnoredDuringExecution:**
+        - **environment In [production, staging]**: Pod **must** be in `production` or `staging` environments.
+    - **preferredDuringSchedulingIgnoredDuringExecution:**
+        - **gpu Exists**: Pod **prefers** nodes that have a `gpu` label.
+### **Other NodeAffinity Operators**
+
+NodeAffinity uses various **operators** to define how labels should match. Here are the common operators:
+
+- **In**
+    - **Use When:** You want to include nodes that have specific label values.
+    - **Example:**
+```yaml
+- key: "zone"
+  operator: In
+  values:
+	- "us-east-1a"
+	- "us-east-1b"
+```
+        
+- **NotIn**
+    - **Use When:** You want to exclude nodes that have certain label values.
+    - **Example:**
+```yaml
+- key: "diskType"
+  operator: NotIn
+  values:
+	- "hdd"
+```
+
+- **Exists**
+    - **Use When:** You require nodes to have a specific label, regardless of its value.
+    - **Example:**
+```yaml
+- key: "backup"
+  operator: Exists
+```
+
+- **DoesNotExist**
+    - **Use When:** You want to ensure nodes do not have a particular label.
+    - **Example:**
+```yaml
+- key: "maintenance"
+  operator: DoesNotExist
+  ```
+- **Gt (Greater Than)**
+    - **Use When:** Label values are numerical, and you need nodes with values above a threshold.
+    - **Example:**
+ ```yaml
+- key: "memory"
+  operator: Gt
+  values:
+	- "16"
+```
+
+- **Lt (Less Than)**
+    - **Use When:** Label values are numerical, and you need nodes with values below a threshold.
+    - **Example:**
+```yaml
+- key: "cpu"
+  operator: Lt
+  values:
+	- "8"
+```
+
+### **Quick Notes**
+
+- **NodeSelector:**
+    - **Pros:** Simple and easy for basic label matching.
+    - **Cons:** Limited to exact matches; lacks flexibility for complex rules.
+- **NodeAffinity:**
+    - **Pros:** Highly flexible with multiple operators (`In`, `NotIn`, `Exists`, `DoesNotExist`, `Gt`, `Lt`), supports preferred rules.
+    - **Cons:** More complex to configure compared to `nodeSelector`.
+- **When to Use:**
+    - Use **NodeSelector** for straightforward scheduling needs.
+    - Use **NodeAffinity** when you need advanced scheduling rules or prefer certain nodes over others.
+
+### **Reference**
+
+- [Assign Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+---
 ## Daemon-Sets
 ReplicaSet ensures that the number of pods of an application is running on the correct scale as specified in the conf file. Whereas in the case of DaemonSet it will ensure that **one copy of pod defined in our configuration will always be available on every worker node.**
 ```yml
@@ -634,6 +787,7 @@ spec:
             - containerPort: 9001
 ```
 
+---
 # Monitoring
 Using Built-In metrics server (in memory solution).
 - Installing Metrics-Server
@@ -679,6 +833,7 @@ spec:
 ```
 > **Note**: You cannot change command while the pod is running
 
+---
 # Secrets
 - Imperative method
 ```yaml
@@ -722,6 +877,7 @@ volumes:
 ```
  > **Note**: When mounting secrets as volumes, each key will be a separate file in the /opt/\<SecretName\> folder
 
+---
 # Multi-Containers
 
 **There are 3 common patterns:**
@@ -747,6 +903,7 @@ spec:
     image: busybox
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application>']
 ```
+---
 # Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
 ```bash
@@ -831,6 +988,7 @@ systemctl daemon-reload
 service etcd restart
 service kube-apiserver start
 ```
+---
 # Security
 
 ## API-Groups
@@ -1093,6 +1251,7 @@ kubectl get networkpolicy
 kubectl get netpol
 ```
 
+---
 # Volumes-Mounts
 
 ## Pod-Volume
