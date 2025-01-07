@@ -667,9 +667,6 @@ kubectl scale deployment/my-app --replicas=5
 - [Advanced Deployment Techniques](https://blog.container-solutions.com/kubernetes-deployment-strategies)
 
 ---
-
-By understanding and utilizing different **deployment strategies** along with essential **rollout commands**, you can effectively manage application updates in your Kubernetes cluster, ensuring smooth transitions and minimal downtime.
----
 # Services
 
 ## NodePort
