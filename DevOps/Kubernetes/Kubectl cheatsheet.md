@@ -2,7 +2,7 @@
 - [**Installing-and-runinng-minikube**](#Installing-and-runinng-minikube)
 - [**EKS**](#EKS)
 - [**NameSpaces**](#NameSpaces)
-- [**Managing-PODS**](#Managing-PODS)
+- [**Managing-Pods**](#Managing-Pods)
 - [**YAML**](#YAML)
 	- [Generate-template](#Generate-template)
 	- [Kubectl-manual](#Kubectl-manual)
@@ -112,47 +112,176 @@ kubectl delete <NAMESPACE>
 ```
 > **Important note**: Deleting a namespace will **delete everything** within it.
 ---
-# Managing-PODS
+# Managing-Pods
 
-- Running a Container in a pod
+**Control and manage your Kubernetes pods efficiently using labels and selectors.**
+
+## **Running a Container in a Pod**
+
+**Deploy a pod with a specific container image.**
+
 ```bash
-# Images are pulled from dockerhub
-kubectl run nginx --image nginx
+# Images are pulled from Docker Hub
+kubectl run nginx --image=nginx
 ```
 
-- Listing pods
+## **Listing Pods**
+
+**View pods in various ways using labels and selectors.**
+
 ```bash
+# List all pods in the current namespace
 kubectl get pods
-kubectl get pods -o wide
-# From Namespaces
-kubectl get pods <NameSpace>
-kubectl get pods --all-namespaces
-# Get all containers within a POD
-kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
-kubectl describe pods <POD> -n <NAMESPACE>
-kubectl get pods # Ready column 1/2 (1 running container/2 total containers)
- ```
 
-- Change pod spec
-```bash
-# Change an image for a container
-kubectl set image <RESOURCE/RESOURCE_NAME> <CONTAINER_NAME>=<NEW_IMAGE_NAME>
-#Example:
-kubectl set image pod/redis-container redis-container=redis
+# List all pods with detailed information
+kubectl get pods -o wide
+
+# List pods from a specific namespace
+kubectl get pods -n <Namespace>
+
+# List all pods across all namespaces
+kubectl get pods --all-namespaces
+
+# Get all container names within a specific pod
+kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
+
+# Describe a specific pod for detailed information
+kubectl describe pods <POD> -n <NAMESPACE>
 ```
 
-- Getting detailed pod information
+> **Note:** The **Ready** column shows `1/2` meaning 1 running container out of 2 total containers in the pod.
+
+## **Using Labels and Selectors**
+
+**Organize and filter pods using labels and selectors for better management.**
+
+### **Adding Labels to a Pod**
+
+**Assign key-value pairs to pods for identification and organization.**
+
 ```bash
-kubectl describe pod # All pods
+# Add a label to an existing pod
+kubectl label pod <PodName> app=frontend
+
+# Example:
+kubectl label pod nginx app=webserver
+```
+
+### **Listing Pods with Specific Labels**
+
+**Filter and view pods based on their labels using selectors.**
+
+```bash
+# List pods with the label app=webserver
+kubectl get pods -l app=webserver
+
+# List pods with multiple labels
+kubectl get pods -l app=webserver,env=production
+```
+
+### **Selecting Pods with Labels in YAML**
+
+**Use label selectors in YAML configurations for deployments and services.**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: webserver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+```
+
+**Explanation:**
+
+- **selector:** Matches pods with the label `app=webserver` to route traffic through the service.
+
+## **Change Pod Specification**
+
+**Update pod configurations, such as changing container images.**
+
+```bash
+# Change the image of a container in a pod
+kubectl set image <RESOURCE/RESOURCE_NAME> <CONTAINER_NAME>=<NEW_IMAGE_NAME>
+
+# Example:
+kubectl set image pod/redis-container redis-container=redis:latest
+```
+
+## **Getting Detailed Pod Information**
+
+**Retrieve comprehensive details about pods for troubleshooting and monitoring.**
+
+```bash
+# Describe all pods in the current namespace
+kubectl describe pod
+
+# Describe a specific pod
 kubectl describe pod <PodName>
 ```
 
-- Delete a pod
+## **Delete a Pod**
+
+**Remove pods when they are no longer needed.**
+
 ```bash
+# Delete a specific pod by name
 kubectl delete pod <PodName>
+
+# Delete pods using a YAML configuration file
 kubectl delete -f <Pod.yml>
 ```
-> **Note**: `.yml` or `.yaml` ?.... it doesn't matter, but it's advised for widows users to use `.yml` :)
+
+> **Note:** File extensions `.yml` or `.yaml` are interchangeable. However, it's advised for Windows users to use `.yml`.
+
+## **Quick Reference: Labels and Selectors**
+
+- **Labels:**
+    - **Purpose:** Attach metadata to pods (key-value pairs) for organization and selection.
+    - **Usage:** `kubectl label pod <PodName> key=value`
+- **Selectors:**
+    - **Purpose:** Query and filter pods based on labels.
+    - **Usage:** `kubectl get pods --selector key=value`
+- **Best Practices:**
+    - **Consistent Labeling:** Use meaningful and consistent labels across your pods.
+    - **Combine Labels:** Utilize multiple labels for more granular selection.
+    - **Use Labels in Services:** Leverage labels to connect services with the appropriate pods.
+
+### **Example Workflow:**
+
+1. **Run a Pod with a Label:**
+```bash
+kubectl run frontend --image=nginx --labels="app=frontend,env=production"
+```
+2. **List All Frontend Pods:**
+```bash
+kubectl get pods --selector app=frontend
+ # Get all objects with the label app=frontend
+kubectl get all --selector app=frontend
+```
+3. **Describe a Frontend Pod:**
+```bash
+kubectl describe pod frontend
+```
+4. **Update the Frontend Pod Image:**
+```bash
+kubectl set image pod/frontend frontend=nginx:latest
+```
+5. **Delete the Frontend Pod:**
+```bash
+kubectl delete pod frontend
+```
+
+### **Reference**
+- [Assign Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+- [Using Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+- [kubectl Command Reference](https://kubernetes.io/docs/reference/kubectl/)
+
 ---
 # YAML
 It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
