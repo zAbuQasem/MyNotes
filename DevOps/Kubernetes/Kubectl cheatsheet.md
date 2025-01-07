@@ -466,42 +466,209 @@ kubectl rollout undo
 
 ## Deployment-strategies
 
-- **Recreate**
-	- This will delete the current `ReplicaSet` and replace it with new updated one.
-	- Usable in dev/staging environments (Downtime)
-	- Not the best choice in a production environment
+**Manage how updates are deployed to your applications in Kubernetes using different strategies.**
+
+### **1. Recreate Strategy**
+
+- **Description:**
+    - Deletes all existing pods (`ReplicaSet`) before creating new ones with the updated configuration.
+- **Use Cases:**
+    - Suitable for development or staging environments where downtime is acceptable.
+    - Ideal for applications that **cannot** handle multiple versions running simultaneously.
+- **Pros:**
+    - Simple to implement.
+- **Cons:**
+    - Causes downtime as all old pods are removed before new ones are available.
+    - Not recommended for production environments where uptime is critical.
+- **YAML Example:**
 ```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
 spec:
   replicas: 3
   strategy:
-    type: Recreate	
+	type: Recreate
+  selector:
+	matchLabels:
+	  app: my-app
+  template:
+	metadata:
+	  labels:
+		app: my-app
+	spec:
+	  containers:
+	  - name: my-app-container
+		image: my-app:v2
 ```
+### **2. RollingUpdate Strategy**
 
-- **RollingUpdate**
-	- Will create a new version of `ReplicaSet` and when it's ready, the old version will be deleted
-	- Convenient for stateful applications that can handle rebalancing of the data
-	- Rollout/rollback can take time
-	- Supporting multiple APIs is hard
-	- No control over traffic
+- **Description:**
+    - Gradually replaces old pods with new ones, ensuring that some pods are always running during the update process.
+- **Use Cases:**
+    - Ideal for stateful applications that can handle data rebalancing.
+    - Suitable for production environments where minimizing downtime is essential.
+- **Pros**:
+    - Minimizes downtime by keeping some pods running during updates.
+    - Allows for smoother transitions and gradual rollouts.
+- **Cons:**
+    - Rollouts and rollbacks can take time.
+    - Managing multiple API versions can be complex.
+    - Limited control over traffic distribution during updates.
+- **YAML Example:**
 ```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
 spec:
   replicas: 3
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 2        # how many pods we can add at a time
-      maxUnavailable: 0  # maxUnavailable define how many pods can be unavailable
-                         # during the rolling update
+	type: RollingUpdate
+	rollingUpdate:
+	  maxSurge: 2          # Maximum number of pods that can be created above the desired replicas
+	  maxUnavailable: 0    # Maximum number of pods that can be unavailable during the update
+  selector:
+	matchLabels:
+	  app: my-app
+  template:
+	metadata:
+	  labels:
+		app: my-app
+	spec:
+	  containers:
+	  - name: my-app-container
+		image: my-app:v2
 ```
 
-- Rollout commands
-```sh
-kubectl rollout status <DEPLOYMENT>
-kubectl rollout history <DEPLOYMENT>
-kubectl rollout undo <DEPLOYMENT>
+### **3. Additional Deployment Strategies (Advanced)**
+
+While **Recreate** and **RollingUpdate** are the primary strategies in Kubernetes, advanced deployment scenarios may require more sophisticated approaches:
+
+- **Blue-Green Deployment:**
+    - **Description:** Run two identical environments (blue & green). Switch traffic from blue to green once the new version is ready.
+    - **Pros:** Zero downtime and easy rollback.
+    - **Cons:** Requires double the resources.
+- **Canary Deployment:**
+    - **Description:** Gradually roll out the new version to a subset of users before a full-scale release.
+    - **Pros:** Reduces risk by testing the new version with limited traffic.
+    - **Cons:** More complex to manage traffic routing.
+
+> **NOTE:** These advanced strategies often require additional tooling or service mesh integrations.
+
+### **Rollout Commands**
+
+**Manage and monitor the deployment rollout process using these `kubectl` commands.**
+
+- **Check Rollout Status:**
+    
+```bash
+kubectl rollout status deployment/<DEPLOYMENT_NAME>
 ```
-## References
-- [**Kubernetes-deployment-strategies**](*https://blog.container-solutions.com/kubernetes-deployment-strategies*)
+    
+- **View Rollout History:**
+    
+```bash
+kubectl rollout history deployment/<DEPLOYMENT_NAME>
+```
+    
+- **Undo/Rollback to Previous Revision:**
+    
+```bash
+kubectl rollout undo deployment/<DEPLOYMENT_NAME>
+```
+    
+- **Pause a Rollout:**
+    
+```bash
+kubectl rollout pause deployment/<DEPLOYMENT_NAME>
+```
+    
+- **Resume a Paused Rollout:**
+    
+```bash
+kubectl rollout resume deployment/<DEPLOYMENT_NAME>
+```
+    
+- **Restart a Deployment:**
+    
+```bash
+kubectl rollout restart deployment/<DEPLOYMENT_NAME>
+```
+    
+- **View Detailed Deployment Information:**
+    
+```bash
+kubectl describe deployment/<DEPLOYMENT_NAME>
+```
+
+- **Scale a Deployment:**
+
+```bash
+kubectl scale deployment/<DEPLOYMENT_NAME> --replicas=<NUMBER_OF_REPLICAS>
+```
+
+- **Update Deployment Image:**
+
+```bash
+kubectl set image deployment/<DEPLOYMENT_NAME> <CONTAINER_NAME>=<NEW_IMAGE>
+```
+
+
+### **Example Workflow: RollingUpdate Deployment**
+
+1. **Create a Deployment:**
+    
+```bash
+kubectl create deployment my-app --image=my-app:v1 --replicas=3
+```
+    
+2. **Check Deployment Status:**
+    
+```bash
+kubectl rollout status deployment/my-app
+```
+    
+3. **Update the Deployment to a New Version:**
+    
+```bash
+kubectl set image deployment/my-app my-app-container=my-app:v2
+```
+    
+4. **Monitor the Rollout Progress:**
+    
+```bash
+kubectl rollout status deployment/my-app
+```
+    
+5. **View Rollout History:**
+    
+```bash
+kubectl rollout history deployment/my-app
+```
+    
+6. **Rollback to Previous Version if Needed:**
+    
+```bash
+kubectl rollout undo deployment/my-app
+```
+    
+7. **Scale the Deployment:**
+    
+```bash
+kubectl scale deployment/my-app --replicas=5
+```
+
+### **References**
+
+- [Kubernetes Deployment Strategies](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#deployment-strategies)
+- [kubectl Rollout Command Reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout)
+- [Advanced Deployment Techniques](https://blog.container-solutions.com/kubernetes-deployment-strategies)
+
+---
+
+By understanding and utilizing different **deployment strategies** along with essential **rollout commands**, you can effectively manage application updates in your Kubernetes cluster, ensuring smooth transitions and minimal downtime.
 ---
 # Services
 
