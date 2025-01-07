@@ -246,7 +246,7 @@ kubectl delete -f <Pod.yml>
     - **Usage:** `kubectl label pod <PodName> key=value`
 - **Selectors:**
     - **Purpose:** Query and filter pods based on labels.
-    - **Usage:** `kubectl get pods --selector key=value`
+    - **Usage:** `kubectl get pods --selector key=value,key2=value2`
 - **Best Practices:**
     - **Consistent Labeling:** Use meaningful and consistent labels across your pods.
     - **Combine Labels:** Utilize multiple labels for more granular selection.
