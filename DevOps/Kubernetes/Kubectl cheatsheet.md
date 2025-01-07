@@ -526,6 +526,24 @@ spec:
 - `PreferNoSchedule`
 - `NoExecute`
 
+- Running a pod with tolerations
+```sh
+# Image name: nginx
+# Key: spray
+# Value: mortein
+# Effect: NoSchedule
+kubectl run nginx --image=nginx --restart=Never --overrides='{"apiVersion":"v1","spec":{"tolerations":[{"key":"spray","operator":"Equal","value":"mortein","effect":"NoSchedule"}]}}'
+```
+
+**Remove a taint**
+To remove a taint, use the `kubectl taint` command with the taint specification followed by a `-` (dash) at the end.
+```sh
+kubectl taint nodes <node-name> <key>=<value>:<effect>-
+kubectl taint nodes node01 spray=mortein:NoSchedule-
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+```
+
+
 > **Note:**
 	There are two special cases:
 	An empty `key` with operator `Exists` matches all keys, values and effects which means this will tolerate everything.
@@ -550,14 +568,6 @@ tolerations:
   operator: "Equal"
   value: "value1"
   effect: "NoExecute"
-```
-- Running a pod with to
-```sh
-# Image name: nginx
-# Key: spray
-# Value: mortein
-# Effect: NoSchedule
-kubectl run nginx --image=nginx --restart=Never --overrides='{"apiVersion":"v1","spec":{"tolerations":[{"key":"spray","operator":"Equal","value":"mortein","effect":"NoSchedule"}]}}'
 ```
 
 
