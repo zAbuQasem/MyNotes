@@ -20,7 +20,7 @@
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
 	- [Daemon-Sets](#Daemon-Sets)
 - [**Monitoring**](#Monitoring)
-- [**Commands**](#Commands)
+- [**Jobs-CronJobs**](#Jobs-CronJobs)
 - [**Multi-Containers**](#Multi-Containers)
 - [**Secrets**](#Secrets)
 - [**initContainer**](#initContainer)
@@ -1103,28 +1103,115 @@ kubectl logs -f <PodName> <ContainerName>
 # -f: View live
 # ContianerName: Only mandatory if your pod had multiple containers
 ```
-# Commands
-Commands in manifest override `ENTRYPOINT` and `CMD` in Dockerfile
-```yml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-  - name: command-demo-container
-    image: debian
-    command: ["printenv"]
-    args: ["HOSTNAME", "KUBERNETES_PORT"]
-    restartPolicy: OnFailure
-#   command:
-#     - "sleep"
-#     - "5000"
-```
-> **Note**: You cannot change command while the pod is running
+---
+# Jobs-CronJobs
 
+## **Key Differences Between Jobs and CronJobs**:
+
+| Feature            | Job                              | CronJob                                  |
+| ------------------ | -------------------------------- | ---------------------------------------- |
+| **Purpose**        | One-time task                    | Recurring/scheduled task                 |
+| **Execution**      | Runs immediately or when created | Runs based on schedule (Cron syntax)     |
+| **Concurrency**    | Handles one-off parallelism      | Controls concurrency for recurring tasks |
+| **Pod Management** | Pods terminate upon completion   | Pods created as per the schedule         |
+
+## **1. Job Template**
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-job
+spec:
+  completions: 3
+  parallelism: 2
+  backoffLimit: 4
+  template:
+    metadata:
+      name: simple-job-pod
+    spec:
+      containers:
+      - name: my-job-container
+        image: busybox
+        command: ["echo", "Hello, Kubernetes!"]
+      restartPolicy: Never
+```
+
+#### **Imperative Command to Create a Job**:
+
+```bash
+kubectl create job simple-job --image=busybox -- echo "Hello, Kubernetes!"
+```
+- **View Job details**:
+  ```bash
+kubectl get jobs
+kubectl describe job simple-job
+```
+- **Delete a Job**:
+```bash
+kubectl delete job simple-job
+```
+- **Forcefully Create Pods for a Job**:
+```bash
+kubectl scale job simple-job --replicas=5
+```
+## **2. CronJob Template**
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: scheduled-task
+spec:
+  schedule: "*/5 * * * *" # Every 5 minutes
+  jobTemplate:
+    spec:
+      completions: 1
+      parallelism: 1
+      backoffLimit: 3
+      template:
+        metadata:
+          name: cronjob-task
+        spec:
+          containers:
+          - name: cronjob-container
+            image: busybox
+            command: ["echo", "Running a scheduled task!"]
+          restartPolicy: Never
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+```
+
+#### **Imperative Command to Create a CronJob**:
+
+```bash
+kubectl create cronjob scheduled-task --image=busybox --schedule="*/5 * * * *" -- echo "Running a scheduled task!"
+```
+- **View CronJob details**:
+```bash
+kubectl get cronjobs
+kubectl describe cronjob scheduled-task
+```
+- **Delete a CronJob**:
+```bash
+kubectl delete cronjob scheduled-task
+```
+- **Trigger a CronJob manually**:
+```bash
+kubectl create job --from=cronjob/scheduled-task manual-run
+```
+## **Best Practices**:
+
+1. **For Jobs**:
+    - Use `backoffLimit` to control retries and avoid infinite loops.
+    - Define resource requests/limits for Pods to prevent overloading nodes.
+2. **For CronJobs**:
+    - Test the Job template separately to ensure it behaves as expected.
+    - Keep the `successfulJobsHistoryLimit` and `failedJobsHistoryLimit` reasonable to avoid clutter.
+    - Use descriptive names for CronJobs for better identification.
+3. **Monitoring**:
+    - Monitor Job and CronJob statuses using `kubectl get jobs` and `kubectl get cronjobs`.
+    - Enable logging to debug failures effectively.
 ---
 # Secrets
 - Imperative method
