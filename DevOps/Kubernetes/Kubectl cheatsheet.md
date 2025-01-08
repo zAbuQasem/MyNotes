@@ -372,7 +372,7 @@ metadata:
   name: myfirst-replica-controller
 spec:
   replicas: 3
-  selector:       # A Must in ReplicaSet
+  selector:   # A Must in ReplicaSet
     matchLabels:
         type: frontend
   template:
@@ -527,8 +527,8 @@ spec:
   strategy:
 	type: RollingUpdate
 	rollingUpdate:
-	  maxSurge: 2          # Maximum number of pods that can be created above the desired replicas
-	  maxUnavailable: 0    # Maximum number of pods that can be unavailable during the update
+	  maxSurge: 2      # Maximum number of pods that can be created above the desired replicas
+	  maxUnavailable: 0# Maximum number of pods that can be unavailable during the update
   selector:
 	matchLabels:
 	  app: my-app
@@ -669,15 +669,17 @@ kubectl scale deployment/my-app --replicas=5
 # Services
 
 ## NodePort
- A service that forwads traffic from a node to a pod, so users can access the application in a pod from the node ip. 
- ![https://i.imgur.com/prltTNj.png](https://i.imgur.com/prltTNj.png)
-- Create a NodePort service
+
+A service that forwards traffic from a node to a pod, so users can access the application in a pod using the node's IP and specified port.
+
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
+  name: myapp-service
   labels:
-    name: myapp-service
+    app: myapp
+    type: front-end
 spec:
   type: NodePort
   ports:
@@ -686,33 +688,60 @@ spec:
       nodePort: 30008 # A port we will connect to
   selector:
     app: myapp
-    type: front-end
 ```
-
-- Create a NodePort service
+### Imperative Commands:
+- Create a NodePort service:
 ```bash
-kubectl create -f <File.yml>
+kubectl create -f <file.yml>
 ```
-
- - Get the Service URL
+- Expose an existing deployment as a NodePort service:
+```bash
+kubectl expose deployment <deployment-name> --type=NodePort --port=80 --target-port=80
+```
+- Get the service details:
+```bash
+kubectl get svc myapp-service
+```
+- Get the service URL:
 ```bash
 # Minikube
-minikube service <SERVICE-NAME> --url
-# kubernetes cluster
-kubectl port-forward svc/<SERVICE-NAME> LOCALPORT:REMOTEPORT -n <NAME>
+minikube service <service-name> --url
+
+# Kubernetes cluster
+kubectl port-forward svc/<service-name> LOCALPORT:REMOTEPORT -n <namespace>
 ```
-> **Note**: If the label matches multiple instances, the service will distribute the load among them.
+## Best Practices:
 
-## ClusterIp
-Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster.
+1. Avoid hardcoding `nodePort` values unless necessary. Let Kubernetes assign ports dynamically when possible.
+2. Use `NodePort` only when external access to the cluster is minimal or specific to development environments.
+3. Always validate the service's selector matches the correct pods.
 
-![](https://i.imgur.com/IoqQzAV.png)
+### Troubleshooting:
+
+1. **Service not reachable on the `nodePort`:**
+    - Ensure the correct firewall rules are configured to allow traffic to the specified `nodePort`.
+    - Verify the pod's readiness status:
+```bash
+kubectl get pods -o wide
+```
+
+2. **Traffic not routing to the intended pod:**
+    - Confirm that the `selector` labels in the service match the labels on the pods:
+```bash
+kubectl describe svc myapp-service
+```
+## ClusterIP
+
+Exposes the service on a cluster-internal IP. This service type is only reachable within the cluster.
+
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
+  name: back-end
   labels:
-    name: back-end
+    app: myapp
+    type: back-end
 spec:
   type: ClusterIP
   ports:
@@ -720,24 +749,82 @@ spec:
       port: 80
   selector:
     app: myapp
-    type: back-end
 ```
 
+### Imperative Commands:
+
+- Create a ClusterIP service:
+```bash
+kubectl create -f <file.yml>
+```
+- Expose an existing deployment as a ClusterIP service:
+```bash
+kubectl expose deployment <deployment-name> --type=ClusterIP --port=80 --target-port=80
+```
+## Best Practices:
+
+1. Use `ClusterIP` for internal communication between microservices.
+2. Ensure network policies are implemented to secure internal service communication.
+
+### Troubleshooting:
+
+1. **Pod not able to connect to the service:**
+	- Check DNS resolution for the service: `nslookup <service-name>`.`
+	- Ensure pods are using the correct `selector`.
+
+2. **Load distribution issues:**
+    - Verify the endpoints of the service: 
+```bash
+kubectl get endpoints <service-name>
+```
 ## LoadBalancer
-On a supporting Cloud platform this will work, but on a non-supporting platform such as virtual box; it will work as a regular **Nodeport**.
+
+Exposes the service externally using a cloud provider's load balancer.
+
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
+  name: myapp-service
   labels:
-    name: myapp-service
+    app: myapp
 spec:
   type: LoadBalancer
   ports:
     - targetPort: 80
       port: 80
       nodePort: 30008
+  selector:
+    app: myapp
 ```
+
+### Imperative Commands:
+
+- Create a LoadBalancer service:
+```bash
+kubectl create -f <file.yml>
+```
+- Expose an existing deployment as a LoadBalancer service:
+```bash
+kubectl expose deployment <deployment-name> --type=LoadBalancer --port=80 --target-port=80
+```
+
+## Best Practices:
+
+1. Use `LoadBalancer` for external-facing services in production on cloud platforms.
+2. Regularly monitor the associated cloud resources for cost and performance.
+
+### Troubleshooting:
+
+1. **LoadBalancer IP not assigned:**
+    
+    - Verify if the cloud provider's load balancer controller is running.
+    - Check the service status:  
+```bash
+kubectl describe svc <service-name>
+```
+2. **Service inaccessible from the external IP:**
+    - Ensure external traffic is allowed in the cloud provider's security groups or firewall.
 
 ---
 # Scheduling
@@ -752,7 +839,7 @@ metadata:
 spec:
   nodeName: abuqasem-node
   replicas: 3
-  selector:       # A Must in ReplicaSet
+  selector:   # A Must in ReplicaSet
     matchLabels:
         type: frontend
   template:
@@ -913,7 +1000,7 @@ metadata:
 spec:
   affinity:
     nodeAffinity:
-      # Required: Must match one of these zones
+  # Required: Must match one of these zones
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
@@ -922,7 +1009,7 @@ spec:
             values:
               - antarctica-east1
               - antarctica-west1
-      # Preferred: Prefer nodes with this label
+  # Preferred: Prefer nodes with this label
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:
@@ -1063,7 +1150,7 @@ metadata:
   name: myfirst-replica-controller
 spec:
   replicas: 3
-  selector:       # A Must in ReplicaSet
+  selector:   # A Must in ReplicaSet
     matchLabels:
         type: frontend
   template:
@@ -1661,7 +1748,7 @@ spec:
       name: data-volume
   volumes:
   - name: data-volume
-    hostPath:    # Mount on the host machine
+    hostPath:# Mount on the host machine
       path: /data
       type: Directory
 ```
