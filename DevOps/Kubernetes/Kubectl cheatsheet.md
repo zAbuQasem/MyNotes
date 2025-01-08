@@ -4,7 +4,6 @@
 - [**NameSpaces**](#NameSpaces)
 - [**Managing-Pods**](#Managing-Pods)
 - [**YAML**](#YAML)
-	- [Generate-template](#Generate-template)
 	- [Kubectl-manual](#Kubectl-manual)
 - [**Replicas**](#Replicas)
 	- [Scaling-Replicas](#Scaling-Replicas)
