@@ -1121,19 +1121,28 @@ kubectl logs -f <PodName> <ContainerName>
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: simple-job
+  name: advanced-job
 spec:
-  completions: 3
-  parallelism: 2
-  backoffLimit: 4
+  parallelism: 3  # Number of pods running in parallel.
+  completions: 5  # Total number  of pods to complete the job successfully.
+  backoffLimit: 4 # Number of retries before marking the job as failed.
+  activeDeadlineSeconds: 120 #  Maximum time for the job to run.
+  ttlSecondsAfterFinished: 300 # Time to live for completed pods.
+  podFailurePolicy:
+    rules:
+    - action: Ignore
+      onExitCodes:
+        operator: In
+        values: [1, 2]
   template:
     metadata:
-      name: simple-job-pod
+      labels:
+        app: my-job
     spec:
       containers:
-      - name: my-job-container
+      - name: my-container
         image: busybox
-        command: ["echo", "Hello, Kubernetes!"]
+        command: ["sh", "-c", "echo Hello; sleep 5; exit 0"]
       restartPolicy: Never
 ```
 
@@ -1143,7 +1152,7 @@ spec:
 kubectl create job simple-job --image=busybox -- echo "Hello, Kubernetes!"
 ```
 - **View Job details**:
-  ```bash
+```bash
 kubectl get jobs
 kubectl describe job simple-job
 ```
