@@ -316,22 +316,12 @@ spec:
 -   **`metadata`** - Data that helps uniquely identify the object, including a `name` string, `UID`, and optional `namespace`
 -   **`spec`** - What state you desire for the object
 
-## Generate-template
-You can let kubectl generate a yaml file for you by using the `--dry-run` option
-- **Examples**
-```bash
-1- kubectl run nginx --image nginx --dry-run client -o yaml
-2- kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
-3- kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml 
-```
-
 ## Kubectl-manual
 Get the usage of a command
 ```sh
 kubectl explain <Object>
 kubectl explain pod
 kubectl explain deployment
-...etc
 ```
 ## References:
 - [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
