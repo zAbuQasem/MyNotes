@@ -5,11 +5,10 @@
 - [**Managing-Pods**](#Managing-Pods)
 - [**YAML**](#YAML)
 	- [Kubectl-manual](#Kubectl-manual)
-- [**Replicas**](#Replicas)
-	- [Scaling-Replicas](#Scaling-Replicas)
+- [**ReplicaSets**](#ReplicaSets)
 - [**Deployments**](#Deployments)
-	- [Deployment-strategies](#Deployment-strategies)
-	- [References](#References)
+- [**StatefulSets**](#StatefulSets)
+- [**DaemonSets**](#DaemonSets)
 - [**Services**](#Services)
 	- [NodePort](#NodePort)
 	- [ClusterIp](#ClusterIp)
@@ -17,7 +16,6 @@
 - [**Scheduling**](#Scheduling)
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
-	- [Daemon-Sets](#Daemon-Sets)
 - [**Monitoring**](#Monitoring)
 - [**Jobs-CronJobs**](#Jobs-CronJobs)
 - [**Multi-Containers**](#Multi-Containers)
@@ -326,44 +324,105 @@ kubectl explain deployment
 - [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
 - [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
+
 ---
-# Replicas
-- Create `ReplicationController`
+# StatefulSets
+
+## Description
+
+A **StatefulSet** is a Kubernetes resource designed for managing stateful applications. Unlike Deployments, StatefulSets provide:
+
+- **Stable network identities**: Each pod gets a unique name (e.g., `statefulset-0`, `statefulset-1`).
+- **Persistent storage**: StatefulSets allow pods to retain storage across restarts using PersistentVolumeClaims (PVCs).
+- **Ordered deployment**: Pods are created or deleted in a specific order, useful for apps like databases.
+
+## Key Features
+
+- **Stable Pod Names**: Pods are assigned unique, consistent names.
+- **Persistent Volumes**: Each pod gets a dedicated persistent volume.
+- **Ordered Scaling**: Pods are created and terminated in a predefined sequence.
+
+## Headless Services
+
+A **Headless Service** is a Kubernetes service with `clusterIP: None`. It allows each pod in a StatefulSet to have its own DNS entry, enabling direct access to individual pods. This is useful when each pod needs to be uniquely addressed, as in databases like MySQL or Kafka.
+
+Example of a headless service:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  clusterIP: None  # No Cluster IP
+  selector:
+    app: web
+  ports:
+    - port: 80
+```
+
+This ensures DNS resolution for pods like `web-0`, `web-1`, etc., allowing access by name (e.g., `web-0.web`).
+
+---
+
+## Example StatefulSet YAML
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  serviceName: web
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: nginx:latest
+        volumeMounts:
+        - name: webdata
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: webdata
+    spec:
+      accessModes: [ReadWriteOnce]
+      resources:
+        requests:
+          storage: 1Gi
+```
+
+StatefulSets are ideal for applications that need stable identities and persistent storage, such as databases and distributed systems. Headless services complement StatefulSets by enabling direct DNS access to individual pods.
+
+---
+# ReplicaSets
+
+## Description
+
+A **ReplicaSet** ensures that a specified number of pod replicas are running at any given time. It replaces the older **ReplicationController** and provides better management of pod scaling. ReplicaSets are used to maintain the desired number of pods, automatically creating or deleting pods as needed.
+
+- **Replicas**: Defines the number of identical pods that should be running.
+- **Selector**: A label selector used to identify which pods are controlled by the ReplicaSet.
+- **Template**: The pod specification (metadata and spec) used for creating pods in the ReplicaSet.
+
+## Creating a ReplicationController (Deprecated)
+
+ReplicationControllers are deprecated in favor of ReplicaSets. However, here’s an example for reference:
+
 ```yaml
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: myfirst-replica-controller
-spec:
-  replicas: 3
-  template:
-    metadata:
-      name: nginx
-      labels:
-        app: nginx-1
-    spec:
-      containers:
-        - name: nginx-contanier-1
-          image: nginx
-          ports:
-            - containerPort: 9001
-```
-
-```bash
-kubectl create -f <File.yml>
-```
-
-- Create `ReplicaSet`
-```yaml
-apiVersion: v1
-kind: ReplicaSet
-metadata:
   name: myfirst-replica-controller
 spec:
   replicas: 3
-  selector:   # A Must in ReplicaSet
-    matchLabels:
-        type: frontend
   template:
     metadata:
       name: nginx
@@ -371,64 +430,82 @@ spec:
         app: nginx-1
     spec:
       containers:
-        - name: nginx-contanier-1
+        - name: nginx-container-1
           image: nginx
           ports:
-            - containerPort: 9001-
+            - containerPort: 9001
 ```
+
+To create it:
 
 ```bash
-kubectl create replicaset -f <File.yml>
+kubectl create -f <File.yml>
+```
+## Creating a ReplicaSet
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myfirst-replica-set
+spec:
+  replicas: 3
+  selector:   # A must in ReplicaSet
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx-1
+    spec:
+      containers:
+        - name: nginx-container-1
+          image: nginx
+          ports:
+            - containerPort: 9001
 ```
 
-> **Note**: Selectors are mandatory in replicasets, becuase they will match any non-replicated pod based on the labels and will include them in the replecation.
+To create it:
 
-
-- List `ReplicaSet`
 ```bash
-kubectl get replicaset
+kubectl create -f <File.yml>
 ```
 
-- Edit a ReplicaSet
-```bash
-kubectl edit rs/<SET>
-```
+### Key Notes:
 
-- Describe replicasets
-```bash
-kubectl describe replicasets/<SET>
-```
+- **Selector**: Selectors are mandatory in ReplicaSets. They match pods based on their labels and ensure replication only includes the targeted pods.
+- **Template**: Defines the pod configuration (labels, containers, etc.).
+## Scaling Replicas
 
-- Delete replicasets
-```bash
-kubectl delete replicasets/<SET>
-```
+### 1. Scale using YAML file
 
-## Scaling-Replicas
+Edit the number of replicas in the YAML file, then apply the changes:
 
-- Edit the Yaml file then
 ```bash
 kubectl replace -f <File.yml>
 ```
 
-- Scale directly from the cli
+### 2. Scale directly from CLI
+
 ```bash
 kubectl scale --replicas=<NUMBER> -f <File.yml>
 ```
 
-- Scale from the cli as a resource
+### 3. Scale a ReplicaSet resource
+
 ```bash
 kubectl scale --replicas=<NUMBER> replicaset/<NAME>
 ```
 
-- Cheat cmd to delete all pods within a replicaset
+### 4. Delete all Pods in a ReplicaSet
+
 ```bash
 kubectl scale rs/<SET> --replicas=0
 ```
+
 ---
 # Deployments
-
-![](https://i.imgur.com/GgInLMb.png)
 
 - Create a deployment
 ```bash
@@ -1130,30 +1207,86 @@ NodeAffinity uses various **operators** to define how labels should match. Here 
 
 - [Assign Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
 ---
-## Daemon-Sets
-ReplicaSet ensures that the number of pods of an application is running on the correct scale as specified in the conf file. Whereas in the case of DaemonSet it will ensure that **one copy of pod defined in our configuration will always be available on every worker node.**
-```yml
-apiVersion: v1
+# DaemonSets
+
+## Description
+
+A **DaemonSet** ensures that a specific pod runs on all (or selected) nodes in a Kubernetes cluster. It is useful for deploying services that need to run on every node, such as logging agents, monitoring agents, or networking tools.
+
+- **Pod distribution**: A DaemonSet guarantees that one pod is running on each node, or a subset of nodes, in the cluster.
+- **Node selector**: You can use a node selector to limit where the DaemonSet’s pods are scheduled.
+- **Pod update**: DaemonSets also ensure that when a node is added to the cluster, the appropriate pod is scheduled on that node automatically.
+
+## Example DaemonSet YAML
+
+```yaml
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: myfirst-replica-controller
+  name: fluentd-daemonset
 spec:
-  replicas: 3
-  selector:   # A Must in ReplicaSet
+  selector:
     matchLabels:
-        type: frontend
+      app: fluentd
   template:
     metadata:
-      name: nginx
       labels:
-        app: nginx-1
+        app: fluentd
     spec:
       containers:
-        - name: nginx-contanier-1
-          image: nginx
-          ports:
-            - containerPort: 9001
+      - name: fluentd
+        image: fluent/fluentd:v1.12-1
+        ports:
+        - containerPort: 24224
+        volumeMounts:
+        - mountPath: /fluentd/etc
+          name: fluentd-config
+  volumes:
+  - name: fluentd-config
+    configMap:
+      name: fluentd-configmap
 ```
+
+This example creates a DaemonSet that runs a `fluentd` container on every node in the cluster.
+## DaemonSet Scaling and Management
+
+DaemonSets automatically manage pod scheduling, so **scaling** is generally not needed. However, you can control the behavior by using:
+
+- **Node selectors**: Limit where pods are deployed.
+- **Tolerations**: Schedule pods on nodes with specific taints.
+- **Update strategy**: Control how DaemonSet pods are updated when the specification changes (rolling updates).
+### Example: Node Selector
+
+You can use `nodeSelector` to schedule DaemonSet pods on specific nodes:
+
+```yaml
+spec:
+  template:
+    spec:
+      nodeSelector:
+        disktype: ssd
+```
+
+### Example: Toleration (for tainted nodes)
+
+You can use tolerations to allow pods to be scheduled on tainted nodes:
+
+```yaml
+spec:
+  template:
+    spec:
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "gpu-node"
+        effect: "NoSchedule"
+```
+
+
+### Conclusion
+
+- **DaemonSets** are ideal for workloads that need to run on every node, like monitoring or logging agents.
+- Pods are automatically distributed across nodes and can be managed using selectors, tolerations, and update strategies.
 
 ---
 # Monitoring
@@ -1719,7 +1852,7 @@ kubectl get netpol
 # Volumes-Mounts
 
 ## Pod-Volume
-```yaml
+```yml
 apiVersion: v1
 kind: Pod
 metadata:
