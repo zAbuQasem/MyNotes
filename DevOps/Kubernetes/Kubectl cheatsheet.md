@@ -1984,20 +1984,20 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 
 ## Common Admission Controllers
 
-|**Admission Controller**|**Description**|
-|---|---|
-|**AlwaysDeny**|Denies all API requests (testing purposes).|
-|**AlwaysPullImages**|Forces Kubernetes to always pull the image specified in the Pod spec.|
-|**DefaultStorageClass**|Assigns a default storage class to PersistentVolumeClaims if none is specified.|
-|**LimitRanger**|Enforces resource limits (e.g., CPU, memory) defined in the namespace.|
-|**NamespaceLifecycle**|Ensures operations in a namespace (e.g., deletion) follow lifecycle rules.|
-|**NodeRestriction**|Restricts nodes from modifying objects they shouldn't, such as their labels.|
-|**PodSecurity**|Enforces Pod Security admission policies (replaces PodSecurityPolicy).|
-|**ResourceQuota**|Ensures resource usage stays within defined quotas in a namespace.|
-|**MutatingAdmissionWebhook**|Calls external webhooks to modify API objects.|
-|**ValidatingAdmissionWebhook**|Calls external webhooks to validate API objects.|
-|**TaintNodesByCondition**|Automatically applies taints based on node conditions.|
-|**PodNodeSelector**|Assigns Pods to specific nodes based on a configured selector.|
+| **Admission Controller**       | **Description**                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| **AlwaysDeny**                 | Denies all API requests (testing purposes).                                     |
+| **AlwaysPullImages**           | Forces Kubernetes to always pull the image specified in the Pod spec.           |
+| **DefaultStorageClass**        | Assigns a default storage class to PersistentVolumeClaims if none is specified. |
+| **LimitRanger**                | Enforces resource limits (e.g., CPU, memory) defined in the namespace.          |
+| **NamespaceLifecycle**         | Ensures operations in a namespace (e.g., deletion) follow lifecycle rules.      |
+| **NodeRestriction**            | Restricts nodes from modifying objects they shouldn't, such as their labels.    |
+| **PodSecurity**                | Enforces Pod Security admission policies (replaces PodSecurityPolicy).          |
+| **ResourceQuota**              | Ensures resource usage stays within defined quotas in a namespace.              |
+| **MutatingAdmissionWebhook**   | Calls external webhooks to modify API objects.                                  |
+| **ValidatingAdmissionWebhook** | Calls external webhooks to validate API objects.                                |
+| **TaintNodesByCondition**      | Automatically applies taints based on node conditions.                          |
+| **PodNodeSelector**            | Assigns Pods to specific nodes based on a configured selector.                  |
 
 ## Configuring Admission Controllers
 
@@ -2020,6 +2020,9 @@ Edit the API server configuration to include the desired admission controllers:
 ```
 
 Restart the API server for changes to take effect.
+```bash
+systemctl restart kube-apiserver
+```
 
 ## Using Webhooks for Admission Control
 
