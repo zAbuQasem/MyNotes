@@ -1617,7 +1617,7 @@ If multiple authorization modes are specified, they are evaluated in order.
 kubectl describe pod kube-apiserver-controlplane -n kube-system
 ```
 
-## Role-Based Access Control (RBAC)
+## RBAC
 
 ### 1. **Create a Role**
 
@@ -1752,7 +1752,8 @@ kubectl create clusterrole view-logs --verb=get,list --resource=pods/log
 [**KubiScan**](https://github.com/cyberark/KubiScan) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
 
-# ServiceAccounts
+---
+## ServiceAccounts
 
 A **ServiceAccount** provides an identity for processes running in a Pod, enabling them to interact with the Kubernetes API securely. By default, every namespace includes a `default` ServiceAccount, but custom ServiceAccounts can be created for specific permissions and tasks.
 
@@ -1857,7 +1858,7 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 - Use ServiceAccounts to avoid exposing credentials directly in Pods.
 - Always scope permissions to the minimum required using RBAC.
 - Consider disabling `automountServiceAccountToken` unless explicitly needed.
-
+---
 ## ImageSecurity
 
 - Creating a Secret for imagePulling
@@ -1878,7 +1879,7 @@ spec:
   imagePullSecrets:
   - name: regcred
 ```
-
+---
 ## SecurityContexts
 - Container Level
 ```yml
@@ -1910,6 +1911,7 @@ spec:
 ```
 **Note**: Capabilities are only supported at the container level not at pod level.
 
+---
 ## NetworkPolicy
 
 | Support network policies | Doesn't support network policies |
