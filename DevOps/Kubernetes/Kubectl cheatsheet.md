@@ -25,7 +25,6 @@
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
 - [**Security**](#Security)
-	- [API-Groups](#API-Groups)
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
 	- [ServiceAccounts](#ServiceAccounts)
@@ -1590,7 +1589,7 @@ service kube-apiserver start
 
 ## Authorization
 
-## Authorization Modes
+### Authorization Modes
 
 Kubernetes supports various modes of authorization for controlling access to API resources.
 
@@ -1607,7 +1606,6 @@ Kubernetes supports various modes of authorization for controlling access to API
     - Allows all requests unconditionally. Typically used for testing or simple setups.
 6. **AlwaysDeny**:
     - Denies all requests unconditionally.
-
 ### Note:
 If multiple authorization modes are specified, they are evaluated in order.
 
