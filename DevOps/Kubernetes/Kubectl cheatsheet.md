@@ -1998,7 +1998,7 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 | **ValidatingAdmissionWebhook** | Calls external webhooks to validate API objects.                                |
 | **TaintNodesByCondition**      | Automatically applies taints based on node conditions.                          |
 | **PodNodeSelector**            | Assigns Pods to specific nodes based on a configured selector.                  |
-| **NamespaceAutoProvision**     | **It creates a namespace if it cannot be found.                                 |
+| **NamespaceAutoProvision**     | It creates a namespace if it cannot be found.                                   |
 
 ## Configuring Admission Controllers
 
@@ -2017,6 +2017,10 @@ kubectl describe pod kube-apiserver-controlplane -n kube-system | grep enable-ad
 Edit the API server configuration to include the desired admission controllers:
 
 ```bash
+# Edit the API server configuration
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
+
+# Add the desired admission controllers
 --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
 ```
 
