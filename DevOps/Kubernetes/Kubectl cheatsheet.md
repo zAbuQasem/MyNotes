@@ -29,7 +29,7 @@
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
 	- [ServiceAccounts](#ServiceAccounts)
-	- [ImageSecurity](#ImageSecurity)
+	- [Admission-Controllers](#Admission-Controllers)
 	- [SecurityContexts](#SecurityContexts)
 	- [NetworkPolicy](#NetworkPolicy)
 		- [Ingress](#Ingress)
