@@ -1962,26 +1962,132 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 - Always scope permissions to the minimum required using RBAC.
 - Consider disabling `automountServiceAccountToken` unless explicitly needed.
 ---
-## ImageSecurity
+## Admission-Controllers
 
-- Creating a Secret for imagePulling
+## What Are Admission Controllers?
+
+**Admission Controllers** are plugins that intercept API requests to the Kubernetes API server and can modify or validate the requests before they are persisted in etcd. They act as a gatekeeper to enforce policies or augment resources with additional configurations.
+## Admission Controller Workflow
+
+1. **Authentication**: The request is authenticated.
+2. **Authorization**: The request is authorized.
+3. **Admission Control**: The request passes through admission controllers for validation or modification.
+4. **Persistence**: If all checks pass, the request is persisted in etcd.
+
+## Types of Admission Controllers
+
+1. **Mutating Admission Controllers**: Modify the incoming request object.
+    - Example: Add default labels, inject sidecars (e.g., Istio).
+2. **Validating Admission Controllers**: Validate the request but do not modify it.
+    - Example: Check if the request adheres to security policies.
+
+
+## Common Admission Controllers
+
+|**Admission Controller**|**Description**|
+|---|---|
+|**AlwaysDeny**|Denies all API requests (testing purposes).|
+|**AlwaysPullImages**|Forces Kubernetes to always pull the image specified in the Pod spec.|
+|**DefaultStorageClass**|Assigns a default storage class to PersistentVolumeClaims if none is specified.|
+|**LimitRanger**|Enforces resource limits (e.g., CPU, memory) defined in the namespace.|
+|**NamespaceLifecycle**|Ensures operations in a namespace (e.g., deletion) follow lifecycle rules.|
+|**NodeRestriction**|Restricts nodes from modifying objects they shouldn't, such as their labels.|
+|**PodSecurity**|Enforces Pod Security admission policies (replaces PodSecurityPolicy).|
+|**ResourceQuota**|Ensures resource usage stays within defined quotas in a namespace.|
+|**MutatingAdmissionWebhook**|Calls external webhooks to modify API objects.|
+|**ValidatingAdmissionWebhook**|Calls external webhooks to validate API objects.|
+|**TaintNodesByCondition**|Automatically applies taints based on node conditions.|
+|**PodNodeSelector**|Assigns Pods to specific nodes based on a configured selector.|
+
+## Configuring Admission Controllers
+
+### Check Current Admission Controllers
+
+Admission controllers are enabled via the `--enable-admission-plugins` flag in the Kubernetes API server.
+
+Example:
+
+```bash
+kubectl describe pod kube-apiserver-controlplane -n kube-system | grep enable-admission-plugins
+```
+
+### Enable Admission Controllers
+
+Edit the API server configuration to include the desired admission controllers:
+
+```bash
+--enable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
+```
+
+Restart the API server for changes to take effect.
+
+## Using Webhooks for Admission Control
+
+### 1. Mutating Admission Webhook
+
+Used to modify resources during admission. Example: Injecting a sidecar container.
+
 ```yaml
-kubectl create secret docker-registry regcred --docker-server=private-registry.io --docker-username=registry-user --docker-password=registry-password --docker-email=zabuqasem@spiderlabs.org
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: example-mutating-webhook
+webhooks:
+  - name: example.com
+    rules:
+      - apiGroups: ["apps"]
+        apiVersions: ["v1"]
+        resources: ["deployments"]
+    clientConfig:
+      service:
+        name: example-webhook
+        namespace: default
+        path: "/mutate"
+      caBundle: <BASE64_CA_CERT>
 ```
 
-- Attaching the secret to a pod
-```yml
-apiVersion: v1
-kind: Pod
+### 2. Validating Admission Webhook
+
+Used to validate requests against policies.
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
 metadata:
-  name: nginx-pod
-spec:
-  containers:
-  - name: nginx
-    image: private-registery.io/apps/internal-app
-  imagePullSecrets:
-  - name: regcred
+  name: example-validating-webhook
+webhooks:
+  - name: example.com
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+    clientConfig:
+      service:
+        name: example-webhook
+        namespace: default
+        path: "/validate"
+      caBundle: <BASE64_CA_CERT>
 ```
+
+### List Active Admission Controllers
+
+```bash
+kubectl get --raw /api/v1/namespaces/kube-system/configmaps/kubeadm-config | jq '.data["ClusterConfiguration"]' | grep admission
+```
+
+### Test a Webhook
+
+Simulate a request and verify the webhook's response:
+
+```bash
+kubectl apply -f test-pod.yaml --dry-run=server
+```
+## Tips
+
+1. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
+2. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
+3. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
+4. Always test admission controllers and webhooks in a non-production environment before applying them to production.
 ---
 ## SecurityContexts
 - Container Level
