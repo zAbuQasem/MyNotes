@@ -25,6 +25,7 @@
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
 - [**Security**](#Security)
+	- [API-Groups](#API-Groups)
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
 	- [ServiceAccounts](#ServiceAccounts)
@@ -1586,7 +1587,111 @@ service kube-apiserver start
 ```
 ---
 # Security
+## API-Groups
 
+## What Are API Groups?
+
+API groups in Kubernetes are a mechanism to organize and version API resources. Kubernetes divides its API into multiple logical groups to manage the vast array of resources efficiently. Each group contains related resources, making it easier to control access, version them, and extend the API.
+
+## Core API Group (Empty API Group)
+
+- **Group**: `""` (empty string)
+- **Resources**: Core Kubernetes resources like `pods`, `services`, `configmaps`, `nodes`, etc.
+- **Example**:
+```yaml
+apiVersion: v1
+kind: Pod
+```
+## Named API Groups
+
+Named API groups include additional features and custom resources. They follow the format: `<group>/<version>`.
+
+| **API Group**                    | **Resources**                                                  | **Example `apiVersion`**          |
+| -------------------------------- | -------------------------------------------------------------- | --------------------------------- |
+| **apps**                         | Deployments, DaemonSets, StatefulSets, ReplicaSets             | `apps/v1`                         |
+| **batch**                        | Jobs, CronJobs                                                 | `batch/v1`                        |
+| **autoscaling**                  | HorizontalPodAutoscaler                                        | `autoscaling/v1`                  |
+| **networking.k8s.io**            | NetworkPolicies, Ingress, IngressClass                         | `networking.k8s.io/v1`            |
+| **policy**                       | PodSecurityPolicies                                            | `policy/v1`                       |
+| **rbac.authorization.k8s.io**    | Roles, RoleBindings, ClusterRoles, ClusterRoleBindings         | `rbac.authorization.k8s.io/v1`    |
+| **storage.k8s.io**               | StorageClasses, VolumeAttachments, CSI drivers                 | `storage.k8s.io/v1`               |
+| **admissionregistration.k8s.io** | MutatingWebhookConfigurations, ValidatingWebhookConfigurations | `admissionregistration.k8s.io/v1` |
+| **apiextensions.k8s.io**         | CustomResourceDefinitions (CRDs)                               | `apiextensions.k8s.io/v1`         |
+| **authentication.k8s.io**        | TokenReviews                                                   | `authentication.k8s.io/v1`        |
+| **authorization.k8s.io**         | SubjectAccessReviews                                           | `authorization.k8s.io/v1`         |
+
+## Examples
+
+### 1. Core API Group Resource
+
+Creating a Pod (Core API group, empty `apiVersion` group):
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+```
+
+### 2. Named API Group Resource
+
+Creating a Deployment (`apps` API group):
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+```
+
+## Why API Groups Matter
+
+- **Versioning**: Enables incremental changes to resource definitions without breaking existing functionality.
+- **Access Control**: Allows fine-grained RBAC policies by targeting specific groups and resources.
+- **Extension**: Lets you add custom resources using CustomResourceDefinitions (CRDs) under your own API groups.
+
+## Using API Groups with RBAC
+
+When defining RBAC rules, specify the API group for the resource.
+
+Example: Grant access to `Deployments` in the `apps` group:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: manage-deployments
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["create", "delete", "update", "get", "list"]
+```
+
+### Tips
+
+- Use `kubectl api-resources` to list all available API groups and resources in your cluster:
+```bash
+kubectl api-resources
+```
+- Always match the `apiVersion` and `group` with the version supported by your cluster.
+---
 ## Authorization
 
 ### Authorization Modes
@@ -1633,7 +1738,7 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["create"]
-  resourceNames: ["Blue", "Orange"]
+  resourceNames: ["Blue-cm", "Orange-cm"]
 ```
 
 ### 2. **RoleBinding**
