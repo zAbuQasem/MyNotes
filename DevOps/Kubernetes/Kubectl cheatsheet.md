@@ -1588,33 +1588,42 @@ service kube-apiserver start
 ---
 # Security
 
-## API-Groups
-
-- **Core**
-![](https://i.imgur.com/Vn99kDL.png)
-
-- **Named**
-![](https://i.imgur.com/3ihypbt.png)
 ## Authorization
-- **Node**: Every request comes from user with name system node and part of the systems nodes group is authorized by the node authorizer.
-- **ABAC**: Attribute based Access Control
-![](https://i.imgur.com/yRskq0x.png)
-> **Note**: For each change you have to edit the file manually.
-- **RBAC**: Role Based Access Control
-![](https://i.imgur.com/5AYzTAt.png)
-- **Webhook**: Used for out-sourcing authorization methods by leveraging`OpenPolicyAgent`
-- **AlwaysAllow**: Always allow -> `By default`
-- **AlwaysDeny**: Always deny
->  **Note**: If you specified more than one auth mode they will work in order.
 
-- Describe Auth modes on a cluster
+## Authorization Modes
+
+Kubernetes supports various modes of authorization for controlling access to API resources.
+
+1. **Node**:
+    - Requests from system nodes (e.g., `system:node`) are authorized using the **Node Authorizer**.
+2. **ABAC** (Attribute-Based Access Control):
+    - Access is controlled via a policy file with user-defined rules.
+    - **Note**: Changes require manual editing of the policy file.
+3. **RBAC** (Role-Based Access Control):
+    - Uses roles and role bindings to manage permissions for users, groups, or service accounts.
+4. **Webhook**:
+    - Authorization is outsourced to external services like **Open Policy Agent** (OPA).
+5. **AlwaysAllow**:
+    - Allows all requests unconditionally. Typically used for testing or simple setups.
+6. **AlwaysDeny**:
+    - Denies all requests unconditionally.
+
+### Note:
+If multiple authorization modes are specified, they are evaluated in order.
+
+### Check Auth Modes on a Cluster
+
 ```bash
 kubectl describe pod kube-apiserver-controlplane -n kube-system
 ```
 
-## RBAC
-Create a role and assign users to that role.
-```yml
+## Role-Based Access Control (RBAC)
+
+### 1. **Create a Role**
+
+Defines the permissions for a set of API resources and operations:
+
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -1622,23 +1631,24 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["list", "get","create", "update","delete"]
+  verbs: ["list", "get", "create", "update", "delete"]
 - apiGroups: [""]
-  resources: ["configMap"]
+  resources: ["configmaps"]
   verbs: ["create"]
-  resourceNames: ["Blue","Orange"]
+  resourceNames: ["Blue", "Orange"]
 ```
 
-- **Binding**
-	- A role binding grants the permissions defined in a role to a user or set of users. It holds a list of _subjects_ (users, groups, or service accounts), and a reference to the role being granted. A RoleBinding grants permissions within a specific namespace whereas a ClusterRoleBinding grants that access cluster-wide.
+### 2. **RoleBinding**
 
-```yml
+A `RoleBinding` assigns the role’s permissions to users, groups, or service accounts in a specific namespace.
+
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: devuser-developer-binding
 subjects:
-- kind: User # or ServiceAccount
+- kind: User # Can also be ServiceAccount or Group
   name: dev-user
   apiGroup: rbac.authorization.k8s.io
   namespace: default
@@ -1648,31 +1658,112 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-- View RBAC
+- **ClusterRoleBinding**: Similar to a RoleBinding but grants cluster-wide access.
+
+## Predefined Roles and ClusterRoles
+
+Here’s a table of **predefined roles** in Kubernetes and how to use them:
+
+| **Predefined Role**           | **Scope**    | **Description**                                                                                | **Usage Command**                                                                                |
+| ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **cluster-admin**             | Cluster-wide | Grants superuser access to the cluster. Can perform any action on any resource in the cluster. | `kubectl create clusterrolebinding <NAME> --clusterrole=cluster-admin --user=<USER>`             |
+| **admin**                     | Namespace    | Grants full access to a namespace, except managing cluster-wide resources.                     | `kubectl create rolebinding <NAME> --role=admin --user=<USER> -n <NAMESPACE>`                    |
+| **edit**                      | Namespace    | Allows read/write access to most objects in a namespace, except managing roles and bindings.   | `kubectl create rolebinding <NAME> --role=edit --user=<USER> -n <NAMESPACE>`                     |
+| **view**                      | Namespace    | Grants read-only access to resources in a namespace, excluding secrets.                        | `kubectl create rolebinding <NAME> --role=view --user=<USER> -n <NAMESPACE>`                     |
+| **system:node**               | Cluster-wide | Allows nodes to read secrets and create pods assigned to them.                                 | Automatically used by kubelet.                                                                   |
+| **system:node-proxier**       | Cluster-wide | Grants permissions for the kube-proxy to manage network rules.                                 | Automatically used by kube-proxy.                                                                |
+| **system:discovery**          | Cluster-wide | Allows read-only access to API resources for system components or end-users to discover APIs.  | `kubectl create clusterrolebinding <NAME> --clusterrole=system:discovery --user=<USER>`          |
+| **system:public-info-viewer** | Cluster-wide | Grants read-only access to non-sensitive, public cluster information.                          | `kubectl create clusterrolebinding <NAME> --clusterrole=system:public-info-viewer --user=<USER>` |
+| **system:aggregate-to-admin** | Cluster-wide | Aggregates roles into the `admin` role to extend its permissions.                              | Automatically applied; no manual usage required.                                                 |
+| **system:aggregate-to-edit**  | Cluster-wide | Aggregates roles into the `edit` role to extend its permissions.                               | Automatically applied; no manual usage required.                                                 |
+| **system:aggregate-to-view**  | Cluster-wide | Aggregates roles into the `view` role to extend its permissions.                               | Automatically applied; no manual usage required.                                                 |
+
+### Examples of Using Predefined Roles
+
+#### 1. Bind the `view` Role to a User in a Namespace
+
 ```bash
+kubectl create rolebinding view-binding --role=view --user=john -n development
+```
+
+#### 2. Bind the `cluster-admin` Role to a User Cluster-wide
+
+```bash
+kubectl create clusterrolebinding admin-binding --clusterrole=cluster-admin --user=john
+```
+
+#### 3. Grant `edit` Role to a ServiceAccount in a Namespace
+
+```bash
+kubectl create rolebinding edit-binding --role=edit --serviceaccount=development:build-robot -n development
+```
+
+#### 4. Bind the `system:discovery` Role to a Group
+
+```bash
+kubectl create clusterrolebinding discovery-binding --clusterrole=system:discovery --group=developers
+```
+## Useful Commands for RBAC
+
+### View Roles and Bindings
+
+```bash
+kubectl create [role,clusterrole] <ROLE> --verb=<VERB> --resource=<RESOURCE> -n <NAMESPACE>
 kubectl get roles
 kubectl get rolebindings
 kubectl describe role <ROLE>
+kubectl describe rolebinding <ROLEBINDING>
 ```
+### Check Access
 
-- Check access
 ```bash
-kubectl auth can-i create deployments
+kubectl auth can-i <VERB> <RESOURCE>
 kubectl auth can-i create deployments --as <USER>
-kubectl auth can-i create deployments --as=system:serviceaccount:default:<SA>
+kubectl auth can-i create deployments --as=system:serviceaccount:<NAMESPACE>:<SERVICE_ACCOUNT>
 ```
 
-### Great Tools
-[**KubiScan**](https://github.com/cyberark/KubiScan) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
+Here’s a comparison table between **Role** and **ClusterRole** in Kubernetes:
 
+| Feature             | **Role**                                                                  | **ClusterRole**                                                                                 |
+| ------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Scope**           | Namespace-specific: Applies only to a single namespace.                   | Cluster-wide: Applies across all namespaces or cluster-level resources.                         |
+| **Resource Types**  | Only namespace-scoped resources (e.g., pods, services, configmaps, etc.). | Both cluster-scoped resources (e.g., nodes, persistentvolumes) and namespace-scoped resources.  |
+| **Binding Type**    | Associated with a `RoleBinding`.                                          | Associated with a `ClusterRoleBinding` or `RoleBinding`.                                        |
+| **Use Case**        | Used to define permissions within a specific namespace.                   | Used to define permissions for resources across the cluster or to grant cross-namespace access. |
+| **Example Use**     | - Grant access to pods in the `dev` namespace.                            | - Grant access to view all nodes in the cluster. - Grant access to manage persistent volumes.   |
+| **Command to View** | `kubectl get role -n <namespace>`                                         | `kubectl get clusterrole`                                                                       |
+| **Command to Bind** | `kubectl create rolebinding`                                              | `kubectl create clusterrolebinding`                                                             |
+| **Flexibility**     | Limited to one namespace per role.                                        | Can span multiple namespaces or target cluster-wide resources.                                  |
+
+### Example Scenarios
+
+1. **Role**:
+    - A developer needs to manage pods in the `dev` namespace:
+```bash
+kubectl create role dev-role --verb=get,list,create --resource=pods -n dev
+```
+        
+2. **ClusterRole**:
+    - An admin needs to allow monitoring tools to view logs from all namespaces:
+```bash
+kubectl create clusterrole view-logs --verb=get,list --resource=pods/log
+```
+### Great Audit Tools
+[**KubiScan**](https://github.com/cyberark/KubiScan) : Scan Kubernetes cluster for risky permissions in Kubernetes's Role-based access control (RBAC) authorization model.
 [**kubesploit**](https://github.com/cyberark/kubesploit): Cross-platform post-exploitation HTTP/2 Command & Control server and agent dedicated for containerized environments.
 
-## ServiceAccounts
-A service account provides an identity for processes that run in a Pod.
-1. The name of the ServiceAccount **must be a vaild DNS subdomain name**.
-2. It's usually used to give access to the cluster. [**More Info**](https://medium.com/the-programmer/working-with-service-account-in-kubernetes-df129cb4d1cc)
+# ServiceAccounts
 
-- Applying it to a POD
+A **ServiceAccount** provides an identity for processes running in a Pod, enabling them to interact with the Kubernetes API securely. By default, every namespace includes a `default` ServiceAccount, but custom ServiceAccounts can be created for specific permissions and tasks.
+
+## Key Points
+
+1. **Naming**: The ServiceAccount name must be a valid DNS subdomain name.
+2. **Purpose**: ServiceAccounts are primarily used to grant API access to applications running inside Pods.
+3. **Default Behavior**: Pods use the `default` ServiceAccount in their namespace unless another ServiceAccount is specified.
+
+## Example: Applying a ServiceAccount to a Pod
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -1682,17 +1773,92 @@ spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
 ```
-> **NOTE**: In deployment, you can specify the service account name in the spec of the containers.
+
+- **`serviceAccountName`**: Specifies the ServiceAccount to use.
+- **`automountServiceAccountToken`**: Set to `false` if you don’t want the token to be automatically mounted in the Pod.
+
+> **Note**: In deployments, you can include the `serviceAccountName` in the container spec.
+
+### 1. **Create a ServiceAccount**
+
+```bash
+kubectl create serviceaccount build-robot
+```
+
+### 2. **List ServiceAccounts**
+
+```bash
+kubectl get serviceaccounts
+kubectl get serviceaccounts -n <NAMESPACE>
+```
+
+### 3. **Describe a ServiceAccount**
+
+```bash
+kubectl describe serviceaccount <NAME>
+kubectl describe serviceaccount <NAME> -n <NAMESPACE>
+```
+
+### 4. **Delete a ServiceAccount**
+
+```bash
+kubectl delete serviceaccount <NAME>
+kubectl delete serviceaccount <NAME> -n <NAMESPACE>
+```
+
+### 5. **Bind a ServiceAccount to a Role**
+
+#### Create a RoleBinding for Namespace-Scoped Access:
+
+```bash
+kubectl create rolebinding build-robot-binding \
+  --role=developer \
+  --serviceaccount=default:build-robot \
+  -n default
+```
+
+#### Create a ClusterRoleBinding for Cluster-Wide Access:
+
+```bash
+kubectl create clusterrolebinding build-robot-cluster-binding \
+  --clusterrole=cluster-admin \
+  --serviceaccount=default:build-robot
+```
+### 6. **Apply a ServiceAccount to a Running Pod**
+
+You cannot modify an existing Pod to use a different ServiceAccount. You must delete the Pod and recreate it with the desired ServiceAccount:
+
+```bash
+kubectl run my-pod --image=nginx --serviceaccount=build-robot
+```
+### 7. **Get the Token for a ServiceAccount**
+
+To retrieve the token for a ServiceAccount, use the following commands:
+
+#### For Kubernetes 1.24+ with projected tokens:
+
+```bash
+kubectl create token build-robot
+```
+### 8. **Attach a ServiceAccount to a Deployment**
+
+```bash
+kubectl set serviceaccount deployment/my-deployment build-robot
+```
+
+## Use Cases
+
+1. **Grant Specific Permissions**: Attach a ServiceAccount to a Role/ClusterRole via RoleBinding/ClusterRoleBinding to limit what the Pod can do in the cluster.
+2. **Secure API Access**: Prevent unauthorized API access by using scoped ServiceAccounts instead of the default one.
+3. **Automation**: Automate tasks like builds or CI/CD workflows using a dedicated ServiceAccount.
+
+## Tips
+
+- Use ServiceAccounts to avoid exposing credentials directly in Pods.
+- Always scope permissions to the minimum required using RBAC.
+- Consider disabling `automountServiceAccountToken` unless explicitly needed.
 
 ## ImageSecurity
-```txt
-docker.io/library/nginx
-Registry  User/
-          Account  Image/
-                   Repository
-                   
-# Example: gcr.io/kubernetes-e2e-test-images/dnsutils
-```
 
 - Creating a Secret for imagePulling
 ```yaml
@@ -1715,7 +1881,6 @@ spec:
 
 ## SecurityContexts
 - Container Level
-
 ```yml
 apiVersion: v1
 kind: Pod
@@ -1747,12 +1912,12 @@ spec:
 
 ## NetworkPolicy
 
-|Support network policies|Doesn't support network policies|
-|-|-|
-|kube-router|Flannel|
-|calico|x|
-|Romana|x|
-|Weave-net|x|
+| Support network policies | Doesn't support network policies |
+| ------------------------ | -------------------------------- |
+| kube-router              | Flannel                          |
+| calico                   | x                                |
+| Romana                   | x                                |
+| Weave-net                | x                                |
 
 ### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
