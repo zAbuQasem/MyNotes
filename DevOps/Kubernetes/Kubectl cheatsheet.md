@@ -1972,6 +1972,10 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 1. **Authentication**: The request is authenticated.
 2. **Authorization**: The request is authorized.
 3. **Admission Control**: The request passes through admission controllers for validation or modification.
+	1. **Mutating Admission Controllers**: Modify the request object.
+	2. **Validating Admission Controllers**: Validate the request object.
+	3. **Webhooks**: External services that can modify or validate requests.
+	4. Mutating happens before validating.
 4. **Persistence**: If all checks pass, the request is persisted in etcd.
 
 ## Types of Admission Controllers
@@ -1998,7 +2002,7 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 | **ValidatingAdmissionWebhook** | Calls external webhooks to validate API objects.                                |
 | **TaintNodesByCondition**      | Automatically applies taints based on node conditions.                          |
 | **PodNodeSelector**            | Assigns Pods to specific nodes based on a configured selector.                  |
-| **NamespaceAutoProvision**     | It creates a namespace if it cannot be found.                                   |
+| **NamespaceAutoProvision**     | It creates a namespace if it cannot be found. (Deprecated)                      |
 
 ## Configuring Admission Controllers
 
@@ -2024,9 +2028,15 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
 ```
 
-Restart the API server for changes to take effect.
+### Disable Admission Controllers
+Edit the API server configuration to disable the desired admission controllers:
+
 ```bash
-systemctl restart kube-apiserver
+# Edit the API server configuration
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
+
+# Add the desired admission controllers
+--disable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
 ```
 
 ## Using Webhooks for Admission Control
