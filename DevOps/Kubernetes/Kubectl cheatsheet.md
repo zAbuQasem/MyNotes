@@ -1975,7 +1975,7 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 	1. **Mutating Admission Controllers**: Modify the request object.
 	2. **Validating Admission Controllers**: Validate the request object.
 	3. **Webhooks**: External services that can modify or validate requests.
-	4. Mutating happens before validating.
+	> **NOTE:** Mutating happens before validating.
 4. **Persistence**: If all checks pass, the request is persisted in etcd.
 
 ## Types of Admission Controllers
