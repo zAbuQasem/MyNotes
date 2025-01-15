@@ -1687,9 +1687,11 @@ rules:
 ### Tips
 
 - Use `kubectl api-resources` to list all available API groups and resources in your cluster:
+
 ```bash
 kubectl api-resources
 ```
+
 - Always match the `apiVersion` and `group` with the version supported by your cluster.
 ---
 ## Authorization
