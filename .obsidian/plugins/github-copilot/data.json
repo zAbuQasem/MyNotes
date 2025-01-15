@@ -1,6 +1,6 @@
 {
   "nodePath": "C:\\Users\\zeyad\\AppData\\Roaming\\fnm\\aliases\\default\\node.exe",
-  "enabled": false,
+  "enabled": true,
   "hotkeys": {
     "accept": "Tab",
     "cancel": "Escape",

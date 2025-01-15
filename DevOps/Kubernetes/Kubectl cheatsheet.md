@@ -1766,8 +1766,8 @@ spec:
   scope: Namespaced          # Scope: Namespaced or Cluster
   versions:
   - name: v1
-    served: true
-    storage: true
+    served: true             # Serves the resource
+    storage: true            # Persists the resource
     schema:                  # OpenAPI v3 schema for validation
       openAPIV3Schema:
         type: object
