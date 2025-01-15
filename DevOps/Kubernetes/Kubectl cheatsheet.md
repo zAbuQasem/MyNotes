@@ -1690,6 +1690,8 @@ rules:
 
 ```bash
 kubectl api-resources
+# Alternatively
+k get storageclasses # when pressing `tab` key it will auto-completet to storageclasses.storage.k8s.io the storage.k8s.io is the api group
 ```
 
 - Always match the `apiVersion` and `group` with the version supported by your cluster.
