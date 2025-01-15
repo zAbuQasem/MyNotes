@@ -26,6 +26,8 @@
 	- [Cluster-Upgrade](#Cluster-Upgrade)
 - [**Security**](#Security)
 	- [API-Groups](#API-Groups)
+	- [CustomResourceDefinitions](#CustomResourceDefinitions)
+	- [Operators](#Operators)
 	- [Authorization](#Authorization)
 	- [RBAC](#RBAC)
 	- [ServiceAccounts](#ServiceAccounts)
@@ -1708,9 +1710,7 @@ Convert a resource to a specific API version:
 
 ```bash
 # Without the --output-version flag, it converts to the latest version.
-
 kubectl-convert -f <file.yaml> [--output-version <apiVersion>]
-
 ```
 ### Tips
 
@@ -1723,6 +1723,353 @@ k get storageclasses # when pressing `tab` key it will auto-completet to storage
 ```
 
 - Always match the `apiVersion` and `group` with the version supported by your cluster.
+
+---
+# CustomResourceDefinitions
+
+## What Are CRDs?
+
+**CustomResourceDefinitions (CRDs)** are a Kubernetes feature that allows you to extend Kubernetes with custom resource types. With CRDs, you can define and manage your own resources (similar to Pods, Services, etc.) tailored to your application requirements. These resources are managed via the Kubernetes API, just like native resources.
+
+## Key Components of CRDs
+
+1. **Custom Resource**:
+    - A new resource type created using a CRD.
+    - Example: `kind: MyResource`.
+2. **CRD Definition**:
+    - Defines the schema, versions, and behavior of your custom resource.
+    - Managed by the `apiextensions.k8s.io/v1` API group.
+3. **Controller**:
+    - Custom logic implemented using a controller watches for changes to the custom resources and acts accordingly.
+
+## Why Use CRDs?
+
+- **Extend Kubernetes**: Add resource types that are not available by default.
+- **Manage Applications**: Use CRDs to encapsulate application logic in a Kubernetes-native way.
+- **Integration**: Integrate third-party tools or APIs directly into Kubernetes.
+
+## Example: Defining a CRD
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: widgets.example.com  # Plural name for the resource
+spec:
+  group: example.com         # API group
+  names:
+    plural: widgets          # Plural name of the resource
+    singular: widget         # Singular name
+    kind: Widget             # Kind of the resource
+    shortNames:
+      - w                    # Short name for kubectl commands
+  scope: Namespaced          # Scope: Namespaced or Cluster
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:                  # OpenAPI v3 schema for validation
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              size:
+                type: string
+              color:
+                type: string
+    subresources:            # Additional features
+      status: {}             # Enables the status subresource
+      scale:                 # Enables scale subresource
+        specReplicasPath: ".spec.replicas"
+        statusReplicasPath: ".status.replicas"
+```
+
+## Creating and Using a CRD
+
+### 1. **Create the CRD**
+
+```bash
+kubectl apply -f crd-definition.yaml
+```
+
+### 2. **Verify CRD**
+
+List all CRDs:
+
+```bash
+kubectl get crd
+```
+
+Describe the CRD:
+
+```bash
+kubectl describe crd widgets.example.com
+```
+## Example: Creating a Custom Resource
+
+**Custom Resource YAML**:
+
+```yaml
+apiVersion: example.com/v1
+kind: Widget
+metadata:
+  name: my-widget
+spec:
+  size: medium
+  color: blue
+```
+
+### Apply the Custom Resource
+
+```bash
+kubectl apply -f custom-resource.yaml
+```
+
+### Verify the Custom Resource
+
+```bash
+kubectl get widgets
+kubectl describe widget my-widget
+```
+## Example: Custom Controller for CRD
+
+To manage CRDs, you typically write a custom controller using a framework like **Kubebuilder** or **Operator SDK**. This controller watches for changes to your custom resources and acts upon them.
+
+**Basic Workflow**:
+
+1. Watch for changes to the CRD (e.g., `Widget`).
+2. Reconcile the desired state with the current state.
+3. Update the status subresource if needed.
+
+### List CRDs
+
+```bash
+kubectl get crd
+```
+
+### Describe a CRD
+
+```bash
+kubectl describe crd <CRD_NAME>
+```
+
+### Delete a CRD
+
+```bash
+kubectl delete crd <CRD_NAME>
+```
+## Advanced Features of CRDs
+
+1. **Validation Schema**:
+    
+    - Define an OpenAPI schema for your custom resource.
+    - Ensures that all instances of the resource follow the specified structure.
+2. **Subresources**:
+    
+    - **`status`**: Manage the resource’s status separately.
+    - **`scale`**: Integrate scaling functionality.
+3. **Defaulting and Conversion Webhooks**:
+    
+    - Implement webhooks for default values and API version conversions.
+4. **Versions**:
+    
+    - Support multiple versions of the custom resource for smooth upgrades.
+
+## Use Cases for CRDs
+
+1. **Operators**:
+    - Extend Kubernetes with application-specific controllers (e.g., Prometheus Operator, etc.).
+2. **Custom Application APIs**:
+    - Manage application-specific resources directly via Kubernetes.
+3. **Platform Features**:
+    - Build platform-specific features like CI/CD pipelines or configuration management tools.
+## Best Practices
+
+1. **Define a Validation Schema**:
+    
+    - Ensure your CRD has an OpenAPI schema to validate custom resources.
+2. **Version Control**:
+    
+    - Support multiple versions for smooth migrations.
+3. **Use Namespaces**:
+    
+    - Scope resources within namespaces unless cluster-wide access is required.
+4. **Test Controllers**:
+    
+    - Thoroughly test custom controllers to ensure they handle all edge cases.
+
+---
+# Operators
+
+## What Are Operators?
+
+**Operators** are Kubernetes extensions that use **CustomResourceDefinitions (CRDs)** to manage applications and their components. Operators encapsulate the logic for deploying, configuring, scaling, and maintaining complex stateful applications, automating routine operational tasks.
+
+## Why Use Operators?
+
+1. **Automation**: Simplify operational tasks like upgrades, backups, and failovers.
+2. **Custom Logic**: Embed application-specific knowledge and lifecycle management.
+3. **Consistency**: Ensure reliable deployment and operation of applications in a Kubernetes-native way.
+4. **Declarative Management**: Use Kubernetes-style APIs to manage application resources.
+
+## Key Components of an Operator
+
+1. **CustomResourceDefinition (CRD)**:
+    - Defines a new resource type, e.g., `MySQL`, `RedisCluster`.
+2. **Custom Resource (CR)**:
+    - A specific instance of the CRD, e.g., a MySQL database named `example-db`.
+3. **Controller**:
+    - Watches for changes to the custom resources and ensures the desired state is maintained.
+
+## Operator Workflow
+
+1. **CRD Creation**:
+    - Define the custom resource type for the application.
+2. **Custom Resource Creation**
+    - Create instances of the CRD using YAML files.
+3. **Controller Logic**:
+    - The Operator's controller monitors the custom resource and executes application-specific logic to achieve the desired state.
+4. **Reconciliation Loop**:
+    - Continuously ensures the actual state matches the desired state defined in the custom resource.
+## Example: A MySQL Operator
+
+### 1. Define a CRD for MySQL
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: mysqls.example.com
+spec:
+  group: example.com
+  names:
+    plural: mysqls
+    singular: mysql
+    kind: MySQL
+    shortNames:
+      - ms
+  scope: Namespaced
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              version:
+                type: string
+              storage:
+                type: string
+```
+
+### 2. Create a Custom Resource
+
+```yaml
+apiVersion: example.com/v1
+kind: MySQL
+metadata:
+  name: example-db
+spec:
+  version: "8.0"
+  storage: "10Gi"
+```
+
+### 3. Operator Logic in Controller
+
+The controller will:
+
+- Watch for changes to `MySQL` resources.
+- Create a `Deployment`, `Service`, and `PersistentVolumeClaim` to deploy MySQL with the specified configuration.
+
+
+## Operator Development Tools
+
+1. **Operator SDK**:
+    - Simplifies the creation of Kubernetes Operators.
+    - Supports Helm, Ansible, and Go-based development.
+    - Website: [Operator SDK](https://sdk.operatorframework.io/)
+2. **Kubebuilder**:
+    - Framework for building Kubernetes APIs and controllers using Go.
+    - Website: [Kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)
+3. **Helm**:
+    - Use Helm charts to package and deploy applications, and wrap them with operator logic.
+## Managing Operators
+
+### Deploying an Operator
+
+Operators are typically deployed as a `Deployment` in the cluster:
+
+```bash
+kubectl apply -f operator-deployment.yaml
+```
+
+### Installing Community Operators
+
+Use **OperatorHub** or the **OpenShift Console** to discover and install pre-built operators:
+
+```bash
+kubectl apply -f https://operatorhub.io/install/operator.yaml
+```
+
+### Viewing Installed Operators
+
+```bash
+kubectl get csv -n <namespace>
+```
+
+## Operator Lifecycle Manager (OLM)
+
+The **Operator Lifecycle Manager (OLM)** is a tool to manage Operators in a Kubernetes cluster. It provides:
+
+- Installation and upgrades of Operators.
+- Dependency management.
+- Permission management for Operators.
+
+### Install OLM
+
+```bash
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v<version>/install.sh | bash
+```
+
+### List CRDs
+
+```bash
+kubectl get crds
+```
+
+### Create a Custom Resource
+
+```bash
+kubectl apply -f custom-resource.yaml
+```
+
+### Check Operator Logs
+
+```bash
+kubectl logs -l app=<operator-name> -n <namespace>
+```
+
+## Use Cases for Operators
+
+1. **Databases**: Automate deployment, scaling, and backups for stateful applications like MySQL, MongoDB, or Cassandra.
+2. **Message Queues**: Manage Kafka or RabbitMQ clusters.
+3. **Monitoring**: Deploy Prometheus and Grafana with custom configurations.
+4. **CI/CD**: Automate workflows and environments for pipelines (e.g., Jenkins Operator).
+5. **Backup and Restore**: Automate snapshot creation and restoration for data.
+
+## Benefits of Operators
+
+1. **Kubernetes-Native**: Use CRDs to seamlessly integrate custom logic into Kubernetes.
+2. **Automation**: Simplify operational overhead for complex applications.
+3. **Scalability**: Automate scaling and resource management.
+4. **Reliability**: Ensure consistent application state across environments.
+
 ---
 ## Authorization
 
