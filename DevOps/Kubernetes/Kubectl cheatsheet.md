@@ -1684,6 +1684,14 @@ rules:
   verbs: ["create", "delete", "update", "get", "list"]
 ```
 
+## Enable API Groups
+Add `--runtime-config` flag to the API server configuration file (`/etc/kubernetes/manifests/kube-apiserver.yaml`).
+
+For example, to enable the `rbac.authorization.k8s.io/v1alpha1` API group:
+
+```yaml
+--runtime-config=rbac.authorization.k8s.io/v1alpha1
+```
 ### Tips
 
 - Use `kubectl api-resources` to list all available API groups and resources in your cluster:
