@@ -1685,12 +1685,32 @@ rules:
 ```
 
 ## Enable API Groups
+
 Add `--runtime-config` flag to the API server configuration file (`/etc/kubernetes/manifests/kube-apiserver.yaml`).
 
 For example, to enable the `rbac.authorization.k8s.io/v1alpha1` API group:
 
 ```yaml
 --runtime-config=rbac.authorization.k8s.io/v1alpha1
+```
+
+## Convert API Versions
+
+Using `kubectl convert` to convert resources to a specific API version:
+
+```bash
+curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert
+chmod +x kubectl-convert
+mv kubectl-convert /usr/local/bin
+```
+
+Convert a resource to a specific API version:
+
+```bash
+# Without the --output-version flag, it converts to the latest version.
+
+kubectl-convert -f <file.yaml> [--output-version <apiVersion>]
+
 ```
 ### Tips
 
