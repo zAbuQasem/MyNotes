@@ -24,6 +24,7 @@
 - [**Maintenance**](#Maintenance)
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
+	- [Node-Debugging](#Node-Debugging)
 - [**Security**](#Security)
 	- [API-Groups](#API-Groups)
 	- [CustomResourceDefinitions](#CustomResourceDefinitions)
