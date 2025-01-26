@@ -1526,7 +1526,7 @@ To remove the mark
 kubectl uncordon node-1
 ```
 
-> -  Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
+> - Pods will not fall over to their main node automatically, But when pods gets rescheduled they will be created on it
 > - Pods that aren't part of a replicaset isn't drained, you have to use --force
 
 ## Software-Releases
@@ -1587,6 +1587,27 @@ systemctl daemon-reload
 service etcd restart
 service kube-apiserver start
 ```
+## Node-Debugging
+
+If a node is not working properly, you can debug it by checking the following:
+
+- **Check kubelet logs**:
+```bash
+journalctl -u kubelet
+```
+- **Check kubelet status**:
+```bash
+systemctl status kubelet
+```
+- **Check kubelet configuration**:
+```bash
+ps aux | grep kubelet
+```
+- **Check kubelet configuration file**:
+```bash
+cat /var/lib/kubelet/config.yaml
+```
+
 ---
 # Security
 ## API-Groups
