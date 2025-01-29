@@ -1545,28 +1545,67 @@ Major.Minor.Patch
 
 ## Cluster-Upgrade
 
-1. Upgrade `Kubeadm`
-```bash
-apt-get upgrade kubeadm=<Version>
-kubeadm upgrade apply <Version>
-systemctl restart kubelet
-kubectl get nodes # To verify
-```
+### Control Plane Upgrade
+```sh
+# 1. Drain control plane node
+kubectl drain controlplane --ignore-daemonsets
 
-2.  Upgrade `Kubelet` on the master node
-```bash
-sudo apt-get upgrade kubelet=<Version>
+# 2. Add Kubernetes repository
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+# 3. Update kubeadm
+sudo apt-cache madison kubeadm
+sudo apt-mark unhold kubeadm
+sudo apt-get update
+sudo apt-get install -y kubeadm='1.31.0-1.1'
+sudo apt-mark hold kubeadm
+
+# 4. Apply upgrade
+sudo kubeadm upgrade plan v1.31.0
+sudo kubeadm upgrade apply v1.31.0
+
+# 5. Update kubelet and kubectl
+sudo apt-cache madison kubelet
+sudo apt-mark unhold kubectl kubelet
+sudo apt-get update
+sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'
+sudo apt-mark hold kubectl kubelet
+
+# 6. Restart services
+sudo systemctl daemon-reload
 sudo systemctl restart kubelet
-```
 
-3. Upgrading the working nodes (For every node in the cluster)
+# 7. Uncordon node
+kubectl uncordon controlplane
 ```
-kubectl drain <Node>
-apt-get upgrade kubeadm=<Version>
-apt-get upgrade kubelet=<Version>
-kubeadm upgrade node config --kubelet-version <Version>
-systemctl restart kubelet
-kubectl uncordon <Node> 
+### Worker Node Upgrade
+```sh
+# 1. Drain worker node (replace <NODE> with node name)
+kubectl drain <NODE> --ignore-daemonsets
+
+# 2. Add Kubernetes repository
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+# 3. Update kubeadm
+sudo apt-cache madison kubeadm
+sudo apt-mark unhold kubeadm
+sudo apt-get update
+sudo apt-get install -y kubeadm='1.31.0-1.1'
+sudo apt-mark hold kubeadm
+
+# 4. Update kubelet and kubectl
+sudo apt-cache madison kubelet
+sudo apt-mark unhold kubectl kubelet
+sudo apt-get update
+sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'
+sudo apt-mark hold kubectl kubelet
+
+# 5. Restart services
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+# 6. Uncordon node (run from control plane)
+kubectl uncordon <NODE>
 ```
 ## Backup-and-Restore
 
