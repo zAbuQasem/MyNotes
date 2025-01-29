@@ -1554,10 +1554,10 @@ kubectl drain controlplane --ignore-daemonsets
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 
 # 3. Update kubeadm
-sudo apt-cache madison kubeadm
+sudo apt-cache madison kubeadm # Get the desired version
 sudo apt-mark unhold kubeadm
 sudo apt-get update
-sudo apt-get install -y kubeadm='1.31.0-1.1'
+sudo apt-get install -y kubeadm='1.31.0-1.1' # Replace version with desired version from madison cache
 sudo apt-mark hold kubeadm
 
 # 4. Apply upgrade
@@ -1565,10 +1565,10 @@ sudo kubeadm upgrade plan v1.31.0
 sudo kubeadm upgrade apply v1.31.0
 
 # 5. Update kubelet and kubectl
-sudo apt-cache madison kubelet
+sudo apt-cache madison kubelet # Get the desired version
 sudo apt-mark unhold kubectl kubelet
 sudo apt-get update
-sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'
+sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1' # Replace version with desired version from madison cache
 sudo apt-mark hold kubectl kubelet
 
 # 6. Restart services
@@ -1594,10 +1594,10 @@ sudo apt-get install -y kubeadm='1.31.0-1.1'
 sudo apt-mark hold kubeadm
 
 # 4. Update kubelet and kubectl
-sudo apt-cache madison kubelet
+sudo apt-cache madison kubelet # Get the desired version
 sudo apt-mark unhold kubectl kubelet
 sudo apt-get update
-sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'
+sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'  # Replace version with desired version from madison cache
 sudo apt-mark hold kubectl kubelet
 
 # 5. Restart services
