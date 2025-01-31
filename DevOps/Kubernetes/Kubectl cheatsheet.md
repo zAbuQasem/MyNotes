@@ -24,6 +24,7 @@
 - [**Maintenance**](#Maintenance)
 	- [Software-Releases](#Software-Releases)
 	- [Cluster-Upgrade](#Cluster-Upgrade)
+	- [Backup-and-Restore](#Backup-and-Restore)
 	- [Node-Debugging](#Node-Debugging)
 - [**Security**](#Security)
 	- [API-Groups](#API-Groups)
@@ -1616,17 +1617,40 @@ kubectl get all -A -o yaml > all-deploy-services.yml
 
 - Backup ETCD
 ```bash
-ETCDL_API=3 etcdl snapshot save snapshot.db --endpoints= --cacert= --cert= --key=
+ETCDCTL_API=3 etcdctl snapshot save snapshot.db \
+  --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key
 ```
 
 - Restore Snapshot
 ```bash
-service kube-apiserver stop
-ETCDL_API=3 etcdl snapshot restore snapshot.db --data-dir --endpoints= --cacert= --cert= --key=<Destination-Restore-DIR>
-systemctl daemon-reload
-service etcd restart
-service kube-apiserver start
+ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \
+  --data-dir=/var/lib/etcd-restored \
+  --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key
 ```
+Now update the ETCD configuration file to point to the new data directory
+```bash
+# /etc/kubernetes/manifests/etcd.yaml
+--data-dir=/var/lib/etcd-restored
+
+# Using sed
+sed -i 's|/var/lib/etcd|/var/lib/etcd-restored|' /etc/kubernetes/manifests/etcd.yaml
+```
+Finally restart the ETCD container
+```bash
+kubectl get pods -n kube-system
+kubectl delete pod <etcd-pod-name> -n kube-system
+```
+Verify the ETCD status
+```bash
+kubectl describe pod <etcd-pod-name> -n kube-system | grep 'data-dir'
+```
+
 ## Node-Debugging
 
 If a node is not working properly, you can debug it by checking the following:
