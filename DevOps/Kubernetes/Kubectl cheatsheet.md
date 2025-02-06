@@ -13,6 +13,8 @@
 	- [NodePort](#NodePort)
 	- [ClusterIp](#ClusterIp)
 	- [LoadBalancer](#LoadBalancer)
+	- [Headless](#Headless)
+	- [Service-Selector](#Service-Selector)
 - [**Scheduling**](#Scheduling)
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
@@ -928,7 +930,7 @@ This will return **pod IPs** when queried instead of a single service IP.
 | LoadBalancer | ✅ Yes      | ✅ Yes          | ✅ Yes (via external LB) |
 | Headless     | ❌ No       | ❌ No           | ✅ Yes (direct pod IPs)  |
 
-## **Service-Selector Relationship**
+## Service-Selector
 **Service-Selector Relationship**:
 - A **Service** uses a `selector` to identify Pods by their labels.
 - The **Endpoints** object (automatically created by Kubernetes) holds the IP:port pairs of all Pods matching the selectorز
@@ -965,7 +967,6 @@ subsets:
     ports:
       - port: 9999
 ```
-
 ---
 # Scheduling
 What if we want to manually schedule pods and assign them to nodes, instead of leaving it to be automated by the scheduler.
