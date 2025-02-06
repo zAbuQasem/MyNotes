@@ -887,14 +887,84 @@ kubectl expose deployment <deployment-name> --type=LoadBalancer --port=80 --targ
 ### Troubleshooting:
 
 1. **LoadBalancer IP not assigned:**
-    
     - Verify if the cloud provider's load balancer controller is running.
     - Check the service status:  
 ```bash
 kubectl describe svc <service-name>
 ```
-2. **Service inaccessible from the external IP:**
-    - Ensure external traffic is allowed in the cloud provider's security groups or firewall.
+> Ensure external traffic is allowed in the cloud provider's security groups or firewall.
+
+## Headless
+A **headless service** is a Kubernetes Service that does not allocate a ClusterIP. Instead, it provides direct DNS resolution to the underlying Pods or external endpoints.
+
+**When to Use Headless Services?**
+- When you want direct access to backend pods without a load balancer.
+- For **stateful applications** (e.g., databases like Cassandra, MySQL).
+- For **service discovery** where each pod should be addressable individually.
+
+**To create a headless service, set `clusterIP: None` in the service YAML:**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-headless-service
+spec:
+  clusterIP: None
+  selector:
+    app: my-app
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+This will return **pod IPs** when queried instead of a single service IP.
+
+### Difference Between ClusterIP, NodePort, LoadBalancer, and Headless Service
+
+| Service Type | Cluster IP | Load Balancing | External Access         |
+| ------------ | ---------- | -------------- | ----------------------- |
+| ClusterIP    | ✅ Yes      | ✅ Yes          | ❌ No                    |
+| NodePort     | ✅ Yes      | ✅ Yes          | ✅ Yes (via Node IP)     |
+| LoadBalancer | ✅ Yes      | ✅ Yes          | ✅ Yes (via external LB) |
+| Headless     | ❌ No       | ❌ No           | ✅ Yes (direct pod IPs)  |
+
+## **Service-Selector Relationship**
+**Service-Selector Relationship**:
+- A **Service** uses a `selector` to identify Pods by their labels.
+- The **Endpoints** object (automatically created by Kubernetes) holds the IP:port pairs of all Pods matching the selectorز
+- Example: A Service with `selector: app=nginx` will populate its Endpoints with all Pods labeled `app=nginx`.
+**Dynamic Updates**:
+- The **Endpoints Controller** (part of the Kubernetes control plane) watches for Pod changes (creation/deletion) and updates the Endpoints object in real-time.    
+- If a Pod fails its readiness probe, it’s removed from Endpoints, stopping traffic to it.
+**Manual Endpoints for External Services**:    
+- If a Service has **no selector**, you must manually create an Endpoints object pointing to external IPs (e.g., a database outside the cluster).
+- Example: A Service named `external-db` with no selector can map to a static Endpoints entry like `10.0.0.50:5432`.
+
+**Example:** Configure a service to expose an external service listeining on port `9999` on the student node and make sure it's accessible from the cluster.
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-webserver-ckad01-svcn
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 9999
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-webserver-ckad01-svcn
+  namespace: default
+subsets:
+  - addresses:
+      - ip: <EXTERNAL_IP_OF_STUDENT_NODE>  # Replace with the actual IP
+    ports:
+      - port: 9999
+```
 
 ---
 # Scheduling
@@ -1424,14 +1494,14 @@ kubectl create job --from=cronjob/scheduled-task manual-run
 ```
 ## **Best Practices**:
 
-1. **For Jobs**:
+2. **For Jobs**:
     - Use `backoffLimit` to control retries and avoid infinite loops.
     - Define resource requests/limits for Pods to prevent overloading nodes.
-2. **For CronJobs**:
+3. **For CronJobs**:
     - Test the Job template separately to ensure it behaves as expected.
     - Keep the `successfulJobsHistoryLimit` and `failedJobsHistoryLimit` reasonable to avoid clutter.
     - Use descriptive names for CronJobs for better identification.
-3. **Monitoring**:
+4. **Monitoring**:
     - Monitor Job and CronJob statuses using `kubectl get jobs` and `kubectl get cronjobs`.
     - Enable logging to debug failures effectively.
 ---
@@ -1818,13 +1888,13 @@ k get storageclasses # when pressing `tab` key it will auto-completet to storage
 
 ## Key Components of CRDs
 
-1. **Custom Resource**:
+5. **Custom Resource**:
     - A new resource type created using a CRD.
     - Example: `kind: MyResource`.
-2. **CRD Definition**:
+6. **CRD Definition**:
     - Defines the schema, versions, and behavior of your custom resource.
     - Managed by the `apiextensions.k8s.io/v1` API group.
-3. **Controller**:
+7. **Controller**:
     - Custom logic implemented using a controller watches for changes to the custom resources and acts accordingly.
 
 ## Why Use CRDs?
@@ -1924,9 +1994,9 @@ To manage CRDs, you typically write a custom controller using a framework like *
 
 **Basic Workflow**:
 
-1. Watch for changes to the CRD (e.g., `Widget`).
-2. Reconcile the desired state with the current state.
-3. Update the status subresource if needed.
+8. Watch for changes to the CRD (e.g., `Widget`).
+9. Reconcile the desired state with the current state.
+10. Update the status subresource if needed.
 
 ### List CRDs
 
@@ -1947,41 +2017,41 @@ kubectl delete crd <CRD_NAME>
 ```
 ## Advanced Features of CRDs
 
-1. **Validation Schema**:
+11. **Validation Schema**:
     
     - Define an OpenAPI schema for your custom resource.
     - Ensures that all instances of the resource follow the specified structure.
-2. **Subresources**:
+12. **Subresources**:
     
     - **`status`**: Manage the resource’s status separately.
     - **`scale`**: Integrate scaling functionality.
-3. **Defaulting and Conversion Webhooks**:
+13. **Defaulting and Conversion Webhooks**:
     
     - Implement webhooks for default values and API version conversions.
-4. **Versions**:
+14. **Versions**:
     
     - Support multiple versions of the custom resource for smooth upgrades.
 
 ## Use Cases for CRDs
 
-1. **Operators**:
+15. **Operators**:
     - Extend Kubernetes with application-specific controllers (e.g., Prometheus Operator, etc.).
-2. **Custom Application APIs**:
+16. **Custom Application APIs**:
     - Manage application-specific resources directly via Kubernetes.
-3. **Platform Features**:
+17. **Platform Features**:
     - Build platform-specific features like CI/CD pipelines or configuration management tools.
 ## Best Practices
 
-1. **Define a Validation Schema**:
+18. **Define a Validation Schema**:
     
     - Ensure your CRD has an OpenAPI schema to validate custom resources.
-2. **Version Control**:
+19. **Version Control**:
     
     - Support multiple versions for smooth migrations.
-3. **Use Namespaces**:
+20. **Use Namespaces**:
     
     - Scope resources within namespaces unless cluster-wide access is required.
-4. **Test Controllers**:
+21. **Test Controllers**:
     
     - Thoroughly test custom controllers to ensure they handle all edge cases.
 
@@ -1994,29 +2064,29 @@ kubectl delete crd <CRD_NAME>
 
 ## Why Use Operators?
 
-1. **Automation**: Simplify operational tasks like upgrades, backups, and failovers.
-2. **Custom Logic**: Embed application-specific knowledge and lifecycle management.
-3. **Consistency**: Ensure reliable deployment and operation of applications in a Kubernetes-native way.
-4. **Declarative Management**: Use Kubernetes-style APIs to manage application resources.
+22. **Automation**: Simplify operational tasks like upgrades, backups, and failovers.
+23. **Custom Logic**: Embed application-specific knowledge and lifecycle management.
+24. **Consistency**: Ensure reliable deployment and operation of applications in a Kubernetes-native way.
+25. **Declarative Management**: Use Kubernetes-style APIs to manage application resources.
 
 ## Key Components of an Operator
 
-1. **CustomResourceDefinition (CRD)**:
+26. **CustomResourceDefinition (CRD)**:
     - Defines a new resource type, e.g., `MySQL`, `RedisCluster`.
-2. **Custom Resource (CR)**:
+27. **Custom Resource (CR)**:
     - A specific instance of the CRD, e.g., a MySQL database named `example-db`.
-3. **Controller**:
+28. **Controller**:
     - Watches for changes to the custom resources and ensures the desired state is maintained.
 
 ## Operator Workflow
 
-1. **CRD Creation**:
+29. **CRD Creation**:
     - Define the custom resource type for the application.
-2. **Custom Resource Creation**
+30. **Custom Resource Creation**
     - Create instances of the CRD using YAML files.
-3. **Controller Logic**:
+31. **Controller Logic**:
     - The Operator's controller monitors the custom resource and executes application-specific logic to achieve the desired state.
-4. **Reconciliation Loop**:
+32. **Reconciliation Loop**:
     - Continuously ensures the actual state matches the desired state defined in the custom resource.
 ## Example: A MySQL Operator
 
@@ -2075,14 +2145,14 @@ The controller will:
 
 ## Operator Development Tools
 
-1. **Operator SDK**:
+33. **Operator SDK**:
     - Simplifies the creation of Kubernetes Operators.
     - Supports Helm, Ansible, and Go-based development.
     - Website: [Operator SDK](https://sdk.operatorframework.io/)
-2. **Kubebuilder**:
+34. **Kubebuilder**:
     - Framework for building Kubernetes APIs and controllers using Go.
     - Website: [Kubebuilder](https://github.com/kubernetes-sigs/kubebuilder)
-3. **Helm**:
+35. **Helm**:
     - Use Helm charts to package and deploy applications, and wrap them with operator logic.
 ## Managing Operators
 
@@ -2144,18 +2214,18 @@ kubectl logs -l app=<operator-name> -n <namespace>
 
 ## Use Cases for Operators
 
-1. **Databases**: Automate deployment, scaling, and backups for stateful applications like MySQL, MongoDB, or Cassandra.
-2. **Message Queues**: Manage Kafka or RabbitMQ clusters.
-3. **Monitoring**: Deploy Prometheus and Grafana with custom configurations.
-4. **CI/CD**: Automate workflows and environments for pipelines (e.g., Jenkins Operator).
-5. **Backup and Restore**: Automate snapshot creation and restoration for data.
+36. **Databases**: Automate deployment, scaling, and backups for stateful applications like MySQL, MongoDB, or Cassandra.
+37. **Message Queues**: Manage Kafka or RabbitMQ clusters.
+38. **Monitoring**: Deploy Prometheus and Grafana with custom configurations.
+39. **CI/CD**: Automate workflows and environments for pipelines (e.g., Jenkins Operator).
+40. **Backup and Restore**: Automate snapshot creation and restoration for data.
 
 ## Benefits of Operators
 
-1. **Kubernetes-Native**: Use CRDs to seamlessly integrate custom logic into Kubernetes.
-2. **Automation**: Simplify operational overhead for complex applications.
-3. **Scalability**: Automate scaling and resource management.
-4. **Reliability**: Ensure consistent application state across environments.
+41. **Kubernetes-Native**: Use CRDs to seamlessly integrate custom logic into Kubernetes.
+42. **Automation**: Simplify operational overhead for complex applications.
+43. **Scalability**: Automate scaling and resource management.
+44. **Reliability**: Ensure consistent application state across environments.
 
 ---
 ## Authorization
@@ -2164,18 +2234,18 @@ kubectl logs -l app=<operator-name> -n <namespace>
 
 Kubernetes supports various modes of authorization for controlling access to API resources.
 
-1. **Node**:
+45. **Node**:
     - Requests from system nodes (e.g., `system:node`) are authorized using the **Node Authorizer**.
-2. **ABAC** (Attribute-Based Access Control):
+46. **ABAC** (Attribute-Based Access Control):
     - Access is controlled via a policy file with user-defined rules.
     - **Note**: Changes require manual editing of the policy file.
-3. **RBAC** (Role-Based Access Control):
+47. **RBAC** (Role-Based Access Control):
     - Uses roles and role bindings to manage permissions for users, groups, or service accounts.
-4. **Webhook**:
+48. **Webhook**:
     - Authorization is outsourced to external services like **Open Policy Agent** (OPA).
-5. **AlwaysAllow**:
+49. **AlwaysAllow**:
     - Allows all requests unconditionally. Typically used for testing or simple setups.
-6. **AlwaysDeny**:
+50. **AlwaysDeny**:
     - Denies all requests unconditionally.
 ### Note:
 If multiple authorization modes are specified, they are evaluated in order.
@@ -2306,13 +2376,13 @@ Here’s a comparison table between **Role** and **ClusterRole** in Kubernetes:
 
 ### Example Scenarios
 
-1. **Role**:
+51. **Role**:
     - A developer needs to manage pods in the `dev` namespace:
 ```bash
 kubectl create role dev-role --verb=get,list,create --resource=pods -n dev
 ```
         
-2. **ClusterRole**:
+52. **ClusterRole**:
     - An admin needs to allow monitoring tools to view logs from all namespaces:
 ```bash
 kubectl create clusterrole view-logs --verb=get,list --resource=pods/log
@@ -2328,9 +2398,9 @@ A **ServiceAccount** provides an identity for processes running in a Pod, enabli
 
 ## Key Points
 
-1. **Naming**: The ServiceAccount name must be a valid DNS subdomain name.
-2. **Purpose**: ServiceAccounts are primarily used to grant API access to applications running inside Pods.
-3. **Default Behavior**: Pods use the `default` ServiceAccount in their namespace unless another ServiceAccount is specified.
+53. **Naming**: The ServiceAccount name must be a valid DNS subdomain name.
+54. **Purpose**: ServiceAccounts are primarily used to grant API access to applications running inside Pods.
+55. **Default Behavior**: Pods use the `default` ServiceAccount in their namespace unless another ServiceAccount is specified.
 
 ## Example: Applying a ServiceAccount to a Pod
 
@@ -2418,9 +2488,9 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 
 ## Use Cases
 
-1. **Grant Specific Permissions**: Attach a ServiceAccount to a Role/ClusterRole via RoleBinding/ClusterRoleBinding to limit what the Pod can do in the cluster.
-2. **Secure API Access**: Prevent unauthorized API access by using scoped ServiceAccounts instead of the default one.
-3. **Automation**: Automate tasks like builds or CI/CD workflows using a dedicated ServiceAccount.
+56. **Grant Specific Permissions**: Attach a ServiceAccount to a Role/ClusterRole via RoleBinding/ClusterRoleBinding to limit what the Pod can do in the cluster.
+57. **Secure API Access**: Prevent unauthorized API access by using scoped ServiceAccounts instead of the default one.
+58. **Automation**: Automate tasks like builds or CI/CD workflows using a dedicated ServiceAccount.
 
 ## Tips
 
@@ -2435,20 +2505,20 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 **Admission Controllers** are plugins that intercept API requests to the Kubernetes API server and can modify or validate the requests before they are persisted in etcd. They act as a gatekeeper to enforce policies or augment resources with additional configurations.
 ## Admission Controller Workflow
 
-1. **Authentication**: The request is authenticated.
-2. **Authorization**: The request is authorized.
-3. **Admission Control**: The request passes through admission controllers for validation or modification.
+59. **Authentication**: The request is authenticated.
+60. **Authorization**: The request is authorized.
+61. **Admission Control**: The request passes through admission controllers for validation or modification.
 	1. **Mutating Admission Controllers**: Modify the request object.
 	2. **Validating Admission Controllers**: Validate the request object.
 	3. **Webhooks**: External services that can modify or validate requests.
 	> **NOTE:** Mutating happens before validating.
-4. **Persistence**: If all checks pass, the request is persisted in etcd.
+62. **Persistence**: If all checks pass, the request is persisted in etcd.
 
 ## Types of Admission Controllers
 
-1. **Mutating Admission Controllers**: Modify the incoming request object.
+63. **Mutating Admission Controllers**: Modify the incoming request object.
     - Example: Add default labels, inject sidecars (e.g., Istio).
-2. **Validating Admission Controllers**: Validate the request but do not modify it.
+64. **Validating Admission Controllers**: Validate the request but do not modify it.
     - Example: Check if the request adheres to security policies.
 
 
@@ -2568,10 +2638,10 @@ kubectl apply -f test-pod.yaml --dry-run=server
 ```
 ## Tips
 
-1. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
-2. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
-3. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
-4. Always test admission controllers and webhooks in a non-production environment before applying them to production.
+65. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
+66. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
+67. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
+68. Always test admission controllers and webhooks in a non-production environment before applying them to production.
 ---
 ## SecurityContexts
 - Container Level
@@ -2616,7 +2686,7 @@ spec:
 
 ### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
-1. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
+69. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
