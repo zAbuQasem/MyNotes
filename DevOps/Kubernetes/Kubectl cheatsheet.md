@@ -967,6 +967,21 @@ subsets:
     ports:
       - port: 9999
 ```
+
+## ExternalName
+- **Purpose**: Creates a DNS alias (CNAME record) for an **external service** outside the cluster.
+- **Use Case**: Simplify access to external services (e.g., databases, APIs) by masking their complex DNS names with a Kubernetes Service name.
+- **No Selectors or Endpoints**: Unlike standard Services, it does not route traffic to Pods or use Endpoints. Instead, it acts purely as a DNS redirect.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-db
+spec:
+  type: ExternalName
+  externalName: my-database.example.com  # External DNS name
+```
+> Inside the cluster, apps can connect to `external-db` (e.g., `external-db:3306`), and Kubernetes resolves it to `my-database.example.com`.
 ---
 # Scheduling
 What if we want to manually schedule pods and assign them to nodes, instead of leaving it to be automated by the scheduler.
