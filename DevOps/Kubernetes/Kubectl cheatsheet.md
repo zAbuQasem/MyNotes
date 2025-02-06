@@ -15,6 +15,7 @@
 	- [LoadBalancer](#LoadBalancer)
 	- [Headless](#Headless)
 	- [Service-Selector](#Service-Selector)
+	- [ExternalName](#ExternalName)
 - [**Scheduling**](#Scheduling)
 	- [Taints-and-Tolerations](#Taints-and-Tolerations)
 	- [NodeSelector-and-NodeAffinity](#NodeSelector-and-NodeAffinity)
