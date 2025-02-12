@@ -600,8 +600,8 @@ spec:
   strategy:
 	type: RollingUpdate
 	rollingUpdate:
-	  maxSurge: 2      # Maximum number of pods that can be created above the desired replicas
-	  maxUnavailable: 0# Maximum number of pods that can be unavailable during the update
+	  maxSurge: 2       # Maximum number of pods that can be created above the desired replicas
+	  maxUnavailable: 0 # Maximum number of pods that can be unavailable during the update
   selector:
 	matchLabels:
 	  app: my-app
@@ -643,13 +643,14 @@ kubectl rollout status deployment/<DEPLOYMENT_NAME>
 - **View Rollout History:**
     
 ```bash
-kubectl rollout history deployment/<DEPLOYMENT_NAME>
+kubectl rollout history deployment/<DEPLOYMENT_NAME> 
+kubectl rollout history deployment/<DEPLOYMENT_NAME> --revision=3
 ```
     
 - **Undo/Rollback to Previous Revision:**
     
 ```bash
-kubectl rollout undo deployment/<DEPLOYMENT_NAME>
+kubectl rollout undo deployment/<DEPLOYMENT_NAME> --to-revision=3
 ```
     
 - **Pause a Rollout:**
