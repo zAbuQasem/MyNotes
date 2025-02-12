@@ -2532,9 +2532,9 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 
 ## Types of Admission Controllers
 
-5. **Mutating Admission Controllers**: Modify the incoming request object.
+1. **Mutating Admission Controllers**: Modify the incoming request object.
     - Example: Add default labels, inject sidecars (e.g., Istio).
-6. **Validating Admission Controllers**: Validate the request but do not modify it.
+2. **Validating Admission Controllers**: Validate the request but do not modify it.
     - Example: Check if the request adheres to security policies.
 
 
@@ -2654,10 +2654,10 @@ kubectl apply -f test-pod.yaml --dry-run=server
 ```
 ## Tips
 
-7. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
-8. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
-9. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
-10. Always test admission controllers and webhooks in a non-production environment before applying them to production.
+3. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
+4. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
+5. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
+6. Always test admission controllers and webhooks in a non-production environment before applying them to production.
 ---
 ## SecurityContexts
 - Container Level
@@ -2702,7 +2702,7 @@ spec:
 
 ### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
-11. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
+7. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
