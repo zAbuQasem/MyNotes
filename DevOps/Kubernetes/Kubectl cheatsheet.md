@@ -2521,20 +2521,20 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 **Admission Controllers** are plugins that intercept API requests to the Kubernetes API server and can modify or validate the requests before they are persisted in etcd. They act as a gatekeeper to enforce policies or augment resources with additional configurations.
 ## Admission Controller Workflow
 
-9. **Authentication**: The request is authenticated.
-10. **Authorization**: The request is authorized.
-11. **Admission Control**: The request passes through admission controllers for validation or modification.
+1. **Authentication**: The request is authenticated.
+2. **Authorization**: The request is authorized.
+3. **Admission Control**: The request passes through admission controllers for validation or modification.
 	1. **Mutating Admission Controllers**: Modify the request object.
 	2. **Validating Admission Controllers**: Validate the request object.
 	3. **Webhooks**: External services that can modify or validate requests.
 	> **NOTE:** Mutating happens before validating.
-12. **Persistence**: If all checks pass, the request is persisted in etcd.
+4. **Persistence**: If all checks pass, the request is persisted in etcd.
 
 ## Types of Admission Controllers
 
-13. **Mutating Admission Controllers**: Modify the incoming request object.
+5. **Mutating Admission Controllers**: Modify the incoming request object.
     - Example: Add default labels, inject sidecars (e.g., Istio).
-14. **Validating Admission Controllers**: Validate the request but do not modify it.
+6. **Validating Admission Controllers**: Validate the request but do not modify it.
     - Example: Check if the request adheres to security policies.
 
 
@@ -2654,10 +2654,10 @@ kubectl apply -f test-pod.yaml --dry-run=server
 ```
 ## Tips
 
-15. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
-16. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
-17. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
-18. Always test admission controllers and webhooks in a non-production environment before applying them to production.
+7. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
+8. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
+9. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
+10. Always test admission controllers and webhooks in a non-production environment before applying them to production.
 ---
 ## SecurityContexts
 - Container Level
@@ -2702,7 +2702,7 @@ spec:
 
 ### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
-19. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
+11. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
