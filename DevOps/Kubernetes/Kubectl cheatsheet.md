@@ -2392,14 +2392,13 @@ Here’s a comparison table between **Role** and **ClusterRole** in Kubernetes:
 | **Flexibility**     | Limited to one namespace per role.                                        | Can span multiple namespaces or target cluster-wide resources.                                  |
 
 ### Example Scenarios
-
-51. **Role**:
+1. **Role**:
     - A developer needs to manage pods in the `dev` namespace:
 ```bash
 kubectl create role dev-role --verb=get,list,create --resource=pods -n dev
 ```
         
-52. **ClusterRole**:
+2. **ClusterRole**:
     - An admin needs to allow monitoring tools to view logs from all namespaces:
 ```bash
 kubectl create clusterrole view-logs --verb=get,list --resource=pods/log
@@ -2415,9 +2414,9 @@ A **ServiceAccount** provides an identity for processes running in a Pod, enabli
 
 ## Key Points
 
-53. **Naming**: The ServiceAccount name must be a valid DNS subdomain name.
-54. **Purpose**: ServiceAccounts are primarily used to grant API access to applications running inside Pods.
-55. **Default Behavior**: Pods use the `default` ServiceAccount in their namespace unless another ServiceAccount is specified.
+3. **Naming**: The ServiceAccount name must be a valid DNS subdomain name.
+4. **Purpose**: ServiceAccounts are primarily used to grant API access to applications running inside Pods.
+5. **Default Behavior**: Pods use the `default` ServiceAccount in their namespace unless another ServiceAccount is specified.
 
 ## Example: Applying a ServiceAccount to a Pod
 
@@ -2505,9 +2504,9 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 
 ## Use Cases
 
-56. **Grant Specific Permissions**: Attach a ServiceAccount to a Role/ClusterRole via RoleBinding/ClusterRoleBinding to limit what the Pod can do in the cluster.
-57. **Secure API Access**: Prevent unauthorized API access by using scoped ServiceAccounts instead of the default one.
-58. **Automation**: Automate tasks like builds or CI/CD workflows using a dedicated ServiceAccount.
+6. **Grant Specific Permissions**: Attach a ServiceAccount to a Role/ClusterRole via RoleBinding/ClusterRoleBinding to limit what the Pod can do in the cluster.
+7. **Secure API Access**: Prevent unauthorized API access by using scoped ServiceAccounts instead of the default one.
+8. **Automation**: Automate tasks like builds or CI/CD workflows using a dedicated ServiceAccount.
 
 ## Tips
 
@@ -2522,20 +2521,20 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 **Admission Controllers** are plugins that intercept API requests to the Kubernetes API server and can modify or validate the requests before they are persisted in etcd. They act as a gatekeeper to enforce policies or augment resources with additional configurations.
 ## Admission Controller Workflow
 
-59. **Authentication**: The request is authenticated.
-60. **Authorization**: The request is authorized.
-61. **Admission Control**: The request passes through admission controllers for validation or modification.
+9. **Authentication**: The request is authenticated.
+10. **Authorization**: The request is authorized.
+11. **Admission Control**: The request passes through admission controllers for validation or modification.
 	1. **Mutating Admission Controllers**: Modify the request object.
 	2. **Validating Admission Controllers**: Validate the request object.
 	3. **Webhooks**: External services that can modify or validate requests.
 	> **NOTE:** Mutating happens before validating.
-62. **Persistence**: If all checks pass, the request is persisted in etcd.
+12. **Persistence**: If all checks pass, the request is persisted in etcd.
 
 ## Types of Admission Controllers
 
-63. **Mutating Admission Controllers**: Modify the incoming request object.
+13. **Mutating Admission Controllers**: Modify the incoming request object.
     - Example: Add default labels, inject sidecars (e.g., Istio).
-64. **Validating Admission Controllers**: Validate the request but do not modify it.
+14. **Validating Admission Controllers**: Validate the request but do not modify it.
     - Example: Check if the request adheres to security policies.
 
 
@@ -2655,10 +2654,10 @@ kubectl apply -f test-pod.yaml --dry-run=server
 ```
 ## Tips
 
-65. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
-66. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
-67. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
-68. Always test admission controllers and webhooks in a non-production environment before applying them to production.
+15. Use **MutatingAdmissionWebhook** for automatic configurations like adding sidecars or labels.
+16. Use **ValidatingAdmissionWebhook** to enforce security or compliance rules.
+17. Combine admission controllers like `LimitRanger` and `ResourceQuota` to enforce resource policies in namespaces.
+18. Always test admission controllers and webhooks in a non-production environment before applying them to production.
 ---
 ## SecurityContexts
 - Container Level
@@ -2703,7 +2702,7 @@ spec:
 
 ### Ingress
 `namespaceSelector`: Used when you want to allow traffic from another namespace.
-69. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
+19. If you specified a `namespaceSelector` and didn't specify a `podSelector`, then all traffic from that namespace will be allowed.
 ```yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
