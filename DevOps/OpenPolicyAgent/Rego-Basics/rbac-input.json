@@ -1,0 +1,16 @@
+{
+    "user": {
+        "id": "emp123",
+        "name": "john_doe",
+        "department": "engineering",
+        "level": 3
+    },
+    "action": "read",
+    "resource": {
+        "id": "doc789",
+        "type": "document",
+        "owner": "emp123",
+        "department": "engineering",
+        "public": false
+    }
+}

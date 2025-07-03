@@ -1,0 +1,10 @@
+{
+    "user": "bob",
+    "action": "write",
+    "resource": {
+        "id": "doc456",
+        "type": "document",
+        "owner": "alice",
+        "public": false
+    }
+}
