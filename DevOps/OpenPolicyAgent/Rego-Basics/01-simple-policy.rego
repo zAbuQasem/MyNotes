@@ -1,7 +1,8 @@
-package simple_policy
+ package simple_policy
 
 # Default rule - deny by default
 default allow := false
+default grant_access := false
 
 # Allow if user is admin
 allow if {
@@ -30,4 +31,8 @@ allow if {
 	is_authenticated
 	input.action == "read"
 	input.resource.type == "document"
+}
+
+grant_access if {
+    input.user == "admin"
 }
