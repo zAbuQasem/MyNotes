@@ -11,12 +11,14 @@
             "id": "9d7a107b0899d7dc",
             "type": "leaf",
             "state": {
-              "type": "mk-space",
+              "type": "markdown",
               "state": {
-                "path": "/"
+                "file": "DevOps/GCP Network Professional/Network-Topologies.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Vault"
+              "title": "Network-Topologies"
             }
           }
         ]
@@ -73,7 +75,7 @@
             }
           },
           {
-            "id": "2a01f64af2fa3134",
+            "id": "9f01f80dea644a11",
             "type": "leaf",
             "state": {
               "type": "mk-path-view",
@@ -149,11 +151,11 @@
   },
   "active": "9d7a107b0899d7dc",
   "lastOpenFiles": [
+    "DevOps/GCP Network Professional/GCP Network Professional.md",
     "DevOps/GCP Network Professional/Network-Topologies.md",
     "Untitled.canvas",
     "Untitled 1.base",
     "Untitled.base",
-    "DevOps/GCP Network Professional/GCP Network Professional.md",
     "DevOps/GCP Network Professional/desktop.ini",
     "DevOps/GCP Network Professional",
     "DevOps/github-actions.md",
