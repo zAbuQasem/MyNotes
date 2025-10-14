@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DevOps/GCP Network Professional/Network-Topologies.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -89,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 412.5026054382324
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ddd35fab4b863cdf",
