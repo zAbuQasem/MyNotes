@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "3d8e8f83787b6f33",
+        "id": "55dc61005ad75203",
         "type": "tabs",
         "children": [
           {
-            "id": "b3c43116d140df40",
+            "id": "9d7a107b0899d7dc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "mk-space",
               "state": {
-                "file": "DevOps/Kubernetes/Kubectl cheatsheet.md",
-                "mode": "source",
-                "source": false
+                "path": "/"
               },
               "icon": "lucide-file",
-              "title": "Kubectl cheatsheet"
+              "title": "Vault"
             }
           }
         ]
@@ -75,7 +73,7 @@
             }
           },
           {
-            "id": "ea4bc078ce68f263",
+            "id": "2a01f64af2fa3134",
             "type": "leaf",
             "state": {
               "type": "mk-path-view",
@@ -84,12 +82,12 @@
               "title": "Navigator"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 293.5026054382324,
-    "collapsed": true
+    "width": 412.5026054382324
   },
   "right": {
     "id": "ddd35fab4b863cdf",
@@ -142,17 +140,35 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "command-palette:Open command palette": false
     }
   },
-  "active": "b3c43116d140df40",
+  "active": "9d7a107b0899d7dc",
   "lastOpenFiles": [
+    "DevOps/GCP Network Professional/Network-Topologies.md",
+    "Untitled.canvas",
+    "Untitled 1.base",
+    "Untitled.base",
+    "DevOps/GCP Network Professional/GCP Network Professional.md",
+    "DevOps/GCP Network Professional/desktop.ini",
+    "DevOps/GCP Network Professional",
+    "DevOps/github-actions.md",
+    "Untitled",
+    "Golang/package/greeter/greeter.go",
+    "Golang/package/calculator/calculator.go",
+    "Golang/package/main.go",
+    "Golang/package/greeter",
+    "Golang/package/go.mod",
+    "DevOps/OpenPolicyAgent/Rego-Basics/Understanding-OPA-Eval-Results.md",
+    "DevOps/OpenPolicyAgent/Rego-Basics/README.md",
+    "DevOps/OpenPolicyAgent/Rego-Basics/Basics.md",
+    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/Kubernetes/CKAD/Exam-Preparation.md",
     "DevOps/Kubernetes/CKAD/CKAD.md",
-    "DevOps/Kubernetes/Kubectl cheatsheet.md",
     "DevOps/GCP Associate (Exam Topics)/Interesting-Questions.md",
     "DevOps/GCP Associate (Exam Topics)/Navigation.md",
     "DevOps/Kubernetes/K8s Overview.md",
@@ -160,8 +176,6 @@
     "DevOps/GCP Associate (Exam Topics)/IAM_Roles_and_Accounts.md",
     "WebPentesting/IIS Servers/Untitled.md",
     "WebPentesting/10-Authorization Testing.md",
-    "Tags",
-    "DevOps/Kubernetes/CKAD",
     "DevOps/GCP Associate (Exam Topics)/Databases.md",
     "DevOps/GCP Associate (Exam Topics)/LoadBalancers.md",
     "DevOps/GCP Associate (Exam Topics)/Gcloud-Commands.md",
@@ -171,7 +185,6 @@
     "DevOps/AWS Solution Architect (v2)/AWS CloudFront.md",
     "Active Directory/Attack vectors/Group Policy Preferences.md",
     "DevOps/Kafka/Kafka-For-Beginners.md",
-    "DevOps/GCP Associate (Exam Topics)",
     "DevOps/Kafka/Assets/Pasted image 20240406082046.png",
     "DevOps/Kafka/Assets/Pasted image 20240406081937.png",
     "DevOps/Kafka/Assets/Pasted image 20240406081820.png",
@@ -181,16 +194,6 @@
     "DevOps/Kafka/Assets/Pasted image 20240406081630.png",
     "DevOps/Kafka/Assets/Pasted image 20240406081115.png",
     "DevOps/Kafka/Assets/Pasted image 20240406074752.png",
-    "DevOps/Kafka/Assets/Pasted image 20240406074625.png",
-    "DevOps/Kafka/Assets",
-    "DevOps/IAC/Ansible.md",
-    "DevOps/Kafka",
-    "DevOps/Kubernetes/Security.md",
-    "DevOps/IAC",
-    "DevOps/IAC/Terraform.md",
-    "DevOps/Monitoring.md",
-    "DevOps/Security/Image Signing.md",
-    "Red-teaming/Credential Harvesting/MacOS.md",
-    "Red-teaming/Credential Harvesting/Linux.md"
+    "DevOps/Kafka/Assets/Pasted image 20240406074625.png"
   ]
 }

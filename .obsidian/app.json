@@ -5,7 +5,7 @@
   "alwaysUpdateLinks": true,
   "spellcheck": false,
   "showFrontmatter": false,
-  "promptDelete": false,
+  "promptDelete": true,
   "defaultViewMode": "preview",
   "readableLineLength": false
 }
