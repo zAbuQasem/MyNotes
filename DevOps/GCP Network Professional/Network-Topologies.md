@@ -16,7 +16,6 @@
 1. **Mesh:** All spokes attached to a hub can communicate with each other in one hub route table. Does not support NCC Gateway spoke type.
 2. **Star:** Only designated edge and center spokes can communicate with each other, thus ensuring segmentation and connectivity separation across edge VPC networks.
 3. **Hybrid inspection:** Customize traffic processing between your Interconnect and connected VPC networks using an NCC Gateway spoke. Gateway spokes protect VLAN attachments in the `gateways` group. VPC spokes and hybrid spokes can be grouped into `services`, `prod`, or `non-prod` for isolation.
-> Learn More: [Preset connectivity topologies](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/connectivity-topologies?_gl=1*11n1i8s*_ga*MTk4NjcxMjMwNi4xNzYwNDQyNzI2*_ga_WH2QY8WWF5*czE3NjA0NDI3MjUkbzEkZzEkdDE3NjA0NDMxNTUkajQ5JGwwJGgw#spoke-groups)
-> 
+ **Learn More:** [Preset connectivity topologies](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/connectivity-topologies?_gl=1*11n1i8s*_ga*MTk4NjcxMjMwNi4xNzYwNDQyNzI2*_ga_WH2QY8WWF5*czE3NjA0NDI3MjUkbzEkZzEkdDE3NjA0NDMxNTUkajQ5JGwwJGgw#spoke-groups)> 
 > **Note:** We can view the Network Topology in a map view using ` Network Intelligence > Network Topology.`
 
