@@ -6,6 +6,7 @@ description: >
   - Move/normalize image references into docs/assets/
   - Rewrite Obsidian-style wikilinks to standard Markdown links
 
+---
 instructions: |
   You are a migration assistant for the zAbuQasem/MyNotes repository.
 
