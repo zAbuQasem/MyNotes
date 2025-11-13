@@ -43,7 +43,7 @@
 5. **[[#Labels]]**
 6. **[[#Mnemonic]]**
 
-![Nasm structure.png](../assets/Reverse Engineering/Nasm structure.png)
+![Nasm structure.png](../assets/Reverse%20Engineering/Nasm%20structure.png)
 
 ## Integer constants and expressions.
 - Optional leading `+` or `-` sign.
@@ -169,7 +169,7 @@ mov eax,32 ; this is a comment
 1. A data definition statement sets aside storage in memory for a variable.
 2. May optionally assign a name (label) to the data.
 - **Syntax**
-![variable statement.png](../assets/Reverse Engineering/variable statement.png)
+![variable statement.png](../assets/Reverse%20Engineering/variable%20statement.png)
 3. Use the `?` symbol for undefined variables.
 4. All initializers become binary data in memory.
 ## Defining BYTE, SBYTE data
@@ -184,7 +184,7 @@ mov eax,32 ; this is a comment
 - If value1 is located at `offset 0000` in the data segment and consumes 1 byte of storage, value2 is automatically located at `offset 0001`
 - If you declare a `SBYTE` variable, the microsoft debugger will automatically display it's value in decimal with a leading sign.
 ## Defining Byte Arrays
-![offset.png](../assets/Reverse Engineering/offset.png)
+![offset.png](../assets/Reverse%20Engineering/offset.png)
 1. An array is simply a set of sequential memory locations.
 2. The directive (BYTE) indicates the offset needed to get to the next array element.
 3. No length, no termination flag, no special properties.
@@ -195,7 +195,7 @@ mov eax,32 ; this is a comment
 	3. Characters are bytes.
 	4. Hex characters `0Dh`(CR) and `0Ah`(LF) are useful.
 - **Example**
-![define strings.png](../assets/Reverse Engineering/define strings.png)
+![define strings.png](../assets/Reverse%20Engineering/define%20strings.png)
 
 ---
 # Instructions
@@ -225,7 +225,7 @@ mov eax,32 ; this is a comment
 MOV AL,var1 ; AL 00010400
 ```
 ### Operand notation
-![operand notation.png](../assets/Reverse Engineering/operand notation.png)
+![operand notation.png](../assets/Reverse%20Engineering/operand%20notation.png)
 # Data Transfer Instructions
 ## MOV instruction
 1. Move from source to destination
@@ -270,10 +270,10 @@ MOV AL, [var1 + 5]
 ```
 ### Zero extension
 - When you copy a smaller value into a larger destination, the `MOVZX` instruction fills (extends) the upper half of the destination with zeros.
-![zeroext.png](../assets/Reverse Engineering/zeroext.png)
+![zeroext.png](../assets/Reverse%20Engineering/zeroext.png)
 ### Sign extension
 - The `MOVSX` instruction fills the upper half of the destination with a copy of the source operand's sign bit.
-![signext.png](../assets/Reverse Engineering/signext.png)
+![signext.png](../assets/Reverse%20Engineering/signext.png)
 ## XCHG instruction
 1. XCHG exchanges the values of two operands.
 2. At least **one operand** must be a register.
@@ -369,7 +369,7 @@ MOV AL, [var1 + 5]
 	NEG AL			; AL = +1
 	NEG valW		; valW = -32767 (Cannot do the reverse)
 ```
-![arithmeticinHLL.png](../assets/Reverse Engineering/arithmeticinHLL.png)
+![arithmeticinHLL.png](../assets/Reverse%20Engineering/arithmeticinHLL.png)
 
 ---
 # Data related operators and directives
@@ -401,11 +401,11 @@ MOV AL, [var1 + 5]
 ```
 - **Little Endian order (revise)**
 
-![littleEndian.png](../assets/Reverse Engineering/littleEndian.png)
+![littleEndian.png](../assets/Reverse%20Engineering/littleEndian.png)
 
 - **PTR example**
 
-![PTRexample.png](../assets/Reverse Engineering/PTRexample.png)
+![PTRexample.png](../assets/Reverse%20Engineering/PTRexample.png)
 
 - **Combine elements of a smaller data type into a larger operand**
 > The CPU will automatically reverse the bytes
@@ -477,10 +477,10 @@ MOV AL, [var1 + 5]
 ```
 ## Multiple lines and anonymous data
 - **Spanning multiple lines**
-![spanningmultiplelines.png](../assets/Reverse Engineering/spanningmultiplelines.png)
+![spanningmultiplelines.png](../assets/Reverse%20Engineering/spanningmultiplelines.png)
 
 - **Anonymous data**
-![anonymousdata.png](../assets/Reverse Engineering/anonymousdata.png)
+![anonymousdata.png](../assets/Reverse%20Engineering/anonymousdata.png)
 
 ## LABEL directive
 - Assigns an alternate label name and type to an existing storage location.
@@ -505,7 +505,7 @@ Used for ***indirect addressing***
 - **`Protected mode`**: 32 bits
 - **`Real mode`**: 16 bits
 
-![offsetpic.png](../assets/Reverse Engineering/offsetpic.png)
+![offsetpic.png](../assets/Reverse%20Engineering/offsetpic.png)
 - **Example**: 
 Assume that **`bVal`** is located at offset **`0040400h`**
 ```txt

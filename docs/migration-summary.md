@@ -58,12 +58,12 @@ docs/
 ### Image Link Changes
 **Before:**
 ```markdown
-![](assets/Pasted image 20240401065054.png)
+![](assets/Pasted%20image%2020240401065054.png)
 ```
 
 **After:**
 ```markdown
-![](assets/Pasted image 20240401065054.png)
+![](assets/Pasted%20image%2020240401065054.png)
 ```
 
 ## Files Created/Modified

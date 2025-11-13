@@ -10,7 +10,7 @@
 **Link-Local Multicast Name Resolution (LLMNR)** and **NetBIOS Name Service (NBT-NS)** are Microsoft Windows components that serve as alternate methods of host identification. **LLMNR is based upon the Domain Name System (DNS) format** and allows hosts on the same local link to perform name resolution for other hosts. NBT-NS identifies systems on a local network by their NetBIOS name.
 But this method of host resolution has severe security impact, as when a non-existing host is searched using LLMNR method, it **broadcasts** the search request to every system connected to the local network. As a result, **if any of the systems in local network is somehow compromised by an attacker, it also receives the host search query and can send a response to the victim** (the system which initiated the host resolution query) that it knows the host **and in turn ask for the password hash of the victim**.
 
-![LLMNR.png](../../assets/Active Directory/Attack vectors/LLMNR.png)
+![LLMNR.png](../../assets/Active%20Directory/Attack%20vectors/LLMNR.png)
 
 ---
 # SMB relay attack
