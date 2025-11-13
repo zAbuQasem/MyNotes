@@ -1,0 +1,12 @@
+# Obsidian
+.obsidian/
+.makemd/
+.space/
+
+# GitBook
+_book/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

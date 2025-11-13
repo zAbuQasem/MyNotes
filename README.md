@@ -17,9 +17,19 @@ This repository contains my personal notes from various courses, books, and othe
 
 These notes are organized into directories based on the subject matter. Each directory contains markdown files with detailed notes and references.
 
-## Viewing the Notes in Obsidian
+## Viewing the Notes
 
-Obsidian is a powerful knowledge base that works on local Markdown files. To view and edit these notes in Obsidian:
+These notes are now organized using GitBook format for better navigation and accessibility. You can view and explore them in several ways:
+
+### Option 1: GitBook (Recommended)
+
+If this repository is connected to GitBook, you can view the notes in a well-formatted, searchable interface with navigation sidebar.
+
+### Option 2: GitHub
+
+Browse the notes directly on GitHub using the [table of contents](SUMMARY.md) for easy navigation.
+
+### Option 3: Local Viewing
 
 1. **Clone the Repository**:
 
@@ -27,18 +37,22 @@ Obsidian is a powerful knowledge base that works on local Markdown files. To vie
 git clone https://github.com/zAbuQasem/MyNotes.git
 ```
 
-2. **Open Obsidian**:
+2. **Browse Locally**:
 
-- If you haven't installed Obsidian yet, download it from the [official website](https://obsidian.md/) and install it on your system.
+- Navigate through the folders and open markdown files with your preferred markdown viewer.
+- Use the [SUMMARY.md](SUMMARY.md) file as your table of contents for organized navigation.
 
-3. **Add the Vault**:
+3. **Optional - GitBook CLI**:
 
-- In Obsidian, click on "Open folder as vault".
-- Navigate to the location where you cloned the `MyNotes` repository and select the folder.
+You can also install GitBook CLI to serve the notes locally:
 
-4. **Start Exploring**:
+```bash
+npm install -g gitbook-cli
+cd MyNotes
+gitbook serve
+```
 
-- Once the vault is added, you can navigate through the folders and files to read and edit the notes.
+Then open your browser to `http://localhost:4000`
 
 ## Contributing
 
