@@ -275,7 +275,7 @@ use exploit/windows/fileformat/adobe_utilprintf
 ```
 Then use 7-zip utility to encrypt the pdf.
 
-![7zip.png](../assets/Metasploit/7zip.png)
+![7zip.png](assets/Metasploit/7zip.png)
 
 ## Understanding-what-a-sandbox-is
 Whenever we execute an application, be it legitimate or malicious, some of the events that occur are as follows:
@@ -328,12 +328,12 @@ Add a host to attack
 2. Select the Add Hosts option.
 3. You can add multiple hosts per line.
 
-![armitage.png](../assets/Metasploit/armitage.png)
+![armitage.png](assets/Metasploit/armitage.png)
 ## Scanning-and-enumeration
 Right-click on the host and select the Scan
 option.
 
-![armscan.png](../assets/Metasploit/armscan.png)
+![armscan.png](assets/Metasploit/armscan.png)
 
 **To initiate an NMAP scan:**
 1. Click on the Hosts option.

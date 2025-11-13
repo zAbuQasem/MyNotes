@@ -8,7 +8,7 @@ All notes are organized in a clean, GitBook-compatible structure with kebab-case
 
 ### 🎯 Topics
 
-- **[AWS Pentesting](aws-pentesting/)** - AWS security testing and pentesting guides
+- **[AWS Pentesting](aws-services-explained-pentested.md)** - AWS security testing and pentesting guides
 - **[Active Directory](active-directory/)** - Active Directory attack vectors and enumeration
   - [Attack Vectors](active-directory/attack-vectors/)
   - [PowerShell](active-directory/powershell/)
@@ -17,10 +17,9 @@ All notes are organized in a clean, GitBook-compatible structure with kebab-case
   - [GCP Associate Exam](devops/gcp-associate-exam-topics/)
   - [Kubernetes](devops/kubernetes/)
   - [Infrastructure as Code](devops/iac/)
-  - [Kafka](devops/kafka/)
   - [OpenPolicyAgent](devops/openpolicyagent/)
 - **[Golang](golang/)** - Go programming language guides
-- **[Metasploit](metasploit/)** - Metasploit framework guides
+- **[Metasploit](metasploit-cheatsheet.md)** - Metasploit framework guides
 - **[Red Teaming](red-teaming/)** - Red team operations and techniques
   - [Credential Harvesting](red-teaming/credential-harvesting/)
 - **[Reverse Engineering](reverse-engineering/)** - Binary analysis and reverse engineering
