@@ -2,16 +2,25 @@
 
 This repository contains my personal notes from various courses, books, and other learning resources.
 
-## Table of Contents
+## 📚 Table of Contents
 
-- [AWS Pentesting](notes/aws-pentesting/)
-- [Active Directory](notes/active-directory/)
-- [DevOps](notes/devops/)
-- [Golang](notes/golang/)
-- [Metasploit](notes/metasploit/)
-- [Red-teaming](notes/red-teaming/)
-- [Reverse Engineering](notes/reverse-engineering/)
-- [Web Pentesting](notes/web-pentesting/)
+### Security & Penetration Testing
+- **[Active Directory](notes/active-directory/)** - AD penetration testing, privilege escalation, and persistence
+- **[Web Pentesting](notes/web-pentesting/)** - Web application security testing and vulnerabilities
+- **[Red Teaming](notes/red-teaming/)** - Advanced offensive security operations
+- **[AWS Pentesting](notes/aws-pentesting/)** - Cloud security testing (AWS)
+- **[Metasploit](notes/metasploit/)** - Exploitation framework guide
+
+### Development & Operations
+- **[DevOps](notes/devops/)** - CI/CD, Kubernetes, infrastructure as code
+- **[Golang](notes/golang/)** - Go programming language guide
+
+### Reverse Engineering
+- **[Reverse Engineering](notes/reverse-engineering/)** - Binary analysis and debugging
+
+---
+
+Each section contains a README with detailed navigation to specific topics.
 
 ## Usage
 
