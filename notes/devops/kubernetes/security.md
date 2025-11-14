@@ -1,7 +1,7 @@
 # Navigation
-- [**Docker**](#Docker)
-- [**Privileged-Containers**](#Privileged-Containers)
-- [**Non-Privileged Containers**](#Non-Privileged%20Containers)
+- [**Docker**](#docker)
+- [**Privileged-Containers**](#privileged-containers)
+- [**Non-Privileged Containers**](#non-privileged-containers)
 ---
 # Docker
 ## Volumes-vs-Mounts

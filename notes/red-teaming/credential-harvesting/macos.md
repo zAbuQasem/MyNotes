@@ -1,9 +1,9 @@
 # MacOS
 ---
 # Navigation
-1. **[Process memory](#Process%20memory)**
-2. **[MacOS keychain](#MacOS%20keychain)**
-3. **[Phishing and credential dialog spoofing](#Phishing%20and%20credential%20dialog%20spoofing)**
+1. **[Process memory](#process-memory)**
+2. **[MacOS keychain](#macos-keychain)**
+3. **[Phishing and credential dialog spoofing](#phishing-and-credential-dialog-spoofing)**
 ---
 # Process memory
 Apple made it more difficult to debug or dump process memory, even as root. Apple introduced a feature called **`System Integrity Protection (SIP)`** that limits what even the root user can do to the operating system.

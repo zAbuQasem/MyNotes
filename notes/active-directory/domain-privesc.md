@@ -1,17 +1,17 @@
 # Domain Privesc
 ---
 # Navigation
-- **[Kerberoast](#Kerberoast)**
-	- [Users With SPN](#Users%20With%20SPN)
-	- [AS-REPs](#AS-REPs)
-	- [Set SPN](#Set%20SPN)
-- **[Unconstrained delegation](#Unconstrained%20delegation)**
-	- [Definition](#Definition)
-	- [Attack](#Attack)
-- **[Constrained delegation](#Constrained%20delegation)**
-	- [Definition con](#Definition%20con)
-	- [Attack](#Attack)
-- **[Further reading](#Further%20reading)**
+- **[Kerberoast](#kerberoast)**
+	- [Users With SPN](#users-with-spn)
+	- [AS-REPs](#as-reps)
+	- [Set SPN](#set-spn)
+- **[Unconstrained delegation](#unconstrained-delegation)**
+	- [Definition](#definition)
+	- [Attack](#attack)
+- **[Constrained delegation](#constrained-delegation)**
+	- [Definition con](#definition-con)
+	- [Attack](#attack)
+- **[Further reading](#further-reading)**
 >**Important:**
 >[Synchronizing time is important](Kerberoas%2523Synchronizing%2520time%2520is%2520important)
 ---

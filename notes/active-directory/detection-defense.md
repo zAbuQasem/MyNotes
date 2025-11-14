@@ -1,16 +1,16 @@
 # Detection & Defense
 ---
 # Navigation
-- **[Domain admins](#Domain%20admins)**
-- **[Golden Ticket](#Golden%20Ticket)**
-- **[Silver Ticket](#Silver%20Ticket)**
-- **[Skeleton Key](#Skeleton%20Key)**
-- **[DSRM](#DSRM)**
-- **[Malicious SSP](#Malicious%20SSP)**
-- **[Kerberoast](#Kerberoast)**
-- **[Delegation](#Delegation)**
-- **[ACL attacks](#ACL%20attacks)**
-- **[Trust Tickets](#Trust%20Tickets)**
+- **[Domain admins](#domain-admins)**
+- **[Golden Ticket](#golden-ticket)**
+- **[Silver Ticket](#silver-ticket)**
+- **[Skeleton Key](#skeleton-key)**
+- **[DSRM](#dsrm)**
+- **[Malicious SSP](#malicious-ssp)**
+- **[Kerberoast](#kerberoast)**
+- **[Delegation](#delegation)**
+- **[ACL attacks](#acl-attacks)**
+- **[Trust Tickets](#trust-tickets)**
 
 ---
 # Domain admins

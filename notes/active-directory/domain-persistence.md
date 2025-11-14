@@ -1,24 +1,24 @@
 # Domain Persistence
 ---
 # Navigation
-- **[Golden Ticket](#Golden%20Ticket)**
-	- [Definition](#Definition)
-	- [Attack](#Attack)
-- **[Silver Ticket](#Silver%20Ticket)**
-	- [Definition](#Definition)
-	- [Attack](#Attack)
-	- [Getting a reverse shell](#Getting%20a%20reverse%20shell)
-- **[Skeleton key](#Skeleton%20key)**
-	- [Attack](#Attack)
-- **[ACLS](#ACLS)**
-	- [Definition](#Definition)
-	- [Well known abused protected groups](#Well%20known%20abused%20protected%20groups)
-	- [Some of the Active Directory object permissions and types that we as attackers are interested in](#Some%20of%20the%20Active%20Directory%20object%20permissions%20and%20types%20that%20we%20as%20attackers%20are%20interested%20in)
-	- **[Attack](#Attack)**
-		- [AdminSDHolder](#AdminSDHolder)
-		- [Rights Abuse](#Rights%20Abuse)
-		- [Security Descriptors](#Security%20Descriptors)
-			- [Remote registry](#Remote%20registry)
+- **[Golden Ticket](#golden-ticket)**
+	- [Definition](#definition)
+	- [Attack](#attack)
+- **[Silver Ticket](#silver-ticket)**
+	- [Definition](#definition)
+	- [Attack](#attack)
+	- [Getting a reverse shell](#getting-a-reverse-shell)
+- **[Skeleton key](#skeleton-key)**
+	- [Attack](#attack)
+- **[ACLS](#acls)**
+	- [Definition](#definition)
+	- [Well known abused protected groups](#well-known-abused-protected-groups)
+	- [Some of the Active Directory object permissions and types that we as attackers are interested in](#some-of-the-active-directory-object-permissions-and-types-that-we-as-attackers-are-interested-in)
+	- **[Attack](#attack)**
+		- [AdminSDHolder](#adminsdholder)
+		- [Rights Abuse](#rights-abuse)
+		- [Security Descriptors](#security-descriptors)
+			- [Remote registry](#remote-registry)
 
 
 >**Important:**

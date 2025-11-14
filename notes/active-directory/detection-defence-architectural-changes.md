@@ -1,10 +1,10 @@
 # Navigation
-- **[Local Administrator Password solution LAPS](#Local%20Administrator%20Password%20solution%20LAPS)**
-- **[Credential guard](#Credential%20guard)**
-- **[Device guard](#Device%20guard)**
-- **[Privileged Administrative Workstations PAWs](#Privileged%20Administrative%20Workstations%20PAWs)**
-- **[Active Directory Tier Model](#Active%20Directory%20Tier%20Model)**
-- **[Enhanced Security Admin Environment ESAE](#Enhanced%20Security%20Admin%20Environment%20ESAE)**
+- **[Local Administrator Password solution LAPS](#local-administrator-password-solution-laps)**
+- **[Credential guard](#credential-guard)**
+- **[Device guard](#device-guard)**
+- **[Privileged Administrative Workstations PAWs](#privileged-administrative-workstations-paws)**
+- **[Active Directory Tier Model](#active-directory-tier-model)**
+- **[Enhanced Security Admin Environment ESAE](#enhanced-security-admin-environment-esae)**
 ---
 # Local Administrator Password solution (LAPS)
 - Centralized storage of passwords in AD with periodic randomization where read permissions are access controlled.

@@ -1,18 +1,17 @@
 # Offensive Powershell
 ---
 # Navigation
-- **[Reconnaissance](#Reconnaissance)**
-	- [PortScanning Host discovery](#PortScanning%20Host%20discovery)
-	- [Directory discovery](#Directory%20discovery)
-	- [Shodan](#Shodan)
-	- [Automating Nmap](#Automating%20Nmap)
-	- [Brute-Force](#Brute-Force)
-	- [MSSQL](#MSSQL)
-- **[Client-Side attacks](#Client-Side%20attacks** 
-	- [Malicious Attachments](#Malicious%20Attachments)
-- **[Exploitation](#Exploitation)**
-	- [PHPMyAdmin](#PHPMyAdmin)
-- **[Metasploit](#Metasploit)**
+- **[Reconnaissance](#reconnaissance)**
+	- [PortScanning Host discovery](#portscanning-host-discovery)
+	- [Directory discovery](#directory-discovery)
+	- [Shodan](#shodan)
+	- [Automating Nmap](#automating-nmap)
+	- [Brute-Force](#brute-force)
+	- [MSSQL](#mssql)
+- **[Client-Side attacks](#client-side-attacks-malicious-attachmentsmalicious-attachments)
+- **[Exploitation](#exploitation)**
+	- [PHPMyAdmin](#phpmyadmin)
+- **[Metasploit](#metasploit)**
 
 > **Note:**
 >  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%2520Basics%2523List%2520module%2520commands)

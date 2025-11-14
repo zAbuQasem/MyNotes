@@ -323,6 +323,50 @@ def rewrite_wikilinks(
     return re.sub(pattern, replace_wikilink, content)
 
 
+def normalize_fragment_id(heading: str) -> str:
+    """
+    Normalize a heading text to a GitHub/GitBook-compatible fragment ID.
+    - Convert to lowercase
+    - Replace spaces with dashes
+    - Remove special characters except dashes
+    - Remove leading/trailing dashes
+    """
+    # Convert to lowercase
+    fragment = heading.lower()
+    # Replace spaces and underscores with dashes
+    fragment = re.sub(r'[\s_]+', '-', fragment)
+    # Remove special characters except dashes and alphanumerics
+    fragment = re.sub(r'[^a-z0-9-]', '', fragment)
+    # Remove multiple consecutive dashes
+    fragment = re.sub(r'-+', '-', fragment)
+    # Strip leading/trailing dashes
+    fragment = fragment.strip('-')
+    return fragment
+
+
+def rewrite_fragment_links(content: str) -> str:
+    """
+    Rewrite fragment links (heading anchors) to use proper GitBook/GitHub format.
+    Converts links like #Symbols%20and%20stripped%20binaries to #symbols-and-stripped-binaries
+    """
+    # Pattern for fragment links: [text](#fragment)
+    pattern = r'\[([^\]]+)\]\(#([^)]+)\)'
+    
+    def replace_fragment(match):
+        text = match.group(1)
+        fragment = match.group(2)
+        
+        # Decode URL-encoded characters (e.g., %20 -> space)
+        fragment_decoded = unquote(fragment)
+        
+        # Normalize the fragment ID
+        fragment_normalized = normalize_fragment_id(fragment_decoded)
+        
+        return f'[{text}](#{fragment_normalized})'
+    
+    return re.sub(pattern, replace_fragment, content)
+
+
 def rewrite_markdown_links(
     content: str,
     current_note_path: Path
@@ -339,7 +383,7 @@ def rewrite_markdown_links(
         text = match.group(2)
         url = match.group(3)
         
-        # Skip absolute URLs
+        # Skip absolute URLs and fragment-only links (handled by rewrite_fragment_links)
         if url.startswith('http://') or url.startswith('https://') or url.startswith('#'):
             return match.group(0)
         
@@ -377,6 +421,9 @@ def rewrite_note_content(
     
     # Rewrite wikilinks
     content = rewrite_wikilinks(original_content, note_path, note_mapping, notes_root)
+    
+    # Rewrite fragment links (heading anchors)
+    content = rewrite_fragment_links(content)
     
     # Rewrite standard Markdown links
     content = rewrite_markdown_links(content, note_path)

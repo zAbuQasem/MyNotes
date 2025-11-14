@@ -1,27 +1,27 @@
 # Binary analysis
 ---
 ## Navigation
-- **[Symbols and stripped binaries](#Symbols%20and%20stripped%20binaries)**
-- **[Disassembling a binary](#Disassembling%20a%20binary)**
-- **[ELF format](#ELF%20format)**
-	- [Executable header](#Executable%20header)
-	- **[Section header](#Section%20header)**
-		- [init and fini sections](#init%20and%20fini%20sections)
-		- [text section](#text%20section)
-		- [bss data and rodata sections](#bss%20data%20and%20rodata%20sections)
-		- [Lazy Binding and the PLT](#Lazy%20Binding%20and%20the%20PLT)
-		- [Lazy Binding and the plt got and got plt sections](#Lazy%20Binding%20and%20the%20plt%20got%20and%20got%20plt%20sections)
+- **[Symbols and stripped binaries](#symbols-and-stripped-binaries)**
+- **[Disassembling a binary](#disassembling-a-binary)**
+- **[ELF format](#elf-format)**
+	- [Executable header](#executable-header)
+	- **[Section header](#section-header)**
+		- [init and fini sections](#init-and-fini-sections)
+		- [text section](#text-section)
+		- [bss data and rodata sections](#bss-data-and-rodata-sections)
+		- [Lazy Binding and the PLT](#lazy-binding-and-the-plt)
+		- [Lazy Binding and the plt got and got plt sections](#lazy-binding-and-the-plt-got-and-got-plt-sections)
 		- [dynamic](#dynamic)
-		- [init_array and fini_array](#init_array%20and%20fini_array)
-		- [shstrtab symtab strtab dynsym and dynstr](#shstrtab%20symtab%20strtab%20dynsym%20and%20dynstr)
-	- **[Program headers](#Program%20headers)**
-		- [The p_type Field](#The%20p_type%20Field)
-		- [The p_flags Field](#The%20p_flags%20Field)
-		- [The p_offset p_vaddr p_paddr p_filesz and p_memsz Fields](#The%20p_offset%20p_vaddr%20p_paddr%20p_filesz%20and%20p_memsz%20Fields)
-		- [The p_align Field](#The%20p_align%20Field)
-- **[Basic binary analysis in linux](#Basic%20binary%20analysis%20in%20linux)**
-	- [Commands and utilities](#Commands%20and%20utilities)
-	- [Determine an ELF size by it's header](#Determine%20an%20ELF%20size%20by%20it's%20header)
+		- [init_array and fini_array](#init-array-and-fini-array)
+		- [shstrtab symtab strtab dynsym and dynstr](#shstrtab-symtab-strtab-dynsym-and-dynstr)
+	- **[Program headers](#program-headers)**
+		- [The p_type Field](#the-p-type-field)
+		- [The p_flags Field](#the-p-flags-field)
+		- [The p_offset p_vaddr p_paddr p_filesz and p_memsz Fields](#the-p-offset-p-vaddr-p-paddr-p-filesz-and-p-memsz-fields)
+		- [The p_align Field](#the-p-align-field)
+- **[Basic binary analysis in linux](#basic-binary-analysis-in-linux)**
+	- [Commands and utilities](#commands-and-utilities)
+	- [Determine an ELF size by it's header](#determine-an-elf-size-by-its-header)
 ---
 # Symbols and stripped binaries
 ## Symbolic information

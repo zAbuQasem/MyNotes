@@ -1,8 +1,8 @@
 # Navigation
-- [**Cosign**](#Cosign)
-- [**Cluster-Integration**](#Cluster-Integration)
-- [**Pulling-Images-securely**](#Pulling-Images-securely)
-- [**Github-Action-Integration**](#Github-Action-Integration)
+- [**Cosign**](#cosign)
+- [**Cluster-Integration**](#cluster-integration)
+- [**Pulling-Images-securely**](#pulling-images-securely)
+- [**Github-Action-Integration**](#github-action-integration)
 ---
 # Cosign
 ## Installation
