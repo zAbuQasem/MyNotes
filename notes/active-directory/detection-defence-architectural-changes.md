@@ -1,3 +1,7 @@
+# Detection & Defense: Architectural Changes
+
+Defensive architecture and security controls for Active Directory.
+
 ## Navigation
 - **[Local Administrator Password solution LAPS](#local-administrator-password-solution-laps)**
 - **[Credential guard](#credential-guard)**
@@ -5,8 +9,10 @@
 - **[Privileged Administrative Workstations PAWs](#privileged-administrative-workstations-paws)**
 - **[Active Directory Tier Model](#active-directory-tier-model)**
 - **[Enhanced Security Admin Environment ESAE](#enhanced-security-admin-environment-esae)**
+
 ---
-# Detection Defence Architectural Changes
+
+## Local Administrator Password Solution (LAPS)
 - Centralized storage of passwords in AD with periodic randomization where read permissions are access controlled.
 - Computer objects have two new attributes `ms-mcs-AdmPwd` and `ms-mcs-AdmPwdExpirationTime` controls the password change.
 - Storage is in clear text and transmission is encrypted.

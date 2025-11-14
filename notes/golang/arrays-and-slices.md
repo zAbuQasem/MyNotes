@@ -1,3 +1,7 @@
+# Arrays and Slices
+
+Working with arrays and slices in Go.
+
 ## Basic Syntax
 ```go
 package main

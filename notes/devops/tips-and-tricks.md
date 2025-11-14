@@ -1,7 +1,12 @@
+# DevOps Tips and Tricks
+
+Useful DevOps techniques and best practices.
+
 ## Navigation
  - [Distroless Containers](#distroless-containers)
 
-# Tips And Tricks
+---
+
 ## Debug Network Connections
 You can use nsenter to enter the network namespace of a running container for debugging network issues.
 
