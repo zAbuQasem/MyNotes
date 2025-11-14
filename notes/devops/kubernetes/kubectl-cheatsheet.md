@@ -1,4 +1,4 @@
-# Navigation
+## Navigation
 - [**Installing-and-runinng-minikube**](#installing-and-runinng-minikube)
 - [**EKS**](#eks)
 - [**NameSpaces**](#namespaces)
@@ -54,26 +54,26 @@
 	- [StorageClass](#storageclass)
 	- [TLDR](#tldr)
 
-# Installing-and-running-minikube
+# Kubectl Cheatsheet
 ```bash
-# On debian x86_64
+## On debian x86_64
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
-# On windows
+## On windows
 choco install minikube
 
-# Start minikube with virtualbox driver
+## Start minikube with virtualbox driver
 minikube start --driver=virtualbox
 
-# If you faced some issues related to VTX on windows 11 (while it's enabled) 
+## If you faced some issues related to VTX on windows 11 (while it's enabled)
 minikube start --no-vtx-check --driver virtualbox
 ```
 > **Important Notes**:
 > - On failure run `minikube delete && minikube start` if it didn't work then follow the traceback instructions
 > - [**Click me for other distros installation guide**](https://minikube.sigs.k8s.io/docs/start/)
 ---
-# EKS
+## EKS
 Make sure to have the required privileges [Minimum Required](https://eksctl.io/usage/minimum-iam-policies/)
 1. Creating a Cluster
 ```bash
@@ -87,12 +87,12 @@ aws eks update-kubeconfig --name DemoCluster
 
 3. Verify
 ```bash
-# Look for aws-auth
+## Look for aws-auth
 kubectl get configmap -A
-# -A = --all-namespaces
+## -A = --all-namespaces
 ```
 ---
-# NameSpaces
+## NameSpaces
 
 - Create a namespace
 ```bash
@@ -116,7 +116,7 @@ kubectl delete <NAMESPACE>
 ```
 > **Important note**: Deleting a namespace will **delete everything** within it.
 ---
-# Managing-Pods
+## Managing-Pods
 
 **Control and manage your Kubernetes pods efficiently using labels and selectors.**
 
@@ -125,7 +125,7 @@ kubectl delete <NAMESPACE>
 **Deploy a pod with a specific container image.**
 
 ```bash
-# Images are pulled from Docker Hub
+## Images are pulled from Docker Hub
 kubectl run nginx --image=nginx
 ```
 
@@ -134,22 +134,22 @@ kubectl run nginx --image=nginx
 **View pods in various ways using labels and selectors.**
 
 ```bash
-# List all pods in the current namespace
+## List all pods in the current namespace
 kubectl get pods
 
-# List all pods with detailed information
+## List all pods with detailed information
 kubectl get pods -o wide
 
-# List pods from a specific namespace
+## List pods from a specific namespace
 kubectl get pods -n <Namespace>
 
-# List all pods across all namespaces
+## List all pods across all namespaces
 kubectl get pods --all-namespaces
 
-# Get all container names within a specific pod
+## Get all container names within a specific pod
 kubectl get pods <POD> -n <NAMESPACE> -o jsonpath='{.spec.containers[*].name}'
 
-# Describe a specific pod for detailed information
+## Describe a specific pod for detailed information
 kubectl describe pods <POD> -n <NAMESPACE>
 ```
 
@@ -164,10 +164,10 @@ kubectl describe pods <POD> -n <NAMESPACE>
 **Assign key-value pairs to pods for identification and organization.**
 
 ```bash
-# Add a label to an existing pod
+## Add a label to an existing pod
 kubectl label pod <PodName> app=frontend
 
-# Example:
+## Example:
 kubectl label pod nginx app=webserver
 ```
 
@@ -176,10 +176,10 @@ kubectl label pod nginx app=webserver
 **Filter and view pods based on their labels using selectors.**
 
 ```bash
-# List pods with the label app=webserver
+## List pods with the label app=webserver
 kubectl get pods -l app=webserver
 
-# List pods with multiple labels
+## List pods with multiple labels
 kubectl get pods -l app=webserver,env=production
 ```
 
@@ -210,10 +210,10 @@ spec:
 **Update pod configurations, such as changing container images.**
 
 ```bash
-# Change the image of a container in a pod
+## Change the image of a container in a pod
 kubectl set image <RESOURCE/RESOURCE_NAME> <CONTAINER_NAME>=<NEW_IMAGE_NAME>
 
-# Example:
+## Example:
 kubectl set image pod/redis-container redis-container=redis:latest
 ```
 
@@ -222,10 +222,10 @@ kubectl set image pod/redis-container redis-container=redis:latest
 **Retrieve comprehensive details about pods for troubleshooting and monitoring.**
 
 ```bash
-# Describe all pods in the current namespace
+## Describe all pods in the current namespace
 kubectl describe pod
 
-# Describe a specific pod
+## Describe a specific pod
 kubectl describe pod <PodName>
 ```
 
@@ -234,10 +234,10 @@ kubectl describe pod <PodName>
 **Remove pods when they are no longer needed.**
 
 ```bash
-# Delete a specific pod by name
+## Delete a specific pod by name
 kubectl delete pod <PodName>
 
-# Delete pods using a YAML configuration file
+## Delete pods using a YAML configuration file
 kubectl delete -f <Pod.yml>
 ```
 
@@ -265,7 +265,7 @@ kubectl run frontend --image=nginx --labels="app=frontend,env=production"
 2. **List All Frontend Pods:**
 ```bash
 kubectl get pods --selector app=frontend
- # Get all objects with the label app=frontend
+## Get all objects with the label app=frontend
 kubectl get all --selector app=frontend
 ```
 3. **Describe a Frontend Pod:**
@@ -287,7 +287,7 @@ kubectl delete pod frontend
 - [kubectl Command Reference](https://kubernetes.io/docs/reference/kubectl/)
 
 ---
-# YAML
+## YAML
 It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
 
 ```yaml
@@ -333,7 +333,7 @@ kubectl explain deployment
 - [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
 
 ---
-# StatefulSets
+## StatefulSets
 
 ## Description
 
@@ -409,7 +409,7 @@ spec:
 StatefulSets are ideal for applications that need stable identities and persistent storage, such as databases and distributed systems. Headless services complement StatefulSets by enabling direct DNS access to individual pods.
 
 ---
-# ReplicaSets
+## ReplicaSets
 
 ## Description
 
@@ -512,7 +512,7 @@ kubectl scale rs/<SET> --replicas=0
 ```
 
 ---
-# Deployments
+## Deployments
 
 - Create a deployment
 ```bash
@@ -740,7 +740,7 @@ kubectl scale deployment/my-app --replicas=5
 - [Advanced Deployment Techniques](https://blog.container-solutions.com/kubernetes-deployment-strategies)
 
 ---
-# Services
+## Services
 
 ## NodePort
 
@@ -778,10 +778,10 @@ kubectl get svc myapp-service
 ```
 - Get the service URL:
 ```bash
-# Minikube
+## Minikube
 minikube service <service-name> --url
 
-# Kubernetes cluster
+## Kubernetes cluster
 kubectl port-forward svc/<service-name> LOCALPORT:REMOTEPORT -n <namespace>
 ```
 ## Best Practices:
@@ -985,7 +985,7 @@ spec:
 ```
 > Inside the cluster, apps can connect to `external-db` (e.g., `external-db:3306`), and Kubernetes resolves it to `my-database.example.com`.
 ---
-# Scheduling
+## Scheduling
 What if we want to manually schedule pods and assign them to nodes, instead of leaving it to be automated by the scheduler.
 we have to add `nodeName` atrribute to the `spec`
 
@@ -1066,10 +1066,10 @@ spec:
 
 - Running a pod with tolerations
 ```sh
-# Image name: nginx
-# Key: spray
-# Value: mortein
-# Effect: NoSchedule
+## Image name: nginx
+## Key: spray
+## Value: mortein
+## Effect: NoSchedule
 kubectl run nginx --image=nginx --restart=Never --overrides='{"apiVersion":"v1","spec":{"tolerations":[{"key":"spray","operator":"Equal","value":"mortein","effect":"NoSchedule"}]}}'
 ```
 
@@ -1158,7 +1158,7 @@ metadata:
 spec:
   affinity:
     nodeAffinity:
-  # Required: Must match one of these zones
+## Required: Must match one of these zones
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
@@ -1167,7 +1167,7 @@ spec:
             values:
               - antarctica-east1
               - antarctica-west1
-  # Preferred: Prefer nodes with this label
+## Preferred: Prefer nodes with this label
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:
@@ -1299,7 +1299,7 @@ NodeAffinity uses various **operators** to define how labels should match. Here 
 
 - [Assign Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
 ---
-# DaemonSets
+## DaemonSets
 
 ## Description
 
@@ -1381,14 +1381,14 @@ spec:
 - Pods are automatically distributed across nodes and can be managed using selectors, tolerations, and update strategies.
 
 ---
-# Monitoring
+## Monitoring
 Using Built-In metrics server (in memory solution).
 - Installing Metrics-Server
 ```bash
-# Minikube
+## Minikube
 minikube addons enable metrics-server
 
-# Cluster
+## Cluster
 Check: https://github.com/kubernetes-sigs/metrics-server
 ```
 
@@ -1401,11 +1401,11 @@ kubectl top pod
 - Viewing logs
 ```bash
 kubectl logs -f <PodName> <ContainerName>
-# -f: View live
-# ContianerName: Only mandatory if your pod had multiple containers
+## -f: View live
+## ContianerName: Only mandatory if your pod had multiple containers
 ```
 ---
-# Jobs-CronJobs
+## Jobs-CronJobs
 
 ## **Key Differences Between Jobs and CronJobs**:
 
@@ -1523,7 +1523,7 @@ kubectl create job --from=cronjob/scheduled-task manual-run
     - Monitor Job and CronJob statuses using `kubectl get jobs` and `kubectl get cronjobs`.
     - Enable logging to debug failures effectively.
 ---
-# Secrets
+## Secrets
 - Imperative method
 ```yaml
 kubectl create secret generic <SecretName> --from-lietral=<KEY>=<VALUE>
@@ -1567,13 +1567,13 @@ volumes:
  > **Note**: When mounting secrets as volumes, each key will be a separate file in the /opt/\<SecretName\> folder
 
 ---
-# Multi-Containers
+## Multi-Containers
 
 **There are 3 common patterns:**
 - **Sidecar pattern**: An extra container in your pod to **enhance** or **extend** the functionality of the main container.
 - **Ambassador pattern**: A container that **proxy the network connection** to the main container.
 - **Adapter pattern**: A container that **transform output** of the main container.
-# initContainer
+## initContainer
 A Container that runs a defined task once when the pod is started. 
 ```yaml
 apiVersion: v1
@@ -1593,7 +1593,7 @@ spec:
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application>']
 ```
 ---
-# Maintenance
+## Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
 ```bash
 kube-controller-manager --pod-eviction-timeout=5m0s
@@ -1625,8 +1625,8 @@ Software version in k8s consists of 3 parts:
 v1.11.3
 Major.Minor.Patch
 
-# Minor = [Features,Functionalities]
-# Patch = [BugFixes]
+## Minor = [Features,Functionalities]
+## Patch = [BugFixes]
 ```
 >**Notes**: 
 >Kubernetes only support 3 minor releases.
@@ -1636,64 +1636,64 @@ Major.Minor.Patch
 
 ### Control Plane Upgrade
 ```sh
-# 1. Drain control plane node
+## 1. Drain control plane node
 kubectl drain controlplane --ignore-daemonsets
 
-# 2. Add Kubernetes repository
+## 2. Add Kubernetes repository
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 
-# 3. Update kubeadm
+## 3. Update kubeadm
 sudo apt-cache madison kubeadm # Get the desired version
 sudo apt-mark unhold kubeadm
 sudo apt-get update
 sudo apt-get install -y kubeadm='1.31.0-1.1' # Replace version with desired version from madison cache
 sudo apt-mark hold kubeadm
 
-# 4. Apply upgrade
+## 4. Apply upgrade
 sudo kubeadm upgrade plan v1.31.0
 sudo kubeadm upgrade apply v1.31.0
 
-# 5. Update kubelet and kubectl
+## 5. Update kubelet and kubectl
 sudo apt-cache madison kubelet # Get the desired version
 sudo apt-mark unhold kubectl kubelet
 sudo apt-get update
 sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1' # Replace version with desired version from madison cache
 sudo apt-mark hold kubectl kubelet
 
-# 6. Restart services
+## 6. Restart services
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 
-# 7. Uncordon node
+## 7. Uncordon node
 kubectl uncordon controlplane
 ```
 ### Worker Node Upgrade
 ```sh
-# 1. Drain worker node (replace <NODE> with node name)
+## 1. Drain worker node (replace <NODE> with node name)
 kubectl drain <NODE> --ignore-daemonsets
 
-# 2. Add Kubernetes repository
+## 2. Add Kubernetes repository
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 
-# 3. Update kubeadm
+## 3. Update kubeadm
 sudo apt-cache madison kubeadm
 sudo apt-mark unhold kubeadm
 sudo apt-get update
 sudo apt-get install -y kubeadm='1.31.0-1.1'
 sudo apt-mark hold kubeadm
 
-# 4. Update kubelet and kubectl
+## 4. Update kubelet and kubectl
 sudo apt-cache madison kubelet # Get the desired version
 sudo apt-mark unhold kubectl kubelet
 sudo apt-get update
 sudo apt-get install -y kubectl='1.31.0-1.1' kubelet='1.31.0-1.1'  # Replace version with desired version from madison cache
 sudo apt-mark hold kubectl kubelet
 
-# 5. Restart services
+## 5. Restart services
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 
-# 6. Uncordon node (run from control plane)
+## 6. Uncordon node (run from control plane)
 kubectl uncordon <NODE>
 ```
 ## Backup-and-Restore
@@ -1723,10 +1723,10 @@ ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \
 ```
 Now update the ETCD configuration file to point to the new data directory
 ```bash
-# /etc/kubernetes/manifests/etcd.yaml
+## /etc/kubernetes/manifests/etcd.yaml
 --data-dir=/var/lib/etcd-restored
 
-# Using sed
+## Using sed
 sed -i 's|/var/lib/etcd|/var/lib/etcd-restored|' /etc/kubernetes/manifests/etcd.yaml
 ```
 Finally restart the ETCD container
@@ -1761,7 +1761,7 @@ cat /var/lib/kubelet/config.yaml
 ```
 
 ---
-# Security
+## Security
 ## API-Groups
 
 ## What Are API Groups?
@@ -1882,7 +1882,7 @@ mv kubectl-convert /usr/local/bin
 Convert a resource to a specific API version:
 
 ```bash
-# Without the --output-version flag, it converts to the latest version.
+## Without the --output-version flag, it converts to the latest version.
 kubectl-convert -f <file.yaml> [--output-version <apiVersion>]
 ```
 ### Tips
@@ -1891,14 +1891,14 @@ kubectl-convert -f <file.yaml> [--output-version <apiVersion>]
 
 ```bash
 kubectl api-resources
-# Alternatively
+## Alternatively
 k get storageclasses # when pressing `tab` key it will auto-completet to storageclasses.storage.k8s.io the storage.k8s.io is the api group
 ```
 
 - Always match the `apiVersion` and `group` with the version supported by your cluster.
 
 ---
-# CustomResourceDefinitions
+## CustomResourceDefinitions
 
 ## What Are CRDs?
 
@@ -2074,7 +2074,7 @@ kubectl delete crd <CRD_NAME>
     - Thoroughly test custom controllers to ensure they handle all edge cases.
 
 ---
-# Operators
+## Operators
 
 ## What Are Operators?
 
@@ -2574,10 +2574,10 @@ kubectl describe pod kube-apiserver-controlplane -n kube-system | grep enable-ad
 Edit the API server configuration to include the desired admission controllers:
 
 ```bash
-# Edit the API server configuration
+## Edit the API server configuration
 vim /etc/kubernetes/manifests/kube-apiserver.yaml
 
-# Add the desired admission controllers
+## Add the desired admission controllers
 --enable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
 ```
 
@@ -2585,10 +2585,10 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 Edit the API server configuration to disable the desired admission controllers:
 
 ```bash
-# Edit the API server configuration
+## Edit the API server configuration
 vim /etc/kubernetes/manifests/kube-apiserver.yaml
 
-# Add the desired admission controllers
+## Add the desired admission controllers
 --disable-admission-plugins=NamespaceLifecycle,LimitRanger,ResourceQuota
 ```
 
@@ -2796,7 +2796,7 @@ kubectl get netpol
 ```
 
 ---
-# Volumes-Mounts
+## Volumes-Mounts
 
 ## Pod-Volume
 ```yml

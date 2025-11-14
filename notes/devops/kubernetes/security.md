@@ -1,9 +1,9 @@
-# Navigation
+## Navigation
 - [**Docker**](#docker)
 - [**Privileged-Containers**](#privileged-containers)
 - [**Non-Privileged Containers**](#non-privileged-containers)
 ---
-# Docker
+# Security
 ## Volumes-vs-Mounts
 |Volumes|Mounts|
 |-|-|
@@ -26,13 +26,13 @@ docker service create \
 
 ### References
 - [best-practices-for-securing-containers](https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952)
-# Privileged-Containers
+## Privileged-Containers
 
 - **Full Host Access**: A privileged container essentially has the same privileges as processes running on the host. This means it has unrestricted access to the host system's resources, including devices, filesystems, and kernel capabilities.
 - **Mounting Filesystems**: Privileged containers can mount arbitrary filesystems, including special ones such as `sysfs`, `proc`, and `tmpfs`. They can also mount volumes from the host system.
 - **Mount Namespace**: Privileged containers are not restricted by the mount namespace of the container runtime. This means they can see all mounts on the host system.    
 - **Full Filesystem Access**: They can access and manipulate any file on the host system that the user running the container has permissions to access.
-# Non-Privileged Containers
+## Non-Privileged Containers
 
 - **Limited Host Access**: A non-privileged container is constrained and does not have direct access to host resources. It runs with reduced capabilities and permissions compared to the host system.
     

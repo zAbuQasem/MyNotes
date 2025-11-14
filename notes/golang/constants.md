@@ -1,3 +1,5 @@
+# Constants
+
 #### Overriding a constant
 ```go
 package main

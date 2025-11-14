@@ -1,3 +1,5 @@
+# Variables
+
 ```go
 package main
 

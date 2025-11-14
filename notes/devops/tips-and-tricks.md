@@ -1,7 +1,7 @@
-# Navigation
+## Navigation
  - [Distroless Containers](#distroless-containers)
 
-# Distroless Containers
+# Tips And Tricks
 ## Debug Network Connections
 You can use nsenter to enter the network namespace of a running container for debugging network issues.
 
@@ -18,14 +18,14 @@ This allows you to run network debugging commands like `ss`, `netstat`, or `curl
 ## Send Signals
 Since containers run in child PID namespaces, processes in the container are visible from the host. You can find the host PID and send signals directly:
 ```bash
-# 1. Find the process on the host:
+## 1. Find the process on the host:
 ps aux | grep <process_name>
 
-# 2. Check process IDs in both namespaces:
+## 2. Check process IDs in both namespaces:
 cat /proc/<host_pid>/status | grep NSpid
-# NSpid: <host_pid> <container_pid>
+## NSpid: <host_pid> <container_pid>
 
-# 3. Send the signal using the host PID:
+## 3. Send the signal using the host PID:
 sudo kill -SIGALRM <host_pid>
 ```
 

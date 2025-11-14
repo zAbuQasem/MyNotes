@@ -118,7 +118,7 @@ func main() {
 }
 ```
 
-# Structs
+## Structs
 ## Basic Syntax
 ```go
 package main
