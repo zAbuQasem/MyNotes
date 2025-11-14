@@ -1,6 +1,6 @@
 # Domain Persistence
 ---
-# Navigation
+## Navigation
 - **[Golden Ticket](#golden-ticket)**
 	- [Definition](#definition)
 	- [Attack](#attack)
@@ -24,7 +24,7 @@
 >**Important:**
 >[Synchronizing time is important](Kerberoas%2523Synchronizing%2520time%2520is%2520important)
 ---
-# Golden Ticket
+## Golden Ticket
 ## Definition
 A valid **TGT as any user** can be created **using the NTLM hash of the krbtgt AD account**. The advantage of forging a TGT instead of TGS is being **able to access any service** (or machine) in the domain and the impersonated user.
 The **krbtgt** account **NTLM hash** can be **obtained** from the **lsass process** or from the **NTDS.dit file** of any DC in the domain.
@@ -55,7 +55,7 @@ klist
 - Explained -> [**Golden-tickets**](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/kerberos-silver-tickets)
 - Cheatsheet -> [**Hacktricks**](https://book.hacktricks.xyz/windows/active-directory-methodology/golden-ticket)
 --- 
-# Silver Ticket
+## Silver Ticket
 ## Definition
 The Silver ticket attack is based on **crafting a valid TGS for a service once the NTLM hash of service is owned** (like the **PC account hash**). Thus, it is possible to **gain access to that service** by forging a custom TGS **as any user**.
 ## Attack
@@ -100,7 +100,7 @@ schtasks /Run /S mcorp-dc.moneycorp.local /TN "SomeTaskName"
 - Cheatsheet -> [**Hacktricks**](https://book.hacktricks.xyz/windows/active-directory-methodology/silver-ticket)
 - Explained -> [**Silver-tickets**](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/kerberos-silver-tickets)
 
-# Skeleton key
+## Skeleton key
 The Skeleton Key is a particularly scary piece of malware targeted at Active Directory domains to make it alarmingly easy to hijack any account. This malware injects itself into **LSASS** and creates a master password that will work for any account in the domain. Existing passwords will also continue to work, so it is very difficult to know this attack has taken place unless you know what to look for.
 ## Attack
 Requires DA privileges
@@ -108,7 +108,7 @@ Requires DA privileges
 #(Nishang module)
 Invoke-Mimikatz -Command '"misc::skeleton"'
 
-# Now you can authenticate as any user with the default password of --> Mimikatz
+## Now you can authenticate as any user with the default password of --> Mimikatz
 ```
 In case lssas is running as a protected process we can still use skeleton key but it needs the mimikatz driver (mimideiv.sys) on disk of the target.
 ```powershell
@@ -123,7 +123,7 @@ misc::skeleton
 ```
  > **Note:** Rebooting a domain controller will remove this malware and it will have to be redeployed by the attacker.
 
-# DSRM
+## DSRM
 There is a **local administrator** account inside each **DC**. Having admin privileges in this machine you can use mimikatz to **dump the local Administrator hash**. Then, modifying a registry to **activate this password** so you can remotely access to this local Administrator user.
 ## Attack
 1. Dump the hash of local administrator.
@@ -147,7 +147,7 @@ Invoke-Mimikatz -Command '"sekurlsa::pth /domain:<DC-Host-Name> /user:Administra
 #And in new spawned powershell you now can access via NTLM the content of C$
 ls \\dc-host-name\C$
 ```
-# ACLS
+## ACLS
 ## Definition
 An ACL is a set of rules that define which entities have which permissions on a specific AD object. These objects can be user accounts, groups, computer accounts, the domain itself and many more. The ACL can be configured on an individual object such as a user account, but can also be configured on an Organizational Unit (OU), which is like a directory within AD.
 ### Well known abused protected groups:
@@ -163,7 +163,7 @@ An ACL is a set of rules that define which entities have which permissions on a 
 -   **AllExtendedRights** - ability to add user to a group or reset password    
 -   **ForceChangePassword** - ability to change user's password
 -   **Self (Self-Membership)** - ability to add yourself to a group
-# Attacks
+## Attacks
 ## AdminSDHolder
 1. Add `FullControl` permissions for a user to the AdminSDHolder. (Requires DA Privileges).
 ```powershell

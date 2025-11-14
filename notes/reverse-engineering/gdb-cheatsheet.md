@@ -1,7 +1,7 @@
 # GDB cheat sheet
 ---
 
-# GDB  basics
+## GDB  basics
 Changing to ***intel*** syntax
 ```bash
 set disassembly-flavor intel
@@ -85,7 +85,7 @@ Examine command also accepts instruction ( **`i`** ) that display the memory as 
 #=> 0x55555555521b <main>:	endbr64 
 (gdb) x/4i $rip
 #=> 0x55555555521b <main>:	endbr64 
-#   0x55555555521f <main+4>:	push   rbp
-#   0x555555555220 <main+5>:	mov    rbp,rsp
-#   0x555555555223 <main+8>:	sub    rsp,0x20
+## 0x55555555521f <main+4>:	push   rbp
+## 0x555555555220 <main+5>:	mov    rbp,rsp
+## 0x555555555223 <main+8>:	sub    rsp,0x20
 ```

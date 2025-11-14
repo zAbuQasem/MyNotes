@@ -17,7 +17,7 @@ The main goal is to be a local administrator.This can be achieved by regular win
 - **BeRoot** -> .\beroot.exe
 - **Privesc **-> Invoke-PrivESC
 ---
-# Navigation
+## Navigation
 - **[info about the OS](#info-about-the-os)**
 - **[Determinig PS version](#determinig-ps-version)**
 - **[User enumeration](#user-enumeration)**

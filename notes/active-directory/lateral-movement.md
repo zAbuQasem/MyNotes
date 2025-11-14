@@ -1,10 +1,10 @@
 # Lateral Movement
 ---
-# Navigation
+## Navigation
 - **[PowerShell Remoting](#powershell-remoting)**
 - **[Mimikatz](#mimikatz)**
 ---
-# PowerShell Remoting
+## PowerShell Remoting
 - Enabled by deafult on server 2012 onwards.
 - On desktop windows machines you may need to enable it `Enable-PSRemoting` (Require admin privs).
 - You get elevated shell on remote system if admin creds are used to authenticate (Default setting).
@@ -45,7 +45,7 @@ Invoke-Command -FilePath C:\Path\Get-PassHashes.ps1 -ComputerName (Get-Content <
 Invoke-Command -scriptblock {$ExecutionContext.SessionState.LanguageMode} -ComputerName <value> -Credential <Creds>
 ```
 ---
-# Mimikatz
+## Mimikatz
 - This script is used to dump credentials,tickets and more.
 - Mimikatz with PowerShell is done without dropping `mimikatz.exe` to disk.
 - It is useful for passing and relaying hashes,tickets and for many active directory attacks.

@@ -1,7 +1,7 @@
 # Kerberoas
 
 ---
-# Navigation
+## Navigation
 - **[Definition](#definition)**
 - **[Kerberoas](#kerberoas)**
 	- [Kerbrute](#kerbrute)
@@ -10,7 +10,7 @@
 - **[Further reading](#further-reading)**
 
 ---
-# Definition
+## Definition
 ## What's Kerberoas
 Kerberos is **an authentication protocol that works on the basis of tickets** that allows clients to connect to services over an insecure network and still allow clients to prove their identity in a secure manner.
 - If a user's `UserAccountControl` settings have "Do not require kerberoas preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
@@ -35,7 +35,7 @@ Kerberos is **an authentication protocol that works on the basis of tickets** th
 17. Client communicates with the service.
 > Detailed explaination here: https://www.vanimpe.eu/2017/05/26/kerberos-made-easy/
 
-# Kerberoasting
+## Kerberoasting
 The goal is to get a **TGS** and decrypt server's account hash.
 > Pre-requesties: Have a username or a list of users.
 
@@ -63,7 +63,7 @@ The goal is to get a **TGS** and decrypt server's account hash.
  impacket-GetADUsers <DOMAIN>/<USER> -dc-ip <IP>
  impacket-GetADUsers <DOMAIN>/<USER> -dc-ip <IP> -all
  ```
- # Creating a list of users for bruteforcing
+## Creating a list of users for bruteforcing
  - Download the rules
  ```bash
  curl https://gist.githubusercontent.com/dzmitry-savitski/65c249051e54a8a4f17a534d311ab3d4/raw/5514e8b23e52cac8534cc3fdfbeb61cbb351411c/user-name-rules.txt >> /etc/john/john.conf
@@ -77,7 +77,7 @@ The goal is to get a **TGS** and decrypt server's account hash.
  john --wordlist=first_last_names.txt --rules=Login-Generator --stdout > usernames.txt
  ```
  > Reference: https://dzmitry-savitski.github.io/2020/04/generate-a-user-name-list-for-brute-force-from-first-and-last-name
- # Synchronizing time is important
+## Synchronizing time is important
 ```bash
 #Disable time sync on VM
 sudo apt install ntpdate
@@ -96,7 +96,7 @@ sudo ntpdate <machine IP>
 sudo date -s "$(curl -sI <Target> | grep -i '^date:'|cut -d' ' -f2-)"
 ```
  
- # Further reading
+## Further reading
  - Tutorial -> [**Impacket-Tools**](https://www.hackingarticles.in/abusing-kerberos-using-impacket/)
 - Cheatsheet -> [**Kerbrute CheatSheet**](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
 - Explained -> [**Kerberoasting**](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting)

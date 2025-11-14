@@ -16,7 +16,7 @@
 **Note:** This can be done with any other  tool but we are presenting those only
 - [**PowerView**](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon)
 - [**ADModule**](https://github.com/samratashok/ADModule)
-# Computers Enumeration
+## Computers Enumeration
 ### Get alist of computers in the current domain
 ```powershell
 #Powerview
@@ -31,7 +31,7 @@ Get-ADComputer -Filter * -Properties DNSHostName | %{Test-Connection -count 1 -C
 Get-ADComputer -Filter * -Properties *
 ```
 ---
-# Domain Name Enumeration
+## Domain Name Enumeration
 ### Get current domain
 ```powershell
 #Using .NET classes
@@ -58,7 +58,7 @@ Get-DomainSID
 ```
 ---
 
-# Domain Policy Enumeration
+## Domain Policy Enumeration
 ### Get domain policy for the current domain
 ```powershell
 (Get-DomainPolicy)."system access" #(between quotes can be Kerberos policy ..etc)
@@ -69,7 +69,7 @@ Get-DomainSID
 (Get-DomainPolicy -domain <DOMAIN>."system access" #(between quotes can be Kerberos policy ..etc)
 ```
 ---
-# Domain Controller Enumeration
+## Domain Controller Enumeration
 ### Get domain controllers for the current domain
 ```powershell
 #Powerview
@@ -85,7 +85,7 @@ Get-NetDomainController -Domain <DOMAIN>
 Get-ADDomainController -DomainName <DOMAIN> -Discover
 ```
 ---
-# User Enumeration
+## User Enumeration
 ### Get a list of users in the current domain
 ```powershell
 #Powerview
@@ -117,7 +117,7 @@ Get-ADUser - Filter 'Description -like "*built*"' -Properties Description | sele
 #### Note:
 - Searching for passwords in user's description is a thing because users may have to change their passwords frequently so they include it in the description so they don't have to memorize it.
 ---
-# Groups Enumeration
+## Groups Enumeration
 - [**Groups Explained**](http://www.harmj0y.net/blog/activedirectory/a-pentesters-guide-to-group-scoping/)
 ### Get all the groups in the current domain
 ```powershell
@@ -162,7 +162,7 @@ Get-NetFileServer
 ```
 ---
 
-# Group Policy (GPO)
+## Group Policy (GPO)
 #### Provides the ability to manage configuration and changes easily and centraly in AD.
 ### Allows control of:
 - Security settings.
@@ -208,7 +208,7 @@ Get-NetOU -GPOname "{STRING}"
 Get-GPO -Guid "STRING" #without brackets
 ```
 ---
-# Access Control Model
+## Access Control Model
 #### Enabels control on the ability of a process to access objects and other resources in an AD based on:
 - Access Tokens (Security context of a process-identity and privs of a user)
 - Security Descriptors (SID of the owner,Discretionary ACL (DACL) and system ACL (SACl))
@@ -238,7 +238,7 @@ Invoke-ACLScanner -ResolveGUIDs
 Get-PathAcl -Path "\\<Current Domain\sysvol"
 ```
 ---
-# Trusts
+## Trusts
 ### Get a list of all domain trusts for the current domain
 ```powershell
 #Powerview
@@ -288,7 +288,7 @@ Get-ADTrust
 Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
 ```
 ---
-# User hunting
+## User hunting
 ### Find all machines on the current domain (Where the current user has ***local admin access***)
 ```powershell
 Find-LocalAdminAccess -Verbose
@@ -325,7 +325,7 @@ Invoke-UserHunter -Stealth
 Above option queries of the DC of the current or provided domain for members of the given group (Domain Admins by default) using **Get-NetGroupMember**,gets a list **only** of high traffic servers (DC,File Servers and Distributed File Servers) for less traffic generation and list sessions and logged on users (**Get-NetSession/Get-NetLoggedon**) for each machine.
 
 ---
-# BloodHound
+## BloodHound
 - Supply data to BloodHound
 ```powershell
 C:\PATH\BloodHound-master\Ingestors\SharpHound.ps1

@@ -1,6 +1,6 @@
 # PowerShell basics
 ---
-# Navigation
+## Navigation
 - **[[#Commands and Operators]]**
 	- [Listing examples for a command](#listing-examples-for-a-command)
 	- [List commands by type and function](#list-commands-by-type-and-function)
@@ -38,7 +38,7 @@
 	- [Remove module](#remove-module)
 	- [Module manifest](#module-manifest)
 ---
-# Commands and Operators
+## Commands and Operators
 ## Listing examples for a command
 ```powershell
 Get-Help <COMMAND> -Examples 
@@ -113,7 +113,7 @@ $ArrayList.ToArray()
 @{ <name> = <value>; [<name> = <value> ] ...}
 $hash = @{one = "apple"; two=2; three="orange"}
 
-# Get a value
+## Get a value
 $hash["one"]
 
 $hash.keys # return the keys of the hash table
@@ -130,7 +130,7 @@ $hash.Remove("Key")
 ```
 > Read about hashtables splatting
 ---
-# Conditional statements
+## Conditional statements
 ## If Statement
 ```powershell
 if ( 1 -gt 0){"hello"} else {"not hello"}  
@@ -143,7 +143,7 @@ switch (1) { 1 {"you chose number one"} 2 {"you chose number two"} 
 switch -wildcard ('abc') { a* {"A"} *b* {"B"} c* {"C"}}
 ```
 ---
-# Loop statements
+## Loop statements
 ## For loop
 ```powershell  
 $s = Get-ChildItem  
@@ -165,7 +165,7 @@ Get-ChildItem -Recurse C:\\ | Where-Object {$_.name -match "txt"} 
 Get-Process | ForEach-Object {$_.path}
 ```
 ---
-# Functions
+## Functions
 ```powershell
 function add { 4 + 5 }  
 add #calls the function and prints the answer  
@@ -240,7 +240,7 @@ function advanced {
 -<manymore>
 ```
 ---
-# Remoting
+## Remoting
 By default, PS Remoting is limited to systems that meet the
 following criteria:
 • Use Kerberos Authentication
@@ -300,7 +300,7 @@ $sess = new-pssession <parameters>
 invoke-commnad <parameters> -session $sess
 ```
 ---
-# Modules
+## Modules
 Modules PATH `$Env:PSModulePath`
 ## Listing modules
 ```powershell
@@ -313,8 +313,8 @@ Get-Module
 Import-Module <PowerShellScript>
 #In Case of blocking our scripts
 set-ExecutionPolicy bypass -Force 
-# -Force: suppresses all confirmation prompts.
-# Bypass: Nothing is blocked.
+## -Force: suppresses all confirmation prompts.
+## Bypass: Nothing is blocked.
 ```
 ## List module commands
 ```powershell

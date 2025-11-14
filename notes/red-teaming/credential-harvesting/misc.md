@@ -1,20 +1,20 @@
 # Miscellaneous
 ----
-# Using image recognition
+## Using image recognition
 At times, when performing penetration tests, you might run across a large number of images. This could be images in S3 buckets or on a file share. It could also be images uploaded to a help-desk service ticket or JIRA—maybe screenshots from an application where customers can submit bugs. These images might contain Personal Identifiable Information (PII), and sometimes even passwords or access keys.
 - Install [tesseract](https://github.com/tesseract-ocr/tesseract)
 ```bash
-# On debian
+## On debian
 sudo apt install tesseract-ocr
 ```
 - Example:
 ```bash
 tesseract <image>  <Output file>
-# Ex: tesseract confedential.png result
-# Text will be in result.txt
+## Ex: tesseract confedential.png result
+## Text will be in result.txt
 ```
 ---
-# Using transparent relay proxies for phishing
+## Using transparent relay proxies for phishing
 The idea is to stand up a malicious proxy on a phishing domain that just relays requests between the client and the destination. The destination would typically be a login page. When a victim gets phished and visits the malicious proxy, the experience for the user will be exactly the same as if the user had visited the actual login page. Remember that all requests are just relayed back and forth. However, the malicious proxy gains full access to passwords, multi-factor tokens, and so forth.
 
 **There are a couple of tools out there to perform this kind of attack:**

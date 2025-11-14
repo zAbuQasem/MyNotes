@@ -1,6 +1,6 @@
 # Domain Privesc
 ---
-# Navigation
+## Navigation
 - **[Kerberoast](#kerberoast)**
 	- [Users With SPN](#users-with-spn)
 	- [AS-REPs](#as-reps)
@@ -15,7 +15,7 @@
 >**Important:**
 >[Synchronizing time is important](Kerberoas%2523Synchronizing%2520time%2520is%2520important)
 ---
-# Kerberoast
+## Kerberoast
 ## Users With SPN
 1. Find user accounts used as service accounts.
 ```powershell
@@ -105,7 +105,7 @@ Invoke-Mimikatz -command '"kerberoas::list /export"'
 Request-SPNTicket
 ```
 ---
-# Unconstrained delegation
+## Unconstrained delegation
 ## Definition
 Kerberoas delegation allows to **reuse** the end-user credentials to access resources hosted on a different server.This is typically useful in multi-tier service or applications where kerberoas double hop is required.
 - For example, users authetnicates to a web server and the web server makes requests to a DB server.The web server can request access to resources **all of the resources** on the DB server as the user and not as the web server's service account.
@@ -152,7 +152,7 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp/krbtgt"'
 - [PrintSpooler bug](https://book.hacktricks.xyz/windows/active-directory-methodology/printers-spooler-service-abuse#finding-spooler-services-listening)
 
 ---
-# Constrained delegation
+## Constrained delegation
 ## Definition con.
 Microsoft’s next iteration of delegation included the ability to limit where objects had delegation (impersonation) rights to.  Now a front-end web server that needed to impersonate users to access their data on a database could be restricted;** allowing it to only impersonate users on a specific service & system**.  However, as we will find out, the portion of the ticket that limits access to a certain service is not encrypted.  This gives us some room to gain additional access to systems if we gain access to an object configured with these rights. 
 If you can gain access to an account (user or computer) that is configured with constrained delegation.  You can find this by searching for the `TRUSTED_TO_AUTH_FOR_DELEGATION` value in the **UserAccountControl** attribute of AD objects.
@@ -192,7 +192,7 @@ impacket-secretsdump -k <Domain>/Administrator@<DelegationRightsToDomain> -dc-ip
 impacket-smbclient -k <Domain>/Administrator@<DelegationRightsToDomain> -dc-ip <IP> -no-pass
 ```
 ---
-# DNSAdmins
+## DNSAdmins
 - It's Possible for the members of the `DNSAdmins` group to load arbitrary DLL with the privileges of `dns.exe (SYSTEM)`.
 - In case the DC also serves as DNS, this will provide us escalation to DA.
 - Need privileges to restart the DNS service.
@@ -223,7 +223,7 @@ sc.exe \\dcrop-dc start dns
 ```
 > By default, the mimilib.dll logs all DNS queries to C:\\Windows\\System32\\kiwidns.log
 ---
-# Further reading
+## Further reading
 - Official Docs ->  [Group managed service accounts](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/configure-kerberos-delegation-group-managed-service-accounts)
 - Attacks explained (linux) -> [blog.redxorblue](http://blog.redxorblue.com/2019/12/no-shells-required-using-impacket-to.html)
 - Attacks explained -> [ired.team](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/domain-compromise-via-unrestricted-kerberos-delegation)
