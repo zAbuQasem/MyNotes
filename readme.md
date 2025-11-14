@@ -2,20 +2,29 @@
 
 This repository contains my personal notes from various courses, books, and other learning resources.
 
-## Table of Contents
+## 📚 Table of Contents
 
-- [AWS Pentesting](AWS%20Pentesting/)
-- [Active Directory](Active%20Directory/)
-- [DevOps](DevOps/)
-- [Golang](Golang/)
-- [Metasploit](Metasploit/)
-- [Red-teaming](Red-teaming/)
-- [Reverse Engineering](Reverse%20Engineering/)
-- [Web Pentesting](WebPentesting/)
+### Security & Penetration Testing
+- **[Active Directory](notes/active-directory/)** - AD penetration testing, privilege escalation, and persistence
+- **[Web Pentesting](notes/web-pentesting/)** - Web application security testing and vulnerabilities
+- **[Red Teaming](notes/red-teaming/)** - Advanced offensive security operations
+- **[AWS Pentesting](notes/aws-pentesting/)** - Cloud security testing (AWS)
+- **[Metasploit](notes/metasploit/)** - Exploitation framework guide
+
+### Development & Operations
+- **[DevOps](notes/devops/)** - CI/CD, Kubernetes, infrastructure as code
+- **[Golang](notes/golang/)** - Go programming language guide
+
+### Reverse Engineering
+- **[Reverse Engineering](notes/reverse-engineering/)** - Binary analysis and debugging
+
+---
+
+Each section contains a README with detailed navigation to specific topics.
 
 ## Usage
 
-These notes are organized into directories based on the subject matter. Each directory contains markdown files with detailed notes and references.
+These notes are organized into the `notes/` directory, with subdirectories based on the subject matter. Each directory contains markdown files with detailed notes and references.
 
 ## Viewing the Notes in Obsidian
 
@@ -34,7 +43,7 @@ git clone https://github.com/zAbuQasem/MyNotes.git
 3. **Add the Vault**:
 
 - In Obsidian, click on "Open folder as vault".
-- Navigate to the location where you cloned the `MyNotes` repository and select the folder.
+- Navigate to the location where you cloned the `MyNotes` repository and select the `notes/` folder.
 
 4. **Start Exploring**:
 
