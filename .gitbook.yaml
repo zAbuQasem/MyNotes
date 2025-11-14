@@ -1,0 +1,4 @@
+root: ./notes/
+
+structure:
+  readme: ../readme.md
