@@ -110,7 +110,7 @@ func main() {
 
 }
 ```
-# Slices
+## Slices
 ## Anything you can do with an `array` you also can do it with a `slice`
 ```go
 package main

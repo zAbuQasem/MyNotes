@@ -58,7 +58,7 @@ Kubernetes command-line tool reference.
 	- [StorageClass](#storageclass)
 	- [TLDR](#tldr)
 
-# Kubectl Cheatsheet
+## Kubectl Cheatsheet
 ```bash
 ## On debian x86_64
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
