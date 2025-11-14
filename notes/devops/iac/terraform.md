@@ -1,23 +1,23 @@
 # Navigation
-- [**HCL_Basics**](#HCL_Basics)
-- [**Initialization**](#Initialization)
-- [**Configuration_Files**](#Configuration_Files)
-- [**Variables**](#Variables)
-	- [Default Syntax](#Default%20Syntax)
-	- [Variables_Usage](#Variables_Usage)
-	- [Example](#Example)
-	- [Variables_Order](#Variables_Order)
-	- [Resource_Attributes](#Resource_Attributes)
-	- [Implicit_dependency](#Implicit_dependency)
-	- [Explicit_dependency](#Explicit_dependency)
-	- [Output](#Output)
-- [**Mutable_vs_Immutable**](#Mutable_vs_Immutable)
-	- [LifeCycle_Rules](#LifeCycle_Rules)
-- [**Datasource**](#Datasource)
-- [**Meta_Arguments**](#Meta_Arguments)
-	- [Count](#Count)
-	- [For-Each](#For-Each)
-- [**Version-Constraints**](#Version-Constraints)
+- [**HCL_Basics**](#hcl-basics)
+- [**Initialization**](#initialization)
+- [**Configuration_Files**](#configuration-files)
+- [**Variables**](#variables)
+	- [Default Syntax](#default-syntax)
+	- [Variables_Usage](#variables-usage)
+	- [Example](#example)
+	- [Variables_Order](#variables-order)
+	- [Resource_Attributes](#resource-attributes)
+	- [Implicit_dependency](#implicit-dependency)
+	- [Explicit_dependency](#explicit-dependency)
+	- [Output](#output)
+- [**Mutable_vs_Immutable**](#mutable-vs-immutable)
+	- [LifeCycle_Rules](#lifecycle-rules)
+- [**Datasource**](#datasource)
+- [**Meta_Arguments**](#meta-arguments)
+	- [Count](#count)
+	- [For-Each](#for-each)
+- [**Version-Constraints**](#version-constraints)
 ---
 # Installation
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
@@ -116,7 +116,7 @@ resource "random_pet" "my-pet" {
 ```
 
 ## Variables_Usage
-1. [**variables.tf**](#Default%20Syntax) (Must create)
+1. [**variables.tf**](#default-syntax) (Must create)
 2. Environment Variables
 ```bash
 export TF_VAR_filename="/root/pets.txt"  

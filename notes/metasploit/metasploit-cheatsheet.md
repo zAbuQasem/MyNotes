@@ -1,51 +1,51 @@
 # Metasploit
 ---
 ## Navigation
-- [**Basic Commands**](#Basic-Commands)
-- [**Commands from a file**](#Commands-from-a-file)
-- [**Information Gathering**](#Information-Gathering)
-	- [Port Scanning](#Port-scanning)
-	- [Backup files from websites](#Backup-files-from-websites)
-	- [Directory listing test](#Directory-listing-test)
-	- [SSL testing](#SSL-testing)
-	- [SSH kippo detection](#SSH-kippo-detection)
-	- [Domain Name System](#Domain-Name-System)
-	- [Remote Desktop protocol](#Remote-Desktop-protocol)
-	- [Password Sniffing](#Password-Sniffing)
-	- [Shodan qeuries](#Shodan-qeuries) 
-- **[Vulnerability Hunting](#Vulnerability-Hunting)**
-	- [Managing the database](#Managing-the-database) 
-	- [Importing scans](#Importing-scans)
-	- [Backing up the database](#Backing-up-the-database)
-	- [NMAP](#NMAP)
-	- [Nessus](#Nessus)
+- [**Basic Commands**](#basic-commands)
+- [**Commands from a file**](#commands-from-a-file)
+- [**Information Gathering**](#information-gathering)
+	- [Port Scanning](#port-scanning)
+	- [Backup files from websites](#backup-files-from-websites)
+	- [Directory listing test](#directory-listing-test)
+	- [SSL testing](#ssl-testing)
+	- [SSH kippo detection](#ssh-kippo-detection)
+	- [Domain Name System](#domain-name-system)
+	- [Remote Desktop protocol](#remote-desktop-protocol)
+	- [Password Sniffing](#password-sniffing)
+	- [Shodan qeuries](#shodan-qeuries) 
+- **[Vulnerability Hunting](#vulnerability-hunting)**
+	- [Managing the database](#managing-the-database) 
+	- [Importing scans](#importing-scans)
+	- [Backing up the database](#backing-up-the-database)
+	- [NMAP](#nmap)
+	- [Nessus](#nessus)
 	- [msf utilities](#msf-utilities)
-- **[Client-Side attacks](#Client-Side-attacks)** 
-	- [Msfvenom](#Msfvenom)
-	- [Listeners](#Listeners) 
-- **[Antivirus Evasion and Anti-Forensics](#Antivirus-Evasion-and-Anti-Forensics)**
-	- **[Using encoders](#Using-encoders)**
-		- [shikata_ga_nai encoder](#shikata_ga_nai-encoder)
-		- [opt_sub encoder](#opt_sub-encoder)
-	- **[Using the new evasion modules](#Using-the-new-evasion-modules)**
-		- [windows_defender_exe](#windows_defender_exe)
-	- **[Using packagers and encrypters](#Using-packagers-and-encrypters)**
-		- [Using 7-zip utility](#Using-7-zip-utility) 
-	- **[Understanding what a sandbox is](#Understanding-what-a-sandbox-is)**
-		- [Using Metasploit for anti-forensics](#Using-Metasploit-for-anti-forensics)
-			- [Timestomp](#Timestomp)
-			- [Clearev](#Clearev)
-- **[Armitage](#Armitage)** 
-	- [Scanning and enumeration](#Scanning-and-enumeration)
-	- [Finding and launching attacks](#Finding-and-launching-attacks)
-- [**Shell-Over-Wan**](#Shell-Over-Wan)
-- **[Importing scans](#Importing-scans)** 
-- **[Pivoting](#Pivoting)**
-	- [Adding a route](#Adding-a-route)
-	- [Metasploit](#Metasploit)
-- **[Post-exploitation](#Post-exploitation)**
-- **[Powershell](#Powershell)**
-- **[Further learning](#Further-learning)**
+- **[Client-Side attacks](#client-side-attacks)** 
+	- [Msfvenom](#msfvenom)
+	- [Listeners](#listeners) 
+- **[Antivirus Evasion and Anti-Forensics](#antivirus-evasion-and-anti-forensics)**
+	- **[Using encoders](#using-encoders)**
+		- [shikata_ga_nai encoder](#shikata-ga-nai-encoder)
+		- [opt_sub encoder](#opt-sub-encoder)
+	- **[Using the new evasion modules](#using-the-new-evasion-modules)**
+		- [windows_defender_exe](#windows-defender-exe)
+	- **[Using packagers and encrypters](#using-packagers-and-encrypters)**
+		- [Using 7-zip utility](#using-7-zip-utility) 
+	- **[Understanding what a sandbox is](#understanding-what-a-sandbox-is)**
+		- [Using Metasploit for anti-forensics](#using-metasploit-for-anti-forensics)
+			- [Timestomp](#timestomp)
+			- [Clearev](#clearev)
+- **[Armitage](#armitage)** 
+	- [Scanning and enumeration](#scanning-and-enumeration)
+	- [Finding and launching attacks](#finding-and-launching-attacks)
+- [**Shell-Over-Wan**](#shell-over-wan)
+- **[Importing scans](#importing-scans)** 
+- **[Pivoting](#pivoting)**
+	- [Adding a route](#adding-a-route)
+	- [Metasploit](#metasploit)
+- **[Post-exploitation](#post-exploitation)**
+- **[Powershell](#powershell)**
+- **[Further learning](#further-learning)**
 ---
 # Basic-Commands
  - **Version**: Display version.

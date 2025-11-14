@@ -2,41 +2,41 @@
 ---
 # Navigation
 - **[[#Commands and Operators]]**
-	- [Listing examples for a command](#Listing%20examples%20for%20a%20command)
-	- [List commands by type and function](#List%20commands%20by%20type%20and%20function)
-	- [Output Formats](#Output%20Formats)
-	- [Useful Operators for Parsing](#Useful%20Operators%20for%20Parsing)
-	- [Difference between Double and single quotes](#Difference%20between%20Double%20and%20single%20quotes)
-	- [Writing Multi-lines](#Writing%20Multi-lines)
-	- [Get variable type](#Get%20variable%20type)
-- **[Arrays](#Arrays)**
-- **[Hashtables dictionaries](#Hashtables%20dictionaries)**
-- **[Conditional statements](#Conditional%20statements)**
-	- [If Statement](#If%20Statement)
-	- [Switch Statement](#Switch%20Statement)
-- **[Loop statements](#Loop%20statements)**
-	- [For loop](#For%20loop)
-	- [While loop](#While%20loop)
-	- [Where-object](#Where-object)
-- **[Functions](#Functions)**
-	- [Using parameters](#Using%20parameters)
-	- [Passing parameters](#Passing%20parameters)
-	- [Positioning parameters](#Positioning%20parameters)
-	- [Identifying alot of parameters than defined in the function](#Identifying%20alot%20of%20parameters%20than%20defined%20in%20the%20function)
-	- [Using switch parameter](#Using%20switch%20parameter)
-	- [Advanced Functions](#Advanced%20Functions)
-	- [Advanced Scripting](#Advanced%20Scripting)
-- **[Remoting](#Remoting)**
-	- [Running commands remotely](#Running%20commands%20remotely)
-	- [Checking permissions](#Checking%20permissions)
-	- [Making a Credential object](#Making%20a%20Credential%20object)
-- **[Jobs](#Jobs)**
-- **[Modules](#Modules)**
-	- [Listing modules](#Listing%20modules)
-	- [Importing modules](#Importing%20modules)
-	- [List module commands](#List%20module%20commands)
-	- [Remove module](#Remove%20module)
-	- [Module manifest](#Module%20manifest)
+	- [Listing examples for a command](#listing-examples-for-a-command)
+	- [List commands by type and function](#list-commands-by-type-and-function)
+	- [Output Formats](#output-formats)
+	- [Useful Operators for Parsing](#useful-operators-for-parsing)
+	- [Difference between Double and single quotes](#difference-between-double-and-single-quotes)
+	- [Writing Multi-lines](#writing-multi-lines)
+	- [Get variable type](#get-variable-type)
+- **[Arrays](#arrays)**
+- **[Hashtables dictionaries](#hashtables-dictionaries)**
+- **[Conditional statements](#conditional-statements)**
+	- [If Statement](#if-statement)
+	- [Switch Statement](#switch-statement)
+- **[Loop statements](#loop-statements)**
+	- [For loop](#for-loop)
+	- [While loop](#while-loop)
+	- [Where-object](#where-object)
+- **[Functions](#functions)**
+	- [Using parameters](#using-parameters)
+	- [Passing parameters](#passing-parameters)
+	- [Positioning parameters](#positioning-parameters)
+	- [Identifying alot of parameters than defined in the function](#identifying-alot-of-parameters-than-defined-in-the-function)
+	- [Using switch parameter](#using-switch-parameter)
+	- [Advanced Functions](#advanced-functions)
+	- [Advanced Scripting](#advanced-scripting)
+- **[Remoting](#remoting)**
+	- [Running commands remotely](#running-commands-remotely)
+	- [Checking permissions](#checking-permissions)
+	- [Making a Credential object](#making-a-credential-object)
+- **[Jobs](#jobs)**
+- **[Modules](#modules)**
+	- [Listing modules](#listing-modules)
+	- [Importing modules](#importing-modules)
+	- [List module commands](#list-module-commands)
+	- [Remove module](#remove-module)
+	- [Module manifest](#module-manifest)
 ---
 # Commands and Operators
 ## Listing examples for a command

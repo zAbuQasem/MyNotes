@@ -2,12 +2,12 @@
 
 ---
 # Navigation
-- **[Definition](#Definition)**
-- **[Kerberoas](#Kerberoas)**
-	- [Kerbrute](#Kerbrute)
-	- [Kerberoasting](#Kerberoasting) 
-- **[Synchronizing time is important](#Synchronizing%20time%20is%20important)**
-- **[Further reading](#Further%20reading)**
+- **[Definition](#definition)**
+- **[Kerberoas](#kerberoas)**
+	- [Kerbrute](#kerbrute)
+	- [Kerberoasting](#kerberoasting) 
+- **[Synchronizing time is important](#synchronizing-time-is-important)**
+- **[Further reading](#further-reading)**
 
 ---
 # Definition
