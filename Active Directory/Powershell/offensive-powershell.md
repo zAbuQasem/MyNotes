@@ -15,7 +15,7 @@
 - **[Metasploit](#Metasploit)**
 
 > **Note:**
->  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%20Basics#List%20module%20commands)
+>  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%20Basics%23List%20module%20commands)
 ---
 # Reconnaissance
 ## PortScanning & Host discovery

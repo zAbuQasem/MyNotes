@@ -63,7 +63,7 @@ docs/
 
 **After:**
 ```markdown
-![](../../assets/DevOps/Kafka/Pasted image 20240401065054.png)
+![](../../assets/DevOps/Kafka/Pasted%20image%2020240401065054.png)
 ```
 
 ## Files Created/Modified

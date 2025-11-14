@@ -214,6 +214,6 @@ func main() {
 ```
 
 ## Summary
-![[mapsumm.png]]
+![mapsumm](attachments/mapsumm.png)
 
-![[mapsumm2.png]]
+![mapsumm2](attachments/mapsumm2.png)

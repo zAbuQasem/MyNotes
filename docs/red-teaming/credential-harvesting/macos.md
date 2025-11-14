@@ -31,7 +31,7 @@ lldp -p <pid>
 > You can inject code into memory:
 > `(lldb) p (void) system("whoami &> /tmp/log.txt")`
 
-![[Linux#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome]]
+[Linux#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](../../../Red-teaming/Credential%20Harvesting/linux.md%232-%20Decrypting%20TLS%20traffic%20using%20TLS%20key%20logging%20Not%20working%20on%20latest%20firefox%20and%20chrome)
 
 ---
 # MacOS keychain

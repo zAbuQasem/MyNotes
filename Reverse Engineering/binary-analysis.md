@@ -68,7 +68,7 @@ objdump -M intel -d <Executable>
 **ELF binaries** really consist of only four types of components: an `executable header`, a series of (optional) `program headers`, a `number of sections`, and a series of (optional) `section headers`, one per section.
 > You can find the definitions of ELF-related types and constants in `/usr/include/elf.h` .
 
-![[ELF-format.png]]
+![ELF-format](attachments/ELF-format.png)
 
 ## Executable header
 Is just a structured series of bytes telling you that it’s an ELF file, what kind of ELF file it is, and where in the file to find all the other contents.
@@ -156,7 +156,7 @@ Those are writable sections used to contain variable Because code sections are g
  - On Linux, lazy binding is the default behavior of the dynamic linker.
 - Lazy binding in Linux ELF binaries is implemented with the help of two special sections, called the **Procedure Linkage Table** (.plt) and the **Global Offset Table** (.got)
  
- ![[calling a shared library via plt.png]]
+ ![calling a shared library via plt](attachments/calling%20a%20shared%20library%20via%20plt.png)
  
  - Disassembly of a **`.plt`** section
 ```bash

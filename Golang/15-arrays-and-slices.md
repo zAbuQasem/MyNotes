@@ -184,4 +184,4 @@ func main() {
 ```
 
 ### Summary
-![[arrayssum.png]]
+![arrayssum](attachments/arrayssum.png)

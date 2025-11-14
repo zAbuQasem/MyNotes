@@ -626,5 +626,5 @@ L1:
 ```
 ---
 # References
-1. [Brief Introduction to NASM]( https://montcs.bloomu.edu/Information/LowLevel/Assembly/assembly-tutorial.html)
+1. [Brief Introduction to NASM](%20https%3A//montcs.bloomu.edu/Information/LowLevel/Assembly/assembly-tutorial.html)
 2. [Nasm tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)*

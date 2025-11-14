@@ -13,7 +13,7 @@
 	- [Attack](#Attack)
 - **[Further reading](#Further%20reading)**
 >**Important:**
->[Synchronizing time is important](Kerberoas#Synchronizing%20time%20is%20important)
+>[Synchronizing time is important](Kerberoas%23Synchronizing%20time%20is%20important)
 ---
 # Kerberoast
 ## Users With SPN

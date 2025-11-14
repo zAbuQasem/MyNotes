@@ -22,7 +22,7 @@
 
 
 >**Important:**
->[Synchronizing time is important](Kerberoas#Synchronizing%20time%20is%20important)
+>[Synchronizing time is important](Kerberoas%23Synchronizing%20time%20is%20important)
 ---
 # Golden Ticket
 ## Definition
