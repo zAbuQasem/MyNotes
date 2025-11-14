@@ -1,4 +1,7 @@
-# Use pfx to connect to wirm
+# AD CS (Active Directory Certificate Services)
+
+## Using PFX Certificates for WinRM Authentication
+
 1. Extract the private key
 ```bash
 openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -nodes -out priv.key

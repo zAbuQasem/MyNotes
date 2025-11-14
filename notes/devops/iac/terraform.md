@@ -1,3 +1,7 @@
+# Terraform
+
+Infrastructure as Code with Terraform.
+
 ## Navigation
 - [**HCL_Basics**](#hcl-basics)
 - [**Initialization**](#initialization)
@@ -18,8 +22,11 @@
 	- [Count](#count)
 	- [For-Each](#for-each)
 - [**Version-Constraints**](#version-constraints)
+
 ---
-# Terraform
+
+## Installation
+
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
 ```bash
 wget https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip

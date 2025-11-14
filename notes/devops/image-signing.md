@@ -1,10 +1,17 @@
+# Image Signing
+
+Container image signing and verification techniques.
+
 ## Navigation
 - [**Cosign**](#cosign)
 - [**Cluster-Integration**](#cluster-integration)
 - [**Pulling-Images-securely**](#pulling-images-securely)
 - [**Github-Action-Integration**](#github-action-integration)
+
 ---
-# Image Signing
+
+## Cosign
+
 ## Installation
 ```bash
 sudo apt install golang jq (Maanul installation is preferred)

@@ -1,4 +1,7 @@
-# Powerfull automation
+# Powerful Automation
+
+Automation techniques for offensive security operations.
+
 ![COM Objects](COM%2520Objects.md)
 
 ## Automating and remote controlling Google Chrome
