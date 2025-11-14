@@ -4,14 +4,14 @@ This repository contains my personal notes from various courses, books, and othe
 
 ## Table of Contents
 
-- [AWS Pentesting](notes/AWS%20Pentesting/)
-- [Active Directory](notes/Active%20Directory/)
-- [DevOps](notes/DevOps/)
-- [Golang](notes/Golang/)
-- [Metasploit](notes/Metasploit/)
-- [Red-teaming](notes/Red-teaming/)
-- [Reverse Engineering](notes/Reverse%20Engineering/)
-- [Web Pentesting](notes/WebPentesting/)
+- [AWS Pentesting](notes/aws-pentesting/)
+- [Active Directory](notes/active-directory/)
+- [DevOps](notes/devops/)
+- [Golang](notes/golang/)
+- [Metasploit](notes/metasploit/)
+- [Red-teaming](notes/red-teaming/)
+- [Reverse Engineering](notes/reverse-engineering/)
+- [Web Pentesting](notes/web-pentesting/)
 
 ## Usage
 
