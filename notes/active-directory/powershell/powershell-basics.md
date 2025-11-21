@@ -150,7 +150,7 @@ add 4 7 
 function parameter ($param1,$param2){$param1}  
 parameter -param2 5 -param1 4 #Prints 4
 ```
-## Identifying alot of parameters than defined in the function
+## Identifying a lot of parameters than defined in the function
 ```powershell
  function params ($p1,$p2){$p1,$p2,$args}  
 params g g g #prints 3 g's  
@@ -251,7 +251,7 @@ Invoke-Command -Credential $credential -ComputerName abuqasemPC -FilePath 'C:\Sc
 ## Jobs
 ```powershell
 start-job -scriptblock {}  
-recieve-job #to get the output  
+receive-job #to get the output  
 stop-job  
   
 #running commands as jobs in remote computer  

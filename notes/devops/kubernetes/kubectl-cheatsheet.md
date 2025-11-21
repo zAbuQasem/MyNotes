@@ -837,7 +837,7 @@ This will return **pod IPs** when queried instead of a single service IP.
 ## Service-Selector
 **Service-Selector Relationship**:
 - A **Service** uses a `selector` to identify Pods by their labels.
-- The **Endpoints** object (automatically created by Kubernetes) holds the IP:port pairs of all Pods matching the selectorز
+- The **Endpoints** object (automatically created by Kubernetes) holds the IP:port pairs of all Pods matching the selector.
 - Example: A Service with `selector: app=nginx` will populate its Endpoints with all Pods labeled `app=nginx`.
 **Dynamic Updates**:
 - The **Endpoints Controller** (part of the Kubernetes control plane) watches for Pod changes (creation/deletion) and updates the Endpoints object in real-time.    

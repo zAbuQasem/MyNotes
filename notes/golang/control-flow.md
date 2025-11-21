@@ -95,7 +95,7 @@ import (
 
 func main() {
 	fmt.Println("a")
-	panic("A Problem has occured!")
+	panic("A Problem has occurred!")
 	fmt.Println("b")
 }
 ```
@@ -126,7 +126,7 @@ import (
 func main() {
 	fmt.Println("start")
 	defer fmt.Println("This was deferred")
-	panic("A Problem has occured!")
+	panic("A Problem has occurred!")
 	fmt.Println("end")
 }
 ```
