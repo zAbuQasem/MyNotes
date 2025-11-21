@@ -235,52 +235,6 @@ kubectl delete pod frontend
 - [kubectl Command Reference](https://kubernetes.io/docs/reference/kubectl/)
 
 ---
-## YAML
-It is a good practice to declare resource requests and limits for both [memory](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/) and [cpu](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/) for each container. This helps to schedule the container to a node that has available resources for your Pod, and also so that your Pod does not use resources that other Pods needs.
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: abuqasem-firstpod # Pod name - Always lowercase
-  labels: 
-    app: myapp
-    type: server
-    env: production
-    tier: frontend
-spec:
-  containers:
-  - name: abuqasem-nginx-container # Container name -Always lowercase
-    image: nginx
-     env:
-       - name: ENVIRONMENT_VARIABLE_PASSWORD
-         value: "SuperSecretPassword"
-    resources:
-      limits:
-        memory: 512Mi
-        cpu: "1"
-      requests:
-        memory: 256Mi
-        cpu: "0.2"
-```
--  **`apiVersion`** - Which version of the Kubernetes API you're using to create this object
--   **`kind`** - What kind of object you want to create
--   **`metadata`** - Data that helps uniquely identify the object, including a `name` string, `UID`, and optional `namespace`
--   **`spec`** - What state you desire for the object
-
-## Kubectl-manual
-Get the usage of a command
-```sh
-kubectl explain <Object>
-kubectl explain pod
-kubectl explain deployment
-```
-## References:
-- [**YAML Structure Explained**](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started)
-- [**YAML explained - Great resource**](https://learnk8s.io/templating-yaml-with-code#introduction-managing-yaml-files)
-- [**Kubernetes for the Absolute beginners**](https://www.udemy.com/share/1013LO3@Wfs8GSg7yXNJf2pneg2OgTWAIXOkIF5-hguWhEg51WfgYYb7vWENhvP50PHfuWji/)
-
----
 ## StatefulSets
 
 ## Description
@@ -478,7 +432,7 @@ kubectl rollout status deployment/<DEPLOYMENT>
 kubectl rollout history deployment/<DEPLOYMENT>
 ```
 > **Note**:
-> In order to view the rollout history, comsider adding `--record` option when applying or doing updates via cli.
+> In order to view the rollout history, consider adding `--record` option when applying or doing updates via cli.
 
 - Rollback to a previous version
 ```bash
@@ -892,7 +846,7 @@ This will return **pod IPs** when queried instead of a single service IP.
 - If a Service has **no selector**, you must manually create an Endpoints object pointing to external IPs (e.g., a database outside the cluster).
 - Example: A Service named `external-db` with no selector can map to a static Endpoints entry like `10.0.0.50:5432`.
 
-**Example:** Configure a service to expose an external service listeining on port `9999` on the student node and make sure it's accessible from the cluster.
+**Example:** Configure a service to expose an external service listening on port `9999` on the student node and make sure it's accessible from the cluster.
 ```yml
 apiVersion: v1
 kind: Service
@@ -955,7 +909,7 @@ spec:
         app: nginx-1
     spec:
       containers:
-        - name: nginx-contanier-1
+        - name: nginx-container-1
           image: nginx
           ports:
             - containerPort: 9001
