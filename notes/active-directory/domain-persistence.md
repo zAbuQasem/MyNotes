@@ -1,26 +1,5 @@
 # Domain Persistence
 ---
-## Navigation
-- **[Golden Ticket](#golden-ticket)**
-	- [Definition](#definition)
-	- [Attack](#attack)
-- **[Silver Ticket](#silver-ticket)**
-	- [Definition](#definition)
-	- [Attack](#attack)
-	- [Getting a reverse shell](#getting-a-reverse-shell)
-- **[Skeleton key](#skeleton-key)**
-	- [Attack](#attack)
-- **[ACLS](#acls)**
-	- [Definition](#definition)
-	- [Well known abused protected groups](#well-known-abused-protected-groups)
-	- [Some of the Active Directory object permissions and types that we as attackers are interested in](#some-of-the-active-directory-object-permissions-and-types-that-we-as-attackers-are-interested-in)
-	- **[Attack](#attack)**
-		- [AdminSDHolder](#adminsdholder)
-		- [Rights Abuse](#rights-abuse)
-		- [Security Descriptors](#security-descriptors)
-			- [Remote registry](#remote-registry)
-
-
 >**Important:**
 >[Synchronizing time is important](Kerberoas%2523Synchronizing%2520time%2520is%2520important)
 ---

@@ -1,28 +1,5 @@
 # Binary analysis
 ---
-## Navigation
-- **[Symbols and stripped binaries](#symbols-and-stripped-binaries)**
-- **[Disassembling a binary](#disassembling-a-binary)**
-- **[ELF format](#elf-format)**
-	- [Executable header](#executable-header)
-	- **[Section header](#section-header)**
-		- [init and fini sections](#init-and-fini-sections)
-		- [text section](#text-section)
-		- [bss data and rodata sections](#bss-data-and-rodata-sections)
-		- [Lazy Binding and the PLT](#lazy-binding-and-the-plt)
-		- [Lazy Binding and the plt got and got plt sections](#lazy-binding-and-the-plt-got-and-got-plt-sections)
-		- [dynamic](#dynamic)
-		- [init_array and fini_array](#init-array-and-fini-array)
-		- [shstrtab symtab strtab dynsym and dynstr](#shstrtab-symtab-strtab-dynsym-and-dynstr)
-	- **[Program headers](#program-headers)**
-		- [The p_type Field](#the-p-type-field)
-		- [The p_flags Field](#the-p-flags-field)
-		- [The p_offset p_vaddr p_paddr p_filesz and p_memsz Fields](#the-p-offset-p-vaddr-p-paddr-p-filesz-and-p-memsz-fields)
-		- [The p_align Field](#the-p-align-field)
-- **[Basic binary analysis in linux](#basic-binary-analysis-in-linux)**
-	- [Commands and utilities](#commands-and-utilities)
-	- [Determine an ELF size by it's header](#determine-an-elf-size-by-its-header)
----
 ## Symbols and stripped binaries
 ## Symbolic information
 High-level source code, such as C code, centers around functions and variables with meaningful, human-readable names. When compiling a program,compilers emit symbols, which keep track of such symbolic

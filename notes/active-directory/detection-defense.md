@@ -1,18 +1,5 @@
 # Detection & Defense
 ---
-## Navigation
-- **[Domain admins](#domain-admins)**
-- **[Golden Ticket](#golden-ticket)**
-- **[Silver Ticket](#silver-ticket)**
-- **[Skeleton Key](#skeleton-key)**
-- **[DSRM](#dsrm)**
-- **[Malicious SSP](#malicious-ssp)**
-- **[Kerberoast](#kerberoast)**
-- **[Delegation](#delegation)**
-- **[ACL attacks](#acl-attacks)**
-- **[Trust Tickets](#trust-tickets)**
-
----
 ## Domain admins
 1. Do not allow or limit login of DAs to any other machine other than the Domain Controllers.If login to some servers is necessary;do not allow other administrators to login to that machine.
 2. ***Try to*** never run a service with a DA.Many credential theft protections are rendered useless in case of a service account.

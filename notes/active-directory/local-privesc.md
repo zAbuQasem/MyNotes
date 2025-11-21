@@ -17,30 +17,6 @@ The main goal is to be a local administrator.This can be achieved by regular win
 - **BeRoot** -> .\beroot.exe
 - **Privesc **-> Invoke-PrivESC
 ---
-## Navigation
-- **[info about the OS](#info-about-the-os)**
-- **[Determinig PS version](#determinig-ps-version)**
-- **[User enumeration](#user-enumeration)**
-- **[Network enumeration](#network-enumeration)**
-- **[AV enumeration](#av-enumeration)**
-- **[Download files using CMD](#download-files-using-cmd)**
-- **[Windows linux subsystem](#windows-linux-subsystem)**
-- **[Alternative data streams](#alternative-data-streams)**
-- **[Run As](#run-as)**
-- **[Auto Run](#auto-run)**
-- **[AlwaysInstallElevated](#alwaysinstallelevated)**
-- **[SeImpersonate](#seimpersonate)**
-- **[Unquoted service path](#unquoted-service-path)**
-- **[Get Services where the current user can write to its binary path or change arguments in the binary](#get-services-where-the-current-user-can-write-to-its-binary-path-or-change-arguments-in-the-binary)**
-- **[Get services whose configuration current user can modify](#get-services-whose-configuration-current-user-can-modify)**
-- **[Startup Apps](#startup-apps)**
-- **[Finding Saved Creds](#finding-saved-creds)**
-- **[Deleted Files](#deleted-files)**
-- **[Unattended files](#unattended-files)**
-- **[Powershell history](#powershell-history)**
-- **[Powershell Trascript](#powershell-trascript)**
-- **[Feature Abuse - Enterprise applications](#feature-abuse-enterprise-applications)**
----
 ## info about the OS
 ```powershell
 systeminfo

@@ -2,27 +2,6 @@
 
 Infrastructure as Code with Terraform.
 
-## Navigation
-- [**HCL_Basics**](#hcl-basics)
-- [**Initialization**](#initialization)
-- [**Configuration_Files**](#configuration-files)
-- [**Variables**](#variables)
-	- [Default Syntax](#default-syntax)
-	- [Variables_Usage](#variables-usage)
-	- [Example](#example)
-	- [Variables_Order](#variables-order)
-	- [Resource_Attributes](#resource-attributes)
-	- [Implicit_dependency](#implicit-dependency)
-	- [Explicit_dependency](#explicit-dependency)
-	- [Output](#output)
-- [**Mutable_vs_Immutable**](#mutable-vs-immutable)
-	- [LifeCycle_Rules](#lifecycle-rules)
-- [**Datasource**](#datasource)
-- [**Meta_Arguments**](#meta-arguments)
-	- [Count](#count)
-	- [For-Each](#for-each)
-- [**Version-Constraints**](#version-constraints)
-
 ---
 
 ## Installation
@@ -143,7 +122,6 @@ terrafrom -var-file custom.tfvars
 ```
 > **Note:**
 > `terraform.tfvars` , `terraform.tfvars.json`, `*.auto.tfvars`,`*.auto.tfvars.json` are automatically loaded.
-
 
 ## Example
 Create a plan using `prod.tfvars`.

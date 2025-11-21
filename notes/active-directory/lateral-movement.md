@@ -1,9 +1,5 @@
 # Lateral Movement
 ---
-## Navigation
-- **[PowerShell Remoting](#powershell-remoting)**
-- **[Mimikatz](#mimikatz)**
----
 ## PowerShell Remoting
 - Enabled by deafult on server 2012 onwards.
 - On desktop windows machines you may need to enable it `Enable-PSRemoting` (Require admin privs).

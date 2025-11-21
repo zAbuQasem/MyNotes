@@ -1,17 +1,5 @@
 # Domain Privesc
 ---
-## Navigation
-- **[Kerberoast](#kerberoast)**
-	- [Users With SPN](#users-with-spn)
-	- [AS-REPs](#as-reps)
-	- [Set SPN](#set-spn)
-- **[Unconstrained delegation](#unconstrained-delegation)**
-	- [Definition](#definition)
-	- [Attack](#attack)
-- **[Constrained delegation](#constrained-delegation)**
-	- [Definition con](#definition-con)
-	- [Attack](#attack)
-- **[Further reading](#further-reading)**
 >**Important:**
 >[Synchronizing time is important](Kerberoas%2523Synchronizing%2520time%2520is%2520important)
 ---
@@ -135,7 +123,6 @@ crakmapexec ldap <IP> -u <Username> -p <PASS> --trusted-for-delegation
 ```
 > **NOTE:**
 > Domain controllers will always show that they have unconstrained delegation (ignore that).
-
 
 2. **Get the `TGT`**
 ```powershell

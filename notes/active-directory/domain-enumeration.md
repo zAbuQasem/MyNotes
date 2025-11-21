@@ -1,17 +1,5 @@
 # Phase 1: Domain Enumeration
 ---
-## Navigation
-- **[Computers Enumeration](#computers-enumeration)**
-- **[Domain Name Enumeration](#domain-name-enumeration)**
-- **[Domain Policy Enumeration](#domain-policy-enumeration)**
-- **[Domain Controller Enumeration](#domain-controller-enumeration)**
-- **[User Enumeration](#user-enumeration)**
-- **[User hunting](#user-hunting)**
-- **[Groups Enumeration](#groups-enumeration)**
-- **[Group Policy GPO](#group-policy-gpo)**
-- **[Access Control Model](#access-control-model)**
-- **[Trusts](#trusts)**
-- **[BloodHound](#bloodhound)**
 ## Preffered Tools:
 **Note:** This can be done with any other  tool but we are presenting those only
 - [**PowerView**](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon)

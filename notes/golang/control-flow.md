@@ -1,9 +1,5 @@
 # Control Flow
 ---
-## Navigation
-- **[[#Defer]]**
-- **[[#Panic]]**
-- **[[#Recover]]**
 ## Defer
 Delay the execution of the function or method or an anonymous method until the nearby functions returns.
  Defer is used to ensure that a function call is performed later in a program’s execution, usually for purposes of cleanup.

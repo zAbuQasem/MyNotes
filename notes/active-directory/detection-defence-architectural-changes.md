@@ -2,14 +2,6 @@
 
 Defensive architecture and security controls for Active Directory.
 
-## Navigation
-- **[Local Administrator Password solution LAPS](#local-administrator-password-solution-laps)**
-- **[Credential guard](#credential-guard)**
-- **[Device guard](#device-guard)**
-- **[Privileged Administrative Workstations PAWs](#privileged-administrative-workstations-paws)**
-- **[Active Directory Tier Model](#active-directory-tier-model)**
-- **[Enhanced Security Admin Environment ESAE](#enhanced-security-admin-environment-esae)**
-
 ---
 
 ## Local Administrator Password Solution (LAPS)

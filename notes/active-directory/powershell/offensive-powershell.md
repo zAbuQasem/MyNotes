@@ -1,18 +1,5 @@
 # Offensive Powershell
 ---
-## Navigation
-- **[Reconnaissance](#reconnaissance)**
-	- [PortScanning Host discovery](#portscanning-host-discovery)
-	- [Directory discovery](#directory-discovery)
-	- [Shodan](#shodan)
-	- [Automating Nmap](#automating-nmap)
-	- [Brute-Force](#brute-force)
-	- [MSSQL](#mssql)
-- **[Client-Side attacks](#client-side-attacks-malicious-attachmentsmalicious-attachments)
-- **[Exploitation](#exploitation)**
-	- [PHPMyAdmin](#phpmyadmin)
-- **[Metasploit](#metasploit)**
-
 > **Note:**
 >  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%2520Basics%2523List%2520module%2520commands)
 ---
@@ -82,7 +69,6 @@ Out-Chm -Payload "-c <COMMANDS>" -HHCPath "C:\PATH\TO\HTML HELP Workshop"
 Out-Shortcut -Payload <Payload>
 ```
 > **Further reading:** https://medium.com/r3d-buck3t/weaponize-chm-files-with-powershell-nishang-c98b93f79f1e
-
 
 3. **Phishing/Drive-by-download**
 - **Out-HTA**: Generates HTML app. and VBS script.

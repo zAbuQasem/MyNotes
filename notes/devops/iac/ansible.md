@@ -2,11 +2,6 @@
 
 Configuration management and automation with Ansible.
 
-## Navigation
-- [**Inventory**](#inventory)
-	- [INI](#ini)
-	- [YAML](#yaml)
-
 ---
 
 ## Inventory

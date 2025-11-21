@@ -1,6 +1,5 @@
 # MacOS
 ---
-## Navigation
 1. **[Process memory](#process-memory)**
 2. **[MacOS keychain](#macos-keychain)**
 3. **[Phishing and credential dialog spoofing](#phishing-and-credential-dialog-spoofing)**
@@ -80,5 +79,3 @@ echo $PWD_SPOOF
 
 > **Note:**
 >  One of the ways to deploy this is by putting it in ~/.profile or ~/.bashrc or by sending it in a file.
-
-

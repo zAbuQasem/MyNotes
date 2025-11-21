@@ -2,11 +2,6 @@
 
 Container and cluster security best practices.
 
-## Navigation
-- [**Docker**](#docker)
-- [**Privileged-Containers**](#privileged-containers)
-- [**Non-Privileged Containers**](#non-privileged-containers)
-
 ---
 
 ## Docker

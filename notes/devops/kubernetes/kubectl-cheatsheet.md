@@ -2,62 +2,6 @@
 
 Kubernetes command-line tool reference.
 
-## Navigation
-- [**Installing-and-runinng-minikube**](#installing-and-runinng-minikube)
-- [**EKS**](#eks)
-- [**NameSpaces**](#namespaces)
-- [**Managing-Pods**](#managing-pods)
-- [**YAML**](#yaml)
-	- [Kubectl-manual](#kubectl-manual)
-- [**ReplicaSets**](#replicasets)
-- [**Deployments**](#deployments)
-- [**StatefulSets**](#statefulsets)
-- [**DaemonSets**](#daemonsets)
-- [**Services**](#services)
-	- [NodePort](#nodeport)
-	- [ClusterIp](#clusterip)
-	- [LoadBalancer](#loadbalancer)
-	- [Headless](#headless)
-	- [Service-Selector](#service-selector)
-	- [ExternalName](#externalname)
-- [**Scheduling**](#scheduling)
-	- [Taints-and-Tolerations](#taints-and-tolerations)
-	- [NodeSelector-and-NodeAffinity](#nodeselector-and-nodeaffinity)
-- [**Monitoring**](#monitoring)
-- [**Jobs-CronJobs**](#jobs-cronjobs)
-- [**Multi-Containers**](#multi-containers)
-- [**Secrets**](#secrets)
-- [**initContainer**](#initcontainer)
-- [**Maintenance**](#maintenance)
-	- [Software-Releases](#software-releases)
-	- [Cluster-Upgrade](#cluster-upgrade)
-	- [Backup-and-Restore](#backup-and-restore)
-	- [Node-Debugging](#node-debugging)
-- [**Security**](#security)
-	- [API-Groups](#api-groups)
-	- [CustomResourceDefinitions](#customresourcedefinitions)
-	- [Operators](#operators)
-	- [Authorization](#authorization)
-	- [RBAC](#rbac)
-	- [ServiceAccounts](#serviceaccounts)
-	- [Admission-Controllers](#admission-controllers)
-	- [SecurityContexts](#securitycontexts)
-	- [NetworkPolicy](#networkpolicy)
-		- [Ingress](#ingress)
-		- [Egress](#egress)
-- [**Volumes-Mounts**](#volumes-mounts)
-	- [Pod-Volume](#pod-volume)
-	- [Persistent-Volume](#persistent-volume)
-		- [Reclaiming](#reclaiming)
-			- [Retain](#retain)
-			- [Delete](#delete)
-			- [Recycle](#recycle)
-	- [Persistent-Volume-Claim](#persistent-volume-claim)
-	- [Security-Risks](#security-risks)
-		- [HostPath](#hostpath)
-	- [StorageClass](#storageclass)
-	- [TLDR](#tldr)
-
 ## Kubectl Cheatsheet
 ```bash
 ## On debian x86_64
@@ -1085,7 +1029,6 @@ kubectl taint nodes node01 spray=mortein:NoSchedule-
 kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
 ```
 
-
 > **Note:**
 	There are two special cases:
 	An empty `key` with operator `Exists` matches all keys, values and effects which means this will tolerate everything.
@@ -1111,7 +1054,6 @@ tolerations:
   value: "value1"
   effect: "NoExecute"
 ```
-
 
 In this case, the pod will not be able to schedule onto the node, because there is no toleration matching the third taint. But it will be able to continue running if it is already running on the node when the taint is added, because the third taint is the only one of the three that is not tolerated by the pod.
 
@@ -1377,7 +1319,6 @@ spec:
         value: "gpu-node"
         effect: "NoSchedule"
 ```
-
 
 ### Conclusion
 
@@ -2164,7 +2105,6 @@ The controller will:
 - Watch for changes to `MySQL` resources.
 - Create a `Deployment`, `Service`, and `PersistentVolumeClaim` to deploy MySQL with the specified configuration.
 
-
 ## Operator Development Tools
 
 33. **Operator SDK**:
@@ -2542,7 +2482,6 @@ kubectl set serviceaccount deployment/my-deployment build-robot
 2. **Validating Admission Controllers**: Validate the request but do not modify it.
     - Example: Check if the request adheres to security policies.
 
-
 ## Common Admission Controllers
 
 | **Admission Controller**       | **Description**                                                                 |
@@ -2872,7 +2811,6 @@ Deletion removes both the `PersistentVolume` object from Kubernetes, as well as 
 ### Recycle
 **Warning:** The `Recycle` reclaim policy is deprecated. Instead, the recommended approach is to use dynamic provisioning.
 > **Reference**: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle
-
 
 ## Persistent-Volume-Claim
 A _PersistentVolumeClaim_ (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources.

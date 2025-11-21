@@ -1,6 +1,5 @@
 # Windows 
 ---
-## Navigation
 1. **[Process memory](#process-memory)**
 	- [1- Procdump exe](#1-procdump-exe)
 	- [2- Mimikittenz Not working on windows 10](#2-mimikittenz-not-working-on-windows-10)

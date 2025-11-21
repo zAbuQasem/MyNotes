@@ -2,12 +2,6 @@
 
 Container image signing and verification techniques.
 
-## Navigation
-- [**Cosign**](#cosign)
-- [**Cluster-Integration**](#cluster-integration)
-- [**Pulling-Images-securely**](#pulling-images-securely)
-- [**Github-Action-Integration**](#github-action-integration)
-
 ---
 
 ## Cosign
@@ -267,7 +261,6 @@ jobs:
           uses: sigstore/cosign-installer@v3.4.0
           with:
             cosign-release: 'v2.2.3'
-
 
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3

@@ -1,6 +1,5 @@
 # Linux
 ---
-## Navigation
 1. **[Procdump](#procdump)**
 2. **[Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](#decrypting-tls-traffic-using-tls-key-logging-not-working-on-latest-firefox-and-chrome)**
 3. **[Peeking at shell command-line history files](#peeking-at-shell-command-line-history-files)**

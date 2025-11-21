@@ -1,43 +1,5 @@
 # PowerShell basics
 ---
-## Navigation
-- **[[#Commands and Operators]]**
-	- [Listing examples for a command](#listing-examples-for-a-command)
-	- [List commands by type and function](#list-commands-by-type-and-function)
-	- [Output Formats](#output-formats)
-	- [Useful Operators for Parsing](#useful-operators-for-parsing)
-	- [Difference between Double and single quotes](#difference-between-double-and-single-quotes)
-	- [Writing Multi-lines](#writing-multi-lines)
-	- [Get variable type](#get-variable-type)
-- **[Arrays](#arrays)**
-- **[Hashtables dictionaries](#hashtables-dictionaries)**
-- **[Conditional statements](#conditional-statements)**
-	- [If Statement](#if-statement)
-	- [Switch Statement](#switch-statement)
-- **[Loop statements](#loop-statements)**
-	- [For loop](#for-loop)
-	- [While loop](#while-loop)
-	- [Where-object](#where-object)
-- **[Functions](#functions)**
-	- [Using parameters](#using-parameters)
-	- [Passing parameters](#passing-parameters)
-	- [Positioning parameters](#positioning-parameters)
-	- [Identifying alot of parameters than defined in the function](#identifying-alot-of-parameters-than-defined-in-the-function)
-	- [Using switch parameter](#using-switch-parameter)
-	- [Advanced Functions](#advanced-functions)
-	- [Advanced Scripting](#advanced-scripting)
-- **[Remoting](#remoting)**
-	- [Running commands remotely](#running-commands-remotely)
-	- [Checking permissions](#checking-permissions)
-	- [Making a Credential object](#making-a-credential-object)
-- **[Jobs](#jobs)**
-- **[Modules](#modules)**
-	- [Listing modules](#listing-modules)
-	- [Importing modules](#importing-modules)
-	- [List module commands](#list-module-commands)
-	- [Remove module](#remove-module)
-	- [Module manifest](#module-manifest)
----
 ## Commands and Operators
 ## Listing examples for a command
 ```powershell

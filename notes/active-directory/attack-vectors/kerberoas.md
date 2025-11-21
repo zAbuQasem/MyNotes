@@ -1,15 +1,6 @@
 # Kerberoas
 
 ---
-## Navigation
-- **[Definition](#definition)**
-- **[Kerberoas](#kerberoas)**
-	- [Kerbrute](#kerbrute)
-	- [Kerberoasting](#kerberoasting) 
-- **[Synchronizing time is important](#synchronizing-time-is-important)**
-- **[Further reading](#further-reading)**
-
----
 ## Definition
 ## What's Kerberoas
 Kerberos is **an authentication protocol that works on the basis of tickets** that allows clients to connect to services over an insecure network and still allow clients to prove their identity in a secure manner.

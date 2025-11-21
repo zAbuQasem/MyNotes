@@ -2,9 +2,6 @@
 
 Useful DevOps techniques and best practices.
 
-## Navigation
- - [Distroless Containers](#distroless-containers)
-
 ---
 
 ## Debug Network Connections
