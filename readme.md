@@ -15,53 +15,29 @@ This repository is organized as a GitBook-compatible knowledge base with properl
 
 ## 🗺️ Navigation Guide
 
+Explore the knowledge base by category. Each section below links to a dedicated page with detailed topics and navigation.
+
 ### 🔐 Security & Penetration Testing
 
-#### **[Active Directory](notes/active-directory/)**
-Complete guide to Active Directory security, covering enumeration, privilege escalation, lateral movement, persistence, and defensive measures.
+* **[Active Directory](notes/active-directory/readme.md)** - Complete guide to Active Directory security, covering enumeration, privilege escalation, lateral movement, persistence, and defensive measures.
 
-**Key Topics:** Domain Enumeration • Local/Domain PrivEsc • Lateral Movement • Persistence • Kerberos Attacks • Certificate Services • Detection & Defense
+* **[Web Pentesting](notes/web-pentesting/readme.md)** - Comprehensive web application security testing guide covering modern vulnerabilities and attack techniques.
 
-#### **[Web Pentesting](notes/web-pentesting/)**
-Comprehensive web application security testing guide covering modern vulnerabilities and attack techniques.
+* **[Red Teaming](notes/red-teaming/readme.md)** - Advanced offensive security operations including credential harvesting, tunneling, and automation techniques.
 
-**Key Topics:** SQL Injection • XSS • CSRF • SSRF • SSTI • Authentication/Authorization Testing • JWT • API Security
+* **[AWS Pentesting](notes/aws-pentesting/readme.md)** - Cloud security testing focused on Amazon Web Services infrastructure and services.
 
-#### **[Red Teaming](notes/red-teaming/)**
-Advanced offensive security operations including credential harvesting, tunneling, and automation techniques.
-
-**Key Topics:** Credential Harvesting (Windows/Linux/macOS) • Network Tunneling • Post-Exploitation
-
-#### **[AWS Pentesting](notes/aws-pentesting/)**
-Cloud security testing focused on Amazon Web Services infrastructure and services.
-
-**Key Topics:** Cloud Enumeration • IAM Exploitation • S3 Security • Service-Specific Attacks
-
-#### **[Metasploit](notes/metasploit/)**
-Comprehensive exploitation framework guide with commands, modules, and practical usage examples.
+* **[Metasploit](notes/metasploit/readme.md)** - Comprehensive exploitation framework guide with commands, modules, and practical usage examples.
 
 ### 💻 Development & Operations
 
-#### **[DevOps](notes/devops/)**
-Modern DevOps practices including container orchestration, CI/CD, and infrastructure as code.
+* **[DevOps](notes/devops/readme.md)** - Modern DevOps practices including container orchestration, CI/CD, and infrastructure as code.
 
-**Key Topics:** Kubernetes Security • GitHub Actions • Terraform • Ansible • Container Security • Monitoring • OPA/Rego
-
-#### **[Golang](notes/golang/)**
-Go programming language guide from fundamentals to advanced concepts like concurrency and channels.
-
-**Key Topics:** Variables & Types • Control Flow • Functions • Concurrency • Channels • Best Practices
+* **[Golang](notes/golang/readme.md)** - Go programming language guide from fundamentals to advanced concepts like concurrency and channels.
 
 ### 🔧 Reverse Engineering
 
-#### **[Reverse Engineering](notes/reverse-engineering/)**
-Binary analysis, debugging techniques, and reverse engineering fundamentals.
-
-**Key Topics:** Binary Analysis • GDB Debugging • Assembly • Exploitation Development
-
----
-
-## 🚀 Quick Start
+* **[Reverse Engineering](notes/reverse-engineering/readme.md)** - Binary analysis, debugging techniques, and reverse engineering fundamentals.
 
 ---
 
