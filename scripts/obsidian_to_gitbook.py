@@ -168,6 +168,11 @@ def normalize_filenames(
     
     for note_path in notes:
         old_name = note_path.name
+        
+        # Skip SUMMARY.md - it should never be renamed or modified
+        if old_name.upper() == 'SUMMARY.MD':
+            continue
+        
         new_name = normalize_filename(old_name)
         
         if old_name != new_name:
@@ -237,8 +242,16 @@ def resolve_wikilink_target(
     if '#' in note_name:
         note_name = note_name.split('#')[0].strip()
     
-    key = note_name.lower()
-    return note_mapping.get(key)
+    # Normalize: lowercase and replace spaces with dashes
+    key = note_name.lower().replace(' ', '-')
+    result = note_mapping.get(key)
+    
+    # If not found, try stripping numeric prefixes (e.g., "4-domain-persistence" -> "domain-persistence")
+    if result is None and re.match(r'^\d+-', key):
+        key_without_prefix = re.sub(r'^\d+-', '', key)
+        result = note_mapping.get(key_without_prefix)
+    
+    return result
 
 
 def rewrite_wikilinks(
@@ -274,20 +287,30 @@ def rewrite_wikilinks(
             # Resolve image relative to current note location
             current_note_dir = current_note_path.parent
             
-            # Try to find the image
+            # Try to find the image in multiple locations
             image_path = current_note_dir / target
             
             # If not found, try common locations
             if not image_path.exists():
-                # Try attachments subfolder
+                # Try attachments subfolder in current directory
                 attachments_path = current_note_dir / 'attachments' / Path(target).name
                 if attachments_path.exists():
                     image_path = attachments_path
-                
-                # Try Assets subfolder
-                assets_path = current_note_dir / 'Assets' / Path(target).name
-                if assets_path.exists():
-                    image_path = assets_path
+                else:
+                    # Try parent directory's attachments subfolder
+                    parent_attachments = current_note_dir.parent / 'attachments' / Path(target).name
+                    if parent_attachments.exists():
+                        image_path = parent_attachments
+                    else:
+                        # Try Assets subfolder
+                        assets_path = current_note_dir / 'Assets' / Path(target).name
+                        if assets_path.exists():
+                            image_path = assets_path
+                        else:
+                            # Try parent's Assets subfolder
+                            parent_assets = current_note_dir.parent / 'Assets' / Path(target).name
+                            if parent_assets.exists():
+                                image_path = parent_assets
             
             # Compute relative path
             if image_path.exists():
@@ -311,7 +334,8 @@ def rewrite_wikilinks(
                 section = ''
                 if '#' in link_content.split('|')[0]:
                     section_part = link_content.split('|')[0].split('#', 1)[1]
-                    section = '#' + section_part
+                    # Normalize the fragment ID to GitBook/GitHub format
+                    section = '#' + normalize_fragment_id(section_part)
                 
                 link_text = alias if alias else Path(target).stem
                 return f'[{link_text}]({rel_path_encoded}{section})'
