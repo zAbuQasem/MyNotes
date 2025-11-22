@@ -50,6 +50,20 @@ def normalize_filename(name: str) -> str:
     return stem + ext
 
 
+def fully_decode_url(url: str) -> str:
+    """
+    Fully decode a URL that may be double-encoded or more.
+    Keeps decoding until the string stops changing.
+    """
+    prev = url
+    while True:
+        decoded = unquote(prev)
+        if decoded == prev:
+            # No more decoding possible
+            return decoded
+        prev = decoded
+
+
 def url_encode_path(path: str) -> str:
     """
     URL-encode a relative path, preserving forward slashes.
@@ -365,6 +379,7 @@ def rewrite_fragment_links(content: str) -> str:
     """
     Rewrite fragment links (heading anchors) to use proper GitBook/GitHub format.
     Converts links like #Symbols%20and%20stripped%20binaries to #symbols-and-stripped-binaries
+    Also handles double-encoded fragments like #Symbols%2520and%2520stripped%2520binaries
     """
     # Pattern for fragment links: [text](#fragment)
     pattern = r'\[([^\]]+)\]\(#([^)]+)\)'
@@ -373,8 +388,8 @@ def rewrite_fragment_links(content: str) -> str:
         text = match.group(1)
         fragment = match.group(2)
         
-        # Decode URL-encoded characters (e.g., %20 -> space)
-        fragment_decoded = unquote(fragment)
+        # Fully decode URL-encoded characters (handles double-encoding)
+        fragment_decoded = fully_decode_url(fragment)
         
         # Normalize the fragment ID
         fragment_normalized = normalize_fragment_id(fragment_decoded)
@@ -389,8 +404,9 @@ def rewrite_markdown_links(
     current_note_path: Path
 ) -> str:
     """
-    Rewrite standard Markdown links to ensure URLs are URL-encoded.
-    Handles both image and regular links.
+    Rewrite standard Markdown links to ensure URLs are properly URL-encoded.
+    Handles both image and regular links, and fixes double-encoded URLs.
+    Also handles links with fragments (e.g., file.md#section).
     """
     # Pattern for Markdown links: [text](url) or ![alt](url)
     pattern = r'(!?)\[([^\]]*)\]\(([^)]+)\)'
@@ -404,13 +420,25 @@ def rewrite_markdown_links(
         if url.startswith('http://') or url.startswith('https://') or url.startswith('#'):
             return match.group(0)
         
-        # Decode URL-encoded characters first
-        url_decoded = unquote(url)
-        
-        # Check if path has spaces or needs encoding
-        url_encoded = url_encode_path(url_decoded)
-        if ' ' in url_decoded or url != url_encoded:
+        # Split URL into path and fragment parts
+        if '#' in url:
+            path_part, fragment_part = url.split('#', 1)
+            # Fully decode both parts
+            path_decoded = fully_decode_url(path_part)
+            fragment_decoded = fully_decode_url(fragment_part)
             # Re-encode properly
+            path_encoded = url_encode_path(path_decoded)
+            # Normalize fragment to kebab-case (no encoding, just normalization)
+            fragment_normalized = normalize_fragment_id(fragment_decoded)
+            url_encoded = f'{path_encoded}#{fragment_normalized}'
+        else:
+            # Fully decode URL-encoded characters (handles double-encoding)
+            url_decoded = fully_decode_url(url)
+            # Re-encode properly
+            url_encoded = url_encode_path(url_decoded)
+        
+        # Only replace if something changed
+        if url != url_encoded:
             prefix = '!' if is_image else ''
             return f'{prefix}[{text}]({url_encoded})'
         

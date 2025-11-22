@@ -2,8 +2,8 @@
 
 ## 📚 Learning Materials
 
-- **[Basics.md](./Basics.md)** - Complete theoretical guide to Rego fundamentals
-- **[Understanding-OPA-Eval-Results.md](./Understanding-OPA-Eval-Results.md)** - Guide to interpreting `opa eval` command results
+- **[Basics.md](./basics.md)** - Complete theoretical guide to Rego fundamentals
+- **[Understanding-OPA-Eval-Results.md](./understanding-opa-eval-results.md)** - Guide to interpreting `opa eval` command results
 
 ## Getting Started
 
