@@ -1,10 +1,6 @@
 # Control Flow
 ---
-## Navigation
-- **[[#Defer]]**
-- **[[#Panic]]**
-- **[[#Recover]]**
-# Defer
+## Defer
 Delay the execution of the function or method or an anonymous method until the nearby functions returns.
  Defer is used to ensure that a function call is performed later in a program’s execution, usually for purposes of cleanup.
  **Not the best option when working with an enormous amount of resources.**
@@ -86,7 +82,7 @@ func main() {
 	fmt.Printf("%s",robots)
 }
 ```
-# Panic
+## Panic
 A `panic` typically means something went unexpectedly wrong. Mostly we use it to fail fast on errors that shouldn’t occur during normal operation, or that we aren’t prepared to handle gracefully.
 Defers happen before a Panic
 ### Basic Syntax
@@ -99,7 +95,7 @@ import (
 
 func main() {
 	fmt.Println("a")
-	panic("A Problem has occured!")
+	panic("A Problem has occurred!")
 	fmt.Println("b")
 }
 ```
@@ -130,11 +126,11 @@ import (
 func main() {
 	fmt.Println("start")
 	defer fmt.Println("This was deferred")
-	panic("A Problem has occured!")
+	panic("A Problem has occurred!")
 	fmt.Println("end")
 }
 ```
-# Recover
+## Recover
 **defer** function is the only function that is called before the **panic**. So it makes sense to put the **recover** function in the **defer** function only. If the **recover** function is not within the defer function then it will not stop **panic**.
 ```go
 package main

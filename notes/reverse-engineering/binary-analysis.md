@@ -1,29 +1,6 @@
 # Binary analysis
 ---
-## Navigation
-- **[Symbols and stripped binaries](#symbols-and-stripped-binaries)**
-- **[Disassembling a binary](#disassembling-a-binary)**
-- **[ELF format](#elf-format)**
-	- [Executable header](#executable-header)
-	- **[Section header](#section-header)**
-		- [init and fini sections](#init-and-fini-sections)
-		- [text section](#text-section)
-		- [bss data and rodata sections](#bss-data-and-rodata-sections)
-		- [Lazy Binding and the PLT](#lazy-binding-and-the-plt)
-		- [Lazy Binding and the plt got and got plt sections](#lazy-binding-and-the-plt-got-and-got-plt-sections)
-		- [dynamic](#dynamic)
-		- [init_array and fini_array](#init-array-and-fini-array)
-		- [shstrtab symtab strtab dynsym and dynstr](#shstrtab-symtab-strtab-dynsym-and-dynstr)
-	- **[Program headers](#program-headers)**
-		- [The p_type Field](#the-p-type-field)
-		- [The p_flags Field](#the-p-flags-field)
-		- [The p_offset p_vaddr p_paddr p_filesz and p_memsz Fields](#the-p-offset-p-vaddr-p-paddr-p-filesz-and-p-memsz-fields)
-		- [The p_align Field](#the-p-align-field)
-- **[Basic binary analysis in linux](#basic-binary-analysis-in-linux)**
-	- [Commands and utilities](#commands-and-utilities)
-	- [Determine an ELF size by it's header](#determine-an-elf-size-by-its-header)
----
-# Symbols and stripped binaries
+## Symbols and stripped binaries
 ## Symbolic information
 High-level source code, such as C code, centers around functions and variables with meaningful, human-readable names. When compiling a program,compilers emit symbols, which keep track of such symbolic
 names and record which binary code and data correspond to each symbol.
@@ -40,7 +17,7 @@ in production-ready binaries, and even basic symbolic information is often strip
 strip --strip-all <Executable>
 ```
 ---
-# Disassembling a binary
+## Disassembling a binary
 ## Object files
 - Disassembling an object file
 ```bash
@@ -64,7 +41,7 @@ objdump -M intel -d <Executable>
 ```
 > Although the different sections are clearly distinguishable in both stripped and non-stripped binaries, the stripped binary functions are not distinguishable.
 ---
-# ELF format
+## ELF format
 **ELF binaries** really consist of only four types of components: an `executable header`, a series of (optional) `program headers`, a `number of sections`, and a series of (optional) `section headers`, one per section.
 > You can find the definitions of ELF-related types and constants in `/usr/include/elf.h` .
 
@@ -250,7 +227,7 @@ Those are analogous to the **`sh_offset`**, **`sh_addr`**, and **`sh_size`** fie
 The p_align field is analogous to the **`sh_addralign`** field in a section header. It indicates the required memory alignment (in bytes) for the segment. Just as with **`sh_addralign`**, an alignment value of 0 or 1 indicates that no particular alignment is required. If**` p_align`** isn’t set to 0 or 1, *then its value must be a power of 2*, and**` p_vaddr`** must be equal to **`p_offset`**, modulo **`p_align`**.
 
 ---
-# Basic binary analysis in linux
+## Basic binary analysis in linux
 ## Commands and utilities
 - **`ldd`** -> To explore binary dependencies
 ```bash
@@ -274,11 +251,11 @@ xxd -b <File>		# Display in binary
 - **`dd`** -> Can be used to copy specific bytes from a file
 ```bash
 dd if=WeirdFile of=elf_headerq count=64 skip=52 bs=1
-# if=<InputFile> 
-# of=<OutputFile>
-# count=<NumberOfBytesToCopy>
-# skip=<NumberOfBytesToSkip>
-# bs=<ReadAndWriteNumberOfBytesAt-a-Time>
+## if=<InputFile>
+## of=<OutputFile>
+## count=<NumberOfBytesToCopy>
+## skip=<NumberOfBytesToSkip>
+## bs=<ReadAndWriteNumberOfBytesAt-a-Time>
 ```
 - **`nm`** -> lists symbols in a given binary, object file, or shared object. When given a binary, by default attempts to parse the static symbol table.
 ```bash
@@ -299,9 +276,9 @@ rc4_init(rc4_state_t*, unsigned char*, int)
 ```bash
 strace -i -C <Executable>
 ltrace -i -C <Executable>
-# -i -> Print the instruction pointer at every call.
-# -C -> Automatically demangle c++ function names.
-# -p <PID> -> to attach a process.
+## -i -> Print the instruction pointer at every call.
+## -C -> Automatically demangle c++ function names.
+## -p <PID> -> to attach a process.
 ```
 - **`gdb`** -> Mainly used for dynamic analysis.
 ```bash
@@ -334,7 +311,7 @@ readelf: Error: Too many program headers - 0x7 - the file is not that big
   Section header string table index: 26
 ```
 
-# References
+## References
 - [Patching ELF header](https://blog.elfy.io/)
 - [Online ELF parser and editor](https://elfy.io/)
 - [Detailed LinuxProgramStartup](http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html)

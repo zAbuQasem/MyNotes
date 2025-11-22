@@ -1,12 +1,10 @@
-# Navigation
-- **[Local Administrator Password solution LAPS](#local-administrator-password-solution-laps)**
-- **[Credential guard](#credential-guard)**
-- **[Device guard](#device-guard)**
-- **[Privileged Administrative Workstations PAWs](#privileged-administrative-workstations-paws)**
-- **[Active Directory Tier Model](#active-directory-tier-model)**
-- **[Enhanced Security Admin Environment ESAE](#enhanced-security-admin-environment-esae)**
+# Detection & Defense: Architectural Changes
+
+Defensive architecture and security controls for Active Directory.
+
 ---
-# Local Administrator Password solution (LAPS)
+
+## Local Administrator Password Solution (LAPS)
 - Centralized storage of passwords in AD with periodic randomization where read permissions are access controlled.
 - Computer objects have two new attributes `ms-mcs-AdmPwd` and `ms-mcs-AdmPwdExpirationTime` controls the password change.
 - Storage is in clear text and transmission is encrypted.
@@ -14,7 +12,7 @@
 - An attacker can now dump LAPS from linux using [LapsDumper](https://github.com/n00py/LAPSDumper)
 
 > **Further reading** : https://www.n00py.io/2020/12/dumping-laps-passwords-from-linux/
-# Credential guard
+## Credential guard
 - Now called `Windows Defender Credential Guard` it uses virtualization based security to isolate secrets so that only privileged system software can access them.
 - Effective in stopping `PTH` and `Over-PTH` attacks by restricting access to NTLM hashes and TGTs.As of `windows 10 1709` it is not possible to write kerbroas tickets into memory **even** if you have credentials.
 
@@ -24,13 +22,13 @@
 3. ONly available on the windows 10 enterprise edition and server 2016.
 4. It has proved **possible to relay service account credentials** even if credential guard is enabled.
 
-# Device guard
+## Device guard
 - Now called `Windows Defender Device Guard` it's a group of features **designed to harden a system against malware attacks** .it focus on preventing malicious code from running by ensuring only known good code can run.
 - **Three primary components:**
 	1. Configurable Code Integrity (CCI) - Configure only trusted code to run.
 	2. Virtual Secure Mode Protected Code Integrity - Enforces CCI with kernel Mode (KMCI) and User Mode (UMCI).
 	3. Platform and UEFI secure boot - Ensures boot binaries and firmware integrity.
-	# Protected Users Group
+## Protected Users Group
 	- Is  a group introduced in server 2012 R2 for **better protection against credential theft** by not caching credentials in insecure ways. **A user added to this group:**
 		- Cannot use `CredSSP` and `WDigest` - No more clear text credentials caching.
 		- NTLM hash is not cached.
@@ -45,14 +43,14 @@
 	- No cached logon (offline sign-on)
 	- Having computer and service accounts in this group is useless as their credentials will always be present on the host machine.
 
-# Privileged Administrative Workstations (PAWs)
+## Privileged Administrative Workstations (PAWs)
 - A hardened workstation for performing sensitive tasks like administration of domain controllers,cloud infrastructure,sensitive business function etc..
 - Can provides protection from phishing attacks, OS vulnerabilities, credential replay attacks.
 - Admin Jump servers to be accessed only from a PAW, multiple strategies.
 	- Separate privilege and hardware for administrative and normal tasks.
 	- Having a VM on a PAW for user tasks.
 
-# Active Directory Tier Model
+## Active Directory Tier Model
 - **Composed of three levels only for administrative accounts**:
 	1. **Tier 0**: Accounts, Groups ad computers which have privileges across the enterprise like domain controllers, domain admins, enterprise admins.
 	2. **Tier 1**: Accounts, Groups ad computers which have access to resources having significant amount of business value. A common example role is server administrators who maintain these operating systems with the ability to impact all enterprise services.
@@ -60,7 +58,7 @@
 - Control Restrictions - What admins control.
 - Logon Restrictions - Where admins can log-on to.
 --- 
-# Enhanced Security Admin Environment (ESAE)
+## Enhanced Security Admin Environment (ESAE)
 - Dedicated administrative forest for managing critical assets like administrative users, groups ad computers.
 - Since a forest is considered a security boundary rather than a domain, this model provides enhanced security controls.
 - The administrative forest is called `Red Forest`.

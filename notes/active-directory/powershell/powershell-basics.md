@@ -1,44 +1,6 @@
 # PowerShell basics
 ---
-# Navigation
-- **[[#Commands and Operators]]**
-	- [Listing examples for a command](#listing-examples-for-a-command)
-	- [List commands by type and function](#list-commands-by-type-and-function)
-	- [Output Formats](#output-formats)
-	- [Useful Operators for Parsing](#useful-operators-for-parsing)
-	- [Difference between Double and single quotes](#difference-between-double-and-single-quotes)
-	- [Writing Multi-lines](#writing-multi-lines)
-	- [Get variable type](#get-variable-type)
-- **[Arrays](#arrays)**
-- **[Hashtables dictionaries](#hashtables-dictionaries)**
-- **[Conditional statements](#conditional-statements)**
-	- [If Statement](#if-statement)
-	- [Switch Statement](#switch-statement)
-- **[Loop statements](#loop-statements)**
-	- [For loop](#for-loop)
-	- [While loop](#while-loop)
-	- [Where-object](#where-object)
-- **[Functions](#functions)**
-	- [Using parameters](#using-parameters)
-	- [Passing parameters](#passing-parameters)
-	- [Positioning parameters](#positioning-parameters)
-	- [Identifying alot of parameters than defined in the function](#identifying-alot-of-parameters-than-defined-in-the-function)
-	- [Using switch parameter](#using-switch-parameter)
-	- [Advanced Functions](#advanced-functions)
-	- [Advanced Scripting](#advanced-scripting)
-- **[Remoting](#remoting)**
-	- [Running commands remotely](#running-commands-remotely)
-	- [Checking permissions](#checking-permissions)
-	- [Making a Credential object](#making-a-credential-object)
-- **[Jobs](#jobs)**
-- **[Modules](#modules)**
-	- [Listing modules](#listing-modules)
-	- [Importing modules](#importing-modules)
-	- [List module commands](#list-module-commands)
-	- [Remove module](#remove-module)
-	- [Module manifest](#module-manifest)
----
-# Commands and Operators
+## Commands and Operators
 ## Listing examples for a command
 ```powershell
 Get-Help <COMMAND> -Examples 
@@ -113,7 +75,7 @@ $ArrayList.ToArray()
 @{ <name> = <value>; [<name> = <value> ] ...}
 $hash = @{one = "apple"; two=2; three="orange"}
 
-# Get a value
+## Get a value
 $hash["one"]
 
 $hash.keys # return the keys of the hash table
@@ -130,7 +92,7 @@ $hash.Remove("Key")
 ```
 > Read about hashtables splatting
 ---
-# Conditional statements
+## Conditional statements
 ## If Statement
 ```powershell
 if ( 1 -gt 0){"hello"} else {"not hello"}  
@@ -143,7 +105,7 @@ switch (1) { 1 {"you chose number one"} 2 {"you chose number two"} 
 switch -wildcard ('abc') { a* {"A"} *b* {"B"} c* {"C"}}
 ```
 ---
-# Loop statements
+## Loop statements
 ## For loop
 ```powershell  
 $s = Get-ChildItem  
@@ -165,7 +127,7 @@ Get-ChildItem -Recurse C:\\ | Where-Object {$_.name -match "txt"} 
 Get-Process | ForEach-Object {$_.path}
 ```
 ---
-# Functions
+## Functions
 ```powershell
 function add { 4 + 5 }  
 add #calls the function and prints the answer  
@@ -188,7 +150,7 @@ add 4 7 
 function parameter ($param1,$param2){$param1}  
 parameter -param2 5 -param1 4 #Prints 4
 ```
-## Identifying alot of parameters than defined in the function
+## Identifying a lot of parameters than defined in the function
 ```powershell
  function params ($p1,$p2){$p1,$p2,$args}  
 params g g g #prints 3 g's  
@@ -240,7 +202,7 @@ function advanced {
 -<manymore>
 ```
 ---
-# Remoting
+## Remoting
 By default, PS Remoting is limited to systems that meet the
 following criteria:
 • Use Kerberos Authentication
@@ -289,7 +251,7 @@ Invoke-Command -Credential $credential -ComputerName abuqasemPC -FilePath 'C:\Sc
 ## Jobs
 ```powershell
 start-job -scriptblock {}  
-recieve-job #to get the output  
+receive-job #to get the output  
 stop-job  
   
 #running commands as jobs in remote computer  
@@ -300,7 +262,7 @@ $sess = new-pssession <parameters>
 invoke-commnad <parameters> -session $sess
 ```
 ---
-# Modules
+## Modules
 Modules PATH `$Env:PSModulePath`
 ## Listing modules
 ```powershell
@@ -313,8 +275,8 @@ Get-Module
 Import-Module <PowerShellScript>
 #In Case of blocking our scripts
 set-ExecutionPolicy bypass -Force 
-# -Force: suppresses all confirmation prompts.
-# Bypass: Nothing is blocked.
+## -Force: suppresses all confirmation prompts.
+## Bypass: Nothing is blocked.
 ```
 ## List module commands
 ```powershell

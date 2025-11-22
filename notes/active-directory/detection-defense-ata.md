@@ -1,14 +1,6 @@
 # Microsoft ATA (Advanced Threat Analytics).
 ---
-# Navigation
-- **[What's ATA](#whats-ata)**
-- **[Useful for detecting](#useful-for-detecting)**
-- **[Bypass user hunting detection](#bypass-user-hunting-detection)**
-- **[Bypass Overpass-the-hash detection](#bypass-overpass-the-hash-detection)**
-- **[Bypass Golden ticket detection](#bypass-golden-ticket-detection)**
-
----
-# What's ATA?
+## What's ATA?
 **Advanced Threat Analytics** (ATA) is an on-premises platform that helps protect your enterprise from multiple types of advanced targeted cyber attacks and insider threats.
 - Traffic destined for Domain Controllers is mirrored to ATA sensors and a user activity profile is build over time - use of computers,Credentials,log on machines ..etc
 - Collects Event `4776` (The DC attempted to validate the credentials for an account) to detect credential replay attacks.

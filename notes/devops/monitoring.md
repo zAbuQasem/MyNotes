@@ -2,22 +2,22 @@
 ## Grafana Prometheus Setup
 
 ```bash
-# Adding Repository
+## Adding Repository
 sudo apt install -y gnupg2 curl software-properties-common
 curl -fsSL https://packages.grafana.com/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg
 sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
-# Installing grafana
+## Installing grafana
 sudo apt update
 sudo apt -y install grafana
 sudo systemctl enable --now grafana-server
 
-# Check if everything is good
+## Check if everything is good
 sudo systemctl status grafana-server.service
 
-# Access Grafana on port 3000.
-# Default logins:
-# Username: admin
-# Password: admin
+## Access Grafana on port 3000.
+## Default logins:
+## Username: admin
+## Password: admin
 ```
 
 ### Prometheus Setup
@@ -27,7 +27,7 @@ sudo systemctl status grafana-server.service
 ```bash
 sudo groupadd --system prometheus
 sudo useradd -s /sbin/nologin --system -g prometheus prometheus
-# sudo mkdir /etc/prometheus
+## sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/prometheus
 for i in rules rules.d files_sd; do sudo mkdir -p /etc/prometheus/${i}; done
 ```
@@ -39,19 +39,19 @@ sudo apt update
 sudo apt -y install wget curl vim
 mkdir -p /tmp/prometheus && cd /tmp/prometheus
 
-# Download the latest binary file
+## Download the latest binary file
 curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4 | wget -qi
 
-# Extract the file
+## Extract the file
 tar xvf prometheus*.tar.gz
 cd prometheus*/
 sudo mv prometheus promtool /usr/local/bin/
 
-# Verify the installation
+## Verify the installation
 prometheus --version
 promtool --version
 
-# Moving configuration files
+## Moving configuration files
 sudo mv prometheus.yml /etc/prometheus/prometheus.yml
 sudo mv consoles/ console_libraries/ /etc/prometheus/
 cd "$HOME"
@@ -109,7 +109,7 @@ systemctl status prometheus
 - [Nginx Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
 ```nginx
-# In /etc/nginx/nginx.conf
+## In /etc/nginx/nginx.conf
 server {
     listen 0.0.0.0:8080;
     location /stub_status {
@@ -128,7 +128,7 @@ For this one I will use [node-exporter alert rules](https://samber.github.io/awe
 ```bash
 curl https://raw.githubusercontent.com/zAbuQasem/Misc/main/node-exporter-prom-alerts.yml -o alerts.yml
 sudo cp alerts.yml /etc/prometheus/
-# Verify with promtool
+## Verify with promtool
 promtool check rules alerts.yml
 ```
 

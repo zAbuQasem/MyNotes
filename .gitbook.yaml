@@ -1,4 +1,5 @@
-root: ./notes/
+root: ./
 
 structure:
-  readme: ../readme.md
+  readme: readme.md
+  summary: SUMMARY.md

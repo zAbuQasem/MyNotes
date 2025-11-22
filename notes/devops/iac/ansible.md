@@ -1,10 +1,13 @@
-# Navigation
-- [**Inventory**](#inventory)
-	- [INI](#ini)
-	- [YAML](#yaml)
+# Ansible
+
+Configuration management and automation with Ansible.
+
 ---
-# Inventory
+
+## Inventory
+
 The simplest inventory is a single file with a list of hosts and groups. The default location for this file is `/etc/ansible/hosts`. You can specify a different inventory file at the command line using the `-i <path>` option or in configuration using `inventory`.
+
 ## INI
 Suitable for small infrastructure.
 ### Basic
@@ -18,7 +21,7 @@ web1 ansible_host=192.168.1.10  ansible_user=myuser ansible_ssh_pass=mypassword
 db1 ansible_host=192.168.1.11 ansible_user=myuser ansible_ssh_pass=mypassword
 db2 ansible_host=192.168.1.12 ansible_user=myuser ansible_ssh_pass=mypassword
 
-# Range from 192.168.1.13 - 192.168.1.20
+## Range from 192.168.1.13 - 192.168.1.20
 db3 ansible_host=192.168.1.[13:20] ansible_user=myuser ansible_ssh_pass=mypassword
 ```
 ### Parent-Child

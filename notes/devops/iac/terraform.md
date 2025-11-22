@@ -1,35 +1,21 @@
-# Navigation
-- [**HCL_Basics**](#hcl-basics)
-- [**Initialization**](#initialization)
-- [**Configuration_Files**](#configuration-files)
-- [**Variables**](#variables)
-	- [Default Syntax](#default-syntax)
-	- [Variables_Usage](#variables-usage)
-	- [Example](#example)
-	- [Variables_Order](#variables-order)
-	- [Resource_Attributes](#resource-attributes)
-	- [Implicit_dependency](#implicit-dependency)
-	- [Explicit_dependency](#explicit-dependency)
-	- [Output](#output)
-- [**Mutable_vs_Immutable**](#mutable-vs-immutable)
-	- [LifeCycle_Rules](#lifecycle-rules)
-- [**Datasource**](#datasource)
-- [**Meta_Arguments**](#meta-arguments)
-	- [Count](#count)
-	- [For-Each](#for-each)
-- [**Version-Constraints**](#version-constraints)
+# Terraform
+
+Infrastructure as Code with Terraform.
+
 ---
-# Installation
+
+## Installation
+
 - [Downloads link](https://developer.hashicorp.com/terraform/downloads)
 ```bash
 wget https://releases.hashicorp.com/terraform/1.3.9/terraform_1.3.9_linux_amd64.zip
 7z x terraform_1.3.9_linux_amd64.zip
 mv terraform /usr/local/bin
-# Enable auto-complete
+## Enable auto-complete
 terraform -install-autocomplete
 ```
 
-# HCL_Basics
+## HCL_Basics
 HashiCorp Configuration language
 - **Basic resource block**
 	- `resource`: Block Name
@@ -53,12 +39,12 @@ ami = "ami-0c2f25c1f66a1ff4d"
 instance_type = "t2.micro"  
 }
 ```
-# Initialization
+## Initialization
 Initialize the backend, we use `init` to install the required plugins and `plan` to preview the changes that terraform plans to make to your infrastructure.
 ```bash
 terraform init
 terraform plan
-# (Optional) if you are interested in forcing style convention
+## (Optional) if you are interested in forcing style convention
 terafform fmt
 ```
 Executes the actions proposed in terraform plan
@@ -74,7 +60,7 @@ To destroy the infrastructure
 terraform destroy
 ```
 
-# Configuration_Files
+## Configuration_Files
 |**File Name**|**Purpose**|
 |-|-|
 |**`main.tf`**|Main configuration file containing resource definition|
@@ -82,7 +68,7 @@ terraform destroy
 |**`outputs.tf`**|Contains output from resources|
 |**`provider.tf`**|Contains provider definition|
 
-# Variables
+## Variables
 ## Default Syntax
 - **`variables.tf`**
 ```bash
@@ -136,7 +122,6 @@ terrafrom -var-file custom.tfvars
 ```
 > **Note:**
 > `terraform.tfvars` , `terraform.tfvars.json`, `*.auto.tfvars`,`*.auto.tfvars.json` are automatically loaded.
-
 
 ## Example
 Create a plan using `prod.tfvars`.
@@ -236,14 +221,14 @@ terraform output pet-name
 terraform output welcome_message
 ```
 
-# Terraform_commands
+## Terraform_commands
 - **validate**: Check for syntax errors.
 - **output**: Extract the value of an output variable from the state file.
 - **fmt**: Format the syntax to match the style convention.
 - **refresh**: Update the state file with new non-terraform changes (manual changes). This option is invoked by default when running `terrafrom plan`.
 - **graph**: Print a `dot` formatted graph.
 
-# Mutable_vs_Immutable
+## Mutable_vs_Immutable
 Mutable infrastructures allow for regular updates and modifications after the software has been deployed, whereas immutable infrastructures do not allow modifications once the software has been deployed.
 
 ## LifeCycle_Rules
@@ -260,7 +245,7 @@ resource "local_file" "welcome" {
 }
 ```
 
-# Datasource
+## Datasource
 - **`data`**: To read a file not managed by terraform.
 ```sh
 resource "local_file" "welcome" {
@@ -273,7 +258,7 @@ data "local_file" "msg" {
 }
 ```
 
-#  Meta_Arguments
+## Meta_Arguments
 ## Count
 Create multiple instances of a resource, however if an instance is removed or added; the whole resource will be recreated.
 - **`main.tf`**
@@ -296,7 +281,7 @@ Only works with a `map` or `set`, and doesn't need to recreate the whole resourc
 resource "local_file" "pet" {
 	filename = each.value
 	for_each = var.filename
-	# for_each = toset(var.filename) -- use this if you don't want to change the type in "variables.tf" file 
+## for_each = toset(var.filename) -- use this if you don't want to change the type in "variables.tf" file
 }
 ```
 - **`variables.tf`**
@@ -306,7 +291,7 @@ variable "filename" {
 	default = "["/root/horse.txt", "/root/meow.txt", "/root/cats.txt"] 
 }
 ```
-# Version-Constraints
+## Version-Constraints
 We can use comparison operators to specify versions
 - Use a specific version of a provider
 ```hcl
@@ -320,7 +305,7 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
+## Configuration options
 }
 ```
 - Do not use `4.57.1` version
@@ -335,7 +320,7 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
+## Configuration options
 }
 ```
 - **More info**: [Version Constraints - Configuration Language | Terraform | HashiCorp Developer](https://developer.hashicorp.com/terraform/language/expressions/version-constraints)

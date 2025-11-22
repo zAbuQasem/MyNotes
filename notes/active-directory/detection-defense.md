@@ -1,19 +1,6 @@
 # Detection & Defense
 ---
-# Navigation
-- **[Domain admins](#domain-admins)**
-- **[Golden Ticket](#golden-ticket)**
-- **[Silver Ticket](#silver-ticket)**
-- **[Skeleton Key](#skeleton-key)**
-- **[DSRM](#dsrm)**
-- **[Malicious SSP](#malicious-ssp)**
-- **[Kerberoast](#kerberoast)**
-- **[Delegation](#delegation)**
-- **[ACL attacks](#acl-attacks)**
-- **[Trust Tickets](#trust-tickets)**
-
----
-# Domain admins
+## Domain admins
 1. Do not allow or limit login of DAs to any other machine other than the Domain Controllers.If login to some servers is necessary;do not allow other administrators to login to that machine.
 2. ***Try to*** never run a service with a DA.Many credential theft protections are rendered useless in case of a service account.
 3. Check out temporary Group Memebership! (Requires **privileged access management** feature to be enabled which can't be turned off later).
@@ -22,7 +9,7 @@
 Add-ADGroupMember -Identity 'Domain Admins' -Members abuqasem -MemberTimeToLive (New-Timespan -Minutes 20)
 ```
 ---
-# Golden Ticket
+## Golden Ticket
 **Important Event IDs:**
 1. `4624:Account Logon`
 2. `4672:Admin Logon`
@@ -30,7 +17,7 @@ Add-ADGroupMember -Identity 'Domain Admins' -Members abuqasem -MemberTimeToLive 
 Get-WinEvent -FilterHashtable @{Logname='Security';ID=4672} -MaxEvents 1 | Format-List -Property *
 ```
 ---
-# Silver Ticket
+## Silver Ticket
 **Important Event IDs:**
 1. `4624:Account Logon`
 2. `4634:Account Logoff`
@@ -39,7 +26,7 @@ Get-WinEvent -FilterHashtable @{Logname='Security';ID=4672} -MaxEvents 1 | Forma
 Get-WinEvent -FilterHashtable @{Logname='Security';ID=4672} -MaxEvents 1 | Format-List -Property *
 ```
 ---
-# Skeleton Key
+## Skeleton Key
 **Events:**
 - `7045:System Event ID` - A service was installed in the system.(Type Kernel Mode driver).
 
@@ -60,21 +47,21 @@ New-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name RunAsPPL -Val
 Get-WinEvent -FilterHashtable @{Logname='System';ID=12} | ?{$_.message -like "*protected process*"}
 ```
 ---
-# DSRM
+## DSRM
 **Events**:
 - `4657` - Audit creation/change of:
 ```powershell
 HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\DsrmAdminLogonBehaviour
 ```
 ---
-# Malicious SSP
+## Malicious SSP
 **Events**:
 - `4657` - Audit creation/change of:
 ```powershell
 HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\SecurityPackages
 ```
 ---
-# Kerberoast
+## Kerberoast
 **Events**:
 - `4769:Security Event`- A kerberoast ticket was requested.
 
@@ -94,11 +81,11 @@ Get-WinEvent -FilterHashtable @{Logname='Security';ID=4769} -MaxEvents 1000 | ?{
 ```
 
 ---
-# Delegation
+## Delegation
 - Limit DA/Admin logins to specific servers.
 - Set "Account is sensitive and cannot be delegated" for privileged accounts.
 ---
-# ACL attacks
+## ACL attacks
 **Events**:
 1. `4622:Security Event`(Audit Policy for object must be enabled) - An operation was performed on an object.
 2. `5136:Security Event`(Audit Policy for object must be enabled) - A directory service object was modified.
@@ -107,7 +94,7 @@ Get-WinEvent -FilterHashtable @{Logname='Security';ID=4769} -MaxEvents 1000 | ?{
 > [ADACLScanner](https://github.com/canix1/ADACLScanner)
 
 ---
-# Trust Tickets
+## Trust Tickets
 **SID Filtering**
 - Avoid attacks which abuse SID history attribute across forest trust.
 - Enabled by default on all inter-forest trusts. Intra-forest trusts are assumed secured by default (MS considers forest and not the domain to be a security boundary).

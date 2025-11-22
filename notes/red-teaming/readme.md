@@ -6,7 +6,7 @@ Advanced offensive security and red team operations.
 
 ### Core Topics
 - [Tunneling](tunneling.md) - Network tunneling techniques
-- [Powerful Automation](powerfull-automation.md) - Automation for red team ops
+- [Powerful Automation](powerful-automation.md) - Automation for red team ops
 
 ### Credential Harvesting
 - [Windows Credentials](credential-harvesting/windows.md) - Harvesting credentials on Windows

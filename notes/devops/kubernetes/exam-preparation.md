@@ -22,7 +22,7 @@ kubectl logs <pod-name> -c <init-container-name>
 kubectl describe pod <pod-name>
 ```
 ---
-# Pod-Design
+## Pod-Design
 
 ### Definition
 
@@ -45,7 +45,7 @@ kubectl describe pod <pod-name>
 kubectl logs <pod-name> -c <container-name>
 ```
 
-# State-Persistence
+## State-Persistence
 
 ## StatefulSets
 
@@ -101,9 +101,9 @@ spec:
 - **Verifying**
 ```bash
 kubectl get svc my-service
-# Output shows 'None' for the ClusterIP
+## Output shows 'None' for the ClusterIP
 ```
-# Security
+## Security
 
 ## Admission-Controls
 
