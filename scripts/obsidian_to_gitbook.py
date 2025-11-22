@@ -196,14 +196,16 @@ def normalize_filenames(
 
 def build_note_mapping(notes_root: Path, ignore_dirs: List[str]) -> Dict[str, Path]:
     """
-    Build a mapping from note stem (lowercase, case-insensitive) to absolute path.
+    Build a mapping from note stem (lowercase with spaces normalized to dashes) to absolute path.
     This is used to resolve wikilinks.
     """
     mapping = {}
     notes = find_all_notes(notes_root, ignore_dirs)
     
     for note_path in notes:
-        key = note_path.stem.lower()
+        # Normalize the key: lowercase and replace spaces with dashes
+        # This matches the normalization done in resolve_wikilink_target
+        key = note_path.stem.lower().replace(' ', '-')
         # Handle duplicates by keeping the first one found
         if key not in mapping:
             mapping[key] = note_path
@@ -286,34 +288,25 @@ def rewrite_wikilinks(
             # It's an image embed
             # Resolve image relative to current note location
             current_note_dir = current_note_path.parent
+            target_name = Path(target).name
             
-            # Try to find the image in multiple locations
-            image_path = current_note_dir / target
+            # Try to find the image in multiple locations (in order of priority)
+            potential_paths = [
+                current_note_dir / target,
+                current_note_dir / 'attachments' / target_name,
+                current_note_dir.parent / 'attachments' / target_name,
+                current_note_dir / 'Assets' / target_name,
+                current_note_dir.parent / 'Assets' / target_name,
+            ]
             
-            # If not found, try common locations
-            if not image_path.exists():
-                # Try attachments subfolder in current directory
-                attachments_path = current_note_dir / 'attachments' / Path(target).name
-                if attachments_path.exists():
-                    image_path = attachments_path
-                else:
-                    # Try parent directory's attachments subfolder
-                    parent_attachments = current_note_dir.parent / 'attachments' / Path(target).name
-                    if parent_attachments.exists():
-                        image_path = parent_attachments
-                    else:
-                        # Try Assets subfolder
-                        assets_path = current_note_dir / 'Assets' / Path(target).name
-                        if assets_path.exists():
-                            image_path = assets_path
-                        else:
-                            # Try parent's Assets subfolder
-                            parent_assets = current_note_dir.parent / 'Assets' / Path(target).name
-                            if parent_assets.exists():
-                                image_path = parent_assets
+            image_path = None
+            for path in potential_paths:
+                if path.exists():
+                    image_path = path
+                    break
             
             # Compute relative path
-            if image_path.exists():
+            if image_path is not None:
                 rel_path = compute_relative_path(current_note_path, image_path)
                 rel_path_encoded = url_encode_path(rel_path)
                 alt_text = alias if alias else Path(target).stem
