@@ -54,14 +54,18 @@ def fully_decode_url(url: str) -> str:
     """
     Fully decode a URL that may be double-encoded or more.
     Keeps decoding until the string stops changing.
+    Includes a maximum iteration limit to prevent infinite loops.
     """
+    max_iterations = 10  # Prevent infinite loops in edge cases
     prev = url
-    while True:
+    for _ in range(max_iterations):
         decoded = unquote(prev)
         if decoded == prev:
             # No more decoding possible
             return decoded
         prev = decoded
+    # If we hit max iterations, return what we have
+    return prev
 
 
 def url_encode_path(path: str) -> str:
