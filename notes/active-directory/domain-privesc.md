@@ -33,7 +33,7 @@ Request-SPNTicket
 ```
 > **NOTE:**
 > Service tickets can be used for Silver ticket attacks
-> [[4-Domain persistence#Silver Ticket]]
+> [4-Domain persistence#Silver Ticket](domain-persistence.md%23silver-ticket)
 
 ## AS-REPs
 - If a user's `UserAccountControl` settings have "Do not require kerberoas preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
@@ -134,8 +134,8 @@ DCsync attack
 ```powershell
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp/krbtgt"'
 ```
-- [[4-Domain persistence#Golden Ticket]]
-- [[4-Domain persistence#Silver Ticket]]
+- [4-Domain persistence#Golden Ticket](domain-persistence.md%23golden-ticket)
+- [4-Domain persistence#Silver Ticket](domain-persistence.md%23silver-ticket)
 - [PrintSpooler bug](https://book.hacktricks.xyz/windows/active-directory-methodology/printers-spooler-service-abuse#finding-spooler-services-listening)
 
 ---

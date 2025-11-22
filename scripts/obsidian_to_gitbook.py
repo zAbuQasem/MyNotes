@@ -168,6 +168,11 @@ def normalize_filenames(
     
     for note_path in notes:
         old_name = note_path.name
+        
+        # Skip SUMMARY.md - it should never be renamed or modified
+        if old_name.upper() == 'SUMMARY.MD':
+            continue
+        
         new_name = normalize_filename(old_name)
         
         if old_name != new_name:
@@ -191,14 +196,16 @@ def normalize_filenames(
 
 def build_note_mapping(notes_root: Path, ignore_dirs: List[str]) -> Dict[str, Path]:
     """
-    Build a mapping from note stem (lowercase, case-insensitive) to absolute path.
+    Build a mapping from note stem (lowercase with spaces normalized to dashes) to absolute path.
     This is used to resolve wikilinks.
     """
     mapping = {}
     notes = find_all_notes(notes_root, ignore_dirs)
     
     for note_path in notes:
-        key = note_path.stem.lower()
+        # Normalize the key: lowercase and replace spaces with dashes
+        # This matches the normalization done in resolve_wikilink_target
+        key = note_path.stem.lower().replace(' ', '-')
         # Handle duplicates by keeping the first one found
         if key not in mapping:
             mapping[key] = note_path
@@ -237,8 +244,16 @@ def resolve_wikilink_target(
     if '#' in note_name:
         note_name = note_name.split('#')[0].strip()
     
-    key = note_name.lower()
-    return note_mapping.get(key)
+    # Normalize: lowercase and replace spaces with dashes
+    key = note_name.lower().replace(' ', '-')
+    result = note_mapping.get(key)
+    
+    # If not found, try stripping numeric prefixes (e.g., "4-domain-persistence" -> "domain-persistence")
+    if result is None and re.match(r'^\d+-', key):
+        key_without_prefix = re.sub(r'^\d+-', '', key)
+        result = note_mapping.get(key_without_prefix)
+    
+    return result
 
 
 def rewrite_wikilinks(
@@ -273,24 +288,25 @@ def rewrite_wikilinks(
             # It's an image embed
             # Resolve image relative to current note location
             current_note_dir = current_note_path.parent
+            target_name = Path(target).name
             
-            # Try to find the image
-            image_path = current_note_dir / target
+            # Try to find the image in multiple locations (in order of priority)
+            potential_paths = [
+                current_note_dir / target,
+                current_note_dir / 'attachments' / target_name,
+                current_note_dir.parent / 'attachments' / target_name,
+                current_note_dir / 'Assets' / target_name,
+                current_note_dir.parent / 'Assets' / target_name,
+            ]
             
-            # If not found, try common locations
-            if not image_path.exists():
-                # Try attachments subfolder
-                attachments_path = current_note_dir / 'attachments' / Path(target).name
-                if attachments_path.exists():
-                    image_path = attachments_path
-                
-                # Try Assets subfolder
-                assets_path = current_note_dir / 'Assets' / Path(target).name
-                if assets_path.exists():
-                    image_path = assets_path
+            image_path = None
+            for path in potential_paths:
+                if path.exists():
+                    image_path = path
+                    break
             
             # Compute relative path
-            if image_path.exists():
+            if image_path is not None:
                 rel_path = compute_relative_path(current_note_path, image_path)
                 rel_path_encoded = url_encode_path(rel_path)
                 alt_text = alias if alias else Path(target).stem
@@ -311,7 +327,8 @@ def rewrite_wikilinks(
                 section = ''
                 if '#' in link_content.split('|')[0]:
                     section_part = link_content.split('|')[0].split('#', 1)[1]
-                    section = '#' + section_part
+                    # Normalize the fragment ID to GitBook/GitHub format
+                    section = '#' + normalize_fragment_id(section_part)
                 
                 link_text = alias if alias else Path(target).stem
                 return f'[{link_text}]({rel_path_encoded}{section})'
