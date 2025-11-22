@@ -1,7 +1,7 @@
 # Offensive Powershell
 ---
 > **Note:**
->  To list the modules and parameters for a specific function in a module -> [List module commands](Powershell%2520Basics%2523List%2520module%2520commands)
+>  To list the modules and parameters for a specific function in a module -> [List module commands](powershell-basics.md#list-module-commands)
 ---
 ## Reconnaissance
 ## PortScanning & Host discovery

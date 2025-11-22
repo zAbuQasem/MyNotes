@@ -133,7 +133,7 @@ Those are writable sections used to contain variable Because code sections are g
  - On Linux, lazy binding is the default behavior of the dynamic linker.
 - Lazy binding in Linux ELF binaries is implemented with the help of two special sections, called the **Procedure Linkage Table** (.plt) and the **Global Offset Table** (.got)
  
- ![calling a shared library via plt](attachments/calling%2520a%2520shared%2520library%2520via%2520plt.png)
+ ![calling a shared library via plt](attachments/calling%20a%20shared%20library%20via%20plt.png)
  
  - Disassembly of a **`.plt`** section
 ```bash
