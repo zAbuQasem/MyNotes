@@ -228,7 +228,7 @@ use exploit/windows/fileformat/adobe_utilprintf
 ```
 Then use 7-zip utility to encrypt the pdf.
 
-![7zip](attachments/7zip.png)
+![7zip](attachments/sevenz.png)
 
 ## Understanding-what-a-sandbox-is
 Whenever we execute an application, be it legitimate or malicious, some of the events that occur are as follows:
