@@ -64,6 +64,15 @@ kubectl delete <NAMESPACE>
 ```
 > **Important note**: Deleting a namespace will **delete everything** within it.
 ---
+## Pod-Design
+
+### Definition
+
+A Pod in Kubernetes is the smallest deployable unit. It can contain one or more containers, each designed to work together and share storage/networking resources. Good Pod design involves:
+
+- Grouping containers that share resources and are tightly coupled.
+- Ensuring each Pod has a single, clearly defined purpose (e.g., run a service, handle a batch job).
+
 ## Managing-Pods
 
 **Control and manage your Kubernetes pods efficiently using labels and selectors.**
@@ -1491,6 +1500,15 @@ spec:
     image: busybox
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application>']
 ```
+## Troubleshooting Init Containers
+- **Viewing Init Container logs**:
+```bash
+kubectl logs <pod-name> -c <init-container-name>
+```
+- **Debugging Init Containers**:
+```bash
+kubectl describe pod <pod-name>
+```
 ---
 ## Maintenance
 The node eviction timeout is triggered when a node goes down for 5 mins. This could be changed by the following command
@@ -1661,6 +1679,22 @@ cat /var/lib/kubelet/config.yaml
 
 ---
 ## Security
+
+## Admission-Controls
+
+Admission Controllers are plugins in the Kubernetes API Server that process requests before objects are persisted. They can modify or reject requests to enforce policies:
+
+- **PodSecurityPolicy** (deprecated, replaced by Pod Security Admission).
+- **ResourceQuota** to limit resource usage.
+- **MutatingWebhook** or **ValidatingWebhook** for custom admission logic.
+
+## API-Security
+
+Securing the Kubernetes API involves:
+
+- Role-Based Access Control (RBAC): Restricting access based on roles and cluster roles.
+- Certificates & TLS: Ensuring communication with the API server is encrypted.
+- Enforcing strong authentication/authorization mechanisms and limiting who can issue commands.
 ## API-Groups
 
 ## What Are API Groups?
