@@ -2,7 +2,7 @@
 
 * [Introduction](readme.md)
 
-# 🚀 DevOps
+## 🚀 DevOps
 
 * [Github Actions](notes/devops/github-actions.md)
 * [Image Signing](notes/devops/image-signing.md)
@@ -21,7 +21,7 @@
     * [Rego Basics - Open Policy Agent (OPA)](notes/devops/open-policy-agent/rego-basics/basics.md)
     * [Understanding OPA Eval Results](notes/devops/open-policy-agent/rego-basics/understanding-opa-eval-results.md)
 
-# 🐹 Golang Programming
+## 🐹 Golang Programming
 
 * [Arrays and Slices](notes/golang/arrays-and-slices.md)
 * [Channels](notes/golang/channels.md)
@@ -37,7 +37,7 @@
 * [Primitives](notes/golang/primitives.md)
 * [Variables](notes/golang/variables.md)
 
-# � Red Teaming
+## 💀 Red Teaming
 
 * [Powerful Automation](notes/red-teaming/powerful-automation.md)
 * [Tunneling and Port Forwarding](notes/red-teaming/tunneling.md)
@@ -77,7 +77,7 @@
   * [Binary analysis](notes/red-teaming/reverse-engineering/binary-analysis.md)
   * [GDB cheat sheet](notes/red-teaming/reverse-engineering/gdb-cheatsheet.md)
 
-# 🌐 Web Penetration Testing
+## 🌐 Web Penetration Testing
 
 * [Authentication Testing](notes/web-pentesting/authentication-testing.md)
 * [Authorization Testing](notes/web-pentesting/authorization-testing.md)
@@ -110,7 +110,7 @@
     * [SQL Server](notes/web-pentesting/web-vulns/sqli/sql-server.md)
     * [SQL Injection](notes/web-pentesting/web-vulns/sqli/sqli-overview.md)
 
-# 🚩 CTF Notes
+## 🚩 CTF Notes
 
 * [CTF Notes](notes/ctf-notes/readme.md)
 * [Binary-Exploitation](notes/ctf-notes/binary-exploitation.md)
