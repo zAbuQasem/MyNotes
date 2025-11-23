@@ -19,15 +19,15 @@ Explore the knowledge base by category. Each section below links to a dedicated 
 
 ### 🔐 Security & Penetration Testing
 
-* **[Active Directory](notes/active-directory/readme.md)** - Complete guide to Active Directory security, covering enumeration, privilege escalation, lateral movement, persistence, and defensive measures.
+* **[Active Directory](notes/red-teaming/active-directory/readme.md)** - Complete guide to Active Directory security, covering enumeration, privilege escalation, lateral movement, persistence, and defensive measures.
 
 * **[Web Pentesting](notes/web-pentesting/readme.md)** - Comprehensive web application security testing guide covering modern vulnerabilities and attack techniques.
 
 * **[Red Teaming](notes/red-teaming/readme.md)** - Advanced offensive security operations including credential harvesting, tunneling, and automation techniques.
 
-* **[AWS Pentesting](notes/aws-pentesting/readme.md)** - Cloud security testing focused on Amazon Web Services infrastructure and services.
 
-* **[Metasploit](notes/metasploit/readme.md)** - Comprehensive exploitation framework guide with commands, modules, and practical usage examples.
+
+* **[Metasploit](notes/red-teaming/metasploit/readme.md)** - Comprehensive exploitation framework guide with commands, modules, and practical usage examples.
 
 ### 💻 Development & Operations
 
@@ -37,7 +37,7 @@ Explore the knowledge base by category. Each section below links to a dedicated 
 
 ### 🔧 Reverse Engineering
 
-* **[Reverse Engineering](notes/reverse-engineering/readme.md)** - Binary analysis, debugging techniques, and reverse engineering fundamentals.
+* **[Reverse Engineering](notes/red-teaming/reverse-engineering/readme.md)** - Binary analysis, debugging techniques, and reverse engineering fundamentals.
 
 ---
 

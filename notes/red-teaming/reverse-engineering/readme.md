@@ -10,4 +10,4 @@ Binary analysis, debugging, and reverse engineering techniques.
 
 ---
 
-[← Back to Main](../../readme.md)
+[← Back to Main](../../../readme.md)

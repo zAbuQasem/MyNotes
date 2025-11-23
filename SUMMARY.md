@@ -2,35 +2,7 @@
 
 * [Introduction](readme.md)
 
-## Active Directory
 
-* [Active Directory](notes/active-directory/readme.md)
-* [Detection & Defense: Architectural Changes](notes/active-directory/detection-defence-architectural-changes.md)
-* [Microsoft ATA (Advanced Threat Analytics).](notes/active-directory/detection-defense-ata.md)
-* [Detection & Defense](notes/active-directory/detection-defense.md)
-* [Phase 1: Domain Enumeration](notes/active-directory/domain-enumeration.md)
-* [Domain Persistence](notes/active-directory/domain-persistence.md)
-* [Domain Privesc](notes/active-directory/domain-privesc.md)
-* [Lateral Movement](notes/active-directory/lateral-movement.md)
-* [Local PrivEsc](notes/active-directory/local-privesc.md)
-* Attack Vectors
-  * [AD CS (Active Directory Certificate Services)](notes/active-directory/attack-vectors/ad-cs.md)
-  * [Group Policy Preferences](notes/active-directory/attack-vectors/group-policy-preferences.md)
-  * [Ipv6 DNS Takeover](notes/active-directory/attack-vectors/ipv6-dns-takeover.md)
-  * [Kerberoas](notes/active-directory/attack-vectors/kerberoas.md)
-  * [LAPS (Local Administrator Password Solution)](notes/active-directory/attack-vectors/laps.md)
-  * [LDAP](notes/active-directory/attack-vectors/ldap.md)
-  * [Microsoft SQL Server](notes/active-directory/attack-vectors/microsoft-sql-server.md)
-  * [Relay attacks](notes/active-directory/attack-vectors/relay-attacks.md)
-  * [Remote procedure call](notes/active-directory/attack-vectors/rpc.md)
-* Powershell
-  * [COM objects](notes/active-directory/powershell/com-objects.md)
-  * [Offensive Powershell](notes/active-directory/powershell/offensive-powershell.md)
-  * [PowerShell basics](notes/active-directory/powershell/powershell-basics.md)
-
-## AWS Penetration Testing
-
-* [AWS Penetration Testing](notes/aws-pentesting/readme.md)
 
 ## DevOps
 
@@ -70,27 +42,47 @@
 * [Variables](notes/golang/variables.md)
 * Package
 
-## Metasploit Framework
-
-* [Metasploit Framework](notes/metasploit/readme.md)
-* [Metasploit Cheatsheet](notes/metasploit/metasploit-cheatsheet.md)
-
 ## Red Teaming
 
 * [Red Teaming](notes/red-teaming/readme.md)
-* [Powerful Automation](notes/red-teaming/powerfull-automation.md)
+* [Powerful Automation](notes/red-teaming/powerful-automation.md)
 * [Tunneling and Port Forwarding](notes/red-teaming/tunneling.md)
+* Active Directory
+  * [Active Directory](notes/red-teaming/active-directory/readme.md)
+  * [Detection & Defense: Architectural Changes](notes/red-teaming/active-directory/detection-defence-architectural-changes.md)
+  * [Microsoft ATA (Advanced Threat Analytics).](notes/red-teaming/active-directory/detection-defense-ata.md)
+  * [Detection & Defense](notes/red-teaming/active-directory/detection-defense.md)
+  * [Phase 1: Domain Enumeration](notes/red-teaming/active-directory/domain-enumeration.md)
+  * [Domain Persistence](notes/red-teaming/active-directory/domain-persistence.md)
+  * [Domain Privesc](notes/red-teaming/active-directory/domain-privesc.md)
+  * [Lateral Movement](notes/red-teaming/active-directory/lateral-movement.md)
+  * [Local PrivEsc](notes/red-teaming/active-directory/local-privesc.md)
+  * Attack Vectors
+    * [AD CS (Active Directory Certificate Services)](notes/red-teaming/active-directory/attack-vectors/ad-cs.md)
+    * [Group Policy Preferences](notes/red-teaming/active-directory/attack-vectors/group-policy-preferences.md)
+    * [Ipv6 DNS Takeover](notes/red-teaming/active-directory/attack-vectors/ipv6-dns-takeover.md)
+    * [Kerberoas](notes/red-teaming/active-directory/attack-vectors/kerberoas.md)
+    * [LAPS (Local Administrator Password Solution)](notes/red-teaming/active-directory/attack-vectors/laps.md)
+    * [LDAP](notes/red-teaming/active-directory/attack-vectors/ldap.md)
+    * [Microsoft SQL Server](notes/red-teaming/active-directory/attack-vectors/microsoft-sql-server.md)
+    * [Relay attacks](notes/red-teaming/active-directory/attack-vectors/relay-attacks.md)
+    * [Remote procedure call](notes/red-teaming/active-directory/attack-vectors/rpc.md)
+  * Powershell
+    * [COM objects](notes/red-teaming/active-directory/powershell/com-objects.md)
+    * [Offensive Powershell](notes/red-teaming/active-directory/powershell/offensive-powershell.md)
+    * [PowerShell basics](notes/red-teaming/active-directory/powershell/powershell-basics.md)
 * Credential Harvesting
-  * [Linux](notes/red-teaming/credential-harvesting/linux.md)
+  * [Credential Harvesting](notes/red-teaming/credential-harvesting/readme.md)
   * [MacOS](notes/red-teaming/credential-harvesting/macos.md)
   * [Miscellaneous](notes/red-teaming/credential-harvesting/misc.md)
   * [Windows](notes/red-teaming/credential-harvesting/windows.md)
-
-## Reverse Engineering
-
-* [Reverse Engineering](notes/reverse-engineering/readme.md)
-* [Binary analysis](notes/reverse-engineering/binary-analysis.md)
-* [GDB cheat sheet](notes/reverse-engineering/gdb-cheatsheet.md)
+* Metasploit Framework
+  * [Metasploit Framework](notes/red-teaming/metasploit/readme.md)
+  * [Metasploit Cheatsheet](notes/red-teaming/metasploit/metasploit-cheatsheet.md)
+* Reverse Engineering
+  * [Reverse Engineering](notes/red-teaming/reverse-engineering/readme.md)
+  * [Binary analysis](notes/red-teaming/reverse-engineering/binary-analysis.md)
+  * [GDB cheat sheet](notes/red-teaming/reverse-engineering/gdb-cheatsheet.md)
 
 ## Web Penetration Testing
 
@@ -127,4 +119,3 @@
     * [PostgreSQL](notes/web-pentesting/web-vulns/sqli/postgresql.md)
     * [SQL Server](notes/web-pentesting/web-vulns/sqli/sql-server.md)
     * [SQL Injection](notes/web-pentesting/web-vulns/sqli/sqli-overview.md)
-

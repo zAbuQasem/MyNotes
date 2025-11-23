@@ -2,7 +2,7 @@
 
 Automation techniques for offensive security operations.
 
-![COM Objects](../active-directory/powershell/com-objects.md)
+![COM objects](active-directory/powershell/com-objects.md)
 
 ## Automating and remote controlling Google Chrome
 How to leverage remote debugging to spy on users!
