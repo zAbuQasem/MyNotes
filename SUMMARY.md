@@ -1,12 +1,5 @@
-# Table of Contents
+# 🚀 DevOps
 
-* [Introduction](readme.md)
-
-
-
-## DevOps
-
-* [DevOps](notes/devops/readme.md)
 * [Github Actions](notes/devops/github-actions.md)
 * [Image Signing](notes/devops/image-signing.md)
 * [Monitoring](notes/devops/monitoring.md)
@@ -24,9 +17,8 @@
     * [Rego Basics - Open Policy Agent (OPA)](notes/devops/open-policy-agent/rego-basics/basics.md)
     * [Understanding OPA Eval Results](notes/devops/open-policy-agent/rego-basics/understanding-opa-eval-results.md)
 
-## Golang Programming
+# 🐹 Golang Programming
 
-* [Golang Programming](notes/golang/readme.md)
 * [Arrays and Slices](notes/golang/arrays-and-slices.md)
 * [Channels](notes/golang/channels.md)
 * [Concurrency (Go-routines)](notes/golang/concurrency.md)
@@ -40,15 +32,12 @@
 * [Pointers](notes/golang/pointers.md)
 * [Primitives](notes/golang/primitives.md)
 * [Variables](notes/golang/variables.md)
-* Package
 
-## Red Teaming
+# � Red Teaming
 
-* [Red Teaming](notes/red-teaming/readme.md)
 * [Powerful Automation](notes/red-teaming/powerful-automation.md)
 * [Tunneling and Port Forwarding](notes/red-teaming/tunneling.md)
-* Active Directory
-  * [Active Directory](notes/red-teaming/active-directory/readme.md)
+* [Active Directory](notes/red-teaming/active-directory/readme.md)
   * [Detection & Defense: Architectural Changes](notes/red-teaming/active-directory/detection-defence-architectural-changes.md)
   * [Microsoft ATA (Advanced Threat Analytics).](notes/red-teaming/active-directory/detection-defense-ata.md)
   * [Detection & Defense](notes/red-teaming/active-directory/detection-defense.md)
@@ -57,7 +46,7 @@
   * [Domain Privesc](notes/red-teaming/active-directory/domain-privesc.md)
   * [Lateral Movement](notes/red-teaming/active-directory/lateral-movement.md)
   * [Local PrivEsc](notes/red-teaming/active-directory/local-privesc.md)
-  * Attack Vectors
+* Attack Vectors
     * [AD CS (Active Directory Certificate Services)](notes/red-teaming/active-directory/attack-vectors/ad-cs.md)
     * [Group Policy Preferences](notes/red-teaming/active-directory/attack-vectors/group-policy-preferences.md)
     * [Ipv6 DNS Takeover](notes/red-teaming/active-directory/attack-vectors/ipv6-dns-takeover.md)
@@ -67,7 +56,7 @@
     * [Microsoft SQL Server](notes/red-teaming/active-directory/attack-vectors/microsoft-sql-server.md)
     * [Relay attacks](notes/red-teaming/active-directory/attack-vectors/relay-attacks.md)
     * [Remote procedure call](notes/red-teaming/active-directory/attack-vectors/rpc.md)
-  * Powershell
+* Powershell
     * [COM objects](notes/red-teaming/active-directory/powershell/com-objects.md)
     * [Offensive Powershell](notes/red-teaming/active-directory/powershell/offensive-powershell.md)
     * [PowerShell basics](notes/red-teaming/active-directory/powershell/powershell-basics.md)
@@ -84,16 +73,13 @@
   * [Binary analysis](notes/red-teaming/reverse-engineering/binary-analysis.md)
   * [GDB cheat sheet](notes/red-teaming/reverse-engineering/gdb-cheatsheet.md)
 
-## Web Penetration Testing
+# 🌐 Web Penetration Testing
 
-* [Web Penetration Testing](notes/web-pentesting/readme.md)
 * [Authentication Testing](notes/web-pentesting/authentication-testing.md)
 * [Authorization Testing](notes/web-pentesting/authorization-testing.md)
 * [DNS Rebinding](notes/web-pentesting/dns-rebinding.md)
 * [Information Gathering](notes/web-pentesting/information-gathering.md)
 * [Proxy Servers](notes/web-pentesting/proxy-servers.md)
-* Iis Servers
-  * [Untitled](notes/web-pentesting/iis-servers/untitled.md)
 * Web Vulns
   * [Cross-Site Tracing Potential](notes/web-pentesting/web-vulns/cross-site-tracing-potential.md)
   * [CSRF](notes/web-pentesting/web-vulns/csrf.md)
