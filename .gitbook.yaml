@@ -2,3 +2,4 @@ root: ./
 
 structure:
   readme: readme.md
+  summary: SUMMARY.md
