@@ -7,7 +7,7 @@
 - Can detect behavior anomalies.
 ## Useful for detecting 
 - **Recon**: Account enum, Netsession enum.
-- **Compromised Credentials Attacks**: Brute-Force, High privilege account/service account exposed in clear text, Honey token, unusual protocol (NTLM and kerberos).
+- **Compromised Credentials Attacks**: Brute-Force, High privilege account/service account exposed in clear text, Honey token, unusual protocol (NTLM and Kerberos).
 - Credential/Hash/Ticket Replay attacks.
 
 ## Bypass user hunting detection
