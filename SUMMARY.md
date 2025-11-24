@@ -23,28 +23,28 @@
 
 ## 🐹 Golang Programming
 
-* [Arrays and Slices](notes/golang/arrays-and-slices.md)
-* [Channels](notes/golang/channels.md)
-* [Concurrency (Go-routines)](notes/golang/concurrency.md)
+* [Variables](notes/golang/variables.md)
 * [Constants](notes/golang/constants.md)
+* [Primitives](notes/golang/primitives.md)
+* [Pointers](notes/golang/pointers.md)
 * [Control Flow](notes/golang/control-flow.md)
-* [Functions](notes/golang/functions.md)
 * [If & Switch](notes/golang/if-switch.md)
 * [Looping](notes/golang/looping.md)
+* [Functions](notes/golang/functions.md)
+* [Arrays and Slices](notes/golang/arrays-and-slices.md)
 * [Maps & Structs](notes/golang/maps-structs.md)
+* [Concurrency (Go-routines)](notes/golang/concurrency.md)
+* [Channels](notes/golang/channels.md)
 * [Misc](notes/golang/misc.md)
-* [Pointers](notes/golang/pointers.md)
-* [Primitives](notes/golang/primitives.md)
-* [Variables](notes/golang/variables.md)
 
 ## 🚩 CTF Notes
 * AppSec
+  * [General Notes](notes/ctf-notes/appsec/general-notes.md)
   * [0Auth](notes/ctf-notes/appsec/0auth.md)
   * [Apache Lucene](notes/ctf-notes/appsec/apache-lucene.md)
   * [Code Review](notes/ctf-notes/appsec/code-review.md)
   * [Command Execution](notes/ctf-notes/appsec/command-execution.md)
   * [Fuzzing](notes/ctf-notes/appsec/fuzzing.md)
-  * [General Notes](notes/ctf-notes/appsec/general-notes.md)
   * [GraphQL](notes/ctf-notes/appsec/graphql.md)
   * [Javascript](notes/ctf-notes/appsec/javascript.md)
   * [JS Analysis](notes/ctf-notes/appsec/js-analysis.md)
@@ -118,10 +118,10 @@
 
 ## 🌐 Web Penetration Testing
 
+* [Information Gathering](notes/web-pentesting/information-gathering.md)
 * [Authentication Testing](notes/web-pentesting/authentication-testing.md)
 * [Authorization Testing](notes/web-pentesting/authorization-testing.md)
 * [DNS Rebinding](notes/web-pentesting/dns-rebinding.md)
-* [Information Gathering](notes/web-pentesting/information-gathering.md)
 * [Proxy Servers](notes/web-pentesting/proxy-servers.md)
 * Web Vulns
   * [Cross-Site Tracing Potential](notes/web-pentesting/web-vulns/cross-site-tracing-potential.md)
