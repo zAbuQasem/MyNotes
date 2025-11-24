@@ -6,25 +6,44 @@ I started compiling these notes back in 2020 when I began my journey into penetr
 
 Please keep in mind that this is a living document. I'm constantly learning, experimenting, and updating these pages as I explore new technologies and methodologies. The content here reflects my ongoing growth and experiences in the field.
 
+### 📚 Learning Journey
+
+Throughout my learning journey, I have read more than 10 books and spent over 200 hours on course material. The notes compiled here are distilled from those resources combined with years of hands‑on experience.
+
 Feel free to look around!
 
 ## 📚 Contents
 
-### 🔐 Security & Penetration Testing
+### � DevOps
 
-* **[Active Directory](notes/red-teaming/active-directory/readme.md)** - Enumeration, privilege escalation, lateral movement, and persistence.
-* **[Web Pentesting](notes/web-pentesting/readme.md)** - Modern web vulnerabilities and attack techniques.
-* **[Red Teaming](notes/red-teaming/readme.md)** - Advanced offensive operations, tunneling, and automation.
-* **[Metasploit](notes/red-teaming/metasploit/readme.md)** - The Metasploit framework and exploitation modules.
+* **[DevOps Essentials](notes/devops/)** - GitHub Actions, monitoring, image signing, and DevOps best practices.
+* **[Infrastructure as Code](notes/devops/iac/)** - Ansible and Terraform for automated infrastructure management.
+* **[Kubernetes](notes/devops/kubernetes/)** - Container orchestration, kubectl commands, and security.
+* **[Open Policy Agent](notes/devops/open-policy-agent/)** - Policy-based control using Rego.
 
-### 💻 Development & Operations
+### 🐹 Golang Programming
 
-* **[DevOps](notes/devops/readme.md)** - CI/CD, container orchestration, and infrastructure as code.
-* **[Golang](notes/golang/readme.md)** - Go programming from basics to concurrency.
+* **[Golang](notes/golang/)** - Go programming from fundamentals to advanced concurrency patterns.
 
-### 🔧 Reverse Engineering
+### 🚩 CTF Notes
 
-* **[Reverse Engineering](notes/red-teaming/reverse-engineering/readme.md)** - Binary analysis and debugging.
+* **[Application Security](notes/ctf-notes/appsec/)** - Web vulnerabilities, injection attacks, and exploitation techniques.
+* **[Binary Exploitation](notes/ctf-notes/binary-exploitation.md)** - Memory corruption and binary analysis.
+* **[Forensics](notes/ctf-notes/forensics.md)** - Digital forensics and artifact analysis.
+* **[Network Pentesting](notes/ctf-notes/network-pentesting/)** - C2 servers, pivoting, and network exploitation.
+
+### � Red Teaming
+
+* **[Active Directory](notes/red-teaming/active-directory/)** - Enumeration, privilege escalation, lateral movement, and persistence.
+* **[Credential Harvesting](notes/red-teaming/credential-harvesting/)** - Techniques for Windows, macOS, and Linux.
+* **[Metasploit Framework](notes/red-teaming/metasploit/)** - Exploitation framework and cheatsheets.
+* **[Reverse Engineering](notes/red-teaming/reverse-engineering/)** - Binary analysis and debugging with GDB.
+* **[Automation & Tunneling](notes/red-teaming/)** - Advanced offensive operations and port forwarding.
+
+### 🌐 Web Penetration Testing
+
+* **[Web Security Testing](notes/web-pentesting/)** - Authentication, authorization, and information gathering.
+* **[Web Vulnerabilities](notes/web-pentesting/web-vulns/)** - CSRF, XSS, SSRF, SQLi, and template injection.
 
 ---
 
