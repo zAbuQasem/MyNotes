@@ -93,7 +93,7 @@ func main() {
 	fmt.Println(b)
 }
 ```
-## Copying a whole array to a variable isn't effifcient so we will use a pointer:
+## Copying a whole array to a variable isn't efficient so we will use a pointer:
 ```go
 package main
 
