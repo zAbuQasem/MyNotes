@@ -1,12 +1,12 @@
-# Kerberoas
+# Kerberos
 
 ---
 ## Definition
-## What's Kerberoas
+## What's Kerberos
 Kerberos is **an authentication protocol that works on the basis of tickets** that allows clients to connect to services over an insecure network and still allow clients to prove their identity in a secure manner.
-- If a user's `UserAccountControl` settings have "Do not require kerberoas preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
+- If a user's `UserAccountControl` settings have "Do not require Kerberos preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
 - With sufficient rights `GenericWrite` or `GenericAll`,preauth can be forced disabled as well.
-## How does Kerberoas work?
+## How does Kerberos work?
 1. Login.
 2. Request for Ticket Granting Ticket – TGT, Client to Server.
 3. Server checks if the user exists.

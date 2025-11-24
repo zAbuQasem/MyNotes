@@ -102,7 +102,7 @@ while True:
 
 ## Eval()
 
-Always pay attention to the behaviour and aim to fix the syntax in order to acheive code execution. Taking the code below as an example, we can acheive code execution by payloads such like:
+Always pay attention to the behaviour and aim to fix the syntax in order to achieve code execution. Taking the code below as an example, we can achieve code execution by payloads such like:
 
 * `".system("ls")."`
 

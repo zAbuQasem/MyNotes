@@ -32,10 +32,10 @@ Defensive architecture and security controls for Active Directory.
 	- Is  a group introduced in server 2012 R2 for **better protection against credential theft** by not caching credentials in insecure ways. **A user added to this group:**
 		- Cannot use `CredSSP` and `WDigest` - No more clear text credentials caching.
 		- NTLM hash is not cached.
-		- Kerberoas doesn't user DES and RC4 keys - No caching of clear text and long term keys.
+		- Kerberos doesn't user DES and RC4 keys - No caching of clear text and long term keys.
 	- **If the domain functional level is server  2012 R2:**
 		- No NTLM authentication
-		- No DES or RC4 in kerberoas pre-authentication.
+		- No DES or RC4 in kerberos pre-authentication.
 		- No delegation.
 		- No renewal of TGT beyond initial for hour lifetime - Hardcoded, unconfigurable `Maximum lifetime for user ticket` and `Maximum lifetime for user ticket renewal`.
 	- Needs all domain control to be at least server 2008 or  later (because AES keys).

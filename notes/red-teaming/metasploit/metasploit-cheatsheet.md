@@ -142,7 +142,7 @@ Path  to the tools -> `/usr/share/metasploit-framework/tools`
 - **msf-exe2vbs:** Convert an executable payload into `VBScript format`.
 - **msf-exe2vba:** Convert an executable payload into `VBA format`.
 - **msf-pdf2xdp:** At times, the PDF file gets flagged by the security software. It is possible to encode the malicious PDF in XDP format in order to evade the antivirus and other security software.
-- **msf-msf_irb:** Built-in Ruby shell that can be used for post-exploitation capabilities (Can be invoked seperately).
+- **msf-msf_irb:** Built-in Ruby shell that can be used for post-exploitation capabilities (Can be invoked separately).
 - **msf-pattern_create:** Related to exploit-development.
 - **msf-virustotal:** Accepts file samples as input and provides analysis on how many different antivirus engines were able to detect the file sample for the presence of malware.
 - **msf-makeiplist:**  Make a range of IP's to scan.

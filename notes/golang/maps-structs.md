@@ -92,7 +92,7 @@ func main() {
 	fmt.Println(ok)
 }
 ```
-## Manipulating the map in one place is going to impact all other places it's refrenced to
+## Manipulating the map in one place is going to impact all other places it's referenced to
 ```go
 package main
 

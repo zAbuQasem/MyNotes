@@ -4,11 +4,11 @@
 
 ## 🚀 DevOps
 
-* [Github Actions](notes/devops/github-actions.md)
+* [GitHub Actions](notes/devops/github-actions.md)
 * [Image Signing](notes/devops/image-signing.md)
 * [Monitoring](notes/devops/monitoring.md)
 * [DevOps Tips and Tricks](notes/devops/tips-and-tricks.md)
-* Iac
+* IaC
   * [Ansible](notes/devops/iac/ansible.md)
   * [Terraform](notes/devops/iac/terraform.md)
 * Kubernetes
@@ -40,7 +40,7 @@
 ## 🚩 CTF Notes
 * AppSec
   * [General Notes](notes/ctf-notes/appsec/general-notes.md)
-  * [0Auth](notes/ctf-notes/appsec/0auth.md)
+  * [OAuth](notes/ctf-notes/appsec/oauth.md)
   * [Apache Lucene](notes/ctf-notes/appsec/apache-lucene.md)
   * [Code Review](notes/ctf-notes/appsec/code-review.md)
   * [Command Execution](notes/ctf-notes/appsec/command-execution.md)
@@ -93,7 +93,7 @@
     * [AD CS (Active Directory Certificate Services)](notes/red-teaming/active-directory/attack-vectors/ad-cs.md)
     * [Group Policy Preferences](notes/red-teaming/active-directory/attack-vectors/group-policy-preferences.md)
     * [Ipv6 DNS Takeover](notes/red-teaming/active-directory/attack-vectors/ipv6-dns-takeover.md)
-    * [Kerberoas](notes/red-teaming/active-directory/attack-vectors/kerberoas.md)
+    * [Kerberos](notes/red-teaming/active-directory/attack-vectors/kerberos.md)
     * [LAPS (Local Administrator Password Solution)](notes/red-teaming/active-directory/attack-vectors/laps.md)
     * [LDAP](notes/red-teaming/active-directory/attack-vectors/ldap.md)
     * [Microsoft SQL Server](notes/red-teaming/active-directory/attack-vectors/microsoft-sql-server.md)
