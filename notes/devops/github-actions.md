@@ -1,4 +1,4 @@
-# Github Actions
+# GitHub Actions
 
 ## GitHub OIDC with AWS
 

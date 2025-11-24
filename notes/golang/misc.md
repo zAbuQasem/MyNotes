@@ -1,7 +1,7 @@
 # Misc
 ---
 ## Understanding `_`
-It is  called the blank identifier. Meaning the value assigned to it  should discarded.Because Go compiler doesn't allow you to create a variable you won't use.
+It is called the blank identifier. Meaning the value assigned to it should be discarded. Because Go compiler doesn't allow you to create a variable you won't use.
 
 **Let's take this example:**
 ```go

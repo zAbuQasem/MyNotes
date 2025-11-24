@@ -68,7 +68,7 @@ import (
 
 func main() {
 	n := 3.14 // The compiler knew its a float
-	n = 13.7e72 // Now n is known as a float  accros this block.
+	n = 13.7e72 // Now n is known as a float across this block.
 	n = 2.1E14
 	fmt.Printf("%v, %T\n",n ,n)
 }

@@ -41,7 +41,7 @@ func main() {
 	for i := 0; i < 5; i++ {
 		fmt.Println(i)
 	}
-	//fmt.Println(i) -> wont work because i is defined just for the loop
+	//fmt.Println(i) -> won't work because i is defined just for the loop
 }
 
 //To make i global for the code block

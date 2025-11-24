@@ -231,7 +231,7 @@ go install github.com/google/go-containerregistry/cmd/crane@latest
 crane digest <REPO>
 ```
 
-## Github-Action-Integration
+## GitHub Action Integration
 1. Create cosign secrets
 ```sh
 #!/bin/bash

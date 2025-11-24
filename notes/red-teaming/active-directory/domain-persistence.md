@@ -1,7 +1,7 @@
 # Domain Persistence
 ---
 >**Important:**
->[Synchronizing time is important](attack-vectors/kerberoas.md#synchronizing-time-is-important)
+>[Synchronizing time is important](attack-vectors/kerberos.md#synchronizing-time-is-important)
 ---
 ## Golden Ticket
 ## Definition

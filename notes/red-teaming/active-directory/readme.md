@@ -20,7 +20,7 @@ Complete guide to Active Directory penetration testing and security.
 - [AD CS](attack-vectors/ad-cs.md) - Active Directory Certificate Services attacks
 - [Group Policy Preferences](attack-vectors/group-policy-preferences.md) - GPP exploitation
 - [IPv6 DNS Takeover](attack-vectors/ipv6-dns-takeover.md) - IPv6 attacks
-- [Kerberoasting](attack-vectors/kerberoas.md) - Kerberos ticket attacks
+- [Kerberoasting](attack-vectors/kerberos.md) - Kerberos ticket attacks
 - [LAPS](attack-vectors/laps.md) - Local Administrator Password Solution
 - [LDAP](attack-vectors/ldap.md) - LDAP injection and attacks
 - [Microsoft SQL Server](attack-vectors/microsoft-sql-server.md) - MSSQL attacks
