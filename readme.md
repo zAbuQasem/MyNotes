@@ -14,7 +14,7 @@ Feel free to look around!
 
 ## 📚 Contents
 
-### � DevOps
+### 🚀 DevOps
 
 * **[DevOps Essentials](notes/devops/)** - GitHub Actions, monitoring, image signing, and DevOps best practices.
 * **[Infrastructure as Code](notes/devops/iac/)** - Ansible and Terraform for automated infrastructure management.
@@ -32,7 +32,7 @@ Feel free to look around!
 * **[Forensics](notes/ctf-notes/forensics.md)** - Digital forensics and artifact analysis.
 * **[Network Pentesting](notes/ctf-notes/network-pentesting/)** - C2 servers, pivoting, and network exploitation.
 
-### � Red Teaming
+### 💀 Red Teaming
 
 * **[Active Directory](notes/red-teaming/active-directory/)** - Enumeration, privilege escalation, lateral movement, and persistence.
 * **[Credential Harvesting](notes/red-teaming/credential-harvesting/)** - Techniques for Windows, macOS, and Linux.
