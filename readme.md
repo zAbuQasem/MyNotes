@@ -2,13 +2,9 @@
 
 Welcome to my personal knowledge base! 🚀
 
-I started compiling these notes back in 2020 when I began my journey into penetration testing. What started as a simple way to track my learning has grown into a comprehensive collection covering everything from basic security concepts to advanced red teaming operations.
+I started compiling these notes back in 2020 when I began my journey into penetration testing. What started as a simple way to track my learning has grown into a comprehensive collection covering everything from basic advanced ones.
 
 Please keep in mind that this is a living document. I'm constantly learning, experimenting, and updating these pages as I explore new technologies and methodologies. The content here reflects my ongoing growth and experiences in the field.
-
-### 📚 Learning Journey
-
-Throughout my learning journey, I have read more than 10 books and spent over 200 hours on course material. The notes compiled here are distilled from those resources combined with years of hands‑on experience.
 
 Feel free to look around!
 
